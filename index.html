@@ -1,7 +1,9 @@
+<!DOCTYPE html>
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stine Egeli Øvrebø — AI-strategi &amp; Digital Transformasjon</title>
+    <title>Stine Egeli Øvrebø — AI-strategi & Digital Transformasjon</title>
     <meta name="description" content="Strategisk rådgiver som bygger bro mellom teknologi, mennesker og forretning. AI-strategi, implementering og digital transformasjon.">
 
     <link rel="alternate" hreflang="no" href="https://abstinensa.no/">
@@ -11,34 +13,1279 @@
 
     <style>
         :root {
-            --demo-banner-h: 36px;
             --ink: #1a1a2e;
             --cream: #f8f6f1;
+            --warm: #e8e4dc;
             --accent: #c4593e;
+            --accent-light: #e8967f;
+            --muted: #6b6b7b;
+            --slate: #3d3d50;
             --gold: #b8944f;
+            --gold-light: #d4bb7c;
+            --section-gap: clamp(80px, 10vw, 140px);
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
         body {
-            margin: 0;
             font-family: 'Outfit', sans-serif;
             background: var(--cream);
             color: var(--ink);
-            padding-top: var(--demo-banner-h);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 36px;
         }
 
-        .demo-disclaimer {
+        .demo-banner {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--demo-banner-h);
+            top: 0; left: 0; right: 0;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
+            background: var(--ink);
+            color: rgba(248, 246, 241, 0.5);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            z-index: 9998;
+        }
+
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            background: rgba(196, 89, 62, 0.15);
+            border: 1px solid rgba(196, 89, 62, 0.3);
+            border-radius: 4px;
+            color: var(--accent-light);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .demo-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Grain overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* === NAV === */
+        nav {
+            position: fixed;
+            top: 36px; left: 0; right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 246, 241, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 14px 40px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.05);
+        }
+
+        .nav-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 24px; height: 2px;
+            background: var(--ink);
+            transition: all 0.3s;
+        }
+
+        /* === HERO === */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 40px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -15%;
+            right: -8%;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(196, 89, 62, 0.06) 0%, rgba(184, 148, 79, 0.03) 40%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -5%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184, 148, 79, 0.04) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 56px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            position: relative;
+            max-width: 780px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
             background: linear-gradient(90deg, var(--accent), var(--gold));
-            color: white;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+            display: block;
+            font-size: 0.82em;
+            margin-top: 6px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            color: var(--muted);
+            max-width: 580px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.8s forwards;
+        }
+
+        .hero-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(26, 26, 46, 0.06), rgba(26, 26, 46, 0.12), rgba(26, 26, 46, 0.06));
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.9s forwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border-radius: 60px;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(196, 89, 62, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--ink);
+            border: 1.5px solid rgba(26, 26, 46, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+        /* Hero stats */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1s forwards;
+        }
+
+        .hero-stat {
+            padding: 28px 24px 28px 0;
+            position: relative;
+        }
+
+        .hero-stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 28px;
+            bottom: 28px;
+            width: 1px;
+            background: rgba(26, 26, 46, 0.1);
+        }
+
+        .hero-stat:not(:first-child) {
+            padding-left: 24px;
+        }
+
+        .hero-stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--ink);
+            margin-bottom: 6px;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.76rem;
+            color: var(--muted);
+            font-weight: 500;
+            line-height: 1.45;
+        }
+
+        /* === SECTIONS === */
+        section {
+            padding: 0 40px;
+            margin-bottom: var(--section-gap);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.65;
+            max-width: 600px;
+            margin-bottom: 50px;
+        }
+
+        /* === TJENESTER === */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .service-card:hover::before { opacity: 1; }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+        }
+
+        .service-card:nth-child(1) .service-icon { background: rgba(196, 89, 62, 0.1); }
+        .service-card:nth-child(2) .service-icon { background: rgba(184, 148, 79, 0.12); }
+        .service-card:nth-child(3) .service-icon { background: rgba(61, 61, 80, 0.08); }
+        .service-card:nth-child(4) .service-icon { background: rgba(196, 89, 62, 0.1); }
+        .service-card:nth-child(5) .service-icon { background: rgba(184, 148, 79, 0.12); }
+        .service-card:nth-child(6) .service-icon { background: rgba(61, 61, 80, 0.08); }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .service-tag {
+            padding: 5px 14px;
+            background: var(--cream);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--slate);
+        }
+
+        /* === RESULTATER === */
+        .results-highlight {
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            margin-bottom: 32px;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+        }
+
+        .results-highlight-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .results-highlight h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .results-highlight p {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--muted);
+            max-width: 600px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 20px;
+            padding: 36px 32px;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+        }
+
+        .result-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.4rem;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .result-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .result-card p {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        /* === PROSESS === */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .process-step {
+            background: white;
+            border-radius: 20px;
+            padding: 36px 28px;
+            position: relative;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+        }
+
+        .process-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .process-step h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .process-step p {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--muted);
+        }
+
+        /* === KOMPETANSE === */
+        .competence-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .competence-column {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 36px;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+        }
+
+        .competence-column h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .competence-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+        }
+
+        .competence-item:last-child {
+            border-bottom: none;
+        }
+
+        .competence-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .competence-detail {
+            font-size: 0.82rem;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        /* === KARRIERE === */
+        .timeline {
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, var(--accent), var(--gold), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 32px 40px;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: 38px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--cream);
+        }
+
+        .timeline-date {
             font-size: 0.78rem;
-            z-index: 99999;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .timeline-item h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-org {
+            font-size: 0.92rem;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .timeline-item p {
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: var(--slate);
+        }
+
+        /* === UTDANNING === */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .education-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        }
+
+        .education-type {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .education-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .education-institution {
+            font-size: 0.92rem;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .education-detail {
+            font-size: 0.82rem;
+            color: var(--slate);
+            line-height: 1.5;
+        }
+
+        /* === KONTAKT === */
+        .contact-section {
+            background: var(--ink);
+            border-radius: 28px;
+            padding: 80px 60px;
+            text-align: center;
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 70% 30%, rgba(196, 89, 62, 0.15), transparent 50%),
+                        radial-gradient(circle at 30% 70%, rgba(184, 148, 79, 0.1), transparent 50%);
+            pointer-events: none;
+        }
+
+        .contact-section .section-label { color: var(--accent-light); }
+        .contact-section .section-title { color: var(--cream); }
+
+        .contact-section .section-subtitle {
+            color: rgba(248, 246, 241, 0.6);
+            margin: 0 auto 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-links .btn-primary {
+            background: var(--accent);
+        }
+
+        .contact-links .btn-primary:hover {
+            background: var(--accent-light);
+        }
+
+        .contact-links .btn-outline {
+            color: var(--cream);
+            border-color: rgba(248, 246, 241, 0.2);
+        }
+
+        .contact-links .btn-outline:hover {
+            border-color: var(--cream);
+        }
+
+        /* === FOOTER === */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 12px;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 900px) {
+            nav { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(248, 246, 241, 0.97);
+                backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(26,26,46,0.06);
+            }
+
+            .hero { padding: 100px 24px 60px; }
+            .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .hero-stat:not(:last-child)::after { display: none; }
+            .hero-stat { padding: 20px 0; border-top: 1px solid rgba(26, 26, 46, 0.08); }
+
+            section { padding: 0 24px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .results-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+            .competence-grid { grid-template-columns: 1fr; }
+            .education-grid { grid-template-columns: 1fr; }
+
+            .timeline { padding-left: 40px; }
+            .timeline::before { left: 12px; }
+            .timeline-item::before { left: -35px; }
+            .timeline-item { padding: 24px; }
+
+            .contact-section { padding: 48px 24px; border-radius: 16px; }
+        }
+
+        @media (max-width: 500px) {
+            .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .process-grid { grid-template-columns: 1fr; }
+            .hero-stat-number { font-size: 1.5rem; }
         }
     </style>
 </head>
+<body>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner">
+    <span class="demo-badge">Demo</span>
+    Konseptside bygget med AI (vibe coding) · Ikke et reelt tjenestetilbud
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+    <a href="#" class="nav-logo">Stine Egeli Øvrebø</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#tjenester">Tjenester</a></li>
+        <li><a href="#resultater">Resultater</a></li>
+        <li><a href="#prosess">Prosess</a></li>
+        <li><a href="#kompetanse">Kompetanse</a></li>
+        <li><a href="#karriere">Karriere</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Meny">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <span class="hero-label">AI-strategi & Digital Transformasjon</span>
+            <h1>Fra strategi til adopsjon —<br><em>jeg gjør AI til noe folk faktisk bruker</em></h1>
+            <p class="hero-description">
+                Strategisk rådgiver som bygger bro mellom teknologi, mennesker og forretning. Med bred erfaring fra offentlig sektor og regulerte miljøer hjelper jeg organisasjoner med å implementere AI som faktisk fungerer.
+            </p>
+            <div class="hero-cta">
+                <a href="#kontakt" class="btn btn-primary">Book en samtale</a>
+                <a href="#tjenester" class="btn btn-outline">Se tjenester ↓</a>
+            </div>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">15→68%</div>
+                <div class="hero-stat-label">AI-adopsjon blant<br>450 ansatte</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">600+</div>
+                <div class="hero-stat-label">Studiepoeng fra<br>8 institusjoner</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">10+</div>
+                <div class="hero-stat-label">År i offentlig sektor<br>og digitalisering</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">450</div>
+                <div class="hero-stat-label">Brukere aktivert<br>på tvers av org.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TJENESTER -->
+<section id="tjenester">
+    <div class="container reveal">
+        <span class="section-label">Tjenester</span>
+        <h2 class="section-title">Jeg hjelper organisasjoner med å realisere verdien av AI</h2>
+        <p class="section-subtitle">Fra strategi til implementering — med fokus på mennesker, kultur og governance i regulerte miljøer.</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">◆</div>
+                <h3>AI-strategi & Veikart</h3>
+                <p>Utvikling av helhetlig AI-strategi tilpasset organisasjonens modenhet, regulatoriske krav og forretningsmål. Inkluderer prioritering av use cases og gevinstplanlegging.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Strategiutvikling</span>
+                    <span class="service-tag">Modenhetsvurdering</span>
+                    <span class="service-tag">Use case-prioritering</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">▲</div>
+                <h3>AI-implementering & Adopsjon</h3>
+                <p>Praktisk implementering av AI-verktøy med fokus på brukeradopsjon. Inkluderer opplæringsprogrammer, AI Champions-nettverk og endringsledelse som sikrer varig effekt.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Endringsledelse</span>
+                    <span class="service-tag">Opplæring</span>
+                    <span class="service-tag">Champions-nettverk</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">■</div>
+                <h3>AI Governance & Compliance</h3>
+                <p>Utforming av rammeverk for ansvarlig AI-bruk i regulerte miljøer. Policyer, retningslinjer og kontrollmekanismer som balanserer innovasjon med etterlevelse.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Policyutvikling</span>
+                    <span class="service-tag">Regulatorisk</span>
+                    <span class="service-tag">Rammeverk</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">●</div>
+                <h3>Verktøyevaluering & Anskaffelse</h3>
+                <p>Uavhengig evaluering og sammenligning av enterprise AI-løsninger. Behovskartlegging, pilotdesign og anbefalinger tilpasset offentlig sektors anskaffelseskrav.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Claude Enterprise</span>
+                    <span class="service-tag">M365 Copilot</span>
+                    <span class="service-tag">Evaluering</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">◇</div>
+                <h3>Digital Transformasjon</h3>
+                <p>Helhetlig organisasjonsutvikling med teknologi som katalysator. Prosessforbedring, informasjonsforvaltning og digitale arbeidsformer som skaper reell verdi.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Prosessforbedring</span>
+                    <span class="service-tag">M365</span>
+                    <span class="service-tag">SharePoint</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">☆</div>
+                <h3>Foredrag & Workshops</h3>
+                <p>Engasjerende presentasjoner og praktiske workshops om AI-strategi, implementering og organisasjonsutvikling. Tilpasset alt fra ledergrupper til hele organisasjoner.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Keynotes</span>
+                    <span class="service-tag">Workshops</span>
+                    <span class="service-tag">Lederopplæring</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RESULTATER -->
+<section id="resultater">
+    <div class="container reveal">
+        <span class="section-label">Dokumenterte resultater</span>
+        <h2 class="section-title">Ikke bare strategi — faktisk gjennomføring</h2>
+        <p class="section-subtitle">Konkrete, målbare resultater fra implementeringsarbeid i en av Norges mest krevende organisasjoner.</p>
+
+        <div class="results-highlight">
+            <div class="results-highlight-number">15% → 68%</div>
+            <h3>AI-adopsjon i stor offentlig organisasjon</h3>
+            <p>Økt AI-bruk blant 450 ansatte gjennom systematisk kompetansebygging, AI Champions-nettverk og brukertilpasset opplæring. En av de mest vellykkede AI-implementeringene i norsk offentlig sektor.</p>
+        </div>
+
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-number">450</div>
+                <h3>Ansatte aktivert</h3>
+                <p>Bygget og ledet AI-opplæringsprogram for hele organisasjonen — fra analytikere til ledere. Inkluderer skreddersydde workshops, e-læring og kontinuerlig støtte.</p>
+            </div>
+            <div class="result-card">
+                <div class="result-number">3</div>
+                <h3>Enterprise AI-plattformer evaluert</h3>
+                <p>Systematisk evaluering og implementering av Claude Enterprise, Microsoft 365 Copilot og ChatGPT. Behovskartlegging, pilottesting og utrulling i regulert miljø.</p>
+            </div>
+            <div class="result-card">
+                <div class="result-number">∞</div>
+                <h3>Governance-rammeverk etablert</h3>
+                <p>Utformet AI-policyer og retningslinjer som balanserer innovasjon med compliance-krav i strengt regulert miljø. Inkluderer etiske retningslinjer og bruksregler.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROSESS -->
+<section id="prosess">
+    <div class="container reveal">
+        <span class="section-label">Prosess</span>
+        <h2 class="section-title">Slik jobber jeg</h2>
+        <p class="section-subtitle">En strukturert, men fleksibel tilnærming som tar hensyn til organisasjonens modenhet, kultur og regulatoriske kontekst.</p>
+
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="process-number">01</div>
+                <h3>Kartlegging</h3>
+                <p>Grundig analyse av nåsituasjon, modenhet, behov og barrierer. Inkluderer interessentanalyse og forankring i ledelsen.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">02</div>
+                <h3>Strategi</h3>
+                <p>Utvikling av skreddersydd AI-strategi med prioriterte use cases, governance-rammeverk og realistisk veikart.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">03</div>
+                <h3>Implementering</h3>
+                <p>Hands-on gjennomføring med fokus på endringsledelse, kompetansebygging og pilottesting med reelle brukere.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">04</div>
+                <h3>Skalering</h3>
+                <p>Systematisk utrulling, måling av gevinster og kontinuerlig optimalisering. Sikrer at AI-bruken er varig og verdiskapende.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KOMPETANSE -->
+<section id="kompetanse">
+    <div class="container reveal">
+        <span class="section-label">Kompetanse</span>
+        <h2 class="section-title">Tverrfaglig dybde gir strategisk bredde</h2>
+        <p class="section-subtitle">Unik kombinasjon av teknologiforståelse, organisasjonspsykologi og regulatorisk kompetanse.</p>
+
+        <div class="competence-grid">
+            <div class="competence-column">
+                <h3>AI & Teknologi</h3>
+                <div class="competence-item">
+                    <span class="competence-name">Claude Enterprise</span>
+                    <span class="competence-detail">Implementering & opplæring</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">Microsoft 365 Copilot</span>
+                    <span class="competence-detail">Evaluering & utrulling</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">ChatGPT / OpenAI</span>
+                    <span class="competence-detail">Enterprise-bruk</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">Microsoft Power Platform</span>
+                    <span class="competence-detail">Power Apps, Power Automate</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">SharePoint & Teams</span>
+                    <span class="competence-detail">Informasjonsarkitektur</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">Webutvikling</span>
+                    <span class="competence-detail">HTML, CSS, CMS</span>
+                </div>
+            </div>
+            <div class="competence-column">
+                <h3>Strategi & Organisasjon</h3>
+                <div class="competence-item">
+                    <span class="competence-name">AI-strategi & governance</span>
+                    <span class="competence-detail">Policy, rammeverk, etikk</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">Endringsledelse</span>
+                    <span class="competence-detail">Adopsjon & kulturbygging</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">Prosjektledelse</span>
+                    <span class="competence-detail">Megaprosjekter & agilt</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">Dokumentasjonsforvaltning</span>
+                    <span class="competence-detail">ISO 15489, arkivrett</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">Forvaltningsrett & personvern</span>
+                    <span class="competence-detail">Juridisk kompetanse</span>
+                </div>
+                <div class="competence-item">
+                    <span class="competence-name">Offentlig anskaffelse</span>
+                    <span class="competence-detail">Evaluering & kravspesifikasjon</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KARRIERE -->
+<section id="karriere">
+    <div class="container reveal">
+        <span class="section-label">Karriere</span>
+        <h2 class="section-title">Bred erfaring fra norsk offentlig sektor</h2>
+        <p class="section-subtitle">Over et tiår med organisasjonsutvikling, digital transformasjon og ledelse i krevende offentlige organisasjoner.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2023 — Nå</div>
+                <h3>Rådgiver — AI & Innovation Lead</h3>
+                <div class="timeline-org">Stor offentlig organisasjon</div>
+                <p>Leder AI-strategi og implementering for 450 ansatte. AI Champions-nettverk, opplæringsprogrammer, governance-rammeverk og evaluering av enterprise AI-løsninger.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2021 — 2023</div>
+                <h3>Kontorsjef / Office Manager</h3>
+                <div class="timeline-org">Ringsaker Kommune</div>
+                <p>Leder for avdeling Innbyggerservice og sekretariat. Dokumenthåndtering, arkiv, politisk sekretariat og saksbehandling.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2018 — 2021</div>
+                <h3>Seniorrådgiver</h3>
+                <div class="timeline-org">Statped</div>
+                <p>Lederstøtte til direktør og ledergrupper. Organisasjonsutvikling, HR, nasjonale konferanser og brukermedvirkning.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2018 — 2020</div>
+                <h3>Leder av arbeidsgruppe læreplan</h3>
+                <div class="timeline-org">Utdanningsdirektoratet</div>
+                <p>Ledet arbeidsgruppe for utarbeidelse av læreplan Vg3 service- og administrasjonsfaget.</p>
+            </div>
+        </div>
+
+        <!-- UTDANNING -->
+        <div style="margin-top: 60px;">
+            <span class="section-label">Utdanning</span>
+            <h2 class="section-title" style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Akademisk fundament</h2>
+            <p class="section-subtitle">Over 600 studiepoeng fra 8 norske utdanningsinstitusjoner — en sjelden tverrfaglig bredde.</p>
+
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-type">Mastergrad</div>
+                    <h3>Administrasjon og organisasjonsvitenskap</h3>
+                    <div class="education-institution">Universitetet i Bergen</div>
+                    <div class="education-detail">2013–2015 · Spesialisering: Kvalitetssikring av megaprosjekter (IT i offentlig sektor)</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-type">Bachelorgrad</div>
+                    <h3>Kultur- og samfunnsfag</h3>
+                    <div class="education-institution">Universitetet i Oslo</div>
+                    <div class="education-detail">2008–2013 · Offentlig administrasjon og ledelse</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-type">Bachelorgrad</div>
+                    <h3>Historie</h3>
+                    <div class="education-institution">Høgskulen i Volda</div>
+                    <div class="education-detail">2016–2021 · Globalhistorie, lokal- og regionalhistorie</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-type">Videreutdanning</div>
+                    <h3>Dokumentasjonsforvaltning</h3>
+                    <div class="education-institution">OsloMet</div>
+                    <div class="education-detail">2024 · 60 stp · Forvaltningsrett, arkivdanning, arkiv i samfunnet</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-type">Videreutdanning</div>
+                    <h3>Webutvikling & ERP</h3>
+                    <div class="education-institution">Høgskolen i Molde</div>
+                    <div class="education-detail">2024 · 15 stp · Karakter A i webutvikling</div>
+                </div>
+                <div class="education-card">
+                    <div class="education-type">Videreutdanning</div>
+                    <h3>Prosjektledelse & Organisasjon</h3>
+                    <div class="education-institution">Universitetet i Innlandet</div>
+                    <div class="education-detail">2020–2021 · 22,5 stp · Karakter A i prosjektledelse</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+    <div class="container reveal">
+        <div class="contact-section">
+            <span class="section-label">Klar for å starte?</span>
+            <h2 class="section-title">La oss snakke om hvordan AI kan skape verdi i din organisasjon</h2>
+            <p class="section-subtitle">
+                Enten du trenger en strategisk sparringpartner, en implementeringsekspert eller en engasjerende foredragsholder — ta kontakt for en uforpliktende samtale.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:stine@abstinensa.no" class="btn btn-primary">Send en e-post</a>
+                <a href="https://www.linkedin.com/in/stine-egeli-%C3%B8vreb%C3%B8-1617ab68" target="_blank" class="btn btn-outline">LinkedIn-profil</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Stine Egeli Øvrebø. Alle rettigheter reservert.</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/stine-egeli-%C3%B8vreb%C3%B8-1617ab68" target="_blank">LinkedIn</a>
+        <a href="#kontakt">Kontakt</a>
+    </div>
+</footer>
+
+<script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('open');
+        });
+    });
+</script>
+
+</body>
+</html>
