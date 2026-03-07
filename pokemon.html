@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Dashboard — Stine Egeli Øvrebø</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a2e;
+            --cream: #f8f6f1;
+            --warm: #e8e4dc;
+            --accent: #c4593e;
+            --accent-light: #e8967f;
+            --muted: #6b6b7b;
+            --slate: #3d3d50;
+            --gold: #b8944f;
+            --gold-light: #d4bb7c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 246, 241, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 14px 40px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 24px; height: 2px;
+            background: var(--ink);
+            transition: all 0.3s;
+        }
+
+        /* PAGE CONTENT */
+        .page-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 40px 80px;
+        }
+
+        .page-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .page-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .page-subtitle {
+            font-size: 1.05rem;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 40px;
+        }
+
+        /* SEARCH */
+        .search-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 14px 20px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            border: 1.5px solid rgba(26, 26, 46, 0.12);
+            border-radius: 60px;
+            background: white;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input::placeholder {
+            color: var(--muted);
+        }
+
+        .search-bar input:focus {
+            border-color: var(--accent);
+        }
+
+        .search-bar button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--cream);
+            background: var(--ink);
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            white-space: nowrap;
+        }
+
+        .search-bar button:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(196, 89, 62, 0.25);
+        }
+
+        /* RESULTS */
+        .results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .results .message {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            width: 200px;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+        }
+
+        .card:hover::before { opacity: 1; }
+
+        .card img {
+            max-width: 120px;
+            image-rendering: pixelated;
+            margin-bottom: 12px;
+        }
+
+        .card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            text-transform: capitalize;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .card .types {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card .type-badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(196, 89, 62, 0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* DIVIDER */
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            margin: 60px auto;
+            border-radius: 2px;
+        }
+
+        /* TRANSFORM RESULT */
+        .transform-result {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .transform-result.visible { display: flex; }
+
+        .transform-result .arrow-text {
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .transform-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            width: 280px;
+            border: 1px solid rgba(26, 26, 46, 0.04);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .transform-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+        }
+
+        .transform-card img {
+            max-width: 180px;
+            margin-bottom: 16px;
+        }
+
+        .transform-card h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            text-transform: capitalize;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .transform-card .person-name {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .transform-card .types {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .transform-card .type-badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(196, 89, 62, 0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .transform-card .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .transform-card .stat {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        .transform-card .stat strong {
+            color: var(--ink);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            nav { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(248, 246, 241, 0.97);
+                backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(26,26,46,0.06);
+            }
+
+            .page-content { padding: 120px 24px 60px; }
+        }
+
+        @media (max-width: 500px) {
+            .search-bar {
+                flex-direction: column;
+            }
+            .card { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar">
+    <div class="nav-left">
+        <a href="/" class="nav-logo">Stine Egeli Øvrebø</a>
+    </div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/#tjenester">Tjenester</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+        <li><a href="/spill.html">Spill</a></li>
+        <li><a href="/pokemon.html" style="color: var(--accent);">Pokemon</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Meny">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<div class="page-content">
+    <p class="page-label">Mini-prosjekt</p>
+    <h1 class="page-title">Pokemon Dashboard</h1>
+    <p class="page-subtitle">Søk etter en Pokemon ved navn eller ID og se bilde og type.</p>
+
+    <div class="search-bar">
+        <input id="query" type="text" placeholder="Navn eller ID...">
+        <button id="search">Hent Pokemon</button>
+    </div>
+
+    <div class="results" id="results"></div>
+
+    <div class="section-divider"></div>
+
+    <p class="page-label">Transformator</p>
+    <h2 class="page-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Hvilken Pokemon er du?</h2>
+    <p class="page-subtitle">Skriv inn navnet ditt og finn ut hvilken Pokemon du ville vært!</p>
+
+    <div class="search-bar">
+        <input id="nameInput" type="text" placeholder="Skriv navnet ditt...">
+        <button id="transform">Transformer meg!</button>
+    </div>
+
+    <div class="transform-result" id="transformResult"></div>
+</div>
+
+<footer>
+    <a href="/">← Tilbake til hovedsiden</a>
+</footer>
+
+<script>
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Pokemon search
+    async function fetchPokemon(term) {
+        const url = `https://pokeapi.co/api/v2/pokemon/${term.toLowerCase().trim()}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Fant ikke Pokemon');
+        return res.json();
+    }
+
+    document.getElementById('search').addEventListener('click', async () => {
+        const query = document.getElementById('query').value;
+        const results = document.getElementById('results');
+        results.innerHTML = '';
+        if (!query) return;
+        try {
+            const data = await fetchPokemon(query);
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${data.sprites.other['official-artwork'].front_default || data.sprites.front_default}" alt="${data.name}">
+                <h2>${data.name}</h2>
+                <div class="types">
+                    ${data.types.map(t => `<span class="type-badge">${t.type.name}</span>`).join('')}
+                </div>
+            `;
+            results.appendChild(card);
+        } catch (e) {
+            results.innerHTML = '<p class="message">Kunne ikke finne Pokemon med det navnet/ID.</p>';
+        }
+    });
+
+    // Enter key support
+    document.getElementById('query').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') document.getElementById('search').click();
+    });
+
+    // === POKEMON TRANSFORMATOR ===
+    const NAME_MAP = {
+        'stine': 'jigglypuff',
+        'nina': 'meowth',
+    };
+
+    // Popular Pokemon pool for random mapping (Gen 1-3 favorites)
+    const POKEMON_POOL = [
+        'bulbasaur','charmander','squirtle','eevee','snorlax','gengar',
+        'dragonite','lapras','vulpix','growlithe','psyduck','togepi',
+        'chikorita','cyndaquil','totodile','mareep','espeon','umbreon',
+        'mudkip','torchic','treecko','ralts','absol','gardevoir',
+        'lucario','mew','celebi','lugia','arcanine','ninetales',
+        'slowpoke','ditto','cubone','marowak','chansey','magikarp',
+        'gyarados','vaporeon','flareon','jolteon','articuno','moltres',
+        'zapdos','scyther','pinsir','tauros','kangaskhan','lickitung'
+    ];
+
+    function nameToPokeIndex(name) {
+        let hash = 0;
+        for (let i = 0; i < name.length; i++) {
+            hash = ((hash << 5) - hash) + name.charCodeAt(i);
+            hash = hash & hash;
+        }
+        return Math.abs(hash) % POKEMON_POOL.length;
+    }
+
+    function getPokemonForName(name) {
+        const normalized = name.toLowerCase().trim();
+        if (NAME_MAP[normalized]) return NAME_MAP[normalized];
+        return POKEMON_POOL[nameToPokeIndex(normalized)];
+    }
+
+    document.getElementById('transform').addEventListener('click', async () => {
+        const name = document.getElementById('nameInput').value.trim();
+        const container = document.getElementById('transformResult');
+        container.innerHTML = '';
+        container.classList.remove('visible');
+        if (!name) return;
+
+        const pokemonName = getPokemonForName(name);
+        try {
+            const data = await fetchPokemon(pokemonName);
+            const img = data.sprites.other['official-artwork'].front_default || data.sprites.front_default;
+            container.innerHTML = `
+                <p class="arrow-text">✨ ${name} → ${data.name} ✨</p>
+                <div class="transform-card">
+                    <img src="${img}" alt="${data.name}">
+                    <h2>${data.name}</h2>
+                    <p class="person-name">${name} sin Pokemon</p>
+                    <div class="types">
+                        ${data.types.map(t => `<span class="type-badge">${t.type.name}</span>`).join('')}
+                    </div>
+                    <div class="stats">
+                        ${data.stats.slice(0, 6).map(s => `
+                            <div class="stat"><strong>${s.base_stat}</strong> ${s.stat.name}</div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            container.classList.add('visible');
+        } catch (e) {
+            container.innerHTML = '<p class="message">Noe gikk galt med transformasjonen!</p>';
+            container.classList.add('visible');
+        }
+    });
+
+    document.getElementById('nameInput').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') document.getElementById('transform').click();
+    });
+</script>
+</body>
+</html>

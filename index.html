@@ -580,46 +580,45 @@
         /* === KOMPETANSE === */
         .competence-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
 
         .competence-column {
             background: white;
             border-radius: 20px;
-            padding: 40px 36px;
+            padding: 32px 28px;
             border: 1px solid rgba(26, 26, 46, 0.04);
         }
 
         .competence-column h3 {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 28px;
-            padding-bottom: 16px;
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
             border-bottom: 2px solid var(--ink);
         }
 
-        .competence-item {
+        .competence-tags {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        .competence-item:last-child {
-            border-bottom: none;
+        .competence-tag {
+            font-size: 0.85rem;
+            font-weight: 400;
+            padding: 8px 16px;
+            border-radius: 100px;
+            background: var(--cream);
+            color: var(--slate);
+            border: 1px solid rgba(26, 26, 46, 0.06);
+            transition: all 0.2s ease;
         }
 
-        .competence-name {
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .competence-detail {
-            font-size: 0.82rem;
-            color: var(--muted);
-            text-align: right;
+        .competence-tag:hover {
+            background: var(--ink);
+            color: var(--cream);
         }
 
         /* === KARRIERE === */
@@ -869,7 +868,7 @@
             .services-grid { grid-template-columns: 1fr; }
             .results-grid { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: repeat(2, 1fr); }
-            .competence-grid { grid-template-columns: 1fr; }
+            .competence-grid { grid-template-columns: repeat(2, 1fr); }
             .education-grid { grid-template-columns: 1fr; }
 
             .timeline { padding-left: 40px; }
@@ -883,6 +882,7 @@
         @media (max-width: 500px) {
             .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .process-grid { grid-template-columns: 1fr; }
+            .competence-grid { grid-template-columns: 1fr; }
             .hero-stat-number { font-size: 1.5rem; }
         }
     </style>
@@ -905,6 +905,8 @@
         <li><a href="#kompetanse">Kompetanse</a></li>
         <li><a href="#karriere">Karriere</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="/spill.html">Spill</a></li>
+        <li><a href="/pokemon.html">Pokemon</a></li>
         <li><a href="oslo-events.html">Oslo Nå</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Meny">
@@ -1094,56 +1096,41 @@
         <div class="competence-grid">
             <div class="competence-column">
                 <h3>AI & Teknologi</h3>
-                <div class="competence-item">
-                    <span class="competence-name">Claude Enterprise</span>
-                    <span class="competence-detail">Implementering & opplæring</span>
-                </div>
-                <div class="competence-item">
-                    <span class="competence-name">Microsoft 365 Copilot</span>
-                    <span class="competence-detail">Evaluering & utrulling</span>
-                </div>
-                <div class="competence-item">
-                    <span class="competence-name">ChatGPT / OpenAI</span>
-                    <span class="competence-detail">Enterprise-bruk</span>
-                </div>
-                <div class="competence-item">
-                    <span class="competence-name">Microsoft Power Platform</span>
-                    <span class="competence-detail">Power Apps, Power Automate</span>
-                </div>
-                <div class="competence-item">
-                    <span class="competence-name">SharePoint & Teams</span>
-                    <span class="competence-detail">Informasjonsarkitektur</span>
-                </div>
-                <div class="competence-item">
-                    <span class="competence-name">Webutvikling</span>
-                    <span class="competence-detail">HTML, CSS, CMS</span>
+                <div class="competence-tags">
+                    <span class="competence-tag">Claude</span>
+                    <span class="competence-tag">ChatGPT</span>
+                    <span class="competence-tag">Microsoft 365 Copilot</span>
+                    <span class="competence-tag">Power Apps</span>
+                    <span class="competence-tag">SharePoint</span>
+                    <span class="competence-tag">Figma</span>
                 </div>
             </div>
             <div class="competence-column">
-                <h3>Strategi & Organisasjon</h3>
-                <div class="competence-item">
-                    <span class="competence-name">AI-strategi & governance</span>
-                    <span class="competence-detail">Policy, rammeverk, etikk</span>
+                <h3>Ledelse & Strategi</h3>
+                <div class="competence-tags">
+                    <span class="competence-tag">AI-strategi</span>
+                    <span class="competence-tag">Prosjektledelse</span>
+                    <span class="competence-tag">Organisasjonsutvikling</span>
+                    <span class="competence-tag">Digital transformasjon</span>
+                    <span class="competence-tag">Endringsledelse</span>
                 </div>
-                <div class="competence-item">
-                    <span class="competence-name">Endringsledelse</span>
-                    <span class="competence-detail">Adopsjon & kulturbygging</span>
+            </div>
+            <div class="competence-column">
+                <h3>Faglig ekspertise</h3>
+                <div class="competence-tags">
+                    <span class="competence-tag">Information Management</span>
+                    <span class="competence-tag">ISO 15489</span>
+                    <span class="competence-tag">Arkiv og dokumentforvaltning</span>
+                    <span class="competence-tag">Offentlig forvaltning</span>
                 </div>
-                <div class="competence-item">
-                    <span class="competence-name">Prosjektledelse</span>
-                    <span class="competence-detail">Megaprosjekter & agilt</span>
-                </div>
-                <div class="competence-item">
-                    <span class="competence-name">Dokumentasjonsforvaltning</span>
-                    <span class="competence-detail">ISO 15489, arkivrett</span>
-                </div>
-                <div class="competence-item">
-                    <span class="competence-name">Forvaltningsrett & personvern</span>
-                    <span class="competence-detail">Juridisk kompetanse</span>
-                </div>
-                <div class="competence-item">
-                    <span class="competence-name">Offentlig anskaffelse</span>
-                    <span class="competence-detail">Evaluering & kravspesifikasjon</span>
+            </div>
+            <div class="competence-column">
+                <h3>Kompetanser</h3>
+                <div class="competence-tags">
+                    <span class="competence-tag">Kommunikasjon</span>
+                    <span class="competence-tag">Stakeholder-håndtering</span>
+                    <span class="competence-tag">Opplæring og workshops</span>
+                    <span class="competence-tag">Governance-rammeverk</span>
                 </div>
             </div>
         </div>
