@@ -1274,4 +1274,10 @@
 
     // Close mobile nav on link click
     document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEv
+        link.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('open');
+        });
+    });
+</script>
+</body>
+</html>
