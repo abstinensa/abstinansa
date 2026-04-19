@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sondre & Johanne</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>main { display: none; }</style>
+</head>
+<body>
+  <main class="container">
+    <section class="section" style="text-align:center;padding-top:60px">
+      <h1>Sondre &amp; Johanne</h1>
+      <p style="font-size:1.1rem;color:var(--muted)">skal gifte seg — <em>TBC</em></p>
+    </section>
+
+    <section class="section">
+      <h2>Når &amp; kor</h2>
+      <div class="card"><strong>Dato:</strong> TBC</div>
+      <div class="card"><strong>Vigsel:</strong> TBC</div>
+      <div class="card"><strong>Festlokale:</strong> TBC</div>
+    </section>
+
+    <section class="section">
+      <h2>Program for dagen</h2>
+      <div id="program-list"><p><em>Kjem snart.</em></p></div>
+    </section>
+
+    <section class="section">
+      <h2>Dresscode</h2>
+      <div class="card"><em>TBC</em></div>
+    </section>
+
+    <section class="section">
+      <h2>Overnatting &amp; reise</h2>
+      <div class="card"><em>TBC — hotell, parkering, kollektiv.</em></div>
+    </section>
+
+    <section class="section">
+      <h2>Gåveliste</h2>
+      <div id="gaveliste-container"><p><em>Kjem snart.</em></p></div>
+    </section>
+
+    <section class="section">
+      <h2>Kontakt</h2>
+      <div class="card"><em>TBC — kontaktinfo til forlovarar.</em></div>
+    </section>
+
+    <section class="section" style="text-align:center;padding:40px 0">
+      <a href="planlegger/" style="font-size:0.85rem;color:var(--muted)">Planleggar</a>
+    </section>
+  </main>
+
+  <script type="module">
+    import { requirePassword } from './auth.js';
+    if (requirePassword({ key: 'bryllup', correct: 'bryllup' })) {
+      document.querySelector('main').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
