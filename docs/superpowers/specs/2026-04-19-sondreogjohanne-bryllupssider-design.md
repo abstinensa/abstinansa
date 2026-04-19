@@ -23,7 +23,7 @@ Rein statisk HTML/CSS/JS, ingen byggprosess. Filer blir lagt i eksisterande `abs
 
 ```
 abstinansa/
-├── sondeogjohanne/
+├── sondreogjohanne/
 │   ├── index.html              # hovudsida (passord: bryllup)
 │   ├── styles.css               # felles stil for begge sider
 │   ├── firebase-config.js       # Firebase-konfig (lim inn etter Firebase-oppsett)
@@ -32,8 +32,8 @@ abstinansa/
 ```
 
 URL-ar:
-- `https://abstinensa.no/sondeogjohanne/`
-- `https://abstinensa.no/sondeogjohanne/planlegger/`
+- `https://abstinensa.no/sondreogjohanne/`
+- `https://abstinensa.no/sondreogjohanne/planlegger/`
 
 ### Passordbeskytting
 
@@ -71,7 +71,7 @@ Begge sider koplar seg til same Firestore-database. Data synkroniserast i sannti
 - Firebase Web SDK v10 via CDN (modular import)
 - Ingen byggsteg, ingen npm
 
-## Hovudsida — `/sondeogjohanne/`
+## Hovudsida — `/sondreogjohanne/`
 
 Ein lang scroll-side med seksjoner:
 
@@ -100,7 +100,7 @@ Vising: kort per gåve med tittel, beskriving, lenke (til butikk), pris, status 
 
 Gåver redigerast frå planleggaren (ikkje frå hovudsida).
 
-## Planleggaren — `/sondeogjohanne/planlegger/`
+## Planleggaren — `/sondreogjohanne/planlegger/`
 
 Ein SPA-aktig side med sidebar/tabs for 8 modular. All data levest frå Firestore. Endringar lagrast med ein gong.
 
@@ -169,9 +169,9 @@ Brukar får detaljerte steg-for-steg-instruksjonar:
 1. Opprett Firebase-prosjekt på console.firebase.google.com
 2. Aktiver Firestore Database (start i test-modus)
 3. Registrer web-app, kopier config-objektet
-4. Lim inn i `sondeogjohanne/firebase-config.js` (klargjort med plassholdarar)
+4. Lim inn i `sondreogjohanne/firebase-config.js` (klargjort med plassholdarar)
 5. Sett Firestore-reglar (oppgitt i README eller kommentar)
-6. Commit og push til GitHub → live på abstinensa.no/sondeogjohanne/
+6. Commit og push til GitHub → live på abstinensa.no/sondreogjohanne/
 
 ## Feilhandtering
 
