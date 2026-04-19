@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bryllupsplanleggar — Sondre &amp; Johanne</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="planlegger.css">
+  <style>main { display: none; }</style>
+</head>
+<body>
+  <main class="container">
+    <h1 style="margin-top:40px">Bryllupsplanleggar</h1>
+    <p style="color:var(--muted);margin-bottom:24px">Sondre &amp; Johanne</p>
+
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-tab="sjekkliste">Sjekkliste</button>
+      <button class="tab" data-tab="budsjett">Budsjett</button>
+      <button class="tab" data-tab="gjesteliste">Gjesteliste</button>
+      <button class="tab" data-tab="leverandorer">Leverandørar</button>
+      <button class="tab" data-tab="program">Program</button>
+      <button class="tab" data-tab="musikk">Musikk &amp; dans</button>
+      <button class="tab" data-tab="gaveliste">Gåveliste</button>
+      <button class="tab" data-tab="bordkart">Bordkart</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-sjekkliste"><p>Lastar…</p></div>
+    <div class="tab-panel" id="panel-budsjett"><p>Lastar…</p></div>
+    <div class="tab-panel" id="panel-gjesteliste"><p>Lastar…</p></div>
+    <div class="tab-panel" id="panel-leverandorer"><p>Lastar…</p></div>
+    <div class="tab-panel" id="panel-program"><p>Lastar…</p></div>
+    <div class="tab-panel" id="panel-musikk"><p>Lastar…</p></div>
+    <div class="tab-panel" id="panel-gaveliste"><p>Lastar…</p></div>
+    <div class="tab-panel" id="panel-bordkart"><p>Lastar…</p></div>
+
+    <section style="text-align:center;padding:40px 0">
+      <a href="../" style="font-size:0.85rem;color:var(--muted)">← Tilbake til hovudsida</a>
+    </section>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
