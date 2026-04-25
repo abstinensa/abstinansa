@@ -45,14 +45,15 @@ def render_web(payload: dict) -> str:
 
 
 def _pick_teasers(payload: dict, limit: int = 3) -> list[dict]:
-    region_labels = {s.get("region"): s.get("label") for s in payload.get("sections", [])}
+    sections = payload.get("sections") or []
+    region_labels = {s.get("region"): s.get("label") for s in sections}
     teasers: list[dict] = []
-    for section in payload.get("sections", []):
-        for item in section.get("items", []):
+    for section in sections:
+        for item in section.get("items") or []:
             teasers.append(
                 {
-                    "title": item.get("title", "").strip(),
-                    "source": item.get("source", "").strip(),
+                    "title": (item.get("title") or "").strip(),
+                    "source": (item.get("source") or "").strip(),
                     "region_label": region_labels.get(section.get("region"), ""),
                 }
             )

@@ -136,8 +136,8 @@
   {% for section in payload.sections %}
   <section class="region">
     <h2>{{ section.label }}</h2>
-    {% if section.items %}
-      {% for item in section.items %}
+    {% if section['items'] %}
+      {% for item in section['items'] %}
       <article class="item">
         <h3><a href="{{ item.url }}" rel="noopener">{{ item.title }}</a></h3>
         <div class="meta">{{ item.source }}{% if item.date %} · {{ item.date }}{% endif %}</div>
