@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>AI Daily — {{ payload.date }}</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #fdfdfb;
+    --fg: #1a1a1a;
+    --muted: #5a5a5a;
+    --accent: #6b3d2e;
+    --rule: #d8d4cc;
+    --card: #f4f1ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14130f;
+      --fg: #ece8df;
+      --muted: #9a948a;
+      --accent: #e0a58a;
+      --rule: #2c2a25;
+      --card: #1c1a16;
+    }
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    font-size: 17px;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+    color: var(--muted);
+  }
+  header time {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--fg);
+    display: block;
+  }
+  .take {
+    background: var(--card);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin: 0 0 40px;
+    font-size: 17px;
+  }
+  .take strong {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  section.region {
+    margin-bottom: 40px;
+  }
+  section.region > h2 {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+    margin: 0 0 20px;
+  }
+  article.item {
+    margin-bottom: 24px;
+  }
+  article.item h3 {
+    font-size: 18px;
+    margin: 0 0 4px;
+    line-height: 1.35;
+  }
+  article.item h3 a {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  article.item h3 a:hover { border-bottom-color: var(--accent); }
+  article.item .meta {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  article.item p { margin: 6px 0; }
+  article.item .verdict {
+    font-style: italic;
+    color: var(--accent);
+    font-size: 15px;
+  }
+  .empty { color: var(--muted); font-style: italic; }
+  footer {
+    margin-top: 64px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>AI Daily</h1>
+    <time datetime="{{ payload.date }}">{{ payload.date }}</time>
+  </header>
+
+  {% if payload.take %}
+  <div class="take">
+    <strong>Dagens take</strong>
+    {{ payload.take }}
+  </div>
+  {% endif %}
+
+  {% for section in payload.sections %}
+  <section class="region">
+    <h2>{{ section.label }}</h2>
+    {% if section.items %}
+      {% for item in section.items %}
+      <article class="item">
+        <h3><a href="{{ item.url }}" rel="noopener">{{ item.title }}</a></h3>
+        <div class="meta">{{ item.source }}{% if item.date %} · {{ item.date }}{% endif %}</div>
+        <p>{{ item.summary }}</p>
+        {% if item.verdict %}<p class="verdict">{{ item.verdict }}</p>{% endif %}
+      </article>
+      {% endfor %}
+    {% else %}
+      <p class="empty">{{ section.note or "Stille dag — ingenting verdt å rapportere." }}</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+
+  <footer>
+    Kuratert av Claude Sonnet 4.6 fra {{ source_count }} kilder.
+    Generert {{ generated_at }}.
+    <a href="https://github.com/abstinensa/abstinansa/blob/main/scripts/ai-daily/sources.yaml">Kildeliste</a> ·
+    <a href="https://github.com/abstinensa/abstinansa">Repo</a> ·
+    <a href="/ai-daily/">Arkiv</a>
+  </footer>
+</main>
+</body>
+</html>

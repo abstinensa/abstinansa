@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>AI Daily — arkiv</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #fdfdfb;
+    --fg: #1a1a1a;
+    --muted: #5a5a5a;
+    --accent: #6b3d2e;
+    --rule: #d8d4cc;
+    --card: #f4f1ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14130f;
+      --fg: #ece8df;
+      --muted: #9a948a;
+      --accent: #e0a58a;
+      --rule: #2c2a25;
+      --card: #1c1a16;
+    }
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+    font-size: 17px;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+    color: var(--muted);
+  }
+  header p {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+  }
+  ul.entries { list-style: none; padding: 0; margin: 0; }
+  ul.entries li {
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 0;
+  }
+  ul.entries time {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  ul.entries h2 {
+    font-size: 16px;
+    margin: 4px 0 6px;
+    font-weight: 600;
+  }
+  ul.entries h2 a {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  ul.entries h2 a:hover { border-bottom-color: var(--accent); }
+  ul.entries p { margin: 0; color: var(--muted); font-size: 15px; }
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Abstinensa</h1>
+    <p>AI Daily — arkiv</p>
+  </header>
+
+  {% if entries %}
+  <ul class="entries">
+    {% for entry in entries %}
+    <li>
+      <time datetime="{{ entry.date }}">{{ entry.date }}</time>
+      <h2><a href="{{ entry.path }}">{{ entry.headline }}</a></h2>
+      {% if entry.take %}<p>{{ entry.take }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>Ingen utgaver enda.</p>
+  {% endif %}
+
+  <footer>
+    <a href="feed.xml">Atom-feed</a> ·
+    <a href="https://github.com/abstinensa/abstinansa">Repo</a>
+  </footer>
+</main>
+</body>
+</html>
