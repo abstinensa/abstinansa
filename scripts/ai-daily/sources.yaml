@@ -1,0 +1,56 @@
+regions:
+
+  norge:
+    label: "Norge & Norden"
+    target_items: 2-3
+    sources:
+      - { name: "Finanstilsynet", url: "https://www.finanstilsynet.no/rss/nyheter/", tier: 1 }
+      - { name: "Datatilsynet", url: "https://www.datatilsynet.no/rss/aktuelt/", tier: 1 }
+      - { name: "Regjeringen — høringer", url: "https://www.regjeringen.no/no/dok/hoyringar/rss/id2008550/", tier: 1, filter_keywords: ["kunstig intelligens", "AI", "KI", "digital", "finans", "bank", "personvern"] }
+      - { name: "NSM", url: "https://nsm.no/rss/aktuelt/", tier: 1 }
+      - { name: "Norges Bank", url: "https://www.norges-bank.no/rss/", tier: 2 }
+      - { name: "digi.no", url: "https://www.digi.no/feed/", tier: 2 }
+      - { name: "E24 — Teknologi", url: "https://e24.no/rss", tier: 2, filter_keywords: ["AI", "KI", "kunstig intelligens", "tech", "bank"] }
+      - { name: "Shifter", url: "https://www.shifter.no/feed", tier: 2 }
+      - { name: "Kode24", url: "https://www.kode24.no/feed", tier: 2 }
+      - { name: "Di Digital (SE)", url: "https://www.di.se/digital/rss/", tier: 2 }
+      - { name: "Finans.dk", url: "https://finans.dk/rss/", tier: 3 }
+
+  europa:
+    label: "Europa"
+    target_items: 2-3
+    sources:
+      - { name: "EU Commission — Digital", url: "https://digital-strategy.ec.europa.eu/en/news_rss", tier: 1, filter_keywords: ["AI", "artificial intelligence", "AI Act"] }
+      - { name: "EBA", url: "https://www.eba.europa.eu/rss.xml", tier: 1 }
+      - { name: "ESMA", url: "https://www.esma.europa.eu/rss.xml", tier: 1 }
+      - { name: "ENISA", url: "https://www.enisa.europa.eu/news/rss", tier: 1 }
+      - { name: "ECB", url: "https://www.ecb.europa.eu/rss/press.html", tier: 2 }
+      - { name: "BIS", url: "https://www.bis.org/list/pressreleases/rss.xml", tier: 1 }
+      - { name: "Google DeepMind", url: "https://deepmind.google/blog/rss.xml", tier: 1 }
+      - { name: "Mistral AI", url: "https://mistral.ai/news/feed.xml", tier: 2 }
+      - { name: "Financial Times — AI", url: "https://www.ft.com/artificial-intelligence?format=rss", tier: 2 }
+      - { name: "The Banker", url: "https://www.thebanker.com/feed", tier: 3 }
+      - { name: "Risk.net", url: "https://www.risk.net/feed", tier: 3 }
+
+  usa:
+    label: "USA & globalt"
+    target_items: 2-3
+    sources:
+      - { name: "Anthropic", url: "https://www.anthropic.com/news/rss.xml", tier: 1 }
+      - { name: "OpenAI", url: "https://openai.com/blog/rss.xml", tier: 1 }
+      - { name: "Simon Willison", url: "https://simonwillison.net/atom/everything/", tier: 1 }
+      - { name: "Import AI", url: "https://jack-clark.net/feed/", tier: 1 }
+      - { name: "Stratechery", url: "https://stratechery.com/feed/", tier: 1 }
+      - { name: "MIT Technology Review", url: "https://www.technologyreview.com/topic/artificial-intelligence/feed", tier: 2 }
+      - { name: "Reuters — Tech", url: "https://www.reuters.com/technology/feed/", tier: 2 }
+      - { name: "TechCrunch — AI", url: "https://techcrunch.com/category/artificial-intelligence/feed/", tier: 2 }
+      - { name: "Hugging Face", url: "https://huggingface.co/blog/feed.xml", tier: 2 }
+      - { name: "Stanford HAI", url: "https://hai.stanford.edu/news/rss.xml", tier: 2 }
+      - { name: "IMF Fintech Notes", url: "https://www.imf.org/en/Publications/RSS?series=Fintech%20Notes", tier: 3 }
+      - { name: "Hacker News (AI)", url: "https://hnrss.org/newest?q=AI+OR+LLM+OR+Claude+OR+GPT&points=100", tier: 3 }
+
+exclude_keywords:
+  - "AI girlfriend"
+  - "AI dating"
+  - "celebrity deepfake"
+  - "Trump truth social"
