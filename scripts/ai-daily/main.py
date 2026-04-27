@@ -7,8 +7,7 @@ from pathlib import Path
 
 from curate import curate
 from fetch import fetch_all
-from render import regenerate_feed, regenerate_index, render_email, render_web
-from send import send_email
+from render import regenerate_feed, regenerate_index, render_web
 
 HERE = Path(__file__).parent
 AI_DAILY_DIR = HERE.parent.parent / "ai-daily"
@@ -16,8 +15,7 @@ AI_DAILY_DIR = HERE.parent.parent / "ai-daily"
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--dry-run", action="store_true", help="Print to stdout, don't send or commit")
-    ap.add_argument("--skip-send", action="store_true", help="Render and write files, but don't email")
+    ap.add_argument("--dry-run", action="store_true", help="Print to stdout, don't write or commit")
     args = ap.parse_args()
 
     today = date.today()
@@ -39,11 +37,8 @@ def main() -> None:
     payload.setdefault("date", today.isoformat())
 
     web_html = render_web(payload)
-    email_html = render_email(payload)
 
     if args.dry_run:
-        print("\n=== EMAIL (første 2000 tegn) ===\n")
-        print(email_html[:2000])
         print("\n=== WEB (første 2000 tegn) ===\n")
         print(web_html[:2000])
         return
@@ -56,13 +51,6 @@ def main() -> None:
 
     regenerate_index(AI_DAILY_DIR)
     regenerate_feed(AI_DAILY_DIR)
-
-    if args.skip_send:
-        print("  --skip-send satt; hopper over e-post.")
-        return
-
-    send_email(email_html, today)
-    print("  Mail sendt.")
 
 
 if __name__ == "__main__":
