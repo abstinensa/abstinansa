@@ -37,9 +37,6 @@ jobs:
         working-directory: scripts/ai-daily
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
-          RECIPIENTS: ${{ secrets.RECIPIENTS }}
           TZ: "Europe/Oslo"
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then

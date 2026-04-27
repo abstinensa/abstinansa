@@ -44,42 +44,6 @@ def render_web(payload: dict) -> str:
     )
 
 
-def _pick_teasers(payload: dict, limit: int = 3) -> list[dict]:
-    sections = payload.get("sections") or []
-    region_labels = {s.get("region"): s.get("label") for s in sections}
-    teasers: list[dict] = []
-    for section in sections:
-        for item in section.get("items") or []:
-            teasers.append(
-                {
-                    "title": (item.get("title") or "").strip(),
-                    "source": (item.get("source") or "").strip(),
-                    "region_label": region_labels.get(section.get("region"), ""),
-                }
-            )
-    return teasers[:limit]
-
-
-def render_email(payload: dict) -> str:
-    template = _env.get_template("email.html.j2")
-    date_str = payload.get("date", "")
-    web_url = _web_url_for(date_str)
-    return template.render(
-        payload=payload,
-        teasers=_pick_teasers(payload),
-        web_url=web_url,
-        generated_at=_generated_at(),
-    )
-
-
-def _web_url_for(date_str: str) -> str:
-    try:
-        d = datetime.strptime(date_str, "%Y-%m-%d").date()
-    except ValueError:
-        return f"{BASE_URL}/ai-daily/"
-    return f"{BASE_URL}/ai-daily/{d.year}/{d.month:02d}/{d.day:02d}.html"
-
-
 _TAKE_RE = re.compile(r'class="take">\s*<strong>[^<]*</strong>\s*([^<]+)', re.MULTILINE)
 _HEADING_RE = re.compile(r"<time[^>]*>([^<]+)</time>")
 
