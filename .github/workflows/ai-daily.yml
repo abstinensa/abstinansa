@@ -36,7 +36,6 @@ jobs:
       - name: Run newsletter
         working-directory: scripts/ai-daily
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TZ: "Europe/Oslo"
         run: |
           if [ "${{ inputs.dry_run }}" = "true" ]; then
