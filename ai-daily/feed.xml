@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>AI Daily — abstinensa.no</title>
+  <link href="https://abstinensa.no/ai-daily/feed.xml" rel="self"/>
+  <link href="https://abstinensa.no/ai-daily/"/>
+  <id>https://abstinensa.no/ai-daily/</id>
+  <updated>2026-04-27T06:30:00Z</updated>
+  <entry>
+    <title>AI Daily — 2026-04-27</title>
+    <link href="https://abstinensa.no/ai-daily/2026/04/27.html"/>
+    <id>https://abstinensa.no/ai-daily/2026/04/27.html</id>
+    <updated>2026-04-27T06:30:00Z</updated>
+    <summary>Kurator utilgjengelig — råliste under.</summary>
+  </entry>
+</feed>
