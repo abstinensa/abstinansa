@@ -10,7 +10,6 @@
     :root {
       --blue: #4189DD;
       --blue-dark: #1a3a6b;
-      --blue-light: #E8F2FF;
       --sand: #FDF6E3;
       --gold: #D4A843;
       --ink: #1a1a1a;
@@ -50,25 +49,18 @@
       border-radius: 50% 50% 0 0 / 100% 100% 0 0;
     }
 
-    .flag { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .moon { font-size: 2.5rem; margin-bottom: 0.5rem; }
 
     h1 {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(1.6rem, 5vw, 2.8rem);
       color: white;
-      margin-bottom: 0.3rem;
-    }
-
-    .ingress {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.85);
-      font-style: italic;
     }
 
     main { padding: 3rem 1rem 5rem; }
 
     #game-area {
-      max-width: 660px;
+      max-width: 800px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -79,7 +71,7 @@
     .legend {
       display: flex;
       gap: 1.5rem;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #666;
       background: white;
       border: 1px solid var(--border);
@@ -100,14 +92,14 @@
     #board {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 3px;
+      gap: 4px;
       width: 100%;
-      max-width: 520px;
+      max-width: 680px;
       background: var(--blue-dark);
-      border: 4px solid var(--blue-dark);
-      border-radius: 16px;
+      border: 5px solid var(--blue-dark);
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 10px 40px rgba(26, 58, 107, 0.3);
+      box-shadow: 0 12px 48px rgba(26, 58, 107, 0.35);
     }
 
     .cell {
@@ -125,29 +117,29 @@
       transition: background 0.15s, transform 0.1s;
     }
 
-    .cell:hover { transform: scale(1.05); z-index: 2; }
+    .cell:hover { transform: scale(1.06); z-index: 2; }
 
     .cell .cell-num {
-      font-size: 0.5rem;
+      font-size: 0.6rem;
       color: #bbb;
       font-weight: 700;
       position: absolute;
-      top: 3px; left: 4px;
+      top: 4px; left: 5px;
       line-height: 1;
     }
 
-    .cell .cell-icon { font-size: 1.25rem; }
+    .cell .cell-icon { font-size: 1.8rem; line-height: 1; }
 
-    .cell.ladder { background: var(--ladder-bg); border: 2px solid var(--ladder-border); }
-    .cell.snake  { background: var(--snake-bg);  border: 2px solid var(--snake-border); }
-    .cell.finish { background: var(--finish-bg); border: 2px solid var(--gold); }
+    .cell.ladder { background: var(--ladder-bg); border: 3px solid var(--ladder-border); }
+    .cell.snake  { background: var(--snake-bg);  border: 3px solid var(--snake-border); }
+    .cell.finish { background: var(--finish-bg); border: 3px solid var(--gold); }
     .cell.active {
       background: var(--active-bg) !important;
-      box-shadow: inset 0 0 0 2px var(--blue);
+      box-shadow: inset 0 0 0 3px var(--blue);
     }
 
     .player-piece {
-      font-size: 1.5rem;
+      font-size: 2rem;
       position: absolute;
       animation: pop 0.35s ease;
     }
@@ -160,7 +152,7 @@
 
     #controls {
       width: 100%;
-      max-width: 420px;
+      max-width: 480px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -169,11 +161,10 @@
     }
 
     #dice-display {
-      font-size: 4.5rem;
-      min-height: 5rem;
+      font-size: 5rem;
+      min-height: 5.5rem;
       line-height: 1;
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-      transition: transform 0.1s;
     }
 
     #roll-btn {
@@ -181,40 +172,37 @@
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 0.9rem 2.8rem;
+      padding: 1rem 3rem;
       font-family: 'Outfit', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 4px 18px rgba(65,137,221,0.45);
       transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
-      letter-spacing: 0.02em;
     }
     #roll-btn:hover   { opacity: 0.9; box-shadow: 0 6px 24px rgba(65,137,221,0.55); }
     #roll-btn:active  { transform: scale(0.97); }
     #roll-btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
 
     #pos-display {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: #999;
       font-weight: 600;
-      letter-spacing: 0.03em;
       min-height: 1.1rem;
     }
 
     #status-msg {
-      font-size: 0.95rem;
+      font-size: 1rem;
       width: 100%;
       min-height: 3.5rem;
       background: white;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 0.8rem 1.2rem;
-      line-height: 1.55;
+      padding: 0.9rem 1.3rem;
+      line-height: 1.6;
       box-shadow: 0 2px 10px rgba(0,0,0,0.06);
     }
 
-    /* WIN SCREEN */
     #win-overlay {
       display: none;
       position: fixed;
@@ -244,8 +232,8 @@
     #win-overlay h2 {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(2.5rem, 10vw, 5rem);
-      margin-bottom: 0.5rem;
       color: #FFD700;
+      margin-bottom: 0.5rem;
     }
 
     #win-overlay .win-sub {
@@ -275,17 +263,16 @@
 <body>
 
   <header>
-    <div class="flag">🇸🇴</div>
+    <div class="moon">🌙</div>
     <h1>Ilyas — Spillet om kjærligheten</h1>
-    <p class="ingress">Fra Mogadishu til Stord — svaret er openbert, walaal.</p>
   </header>
 
   <main>
     <div id="game-area">
 
       <div class="legend">
-        <div class="legend-item"><div class="legend-dot ladder"></div> Stige ⬆️</div>
-        <div class="legend-item"><div class="legend-dot snake"></div> Slange 🐍</div>
+        <div class="legend-item"><div class="legend-dot ladder"></div> Stige opp ⬆️</div>
+        <div class="legend-item"><div class="legend-dot snake"></div> Slange ned 🐍</div>
         <div class="legend-item">🧔🏿 = Ilyas</div>
       </div>
 
@@ -304,11 +291,11 @@
   </main>
 
   <div id="win-overlay">
-    <div class="win-emoji">❤️🎉🇸🇴</div>
+    <div class="win-emoji">❤️🌙✨</div>
     <h2>STINE!</h2>
     <p class="win-sub">
-      Det var jo Stine heile tida, Ilyas.<br>
-      Alhamdulillah — kjærligheten vann!
+      Alhamdulillah — kjærligheten vann!<br>
+      Det var jo openbert heile tida, Ilyas.
     </p>
     <button id="restart-btn">🔄 Spel igjen</button>
   </div>
@@ -318,35 +305,35 @@
     const SNAKES  = { 9:3, 16:6, 20:12, 25:8 };
 
     const CELL_TEXT = {
-      1:  "Nabadgelyo Mogadishu! 🇸🇴 Ilyas er klar for kjærligheten!",
-      3:  "Tilbake til gamlebyen. Walaal, reis deg og prøv igjen!",
-      4:  "Du bydde henne på shaah! ☕ Det likar ho.",
-      5:  "Du smilte til henne ved Lido Beach. 🏖️ Bra start!",
-      6:  "Du satt fast i trafikken i Hodan-distriktet. Uff da.",
-      7:  "Du fann ein kamel å ri på. 🐪 Imponerande, men litt rart.",
-      8:  "Ned att. Bakara Market har likevel alltid fleire sjansar.",
-      9:  "Du tok feil buss gjennom heile Mogadishu.",
-      10: "Du inviterte henne til Lido Beach ved solnedgang! 🌅",
-      11: "Sola steiker over Hamar-Weyne. Du sveitar litt.",
-      12: "Her er du no. Reis deg støvlane av og prøv igjen, walaal.",
-      13: "Du spelte futbol på stranda for å imponera. 😅 Nesten.",
-      14: "Flott! Mogadishu-brisen bles i riktig retning.",
-      15: "Du glemde telefonen på kamelmarkedet. Klassisk Ilyas.",
-      16: "Du fall over ein ferskvannsbøtte ved Bakara. Æsj.",
-      17: "Du ga henne ein mango frå markedet! 🥭 Søtt!",
-      18: "Ho la merke til deg. Mogadishu smiler mot deg i dag.",
-      19: "Du sette deg stille ved sida av henne i måneskinet. 🌙",
-      20: "Du sende berre 'hei' på WhatsApp. Walaal, det held ikkje.",
-      21: "Du lærte deg favorittsongen hennar utanåt! 🎵",
-      22: "Mogadishu-natten er perfekt for ei kviskring. Bruk sjansen!",
-      23: "Du redda katta hennar frå eit tre! 🐱 Helten!",
-      24: "Nesten framme! Ikkje rot det til no, Ilyas.",
-      25: "Du glemde bursdagen hennar. 😬 Walaal. Nei. Berre nei.",
-      26: "Siste stige! Heile Mogadishu heiar på deg! 🎉",
-      27: "Eitt steg att. Bismillah, Ilyas!",
-      28: "Ho bur forresten på Stord. Litt langt frå Mogadishu.",
-      29: "Neste kast er det siste. Pust djupt, walaal.",
-      30: "🎉 STINE! Det var jo Stine heile tida! Alhamdulillah! 🎉"
+      1:  "Bismillah! 🤲 Ilyas er klar for kjærligheten!",
+      3:  "Du sov over Fajr-bønnen. Gå tilbake og prøv igjen, walaal!",
+      4:  "Du bydde på iftar-middag! 🍽️ Ho blei rørt.",
+      5:  "Du smilte til henne etter fredagsbønn. 🕌 Bra start!",
+      6:  "Du glemte å be Asr. Uff. Det kosta deg.",
+      7:  "Du gav sadaqah til den trengende. MashaAllah! 🤲",
+      8:  "Du misset Jumu'ah utan grunn. Ned att, walaal.",
+      9:  "Du glemte å seia Bismillah før du åt. 🐍 Slange!",
+      10: "Du inviterte ho til Eid-feiring hos familien! 🎉 Stor stige!",
+      11: "Ramadan er tøff. Du er trøtt, men Allah ser deg.",
+      12: "Her er du no. InshAllah, neste kast blir betre!",
+      13: "Du leste ein vakker surah for henne. 📖 Ho blei stille.",
+      14: "MashaAllah! Du er på god veg.",
+      15: "Du glemte å seia InshAllah. Klassisk Ilyas.",
+      16: "Du kom for seint til Eid-bønn. 🐍 Ned att!",
+      17: "Du ga henne dadlar frå Ramadan. 🌴 Søtt og vakkert!",
+      18: "Ho la merke til ditt gode hjerte. MashaAllah!",
+      19: "Du sat stille ved sida av henne etter Isha-bønn. 🌙",
+      20: "Du sende berre 'salam' på WhatsApp. Walaal, det held ikkje. 🐍",
+      21: "Du lærte deg suraen ho liker utanåt! 📖 Stige opp!",
+      22: "Eid-natten er magisk. Bruk sjansen, Ilyas!",
+      23: "Du hjalp familien hennar med zakat-innsamling! 🤲 Stige opp!",
+      24: "Nesten framme! Tawakkul, Ilyas — stol på Allah.",
+      25: "Du glemte Eid Mubarak. 🐍 Walaal. Nei. Berre nei.",
+      26: "Siste stige! Allah er med dei som tålmodig ventar! ⬆️",
+      27: "Eitt steg att. Dua, Ilyas. 🤲",
+      28: "Ho bur forresten på Stord. InshAllah ordnar det seg.",
+      29: "Neste kast er det siste. Pust djupt og stol på Allah.",
+      30: "🎉 STINE! Alhamdulillah — kjærligheten vann! 🌙❤️"
     };
 
     const DICE_FACES = ["⚀","⚁","⚂","⚃","⚄","⚅"];
@@ -373,7 +360,7 @@
           if (LADDERS[num]) cell.classList.add('ladder');
           if (SNAKES[num])  cell.classList.add('snake');
           if (num === 30)   cell.classList.add('finish');
-          const icon = LADDERS[num] ? '⬆️' : SNAKES[num] ? '🐍' : num === 30 ? '❤️' : '';
+          const icon = LADDERS[num] ? '🪜' : SNAKES[num] ? '🐍' : num === 30 ? '❤️' : '';
           cell.innerHTML = `<span class="cell-num">${num}</span>${icon ? `<span class="cell-icon">${icon}</span>` : ''}`;
           board.appendChild(cell);
         });
@@ -398,9 +385,9 @@
     async function rollDice() {
       if (isRolling) return;
       isRolling = true;
-      const rollBtn    = document.getElementById('roll-btn');
+      const rollBtn     = document.getElementById('roll-btn');
       const diceDisplay = document.getElementById('dice-display');
-      const statusMsg  = document.getElementById('status-msg');
+      const statusMsg   = document.getElementById('status-msg');
       rollBtn.disabled = true;
 
       let ticks = 0;
