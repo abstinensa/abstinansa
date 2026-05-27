@@ -258,6 +258,133 @@
     }
     #restart-btn:hover  { opacity: 0.9; }
     #restart-btn:active { transform: scale(0.97); }
+
+    /* CHAT */
+    #coach-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.85rem 1.4rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(212,168,67,0.5);
+      z-index: 100;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    #coach-btn:hover  { opacity: 0.9; }
+    #coach-btn:active { transform: scale(0.97); }
+
+    #chat-modal {
+      position: fixed;
+      bottom: 5rem;
+      right: 1.5rem;
+      width: min(380px, calc(100vw - 2rem));
+      z-index: 200;
+      display: none;
+    }
+    #chat-modal.open { display: block; animation: slideUp 0.25s ease; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    #chat-box {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #chat-header {
+      background: var(--blue);
+      color: white;
+      padding: 0.8rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    #close-chat {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 0.2rem;
+    }
+
+    #chat-messages {
+      min-height: 220px;
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .bubble {
+      max-width: 85%;
+      padding: 0.6rem 0.9rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .bubble.user {
+      align-self: flex-end;
+      background: var(--blue);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+    .bubble.coach {
+      align-self: flex-start;
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+    }
+
+    #chat-input-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.7rem;
+      border-top: 1px solid var(--border);
+    }
+
+    #chat-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.8rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      background: var(--sand);
+    }
+    #chat-input:focus { outline: 2px solid var(--gold); }
+
+    #chat-send {
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -289,6 +416,22 @@
 
     </div>
   </main>
+
+  <button id="coach-btn">🎙️ Spør coachen</button>
+
+  <div id="chat-modal">
+    <div id="chat-box">
+      <div id="chat-header">
+        <span>🧔🏿 Coach Ilyas</span>
+        <button id="close-chat" aria-label="Lukk">✕</button>
+      </div>
+      <div id="chat-messages"></div>
+      <div id="chat-input-row">
+        <input id="chat-input" type="text" placeholder="Spør coachen...">
+        <button id="chat-send">Send</button>
+      </div>
+    </div>
+  </div>
 
   <div id="win-overlay">
     <div class="win-emoji">❤️🌙✨</div>
@@ -445,6 +588,74 @@
     }
 
     function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    // ── COACH CHAT ──────────────────────────────────────
+    const COACH_RULES = [
+      { keys: ['stine'],            reply: 'MashaAllah — du tenker på Stine! Det er eit teikn. SubhanAllah, ho er openbert den rette. 🤲' },
+      { keys: ['kjærleik','kjærlighet','love'], reply: 'InshAllah, kjærligheten er rett rundt hjørnet — og ho heiter Stine. Har du spurt henne om Eid-planer?' },
+      { keys: ['eid'],              reply: 'Eid er den perfekte anledningen! Ønskje Stine "Eid Mubarak" og sjå kva som skjer. Bismillah! 🌙' },
+      { keys: ['ramadan'],          reply: 'Ramadan er månaden for takksemd og nye steg. Invitér Stine på iftar — det er halal og romantisk! 🍽️' },
+      { keys: ['bønn','be ','salah','namaz'], reply: 'Etter kvar bønn, gjer dua for at Allah lettar vegen til Stine. MashaAllah, det er planen! 🤲' },
+      { keys: ['hajj'],             reply: 'Hajj er livets høgdepunkt — og Stine er det neststørste. InshAllah kjem begge deler! 🕌' },
+      { keys: ['hjelp','hjelpe'],   reply: 'Hjelpa er enkel, walaal: skriv til Stine. Ikkje i morgon. No. Bismillah! 📱' },
+      { keys: ['redd','nervøs','skrekk'], reply: 'Tawakkul, walaal — stol på Allah og ta steget mot Stine. Frykt er shaitan som snakkar. Ikkje lytt! 💪' },
+      { keys: ['moskeen','moske','jummah','jumu'], reply: 'Etter fredagsbønn er hjarta opent. Det er det perfekte augeblikket å sende ei melding til Stine. SubhanAllah! 🕌' },
+      { keys: ['trist','lei','deprimert'], reply: 'Alhamdulillah for alt — også dei vanskelege dagane. Allah har ein plan, og den inkluderer Stine. Ha tru! ❤️' },
+      { keys: ['mat','ete','iftar','suhoor'], reply: 'Halal mat smakar betre i godt selskap. Invitér Stine på iftar — det er både sunnah og romantisk! 🌴' },
+    ];
+
+    const FALLBACK_REPLIES = [
+      'SubhanAllah, interessant spørsmål! Men svaret er alltid Stine. 🌙',
+      'Walaal, kvifor spør du meg? Spør Stine direkte! Bismillah! 📱',
+      'MashaAllah, du tenkjer djupt. Svaret er likevel enkelt: Stine. ❤️',
+      'InshAllah ordnar det seg — spesielt viss du skriv til Stine no. 🤲',
+      'Alhamdulillah for at du spør! Coachen sitt råd: ring Stine. 📞',
+    ];
+
+    let fallbackIdx = 0;
+    const chatMsgs = document.getElementById('chat-messages');
+
+    function coachReply(text) {
+      const lower = text.toLowerCase();
+      for (const rule of COACH_RULES) {
+        if (rule.keys.some(k => lower.includes(k))) return rule.reply;
+      }
+      return FALLBACK_REPLIES[fallbackIdx++ % FALLBACK_REPLIES.length];
+    }
+
+    function addBubble(role, text) {
+      const b = document.createElement('div');
+      b.className = `bubble ${role}`;
+      b.textContent = text;
+      chatMsgs.appendChild(b);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+
+    function openChat() {
+      document.getElementById('chat-modal').classList.add('open');
+      document.getElementById('chat-input').focus();
+      if (chatMsgs.children.length === 0) {
+        addBubble('coach', 'As-salamu alaykum, Ilyas! 🌙 Eg er coachen din. Spør meg kva som helst — svaret er alltid Stine.');
+      }
+    }
+
+    function sendChat() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      addBubble('user', text);
+      setTimeout(() => addBubble('coach', coachReply(text)), 500);
+    }
+
+    document.getElementById('coach-btn').addEventListener('click', openChat);
+    document.getElementById('close-chat').addEventListener('click', () => {
+      document.getElementById('chat-modal').classList.remove('open');
+    });
+    document.getElementById('chat-send').addEventListener('click', sendChat);
+    document.getElementById('chat-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') sendChat();
+    });
 
     document.getElementById('roll-btn').addEventListener('click', rollDice);
     document.getElementById('restart-btn').addEventListener('click', restartGame);
