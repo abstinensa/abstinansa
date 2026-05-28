@@ -259,6 +259,44 @@
     #restart-btn:hover  { opacity: 0.9; }
     #restart-btn:active { transform: scale(0.97); }
 
+    /* KONFETTI */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    /* COACH TOAST */
+    #coach-toast {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 1.5rem;
+      background: white;
+      border: 2px solid var(--gold);
+      border-radius: 14px 14px 4px 14px;
+      padding: 0.7rem 1rem;
+      max-width: 260px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #coach-toast.show { opacity: 1; }
+
+    /* MOBIL */
+    @media (max-width: 520px) {
+      .cell .cell-icon  { font-size: 1.4rem; }
+      .player-piece     { font-size: 1.6rem; }
+      .cell .cell-num   { font-size: 0.45rem; }
+      #dice-display     { font-size: 4rem; min-height: 4.5rem; }
+      #roll-btn         { padding: 0.8rem 2rem; font-size: 1rem; }
+      #coach-toast      { max-width: calc(100vw - 3rem); right: 1rem; }
+    }
+
     /* CHAT */
     #coach-btn {
       position: fixed;
@@ -417,6 +455,8 @@
     </div>
   </main>
 
+  <canvas id="confetti-canvas"></canvas>
+  <div id="coach-toast"></div>
   <button id="coach-btn">🎙️ Spør coachen</button>
 
   <div id="chat-modal">
@@ -552,21 +592,30 @@
       if (LADDERS[playerPos]) {
         const dest = LADDERS[playerPos];
         statusMsg.textContent = `🪜 STIGE! Rute ${playerPos} → ${dest}! ${CELL_TEXT[playerPos]}`;
-        await delay(1300);
+        await delay(600);
+        autoCoach('ladder', roll);
+        await delay(700);
         playerPos = dest;
         renderPiece();
         statusMsg.textContent += ` ✅ No er du på rute ${dest}!`;
       } else if (SNAKES[playerPos]) {
         const dest = SNAKES[playerPos];
         statusMsg.textContent = `🐍 SLANGE! Rute ${playerPos} → ${dest}! ${CELL_TEXT[playerPos]}`;
-        await delay(1300);
+        await delay(600);
+        autoCoach('snake', roll);
+        await delay(700);
         playerPos = dest;
         renderPiece();
         statusMsg.textContent += ` 😬 No er du på rute ${dest}.`;
+      } else if (roll >= 5) {
+        autoCoach('high', roll);
+      } else if (roll <= 2) {
+        autoCoach('low', roll);
       }
 
       if (playerPos === 30) {
         await delay(700);
+        launchConfetti();
         document.getElementById('win-overlay').classList.add('show');
         isRolling = false;
         return;
@@ -588,6 +637,84 @@
     }
 
     function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    // ── KONFETTI ──────────────────────────────────────
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const ctx = canvas.getContext('2d');
+      const colors = ['#4189DD','#D4A843','#4CAF50','#EF5350','#9C27B0','#FF9800','#1a3a6b'];
+      const pieces = Array.from({length: 140}, () => ({
+        x:     Math.random() * canvas.width,
+        y:     Math.random() * canvas.height - canvas.height,
+        w:     Math.random() * 12 + 6,
+        h:     Math.random() * 7 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speed: Math.random() * 3.5 + 1.5,
+        angle: Math.random() * 360,
+        spin:  (Math.random() - 0.5) * 5,
+      }));
+      let rafId;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          ctx.save();
+          ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+          ctx.rotate(p.angle * Math.PI / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+          p.y += p.speed;
+          p.angle += p.spin;
+          if (p.y > canvas.height) { p.y = -p.h; p.x = Math.random() * canvas.width; }
+        });
+        rafId = requestAnimationFrame(draw);
+      }
+      draw();
+      setTimeout(() => { cancelAnimationFrame(rafId); ctx.clearRect(0, 0, canvas.width, canvas.height); }, 5000);
+    }
+
+    // ── COACH TOAST ──────────────────────────────────────
+    let toastTimer;
+    function showCoachToast(msg) {
+      const toast = document.getElementById('coach-toast');
+      toast.textContent = '🧔🏿 ' + msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3800);
+    }
+
+    const COACH_AUTO = {
+      ladder: [
+        'SubhanAllah! Stiga tok deg opp! Allah er på laget ditt i dag 👀',
+        'MashaAllah walaal — akkurat som kjærligheten til Stine, berre oppover! ⬆️',
+        'Alhamdulillah! Stige! Dette er eit teikn — skriv til Stine. No. 📱',
+        'InshAllah held det fram! Allah opnar dører for deg, walaal! 🕌',
+      ],
+      snake: [
+        'Astaghfirullah — slange! Men Stine ventar framleis på deg, walaal 💪',
+        'SubhanAllah, dette er ein prøvelse. Tawakkul — Allah har ein plan! 🤲',
+        'Sabr, walaal. Stine liker uthaldne menn. Prøv igjen! ❤️',
+        'Slange? Berre ein liten test frå Allah. Bestå han og vinn Stine! 🌙',
+      ],
+      high: [
+        'SubhanAllah — høgt kast! Allah heiar på deg i dag 👀',
+        'MashaAllah! Stine kjem nærare for kvart kast! 🌙',
+        'Alhamdulillah for gode kast! Like bra som du er, walaal! ⬆️',
+      ],
+      low: [
+        'Sabr, walaal — Stine er verdt ventetida! 🤲',
+        'Lågt kast, men tålmod er ein dyd. InshAllah neste gong! 🌙',
+        'Sjå på det positivt — du er framleis nærare enn i går! 💙',
+      ],
+    };
+
+    function autoCoach(type, roll) {
+      const pool = COACH_AUTO[type];
+      const msg = pool[Math.floor(Math.random() * pool.length)].replace('${roll}', roll);
+      showCoachToast(msg);
+    }
 
     // ── COACH CHAT ──────────────────────────────────────
     const COACH_RULES = [
