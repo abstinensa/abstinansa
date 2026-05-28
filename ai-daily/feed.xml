@@ -4,7 +4,14 @@
   <link href="https://abstinensa.no/ai-daily/feed.xml" rel="self"/>
   <link href="https://abstinensa.no/ai-daily/"/>
   <id>https://abstinensa.no/ai-daily/</id>
-  <updated>2026-05-27T06:30:00Z</updated>
+  <updated>2026-05-28T06:30:00Z</updated>
+  <entry>
+    <title>AI Daily — 2026-05-28</title>
+    <link href="https://abstinensa.no/ai-daily/2026/05/28.html"/>
+    <id>https://abstinensa.no/ai-daily/2026/05/28.html</id>
+    <updated>2026-05-28T06:30:00Z</updated>
+    <summary>Cognition, selskapet bak Devin-agenten, henter $1 mrd. til $25 mrd. pre-money valuation og rapporterer $492M i ARR — åtte måneder etter forrige runde. Det er det første tydelige signalet om at enterprise AI-agents faktisk genererer inntekter i skala, ikke bare proof-of-concept...</summary>
+  </entry>
   <entry>
     <title>AI Daily — 2026-05-27</title>
     <link href="https://abstinensa.no/ai-daily/2026/05/27.html"/>
@@ -206,13 +213,6 @@
     <link href="https://abstinensa.no/ai-daily/2026/04/29.html"/>
     <id>https://abstinensa.no/ai-daily/2026/04/29.html</id>
     <updated>2026-04-29T06:30:00Z</updated>
-    <summary>Kurator utilgjengelig — råliste under.</summary>
-  </entry>
-  <entry>
-    <title>AI Daily — 2026-04-28</title>
-    <link href="https://abstinensa.no/ai-daily/2026/04/28.html"/>
-    <id>https://abstinensa.no/ai-daily/2026/04/28.html</id>
-    <updated>2026-04-28T06:30:00Z</updated>
     <summary>Kurator utilgjengelig — råliste under.</summary>
   </entry>
 </feed>
