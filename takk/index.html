@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takk til alle — Stine Egeli Øvrebø</title>
+    <meta name="description" content="En takk til alle som har bidratt, støttet og inspirert på veien — kolleger, mentorer, familie og venner.">
+
+    <link rel="alternate" hreflang="no" href="https://abstinensa.no/takk/">
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #1a1a2e;
+            --cream: #f8f6f1;
+            --warm: #e8e4dc;
+            --accent: #c4593e;
+            --accent-light: #e8967f;
+            --muted: #6b6b7b;
+            --slate: #3d3d50;
+            --gold: #b8944f;
+            --gold-light: #d4bb7c;
+            --section-gap: clamp(80px, 10vw, 140px);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 36px;
+        }
+
+        .demo-banner {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--ink);
+            color: rgba(248, 246, 241, 0.5);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            z-index: 9998;
+        }
+
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            background: rgba(196, 89, 62, 0.15);
+            border: 1px solid rgba(196, 89, 62, 0.3);
+            border-radius: 4px;
+            color: var(--accent-light);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .demo-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Grain overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* === NAV === */
+        nav {
+            position: fixed;
+            top: 36px; left: 0; right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 246, 241, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 14px 40px;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.05);
+        }
+
+        .nav-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--ink);
+            transition: all 0.3s ease;
+        }
+
+        /* === BUTTONS === */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border-radius: 60px;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(196, 89, 62, 0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--ink);
+            border: 1.5px solid rgba(26, 26, 46, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+        /* === HERO === */
+        .hero {
+            padding: 160px 40px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.6rem, 7vw, 5rem);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            color: var(--muted);
+            max-width: 640px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .hero-heart {
+            font-size: 2.4rem;
+            display: inline-block;
+            margin-bottom: 20px;
+            animation: beat 2.4s ease-in-out infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            12% { transform: scale(1.18); }
+            24% { transform: scale(1); }
+            36% { transform: scale(1.12); }
+            48% { transform: scale(1); }
+        }
+
+        /* === SECTIONS === */
+        section.thanks {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px var(--section-gap);
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .section-head h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+
+        .thanks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .thanks-card {
+            background: #fff;
+            border: 1px solid rgba(26, 26, 46, 0.07);
+            border-radius: 20px;
+            padding: 38px 34px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thanks-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .thanks-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 50px rgba(26, 26, 46, 0.1);
+            border-color: transparent;
+        }
+
+        .thanks-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .thanks-icon {
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .thanks-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.45rem;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .thanks-card p {
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* === QUOTE BAND === */
+        .quote-band {
+            background: var(--ink);
+            color: var(--cream);
+            text-align: center;
+            padding: clamp(70px, 9vw, 110px) 40px;
+            margin-bottom: var(--section-gap);
+        }
+
+        .quote-band blockquote {
+            font-family: 'DM Serif Display', serif;
+            font-style: italic;
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            line-height: 1.35;
+            max-width: 820px;
+            margin: 0 auto 24px;
+        }
+
+        .quote-band cite {
+            font-style: normal;
+            font-size: 0.85rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+
+        /* === CTA === */
+        .cta {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 40px var(--section-gap);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 18px;
+            letter-spacing: -0.01em;
+        }
+
+        .cta p {
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* === FOOTER === */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 12px;
+        }
+
+        /* === ANIMATIONS === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 900px) {
+            nav { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(248, 246, 241, 0.97);
+                backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(26,26,46,0.06);
+            }
+
+            .hero { padding: 120px 24px 60px; }
+            section.thanks { padding: 0 24px var(--section-gap); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner">
+    <span class="demo-badge">Demo</span>
+    Konseptside bygget med AI (vibe coding) · Ikke et reelt tjenestetilbud
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+    <a href="/" class="nav-logo">Stine Egeli Øvrebø</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/#tjenester">Tjenester</a></li>
+        <li><a href="/#resultater">Resultater</a></li>
+        <li><a href="/#prosess">Prosess</a></li>
+        <li><a href="/#kompetanse">Kompetanse</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+        <li><a href="/takk/">Takk til alle</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Meny">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <span class="hero-heart">❤</span>
+    <span class="hero-label reveal">En liten takk</span>
+    <h1 class="reveal">Takk til <em>alle</em> som har vært med på reisen</h1>
+    <p class="hero-description reveal">Ingenting bygges alene. Bak hvert prosjekt, hver idé og hvert lite steg framover står det mennesker som har heiet, utfordret, lært bort og holdt ut. Dette er til dere.</p>
+    <a href="#takkene" class="btn btn-primary reveal">Les takkene ↓</a>
+</section>
+
+<!-- THANK YOU CARDS -->
+<section class="thanks" id="takkene">
+    <div class="section-head reveal">
+        <span class="section-eyebrow">Til hver og en</span>
+        <h2>Dere som har gjort en forskjell</h2>
+    </div>
+
+    <div class="thanks-grid">
+        <div class="thanks-card reveal">
+            <span class="thanks-icon">🤝</span>
+            <h3>Kolleger</h3>
+            <p>Takk for samarbeidet, de gode diskusjonene og for at dere alltid har stilt opp når det stormet. Det er sammen vi har fått til de største løftene.</p>
+        </div>
+
+        <div class="thanks-card reveal">
+            <span class="thanks-icon">🌱</span>
+            <h3>Mentorer</h3>
+            <p>Takk for at dere så potensialet før jeg gjorde det selv, og for kloke råd som har formet både retning og verdier underveis.</p>
+        </div>
+
+        <div class="thanks-card reveal">
+            <span class="thanks-icon">💡</span>
+            <h3>Kunder &amp; partnere</h3>
+            <p>Takk for tilliten dere har vist, for spennende utfordringer og for å gi rom til å prøve, feile og lære. Dere gjør arbeidet meningsfullt.</p>
+        </div>
+
+        <div class="thanks-card reveal">
+            <span class="thanks-icon">🏡</span>
+            <h3>Familie</h3>
+            <p>Takk for tålmodighet, kjærlighet og varme middager etter lange dager. Dere er fundamentet alt annet hviler på.</p>
+        </div>
+
+        <div class="thanks-card reveal">
+            <span class="thanks-icon">🌟</span>
+            <h3>Venner</h3>
+            <p>Takk for latteren, samtalene og for å minne meg på hva som virkelig betyr noe. Dere holder bakken under føttene.</p>
+        </div>
+
+        <div class="thanks-card reveal">
+            <span class="thanks-icon">👋</span>
+            <h3>Du som leser dette</h3>
+            <p>Takk for at du tok deg tid til å besøke siden. Det betyr mer enn du tror — og ja, takken gjelder også deg.</p>
+        </div>
+    </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band reveal">
+    <blockquote>«Alene går vi raskt — sammen kommer vi lenger.»</blockquote>
+    <cite>Med dyp takknemlighet</cite>
+</div>
+
+<!-- CTA -->
+<section class="cta reveal">
+    <h2>Vil du si hei?</h2>
+    <p>Er du en av dem jeg burde takket — eller bare har lyst til å slå av en prat? Jeg blir glad for å høre fra deg.</p>
+    <div class="cta-buttons">
+        <a href="/#kontakt" class="btn btn-primary">Ta kontakt</a>
+        <a href="/" class="btn btn-outline">Tilbake til forsiden</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Stine Egeli Øvrebø. Alle rettigheter reservert.</p>
+    <div class="footer-links">
+        <a href="https://www.linkedin.com/in/stine-egeli-%C3%B8vreb%C3%B8-1617ab68" target="_blank">LinkedIn</a>
+        <a href="/#kontakt">Kontakt</a>
+    </div>
+</footer>
+
+<script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', () => {
+        document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('open');
+        });
+    });
+</script>
+</body>
+</html>
