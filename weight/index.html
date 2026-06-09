@@ -145,6 +145,20 @@ button:active{transform:scale(.97)}
 
 /* Chart */
 .chart{width:100%;height:170px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-size:.78rem;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:18px;height:0;border-top:2.5px solid;display:inline-block;border-radius:2px}
+.legend i.dot{width:9px;height:9px;border-top:0;border-radius:50%}
+.legend i.dash{border-top-style:dashed}
+
+/* Insights / trend */
+.insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.ins{background:var(--cream);border-radius:14px;padding:14px 16px}
+.ins .iv{font-family:'DM Serif Display',serif;font-size:1.55rem;line-height:1;color:var(--ink)}
+.ins .il{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:7px}
+.ins .ih{font-size:.76rem;color:var(--muted);margin-top:3px}
+.ins.good .iv{color:var(--green)}
+.ins.bad .iv{color:var(--accent)}
 
 /* History */
 .hist{list-style:none;max-height:220px;overflow:auto}
@@ -242,11 +256,25 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     <div class="note" id="log-feedback">Logg din første veiing for å sette i gang reisen.</div>
   </div>
 
+  <!-- INSIGHTS / TREND -->
+  <div class="card hidden" id="insights-card">
+    <h2>Utviklingen din</h2>
+    <p class="sub">Slik ligger du an akkurat nå – oppdateres for hver veiing.</p>
+    <div class="insights" id="insights"></div>
+    <div class="note" id="insight-summary"></div>
+  </div>
+
   <!-- CHART -->
   <div class="card" id="chart-card">
     <h2>Kurven din</h2>
-    <p class="sub">Grønn linje = planen (1,4 kg/uke). Oransje prikker = dine veiinger.</p>
+    <p class="sub">Følg vekten din mot planen – og se hvor trenden din peker.</p>
     <canvas class="chart" id="chart" width="700" height="340"></canvas>
+    <div class="legend">
+      <span><i style="border-color:#4f9d69" class="dash"></i> Planen</span>
+      <span><i style="border-color:#c4593e"></i> Dine veiinger</span>
+      <span><i style="border-color:#c4593e" class="dash"></i> Din trend</span>
+      <span><i class="dot" style="background:#c4593e"></i> Veiing</span>
+    </div>
   </div>
 
   <!-- WEEKLY MILESTONES -->
@@ -282,6 +310,20 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
       <button class="btn-ghost" style="flex:1" id="btn-save">Lagre innstillinger</button>
       <button class="btn-ghost" style="flex:1" id="btn-reset">Nullstill alt</button>
     </div>
+
+    <div style="border-top:1px solid var(--warm);margin-top:20px;padding-top:18px">
+      <label style="margin-bottom:6px">Sikkerhetskopi &amp; flytting</label>
+      <p class="sub" style="margin-bottom:12px">
+        Dataene dine lagres på denne enheten. Last ned en kopi for å ta vare på dem –
+        eller for å flytte hele reisen til en ny telefon/PC.
+      </p>
+      <div class="row">
+        <button class="btn-ghost" style="flex:1" id="btn-export">⬇️ Last ned kopi</button>
+        <button class="btn-ghost" style="flex:1" id="btn-import">⬆️ Gjenopprett</button>
+      </div>
+      <input type="file" id="file-import" accept="application/json,.json" class="hidden">
+    </div>
+
     <div class="note">
       💛 <strong>Vær snill med deg selv.</strong> 14 kg på 10 uker er et raskt tempo
       (ca. 1,4 kg per uke). De fleste helsefaglige råd anbefaler 0,5–1 kg per uke for et
@@ -290,7 +332,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     </div>
   </div>
 
-  <footer>Laget med 💪 · alt lagres kun lokalt i din nettleser · abstinensa.no</footer>
+  <footer>Laget med 💪 · alt lagres privat på din egen enhet · ta en sikkerhetskopi i ny og ne · abstinensa.no</footer>
 </div>
 
 <div id="toast"></div>
@@ -479,6 +521,89 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     }
   }
 
+  // ---- Insights / trend ----
+  function planRate(){ return (S.start-S.goal)/S.weeks; } // kg per week per plan
+  // average kg/week the user is actually losing, based on logged span
+  function actualRate(){
+    if(S.entries.length<2) return null;
+    const f=S.entries[0], l=S.entries[S.entries.length-1];
+    const days=(new Date(l.date)-new Date(f.date))/86400000;
+    if(days<=0) return null;
+    return (f.w-l.w)/(days/7);
+  }
+  function renderInsights(){
+    const card=$('insights-card');
+    if(S.entries.length<1){ card.classList.add('hidden'); return; }
+    card.classList.remove('hidden');
+    const box=$('insights'); box.innerHTML='';
+    const cur=current(S), best=Math.min(...S.entries.map(e=>e.w));
+    const rate=actualRate();
+
+    // ahead / behind plan: what should you weigh today per the plan line?
+    const start=new Date(S.startDate);
+    const daysSince=Math.max(0,(new Date()-start)/86400000);
+    const expected=Math.max(S.goal, S.start-planRate()*(daysSince/7));
+    const ahead=expected-cur; // + = lighter than plan (ahead)
+
+    // projection: when do you reach the goal at your current pace?
+    let projVal='–', projHint='Logg et par veiinger til';
+    if(cur<=S.goal){ projVal='I mål! 👑'; projHint='Gratulerer 🎉'; }
+    else if(rate && rate>0.05){
+      const wks=(cur-S.goal)/rate;
+      const d=new Date(); d.setDate(d.getDate()+Math.round(wks*7));
+      projVal=d.toLocaleDateString('no-NO',{day:'numeric',month:'short'});
+      projHint=`om ca. ${Math.round(wks)} uker`;
+    } else if(rate!==null){ projVal='–'; projHint='Trenden er flat nå'; }
+
+    const cells=[
+      {v: rate===null?'–':(rate>=0?'−':'+')+fmt(Math.abs(rate)), l:'kg per uke', h: rate===null?'Trenger 2 veiinger':'ditt tempo nå', cls: rate===null?'':(rate>=planRate()*0.8?'good':'')},
+      {v: (ahead>=0?'':'+')+fmt(Math.abs(ahead)), l: ahead>=0?'foran planen (kg)':'bak planen (kg)', h: ahead>=0?'sterkt jobbet 💪':'små steg teller', cls: ahead>=0?'good':'bad'},
+      {v: projVal, l:'antatt måldato', h: projHint, cls:''},
+      {v: fmt(best), l:'beste veiing (kg)', h: best<=S.goal?'i mål!':'din rekord', cls:'good'},
+    ];
+    cells.forEach(c=>{
+      const el=document.createElement('div');
+      el.className='ins'+(c.cls?' '+c.cls:'');
+      el.innerHTML=`<div class="iv">${c.v}</div><div class="il">${c.l}</div><div class="ih">${c.h}</div>`;
+      box.appendChild(el);
+    });
+
+    // summary line
+    let sum;
+    if(cur<=S.goal) sum='🏆 Du har nådd målet ditt! Helt rått jobbet.';
+    else if(ahead>=0.2) sum=`✨ Du ligger <strong>${fmt(ahead)} kg foran planen</strong>. Fortsett akkurat slik!`;
+    else if(ahead<=-0.2) sum=`Du ligger <strong>${fmt(Math.abs(ahead))} kg bak planen</strong> akkurat nå – det går fint, kroppen svinger fra dag til dag. Hold rytmen. 🌱`;
+    else sum='Du følger planen nesten på kornet. 🎯';
+    $('insight-summary').innerHTML=sum;
+  }
+
+  // ---- Backup / restore ----
+  function exportData(){
+    try{
+      const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url; a.download='vektreisen-sikkerhetskopi-'+todayISO()+'.json';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+      toast('Sikkerhetskopi lastet ned ⬇️');
+    }catch(e){ toast('Klarte ikke lage kopi 😕'); }
+  }
+  function importData(file){
+    const r=new FileReader();
+    r.onload=()=>{
+      try{
+        const data=JSON.parse(r.result);
+        if(!data||typeof data!=='object'||!Array.isArray(data.entries)) throw 0;
+        if(!confirm('Dette erstatter dataene på denne enheten med innholdet i filen. Fortsette?')) return;
+        S=Object.assign({},DEFAULTS,data);
+        save(); fillSettings(); renderAll(); checkBadges();
+        toast('Gjenopprettet ✅');
+      }catch(e){ toast('Kunne ikke lese filen 😕'); }
+    };
+    r.readAsText(file);
+  }
+
   // ---- Chart ----
   function renderChart(){
     const c=$('chart'), ctx=c.getContext('2d');
@@ -494,6 +619,15 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
       const yy=y(w); ctx.beginPath(); ctx.moveTo(pad,yy); ctx.lineTo(W-pad*0.4,yy); ctx.stroke();
       ctx.fillText(w,4,yy+3);
     }
+    // today marker
+    const start0=new Date(S.startDate);
+    const dToday=(new Date()-start0)/86400000;
+    if(dToday>=0 && dToday<=totalDays){
+      ctx.strokeStyle='rgba(26,26,46,.16)'; ctx.lineWidth=1; ctx.setLineDash([3,4]);
+      ctx.beginPath(); ctx.moveTo(x(dToday),pad-2); ctx.lineTo(x(dToday),H-pad+4); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle='#6b6b7b'; ctx.font='10px Outfit'; ctx.fillText('i dag',x(dToday)-12,H-pad+16);
+    }
     // plan line (green)
     ctx.strokeStyle='#4f9d69'; ctx.lineWidth=2.5; ctx.setLineDash([6,5]); ctx.beginPath();
     ctx.moveTo(x(0),y(S.start)); ctx.lineTo(x(totalDays),y(S.goal)); ctx.stroke();
@@ -508,6 +642,20 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
       ctx.stroke();
       ctx.fillStyle='#c4593e';
       pts.forEach(p=>{ ctx.beginPath(); ctx.arc(x(p.d),y(p.w),4.5,0,7); ctx.fill(); });
+    }
+    // trend projection (where your current pace is heading)
+    if(pts.length>=2){
+      const f=pts[0], l=pts[pts.length-1];
+      const span=Math.max(1,l.d-f.d);
+      const rate=(f.w-l.w)/span; // kg/day downward (positive = losing)
+      if(rate>0.001){
+        const daysToGoal=(l.w-S.goal)/rate;
+        const endD=Math.min(totalDays,l.d+daysToGoal);
+        const endW=l.w-rate*(endD-l.d);
+        ctx.strokeStyle='rgba(196,89,62,.5)'; ctx.lineWidth=2; ctx.setLineDash([3,5]);
+        ctx.beginPath(); ctx.moveTo(x(l.d),y(l.w)); ctx.lineTo(x(endD),y(endW)); ctx.stroke();
+        ctx.setLineDash([]);
+      }
     }
     // goal label
     ctx.fillStyle='#4f9d69'; ctx.font='600 12px Outfit';
@@ -593,7 +741,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
   // ---- Render all ----
   function renderAll(){
     renderStats(); renderLevel(); renderQuests(); renderWeeks();
-    renderBadges(); renderChart(); renderHist();
+    renderBadges(); renderInsights(); renderChart(); renderHist();
   }
 
   // ---- Init ----
@@ -602,6 +750,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
   $('btn-log').onclick=logWeight;
   $('btn-save').onclick=saveSettings;
   $('btn-reset').onclick=resetAll;
+  $('btn-export').onclick=exportData;
+  $('btn-import').onclick=()=>$('file-import').click();
+  $('file-import').onchange=e=>{ if(e.target.files[0]) importData(e.target.files[0]); e.target.value=''; };
   $('in-weight').addEventListener('keydown',e=>{ if(e.key==='Enter') logWeight(); });
   window.addEventListener('resize',renderChart);
   renderAll();

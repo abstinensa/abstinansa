@@ -1,5 +1,5 @@
 // Vektreisen service worker — offline-first cache
-const CACHE = 'vektreisen-v1';
+const CACHE = 'vektreisen-v2';
 const ASSETS = [
   './',
   './index.html',
