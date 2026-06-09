@@ -1,0 +1,34 @@
+# XcodeGen spec — run `xcodegen generate` on a Mac to produce Vektreisen.xcodeproj
+# Install XcodeGen with:  brew install xcodegen
+name: Vektreisen
+options:
+  bundleIdPrefix: no.abstinensa
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""            # set your Apple Developer Team ID here
+    GENERATE_INFOPLIST_FILE: NO
+targets:
+  Vektreisen:
+    type: application
+    platform: iOS
+    sources:
+      - path: Vektreisen
+    info:
+      path: Vektreisen/Info.plist
+      properties:
+        CFBundleDisplayName: Vektreisen
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: no.abstinensa.vektreisen
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_USER_SCRIPT_SANDBOXING: YES
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"   # iPhone only
