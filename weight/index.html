@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vektreisen — 65 til 51 på 10 uker</title>
+<meta name="description" content="Et lite spill som gjør vektreisen din til en morsom, motiverende reise opp fjellet. Logg vekt, fullfør daglige oppdrag, samle poeng og hold streaken i live.">
+
+<!-- PWA / install på iPhone (Del → Legg til på Hjem-skjerm) -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#c4593e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Vektreisen">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a2e; --cream:#f8f6f1; --warm:#e8e4dc; --accent:#c4593e;
+  --accent-light:#e8967f; --muted:#6b6b7b; --slate:#3d3d50;
+  --gold:#b8944f; --gold-light:#d4bb7c; --green:#4f9d69; --green-light:#7fc596;
+  --shadow:0 12px 40px rgba(26,26,46,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);
+  -webkit-font-smoothing:antialiased;line-height:1.5;padding-bottom:60px;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+/* Header */
+header{
+  text-align:center;padding:48px 18px 28px;
+  background:linear-gradient(180deg,#fff 0%,var(--cream) 100%);
+}
+header h1{
+  font-family:'DM Serif Display',serif;font-size:clamp(2rem,7vw,3rem);
+  font-weight:400;line-height:1.05;letter-spacing:-.01em;
+}
+header h1 em{color:var(--accent);font-style:italic}
+header p{color:var(--muted);margin-top:10px;font-size:1.02rem}
+
+/* Cards */
+.card{
+  background:#fff;border-radius:22px;padding:26px;margin:18px 0;
+  box-shadow:var(--shadow);border:1px solid rgba(26,26,46,.04);
+}
+.card h2{
+  font-family:'DM Serif Display',serif;font-weight:400;font-size:1.5rem;
+  margin-bottom:4px;
+}
+.card .sub{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+
+/* Stat hero */
+.hero-stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.stat{
+  background:#fff;border-radius:18px;padding:16px 20px;min-width:120px;text-align:center;
+  box-shadow:var(--shadow);flex:1;
+}
+.stat .num{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--accent);line-height:1}
+.stat .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:6px}
+
+/* Mountain progress */
+.mountain{position:relative;height:200px;margin:8px 0 18px;border-radius:18px;overflow:hidden;
+  background:linear-gradient(180deg,#cfe6ef 0%,#eaf3f0 55%,#f3efe6 100%)}
+.mountain svg{position:absolute;bottom:0;left:0;width:100%;height:100%}
+.climber{position:absolute;font-size:1.9rem;transition:left 1s cubic-bezier(.34,1.2,.45,1),bottom 1s cubic-bezier(.34,1.2,.45,1);transform:translate(-50%,50%);z-index:3;filter:drop-shadow(0 3px 4px rgba(0,0,0,.2))}
+.flag{position:absolute;right:6%;top:8%;font-size:1.7rem;z-index:2}
+
+/* Progress bar */
+.bar{height:16px;background:var(--warm);border-radius:20px;overflow:hidden;margin:6px 0 4px}
+.bar > div{height:100%;width:0;border-radius:20px;
+  background:linear-gradient(90deg,var(--green-light),var(--green));
+  transition:width .9s cubic-bezier(.34,1.2,.45,1)}
+.bar-cap{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-top:4px}
+
+/* Inputs */
+label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px;color:var(--slate)}
+input[type=number],input[type=date]{
+  width:100%;padding:12px 14px;border:1.5px solid var(--warm);border-radius:12px;
+  font-family:inherit;font-size:1rem;background:var(--cream);color:var(--ink);
+}
+input:focus{outline:none;border-color:var(--accent-light)}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row > div{flex:1;min-width:120px}
+
+button{
+  font-family:inherit;font-weight:600;font-size:.95rem;cursor:pointer;border:none;
+  padding:13px 22px;border-radius:12px;transition:transform .12s,box-shadow .2s,opacity .2s;
+}
+button:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(196,89,62,.3)}
+.btn-primary:hover{box-shadow:0 8px 24px rgba(196,89,62,.42)}
+.btn-ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent-light)}
+.full{width:100%}
+
+/* Quests */
+.quest{
+  display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;
+  background:var(--cream);margin-bottom:10px;cursor:pointer;user-select:none;
+  border:1.5px solid transparent;transition:.18s;
+}
+.quest:hover{border-color:var(--warm)}
+.quest.done{background:linear-gradient(90deg,rgba(79,157,105,.14),rgba(127,197,150,.1));border-color:var(--green-light)}
+.quest .ic{font-size:1.5rem;width:38px;text-align:center;flex-shrink:0}
+.quest .txt{flex:1}
+.quest .txt strong{display:block;font-size:.98rem}
+.quest .txt span{font-size:.78rem;color:var(--muted)}
+.quest .xp{font-size:.78rem;font-weight:700;color:var(--gold);background:#fff;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.quest .chk{width:26px;height:26px;border-radius:50%;border:2px solid var(--warm);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.8rem}
+.quest.done .chk{background:var(--green);border-color:var(--green)}
+
+/* Level + xp */
+.levelrow{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.levelbadge{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-family:'DM Serif Display',serif;font-size:1.5rem;flex-shrink:0;box-shadow:0 6px 16px rgba(184,148,79,.4)}
+.levelrow .meta{flex:1}
+.levelrow .meta strong{font-size:1.05rem}
+.levelrow .meta .xpbar{height:10px;background:var(--warm);border-radius:20px;overflow:hidden;margin-top:6px}
+.levelrow .meta .xpbar > div{height:100%;background:linear-gradient(90deg,var(--gold-light),var(--gold));width:0;transition:width .8s}
+
+/* Badges */
+.badges{display:flex;flex-wrap:wrap;gap:10px}
+.badge{
+  display:flex;flex-direction:column;align-items:center;gap:4px;width:74px;text-align:center;
+  opacity:.32;filter:grayscale(1);transition:.3s;
+}
+.badge.earned{opacity:1;filter:none}
+.badge .em{font-size:1.9rem}
+.badge .nm{font-size:.66rem;color:var(--muted);line-height:1.2}
+
+/* Weekly table */
+.weeks{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.wk{background:var(--cream);border-radius:14px;padding:12px;text-align:center;border:1.5px solid transparent;position:relative}
+.wk.hit{background:linear-gradient(160deg,rgba(79,157,105,.16),rgba(127,197,150,.08));border-color:var(--green-light)}
+.wk.current{border-color:var(--accent-light);box-shadow:0 0 0 3px rgba(232,150,127,.18)}
+.wk .wn{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.wk .wt{font-family:'DM Serif Display',serif;font-size:1.4rem;margin:2px 0}
+.wk .wd{font-size:.74rem;color:var(--muted)}
+.wk .seal{position:absolute;top:6px;right:8px;font-size:.9rem}
+
+/* Chart */
+.chart{width:100%;height:170px}
+
+/* History */
+.hist{list-style:none;max-height:220px;overflow:auto}
+.hist li{display:flex;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--warm);font-size:.92rem}
+.hist li span:last-child{color:var(--muted);font-size:.84rem}
+
+.note{font-size:.82rem;color:var(--muted);background:var(--cream);border-radius:12px;padding:14px;margin-top:8px;border-left:3px solid var(--gold-light)}
+.center{text-align:center}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
+.hidden{display:none}
+
+/* Toast / celebration */
+#toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(120px);
+  background:var(--ink);color:#fff;padding:14px 22px;border-radius:14px;font-weight:600;
+  box-shadow:0 12px 40px rgba(0,0,0,.3);z-index:9999;transition:transform .4s cubic-bezier(.34,1.4,.45,1);max-width:90%;text-align:center}
+#toast.show{transform:translateX(-50%) translateY(0)}
+
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+.pop{animation:pop .5s}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Vektreisen 🏔️<br><em>65 → 51 kg</em></h1>
+  <p>Gjør reisen til et spill. Klatre fjellet, én uke om gangen.</p>
+</header>
+
+<div class="wrap">
+
+  <!-- iOS install tip -->
+  <div class="note" id="ios-tip" style="display:none;margin-top:16px">
+    📱 <strong>Få den som app på iPhone:</strong> trykk på <strong>Del</strong>-knappen
+    (firkant med pil opp) nederst i Safari, og velg <strong>«Legg til på Hjem-skjerm»</strong>.
+    Da åpnes Vektreisen i fullskjerm som en ekte app – og fungerer uten nett.
+    <span style="display:block;margin-top:8px"><button class="btn-ghost" id="ios-tip-x" style="padding:8px 16px;font-size:.82rem">Skjønner 👍</button></span>
+  </div>
+
+  <!-- HERO STATS -->
+  <div class="hero-stats">
+    <div class="stat"><div class="num" id="s-current">65</div><div class="lbl">Vekt nå (kg)</div></div>
+    <div class="stat"><div class="num" id="s-lost">0</div><div class="lbl">Tapt (kg)</div></div>
+    <div class="stat"><div class="num" id="s-togo">14</div><div class="lbl">Igjen (kg)</div></div>
+    <div class="stat"><div class="num" id="s-days">70</div><div class="lbl">Dager igjen</div></div>
+  </div>
+
+  <!-- MOUNTAIN PROGRESS -->
+  <div class="card">
+    <h2>Toppturen</h2>
+    <p class="sub">Du går fra dalen (65 kg) til toppen (51 kg). Plasseringen din viser hvor langt du er kommet.</p>
+    <div class="mountain" id="mountain">
+      <svg viewBox="0 0 400 200" preserveAspectRatio="none">
+        <polygon points="0,200 90,120 150,150 230,60 300,110 400,40 400,200" fill="#b9c9b0"/>
+        <polygon points="0,200 70,150 160,170 250,110 330,150 400,100 400,200" fill="#9fb89a" opacity=".85"/>
+        <polygon points="230,60 215,75 245,75" fill="#fff"/>
+        <polygon points="400,40 388,55 400,55" fill="#fff"/>
+      </svg>
+      <div class="flag">🚩</div>
+      <div class="climber" id="climber" style="left:6%;bottom:8%">🧗‍♀️</div>
+    </div>
+    <div class="bar"><div id="prog-fill"></div></div>
+    <div class="bar-cap"><span id="prog-pct">0% fullført</span><span id="prog-msg">La oss gå! 💪</span></div>
+  </div>
+
+  <!-- LEVEL + XP -->
+  <div class="card">
+    <div class="levelrow">
+      <div class="levelbadge" id="lvl-num">1</div>
+      <div class="meta">
+        <strong id="lvl-title">Nivå 1 · Nybegynner</strong>
+        <div class="xpbar"><div id="xp-fill"></div></div>
+        <div class="bar-cap"><span id="xp-text">0 / 100 XP</span><span id="streak-text">🔥 0 dagers streak</span></div>
+      </div>
+    </div>
+    <h2 style="font-size:1.25rem">Dagens oppdrag</h2>
+    <p class="sub">Hak av når du er ferdig. Hvert oppdrag gir XP. Nullstilles automatisk hver dag.</p>
+    <div id="quests"></div>
+  </div>
+
+  <!-- LOG WEIGHT -->
+  <div class="card">
+    <h2>Logg vekten din</h2>
+    <p class="sub">Vei deg helst på samme tid (morgen, før frokost) for de mest stabile tallene.</p>
+    <div class="row">
+      <div>
+        <label for="in-weight">Vekt i dag (kg)</label>
+        <input type="number" id="in-weight" step="0.1" placeholder="f.eks. 64.3">
+      </div>
+      <div>
+        <label for="in-date">Dato</label>
+        <input type="date" id="in-date">
+      </div>
+    </div>
+    <button class="btn-primary full" style="margin-top:14px" id="btn-log">Logg vekt ⚖️</button>
+    <div class="note" id="log-feedback">Logg din første veiing for å sette i gang reisen.</div>
+  </div>
+
+  <!-- CHART -->
+  <div class="card" id="chart-card">
+    <h2>Kurven din</h2>
+    <p class="sub">Grønn linje = planen (1,4 kg/uke). Oransje prikker = dine veiinger.</p>
+    <canvas class="chart" id="chart" width="700" height="340"></canvas>
+  </div>
+
+  <!-- WEEKLY MILESTONES -->
+  <div class="card">
+    <h2>Ukesmål</h2>
+    <p class="sub">10 etapper til toppen. Klarer du delmålet får uka et grønt segl ✅.</p>
+    <div class="weeks" id="weeks"></div>
+  </div>
+
+  <!-- BADGES -->
+  <div class="card">
+    <h2>Trofeer</h2>
+    <p class="sub">Lås opp merker etter hvert som du når milepæler.</p>
+    <div class="badges" id="badges"></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="card" id="hist-card">
+    <h2>Logg</h2>
+    <ul class="hist" id="hist"></ul>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="card">
+    <h2>Innstillinger</h2>
+    <p class="sub">Endre målene dine her hvis du vil justere reisen.</p>
+    <div class="row">
+      <div><label for="set-start">Startvekt (kg)</label><input type="number" id="set-start" step="0.1" value="65"></div>
+      <div><label for="set-goal">Målvekt (kg)</label><input type="number" id="set-goal" step="0.1" value="51"></div>
+      <div><label for="set-weeks">Antall uker</label><input type="number" id="set-weeks" value="10"></div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button class="btn-ghost" style="flex:1" id="btn-save">Lagre innstillinger</button>
+      <button class="btn-ghost" style="flex:1" id="btn-reset">Nullstill alt</button>
+    </div>
+    <div class="note">
+      💛 <strong>Vær snill med deg selv.</strong> 14 kg på 10 uker er et raskt tempo
+      (ca. 1,4 kg per uke). De fleste helsefaglige råd anbefaler 0,5–1 kg per uke for et
+      varig resultat. Spillet fungerer like fint om du gir deg selv litt lengre tid —
+      juster gjerne ukene over. Snakk med fastlege/ernæringsfysiolog ved store endringer.
+    </div>
+  </div>
+
+  <footer>Laget med 💪 · alt lagres kun lokalt i din nettleser · abstinensa.no</footer>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const todayISO = () => new Date().toISOString().slice(0,10);
+
+  // ---- State ----
+  const DEFAULTS = { start:65, goal:51, weeks:10, startDate:todayISO(),
+    entries:[], xp:0, streak:0, lastQuestDay:null, quests:{}, badges:[] };
+  let S = load();
+
+  function load(){
+    try{ const r=JSON.parse(localStorage.getItem('vektreisen')); return Object.assign({},DEFAULTS,r||{}); }
+    catch(e){ return Object.assign({},DEFAULTS); }
+  }
+  function save(){ localStorage.setItem('vektreisen', JSON.stringify(S)); }
+
+  // ---- Quests definition ----
+  const QUESTS = [
+    {id:'water', ic:'💧', t:'Drikk 2 liter vann', d:'Hydrering demper sultfølelse', xp:15},
+    {id:'steps', ic:'👟', t:'10 000 skritt / 30 min gåtur', d:'Bevegelse forbrenner og letter humøret', xp:25},
+    {id:'veggies', ic:'🥗', t:'Spis grønnsaker til 2 måltider', d:'Mett og næringsrikt', xp:15},
+    {id:'nosugar', ic:'🍫', t:'Hopp over snacks/sukker i dag', d:'Den store nøkkelen', xp:20},
+    {id:'sleep', ic:'😴', t:'7+ timer søvn', d:'Søvn styrer appetitthormonene', xp:15},
+    {id:'weigh', ic:'⚖️', t:'Vei og logg deg', d:'Det du måler, mestrer du', xp:10},
+  ];
+
+  // ---- Badges definition ----
+  const BADGES = [
+    {id:'first', em:'🌱', nm:'Første steg', test:s=>s.entries.length>=1},
+    {id:'kg1',   em:'⭐', nm:'1 kg ned', test:s=>lost(s)>=1},
+    {id:'kg3',   em:'🔥', nm:'3 kg ned', test:s=>lost(s)>=3},
+    {id:'kg5',   em:'💪', nm:'5 kg ned', test:s=>lost(s)>=5},
+    {id:'kg7',   em:'🏅', nm:'Halvveis', test:s=>lost(s)>=(s.start-s.goal)/2},
+    {id:'kg10',  em:'🚀', nm:'10 kg ned', test:s=>lost(s)>=10},
+    {id:'streak3',em:'📅', nm:'3-dagers streak', test:s=>s.streak>=3},
+    {id:'streak7',em:'🗓️', nm:'7-dagers streak', test:s=>s.streak>=7},
+    {id:'lvl5',  em:'🎖️', nm:'Nivå 5', test:s=>level(s.xp).lvl>=5},
+    {id:'goal',  em:'👑', nm:'I mål!', test:s=>current(s)<=s.goal},
+  ];
+
+  const LEVEL_TITLES = ['Nybegynner','På vei','Vandrer','Klatrer','Utfordrer',
+    'Fjellgeit','Ekspert','Mester','Legende','Toppveteran'];
+
+  // ---- Helpers ----
+  function current(s){ return s.entries.length ? s.entries[s.entries.length-1].w : s.start; }
+  function lost(s){ return Math.max(0, s.start - current(s)); }
+  function level(xp){ // 100 xp per level, scaling slightly
+    let lvl=1, need=100, rem=xp;
+    while(rem>=need){ rem-=need; lvl++; need=Math.round(need*1.15); }
+    return {lvl, into:rem, need};
+  }
+  function fmt(n){ return (Math.round(n*10)/10).toString().replace('.', ','); }
+
+  // ---- Toast ----
+  let toastT;
+  function toast(msg){
+    const t=$('toast'); t.textContent=msg; t.classList.add('show');
+    clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2600);
+  }
+
+  // ---- Render quests (reset daily) ----
+  function ensureDay(){
+    const d=todayISO();
+    if(S.lastQuestDay!==d){
+      S.lastQuestDay=d; S.quests={};
+      save();
+    }
+  }
+  function renderQuests(){
+    ensureDay();
+    const box=$('quests'); box.innerHTML='';
+    QUESTS.forEach(q=>{
+      const done=!!S.quests[q.id];
+      const el=document.createElement('div');
+      el.className='quest'+(done?' done':'');
+      el.innerHTML=`<div class="ic">${q.ic}</div>
+        <div class="txt"><strong>${q.t}</strong><span>${q.d}</span></div>
+        <div class="xp">+${q.xp} XP</div>
+        <div class="chk">${done?'✓':''}</div>`;
+      el.onclick=()=>toggleQuest(q);
+      box.appendChild(el);
+    });
+  }
+  function toggleQuest(q){
+    ensureDay();
+    if(S.quests[q.id]){ S.quests[q.id]=false; S.xp=Math.max(0,S.xp-q.xp); }
+    else{ S.quests[q.id]=true; S.xp+=q.xp; toast(`+${q.xp} XP · ${q.t.split('/')[0].trim()} ✅`); }
+    save(); renderQuests(); renderLevel(); checkBadges();
+  }
+
+  // ---- Render level ----
+  function renderLevel(){
+    const L=level(S.xp);
+    $('lvl-num').textContent=L.lvl;
+    const title=LEVEL_TITLES[Math.min(L.lvl-1,LEVEL_TITLES.length-1)];
+    $('lvl-title').textContent=`Nivå ${L.lvl} · ${title}`;
+    $('xp-fill').style.width=Math.round(L.into/L.need*100)+'%';
+    $('xp-text').textContent=`${L.into} / ${L.need} XP`;
+    $('streak-text').textContent=`🔥 ${S.streak} dagers streak`;
+  }
+
+  // ---- Render stats + mountain ----
+  function renderStats(){
+    const cur=current(S), lo=lost(S), togo=Math.max(0,cur-S.goal);
+    $('s-current').textContent=fmt(cur);
+    $('s-lost').textContent=fmt(lo);
+    $('s-togo').textContent=fmt(togo);
+    // days left
+    const end=new Date(S.startDate); end.setDate(end.getDate()+S.weeks*7);
+    const days=Math.max(0,Math.ceil((end-new Date())/86400000));
+    $('s-days').textContent=days;
+
+    const total=Math.max(0.001,S.start-S.goal);
+    let pct=Math.min(100,Math.max(0,lo/total*100));
+    $('prog-fill').style.width=pct+'%';
+    $('prog-pct').textContent=Math.round(pct)+'% fullført';
+    // climber position along mountain (left 6%->94%, bottom 8%->84%)
+    const cl=$('climber');
+    cl.style.left=(6+pct/100*88)+'%';
+    cl.style.bottom=(8+pct/100*76)+'%';
+    if(cur<=S.goal){ cl.textContent='🏆'; }
+    else { cl.textContent='🧗‍♀️'; }
+
+    let m='La oss gå! 💪';
+    if(pct>=100) m='Du er på toppen! 👑';
+    else if(pct>=75) m='Nesten der! 🚀';
+    else if(pct>=50) m='Halvveis – sterkt! 🔥';
+    else if(pct>=25) m='Godt i gang! 🌟';
+    else if(pct>0) m='Reisen har startet! 🌱';
+    $('prog-msg').textContent=m;
+  }
+
+  // ---- Weekly milestones ----
+  function weekTargets(){
+    const step=(S.start-S.goal)/S.weeks; const arr=[];
+    for(let i=1;i<=S.weeks;i++) arr.push(S.start-step*i);
+    return arr;
+  }
+  function renderWeeks(){
+    const box=$('weeks'); box.innerHTML='';
+    const targets=weekTargets();
+    const now=new Date(), start=new Date(S.startDate);
+    const weekIdx=Math.floor((now-start)/(7*86400000)); // 0-based current week
+    targets.forEach((t,i)=>{
+      // best (lowest) weight logged by end of week i+1
+      const wkEnd=new Date(start); wkEnd.setDate(wkEnd.getDate()+(i+1)*7);
+      const within=S.entries.filter(e=>new Date(e.date)<=wkEnd);
+      const best=within.length?Math.min(...within.map(e=>e.w)):null;
+      const hit=best!==null && best<=t+0.05;
+      const cur=(i===weekIdx);
+      const el=document.createElement('div');
+      el.className='wk'+(hit?' hit':'')+(cur?' current':'');
+      const dt=new Date(start); dt.setDate(dt.getDate()+(i+1)*7);
+      el.innerHTML=`<div class="wn">Uke ${i+1}</div>
+        <div class="wt">${fmt(t)}</div>
+        <div class="wd">${dt.toLocaleDateString('no-NO',{day:'numeric',month:'short'})}</div>
+        ${hit?'<div class="seal">✅</div>':''}`;
+      box.appendChild(el);
+    });
+  }
+
+  // ---- Badges ----
+  function renderBadges(){
+    const box=$('badges'); box.innerHTML='';
+    BADGES.forEach(b=>{
+      const earned=S.badges.includes(b.id);
+      const el=document.createElement('div');
+      el.className='badge'+(earned?' earned':'');
+      el.innerHTML=`<div class="em">${b.em}</div><div class="nm">${b.nm}</div>`;
+      box.appendChild(el);
+    });
+  }
+  function checkBadges(){
+    let newOnes=[];
+    BADGES.forEach(b=>{
+      if(!S.badges.includes(b.id) && b.test(S)){ S.badges.push(b.id); newOnes.push(b); }
+    });
+    if(newOnes.length){
+      save(); renderBadges();
+      newOnes.forEach((b,i)=>setTimeout(()=>toast(`Nytt trofé! ${b.em} ${b.nm}`),i*900));
+    }
+  }
+
+  // ---- Chart ----
+  function renderChart(){
+    const c=$('chart'), ctx=c.getContext('2d');
+    const W=c.width, H=c.height, pad=38;
+    ctx.clearRect(0,0,W,H);
+    const minW=S.goal-1, maxW=S.start+1;
+    const totalDays=S.weeks*7;
+    const x=d=>pad+(d/totalDays)*(W-pad*1.4);
+    const y=w=>pad+(maxW-w)/(maxW-minW)*(H-pad*2);
+    // grid
+    ctx.strokeStyle='#e8e4dc'; ctx.lineWidth=1; ctx.font='11px Outfit'; ctx.fillStyle='#6b6b7b';
+    for(let w=Math.ceil(minW);w<=Math.floor(maxW);w+=2){
+      const yy=y(w); ctx.beginPath(); ctx.moveTo(pad,yy); ctx.lineTo(W-pad*0.4,yy); ctx.stroke();
+      ctx.fillText(w,4,yy+3);
+    }
+    // plan line (green)
+    ctx.strokeStyle='#4f9d69'; ctx.lineWidth=2.5; ctx.setLineDash([6,5]); ctx.beginPath();
+    ctx.moveTo(x(0),y(S.start)); ctx.lineTo(x(totalDays),y(S.goal)); ctx.stroke();
+    ctx.setLineDash([]);
+    // entries (orange)
+    const start=new Date(S.startDate);
+    const pts=S.entries.map(e=>({d:(new Date(e.date)-start)/86400000,w:e.w}))
+                       .sort((a,b)=>a.d-b.d);
+    if(pts.length){
+      ctx.strokeStyle='#c4593e'; ctx.lineWidth=2.5; ctx.beginPath();
+      pts.forEach((p,i)=>{ const px=x(p.d),py=y(p.w); i?ctx.lineTo(px,py):ctx.moveTo(px,py); });
+      ctx.stroke();
+      ctx.fillStyle='#c4593e';
+      pts.forEach(p=>{ ctx.beginPath(); ctx.arc(x(p.d),y(p.w),4.5,0,7); ctx.fill(); });
+    }
+    // goal label
+    ctx.fillStyle='#4f9d69'; ctx.font='600 12px Outfit';
+    ctx.fillText('🎯 '+fmt(S.goal)+' kg',x(totalDays)-58,y(S.goal)-8);
+  }
+
+  // ---- History ----
+  function renderHist(){
+    const ul=$('hist'); ul.innerHTML='';
+    if(!S.entries.length){ $('hist-card').classList.add('hidden'); return; }
+    $('hist-card').classList.remove('hidden');
+    [...S.entries].reverse().forEach((e,idx)=>{
+      const realIdx=S.entries.length-1-idx;
+      const prev=S.entries[realIdx-1];
+      let diff='';
+      if(prev){ const d=e.w-prev.w; diff=(d<=0?'▼ ':'▲ ')+fmt(Math.abs(d))+' kg'; }
+      const li=document.createElement('li');
+      li.innerHTML=`<span>⚖️ ${fmt(e.w)} kg <em style="color:${prev&&e.w<=prev.w?'#4f9d69':'#c4593e'};font-style:normal;font-size:.8rem">${diff}</em></span>
+        <span>${new Date(e.date).toLocaleDateString('no-NO',{day:'numeric',month:'short',year:'numeric'})}</span>`;
+      ul.appendChild(li);
+    });
+  }
+
+  // ---- Log weight ----
+  function logWeight(){
+    const w=parseFloat($('in-weight').value);
+    const d=$('in-date').value||todayISO();
+    if(isNaN(w)||w<=0){ toast('Skriv inn en gyldig vekt 🙂'); return; }
+    const prevCur=current(S);
+    // replace same-date entry
+    S.entries=S.entries.filter(e=>e.date!==d);
+    S.entries.push({date:d,w});
+    S.entries.sort((a,b)=>new Date(a.date)-new Date(b.date));
+
+    // streak: increment if logged today and last log was yesterday or first
+    updateStreak(d);
+
+    // XP for logging + bonus for losing
+    let gained=10;
+    if(prevCur && w<prevCur){ gained+=20; }
+    S.xp+=gained;
+    S.quests['weigh']=true; // auto-complete weigh quest
+
+    save();
+    $('in-weight').value='';
+    renderAll();
+    checkBadges();
+
+    let msg=`Logget ${fmt(w)} kg · +${gained} XP`;
+    if(prevCur && w<prevCur) msg=`Ned ${fmt(prevCur-w)} kg! 🎉 +${gained} XP`;
+    $('log-feedback').innerHTML=`Sist logget: <strong>${fmt(w)} kg</strong> (${new Date(d).toLocaleDateString('no-NO')}). `+
+      (w<=S.goal?'Du har nådd målet ditt! 👑':`Bare <strong>${fmt(Math.max(0,w-S.goal))} kg</strong> igjen til ${fmt(S.goal)} kg.`);
+    toast(msg);
+  }
+
+  function updateStreak(d){
+    const last=S._lastLogDate;
+    if(last===d) return; // same day, no change
+    const y=new Date(d); y.setDate(y.getDate()-1);
+    const yISO=y.toISOString().slice(0,10);
+    if(last===yISO) S.streak++;
+    else if(!last) S.streak=1;
+    else S.streak=1; // gap -> reset to 1
+    S._lastLogDate=d;
+  }
+
+  // ---- Settings ----
+  function saveSettings(){
+    const st=parseFloat($('set-start').value), g=parseFloat($('set-goal').value), wk=parseInt($('set-weeks').value);
+    if(isNaN(st)||isNaN(g)||isNaN(wk)||wk<1||g>=st){ toast('Sjekk verdiene (mål må være lavere enn start) 🙂'); return; }
+    S.start=st; S.goal=g; S.weeks=wk;
+    save(); renderAll(); toast('Innstillinger lagret ✅');
+  }
+  function resetAll(){
+    if(!confirm('Sikker på at du vil nullstille all fremgang? Dette kan ikke angres.')) return;
+    S=Object.assign({},DEFAULTS,{startDate:todayISO()});
+    save(); fillSettings(); renderAll(); toast('Nullstilt – ny start! 🌱');
+  }
+  function fillSettings(){
+    $('set-start').value=S.start; $('set-goal').value=S.goal; $('set-weeks').value=S.weeks;
+  }
+
+  // ---- Render all ----
+  function renderAll(){
+    renderStats(); renderLevel(); renderQuests(); renderWeeks();
+    renderBadges(); renderChart(); renderHist();
+  }
+
+  // ---- Init ----
+  $('in-date').value=todayISO();
+  fillSettings();
+  $('btn-log').onclick=logWeight;
+  $('btn-save').onclick=saveSettings;
+  $('btn-reset').onclick=resetAll;
+  $('in-weight').addEventListener('keydown',e=>{ if(e.key==='Enter') logWeight(); });
+  window.addEventListener('resize',renderChart);
+  renderAll();
+  checkBadges();
+
+  // Show iOS install tip only in Safari (not already installed) and if not dismissed
+  (function(){
+    const tip=$('ios-tip');
+    const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+    const standalone=navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches;
+    if(isIOS && !standalone && !localStorage.getItem('iosTipDismissed')){ tip.style.display='block'; }
+    $('ios-tip-x').onclick=()=>{ tip.style.display='none'; localStorage.setItem('iosTipDismissed','1'); };
+  })();
+
+  // Register service worker so the app works offline / as a home-screen app
+  if('serviceWorker' in navigator){
+    window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  }
+})();
+</script>
+</body>
+</html>
