@@ -4,7 +4,13 @@
   <link href="https://abstinensa.no/ai-daily/feed.xml" rel="self"/>
   <link href="https://abstinensa.no/ai-daily/"/>
   <id>https://abstinensa.no/ai-daily/</id>
-  <updated>2026-06-10T06:30:00Z</updated>
+  <updated>2026-06-11T06:30:00Z</updated>
+  <entry>
+    <title>AI Daily — 2026-06-11</title>
+    <link href="https://abstinensa.no/ai-daily/2026/06/11.html"/>
+    <id>https://abstinensa.no/ai-daily/2026/06/11.html</id>
+    <updated>2026-06-11T06:30:00Z</updated>
+  </entry>
   <entry>
     <title>AI Daily — 2026-06-10</title>
     <link href="https://abstinensa.no/ai-daily/2026/06/10.html"/>
@@ -194,13 +200,6 @@
     <link href="https://abstinensa.no/ai-daily/2026/05/13.html"/>
     <id>https://abstinensa.no/ai-daily/2026/05/13.html</id>
     <updated>2026-05-13T06:30:00Z</updated>
-    <summary>Kurator utilgjengelig — råliste under.</summary>
-  </entry>
-  <entry>
-    <title>AI Daily — 2026-05-12</title>
-    <link href="https://abstinensa.no/ai-daily/2026/05/12.html"/>
-    <id>https://abstinensa.no/ai-daily/2026/05/12.html</id>
-    <updated>2026-05-12T06:30:00Z</updated>
     <summary>Kurator utilgjengelig — råliste under.</summary>
   </entry>
 </feed>
