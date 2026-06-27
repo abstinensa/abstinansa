@@ -4,7 +4,13 @@
   <link href="https://abstinensa.no/ai-daily/feed.xml" rel="self"/>
   <link href="https://abstinensa.no/ai-daily/"/>
   <id>https://abstinensa.no/ai-daily/</id>
-  <updated>2026-06-26T06:30:00Z</updated>
+  <updated>2026-06-27T06:30:00Z</updated>
+  <entry>
+    <title>AI Daily — 2026-06-27</title>
+    <link href="https://abstinensa.no/ai-daily/2026/06/27.html"/>
+    <id>https://abstinensa.no/ai-daily/2026/06/27.html</id>
+    <updated>2026-06-27T06:30:00Z</updated>
+  </entry>
   <entry>
     <title>AI Daily — 2026-06-26</title>
     <link href="https://abstinensa.no/ai-daily/2026/06/26.html"/>
@@ -179,12 +185,5 @@
     <id>https://abstinensa.no/ai-daily/2026/05/29.html</id>
     <updated>2026-05-29T06:30:00Z</updated>
     <summary>Anthropic har krysset $47 milliarder i run-rate revenue og henter $65 milliarder til en verdivurdering på $965 milliarder — den fjerde gangen på fire måneder de rapporterer dobling eller mer. Samtidig kutter Amazon sitt interne AI-leaderboard fordi kostnadene løper løpsk uten ...</summary>
-  </entry>
-  <entry>
-    <title>AI Daily — 2026-05-28</title>
-    <link href="https://abstinensa.no/ai-daily/2026/05/28.html"/>
-    <id>https://abstinensa.no/ai-daily/2026/05/28.html</id>
-    <updated>2026-05-28T06:30:00Z</updated>
-    <summary>Cognition, selskapet bak Devin-agenten, henter $1 mrd. til $25 mrd. pre-money valuation og rapporterer $492M i ARR — åtte måneder etter forrige runde. Det er det første tydelige signalet om at enterprise AI-agents faktisk genererer inntekter i skala, ikke bare proof-of-concept...</summary>
   </entry>
 </feed>
