@@ -80,7 +80,7 @@ header p{color:var(--muted);margin-top:10px;font-size:1.02rem}
 
 /* Inputs */
 label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px;color:var(--slate)}
-input[type=number],input[type=date]{
+input[type=number],input[type=date],input[type=email]{
   width:100%;padding:12px 14px;border:1.5px solid var(--warm);border-radius:12px;
   font-family:inherit;font-size:1rem;background:var(--cream);color:var(--ink);
 }
@@ -297,6 +297,29 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     <ul class="hist" id="hist"></ul>
   </div>
 
+  <!-- CLOUD STORAGE -->
+  <div class="card" id="cloud-card">
+    <h2>Sky-lagring ☁️</h2>
+    <p class="sub">Logg inn med e-post for å lagre fremgangen trygt og synke automatisk mellom alle enhetene dine.</p>
+
+    <div id="cloud-disabled" class="note hidden">
+      Sky-lagring er ikke aktivert ennå. Dataene dine lagres trygt på denne enheten så lenge.
+    </div>
+
+    <div id="cloud-loggedout" class="hidden">
+      <label for="cloud-email">E-post</label>
+      <input type="email" id="cloud-email" placeholder="din@epost.no" autocomplete="email">
+      <button class="btn-primary full" style="margin-top:12px" id="btn-login">Send innloggingslenke ✉️</button>
+      <p class="sub" style="margin-top:10px">Du får en lenke på e-post. Trykk på den, så er du logget inn – ingen passord å huske.</p>
+    </div>
+
+    <div id="cloud-loggedin" class="hidden">
+      <p>✅ Logget inn som <strong id="cloud-user"></strong></p>
+      <div class="note" id="cloud-status" style="margin-top:10px">Synkronisert.</div>
+      <button class="btn-ghost full" style="margin-top:12px" id="btn-logout">Logg ut</button>
+    </div>
+  </div>
+
   <!-- SETTINGS -->
   <div class="card">
     <h2>Innstillinger</h2>
@@ -332,10 +355,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     </div>
   </div>
 
-  <footer>Laget med 💪 · alt lagres privat på din egen enhet · ta en sikkerhetskopi i ny og ne · abstinensa.no</footer>
+  <footer>Laget med 💪 · logg inn for sky-lagring, ellers lagres alt privat på din egen enhet · abstinensa.no</footer>
 </div>
 
 <div id="toast"></div>
+
+<!-- Sky-lagring: fyll inn din egen Supabase URL + anon key her (se SKY-OPPSETT.md). Tomt = ren lokal lagring. -->
+<script src="supabase-config.js"></script>
 
 <script>
 (function(){
@@ -348,11 +374,16 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     entries:[], xp:0, streak:0, lastQuestDay:null, quests:{}, badges:[] };
   let S = load();
 
+  // ---- Cloud sync state (Supabase) ----
+  let sb=null, cloudUser=null, cloudSyncTimer=null;
+  const SB_CFG = window.SUPABASE_CONFIG || {};
+  const CLOUD_ENABLED = !!(SB_CFG.url && SB_CFG.anonKey);
+
   function load(){
     try{ const r=JSON.parse(localStorage.getItem('vektreisen')); return Object.assign({},DEFAULTS,r||{}); }
     catch(e){ return Object.assign({},DEFAULTS); }
   }
-  function save(){ localStorage.setItem('vektreisen', JSON.stringify(S)); }
+  function save(){ localStorage.setItem('vektreisen', JSON.stringify(S)); queueCloudSync(); }
 
   // ---- Quests definition ----
   const QUESTS = [
@@ -744,6 +775,98 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     renderBadges(); renderInsights(); renderChart(); renderHist();
   }
 
+  // ---- Cloud sync (Supabase) ----
+  function setCloudStatus(msg){ const el=$('cloud-status'); if(el) el.textContent=msg; }
+
+  // Merge two saves so switching devices never loses weigh-ins
+  function mergeStates(a,b){
+    const map={};
+    (a.entries||[]).forEach(e=>{ map[e.date]=e.w; });
+    (b.entries||[]).forEach(e=>{ map[e.date]=e.w; });
+    const entries=Object.keys(map).sort().map(d=>({date:d,w:map[d]}));
+    const newerQuests=(a.lastQuestDay||'')>=(b.lastQuestDay||'') ? a : b;
+    return Object.assign({},DEFAULTS,a,b,{
+      entries,
+      xp:Math.max(a.xp||0,b.xp||0),
+      streak:Math.max(a.streak||0,b.streak||0),
+      badges:Array.from(new Set([...(a.badges||[]),...(b.badges||[])])),
+      quests:newerQuests.quests||{},
+      lastQuestDay:newerQuests.lastQuestDay||null,
+      _lastLogDate:(a._lastLogDate||'')>(b._lastLogDate||'')?a._lastLogDate:b._lastLogDate,
+    });
+  }
+
+  function queueCloudSync(){
+    if(!cloudUser||!sb) return;
+    clearTimeout(cloudSyncTimer);
+    cloudSyncTimer=setTimeout(pushCloud,1500);
+  }
+
+  async function pushCloud(){
+    if(!cloudUser||!sb) return;
+    try{
+      setCloudStatus('Lagrer…');
+      const {error}=await sb.from('vektreisen').upsert({user_id:cloudUser.id,data:S,updated_at:new Date().toISOString()});
+      if(error) throw error;
+      setCloudStatus('Lagret i skyen ✅');
+    }catch(e){ setCloudStatus('Lagret på enheten – synker når du er på nett'); }
+  }
+
+  async function pullAndMerge(){
+    if(!cloudUser||!sb) return;
+    setCloudStatus('Synkroniserer…');
+    try{
+      const {data,error}=await sb.from('vektreisen').select('data').eq('user_id',cloudUser.id).maybeSingle();
+      if(error) throw error;
+      if(data&&data.data&&typeof data.data==='object'){
+        S=mergeStates(S,data.data);
+        save(); fillSettings(); renderAll(); checkBadges();
+      }
+      await pushCloud();
+    }catch(e){ setCloudStatus('Synk feilet – prøver igjen senere'); }
+  }
+
+  function onAuthChange(session){
+    cloudUser=(session&&session.user)?session.user:null;
+    if(cloudUser){
+      $('cloud-disabled').classList.add('hidden');
+      $('cloud-loggedout').classList.add('hidden');
+      $('cloud-loggedin').classList.remove('hidden');
+      $('cloud-user').textContent=cloudUser.email||'deg';
+      pullAndMerge();
+    }else{
+      $('cloud-loggedin').classList.add('hidden');
+      $('cloud-loggedout').classList.remove('hidden');
+    }
+  }
+
+  async function cloudLogin(){
+    if(!sb){ toast('Sky-lagring laster fortsatt…'); return; }
+    const email=($('cloud-email').value||'').trim();
+    if(!email||email.indexOf('@')<1){ toast('Skriv inn en gyldig e-post 🙂'); return; }
+    try{
+      const {error}=await sb.auth.signInWithOtp({email,options:{emailRedirectTo:location.href.split('#')[0]}});
+      if(error) throw error;
+      toast('Innloggingslenke sendt – sjekk e-posten ✉️');
+    }catch(e){ toast('Klarte ikke sende lenke 😕'); }
+  }
+
+  async function cloudLogout(){ if(sb){ try{ await sb.auth.signOut(); toast('Logget ut'); }catch(e){} } }
+
+  async function initCloud(){
+    if(!CLOUD_ENABLED){ $('cloud-disabled').classList.remove('hidden'); return; }
+    try{
+      const m=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+      sb=m.createClient(SB_CFG.url,SB_CFG.anonKey);
+      const {data:{session}}=await sb.auth.getSession();
+      onAuthChange(session);
+      sb.auth.onAuthStateChange((_e,s)=>onAuthChange(s));
+    }catch(e){
+      $('cloud-disabled').classList.remove('hidden');
+      $('cloud-disabled').textContent='Får ikke kontakt med sky-lagring akkurat nå. Dataene dine lagres trygt på denne enheten.';
+    }
+  }
+
   // ---- Init ----
   $('in-date').value=todayISO();
   fillSettings();
@@ -753,10 +876,14 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
   $('btn-export').onclick=exportData;
   $('btn-import').onclick=()=>$('file-import').click();
   $('file-import').onchange=e=>{ if(e.target.files[0]) importData(e.target.files[0]); e.target.value=''; };
+  $('btn-login').onclick=cloudLogin;
+  $('btn-logout').onclick=cloudLogout;
+  $('cloud-email').addEventListener('keydown',e=>{ if(e.key==='Enter') cloudLogin(); });
   $('in-weight').addEventListener('keydown',e=>{ if(e.key==='Enter') logWeight(); });
   window.addEventListener('resize',renderChart);
   renderAll();
   checkBadges();
+  initCloud();
 
   // Show iOS install tip only in Safari (not already installed) and if not dismissed
   (function(){
