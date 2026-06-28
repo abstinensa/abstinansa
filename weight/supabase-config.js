@@ -11,6 +11,6 @@
 //   så lenge "Row Level Security" er på, som beskrevet i oppsettet.)
 // ───────────────────────────────────────────────────────────────
 window.SUPABASE_CONFIG = {
-  url: "",      // f.eks. "https://abcdefgh.supabase.co"
-  anonKey: ""   // din "anon public" API-nøkkel
+  url: "https://mzjfssssnkjzvafdkrrv.supabase.co",
+  anonKey: "sb_publishable_k5SsCMh3Dn3_iLfZVav-Bw__Lh0eE_4"  // publishable key – trygg i frontend
 };
