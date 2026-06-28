@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparebanken-Assistenten — Intern KI-medarbeidar</title>
+    <meta name="description" content="Intern KI-assistent for tilsette i Sparebanken Norge. Finn informasjon, oppsummer dokument og få svar på faglege sporsmal.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #002855;
+            --navy-dark: #001a3a;
+            --navy-light: #003d7a;
+            --blue: #0057b8;
+            --blue-light: #e6f0fa;
+            --blue-muted: #c5d9ed;
+            --gold: #c6962c;
+            --gold-light: #f5ecd6;
+            --white: #ffffff;
+            --gray-50: #f8f9fa;
+            --gray-100: #f0f2f4;
+            --gray-200: #e2e5e9;
+            --gray-300: #c8cdd3;
+            --gray-400: #9aa2ac;
+            --gray-500: #6b7684;
+            --gray-600: #4a5568;
+            --gray-700: #2d3748;
+            --gray-800: #1a202c;
+            --red: #c53030;
+            --red-light: #fef2f2;
+            --green: #276749;
+            --green-light: #f0fff4;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,40,85,0.08);
+            --shadow-md: 0 4px 12px rgba(0,40,85,0.1);
+            --shadow-lg: 0 8px 30px rgba(0,40,85,0.12);
+            --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { height: 100%; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header */
+        .header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,40,85,0.2);
+            z-index: 10;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gold);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--navy-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .header-title {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .header-subtitle {
+            font-size: 11px;
+            color: rgba(255,255,255,0.55);
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .header-badge {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+        }
+
+        .header-badge::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #48bb78;
+            box-shadow: 0 0 6px rgba(72,187,120,0.5);
+        }
+
+        /* Main layout */
+        .main-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--white);
+            border-right: 1px solid var(--gray-200);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .sidebar-header h3 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .sidebar-section {
+            padding: 12px;
+        }
+
+        .sidebar-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 8px 8px 4px;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background var(--transition);
+            font-size: 13px;
+            color: var(--gray-600);
+            font-weight: 450;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .sidebar-item:hover {
+            background: var(--gray-100);
+            color: var(--gray-800);
+        }
+
+        .sidebar-item.active {
+            background: var(--blue-light);
+            color: var(--blue);
+            font-weight: 500;
+        }
+
+        .sidebar-item-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+            background: var(--gray-100);
+        }
+
+        .sidebar-item.active .sidebar-item-icon {
+            background: rgba(0,87,184,0.1);
+        }
+
+        .sidebar-info {
+            margin-top: auto;
+            padding: 16px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .sidebar-info-box {
+            background: var(--gold-light);
+            border: 1px solid rgba(198,150,44,0.2);
+            border-radius: var(--radius-sm);
+            padding: 14px;
+        }
+
+        .sidebar-info-box h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 6px;
+        }
+
+        .sidebar-info-box p {
+            font-size: 11px;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        /* Chat area */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px 24px 8px;
+            scroll-behavior: smooth;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--gray-300);
+            border-radius: 3px;
+        }
+
+        /* Welcome screen */
+        .welcome {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 40px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .welcome-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0,40,85,0.2);
+        }
+
+        .welcome-icon svg {
+            width: 36px;
+            height: 36px;
+            color: var(--white);
+        }
+
+        .welcome h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+            letter-spacing: -0.4px;
+        }
+
+        .welcome p {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.6;
+            max-width: 460px;
+            margin-bottom: 32px;
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .welcome-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 18px;
+            text-align: left;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .welcome-card:hover {
+            border-color: var(--blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        .welcome-card-icon {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-card h3 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 4px;
+        }
+
+        .welcome-card p {
+            font-size: 12px;
+            color: var(--gray-400);
+            line-height: 1.4;
+            margin-bottom: 0;
+        }
+
+        /* Messages */
+        .message {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            max-width: 780px;
+            animation: msgIn 300ms ease-out;
+        }
+
+        @keyframes msgIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .message-avatar.assistant {
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: var(--white);
+        }
+
+        .message-avatar.user {
+            background: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        .message-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .message-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: var(--gray-400);
+        }
+
+        .message-body {
+            font-size: 14px;
+            line-height: 1.65;
+            color: var(--gray-700);
+        }
+
+        .message-body p {
+            margin-bottom: 10px;
+        }
+
+        .message-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .message-body strong {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .message-body ul, .message-body ol {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .message-body li {
+            margin-bottom: 4px;
+        }
+
+        .message-body code {
+            background: var(--gray-100);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: 'SF Mono', 'Consolas', monospace;
+        }
+
+        .privacy-notice {
+            background: var(--red-light);
+            border: 1px solid rgba(197,48,48,0.15);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--red);
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .privacy-notice svg {
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .source-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 11px;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: none;
+            gap: 12px;
+            margin-bottom: 20px;
+            max-width: 780px;
+        }
+
+        .typing-indicator.visible {
+            display: flex;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+        }
+
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gray-400);
+            animation: typingBounce 1.4s infinite;
+        }
+
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-4px); opacity: 1; }
+        }
+
+        /* Input area */
+        .chat-input-area {
+            padding: 16px 24px 20px;
+            border-top: 1px solid var(--gray-200);
+            background: var(--white);
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            max-width: 780px;
+            background: var(--gray-50);
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 8px 12px;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .chat-input-wrapper:focus-within {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(0,87,184,0.1);
+        }
+
+        .chat-input {
+            flex: 1;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--gray-800);
+            resize: none;
+            outline: none;
+            min-height: 24px;
+            max-height: 120px;
+            line-height: 1.5;
+            padding: 4px 0;
+        }
+
+        .chat-input::placeholder {
+            color: var(--gray-400);
+        }
+
+        .send-button {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+
+        .send-button:hover {
+            background: var(--navy-light);
+            transform: scale(1.05);
+        }
+
+        .send-button:disabled {
+            background: var(--gray-300);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .send-button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .chat-disclaimer {
+            font-size: 11px;
+            color: var(--gray-400);
+            text-align: center;
+            margin-top: 8px;
+            max-width: 780px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .header-subtitle {
+                display: none;
+            }
+
+            .welcome-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-messages {
+                padding: 16px;
+            }
+
+            .chat-input-area {
+                padding: 12px 16px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0 16px;
+                height: 56px;
+            }
+
+            .header-badge {
+                display: none;
+            }
+
+            .welcome {
+                padding: 40px 20px;
+            }
+
+            .welcome h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-logo">
+            <div class="logo-icon">SN</div>
+            <div>
+                <div class="header-title">Sparebanken-Assistenten</div>
+                <div class="header-subtitle">Intern KI-medarbeidar</div>
+            </div>
+        </div>
+        <div class="header-badge">Tilkopla</div>
+    </header>
+
+    <!-- Main layout -->
+    <div class="main-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Verktoy</h3>
+            </div>
+
+            <nav class="sidebar-section">
+                <div class="sidebar-section-title">Oppgaver</div>
+
+                <button class="sidebar-item active" data-action="handbook">
+                    <span class="sidebar-item-icon">&#128218;</span>
+                    Sok i handboker
+                </button>
+
+                <button class="sidebar-item" data-action="summarize">
+                    <span class="sidebar-item-icon">&#128196;</span>
+                    Oppsummer dokument
+                </button>
+
+                <button class="sidebar-item" data-action="email">
+                    <span class="sidebar-item-icon">&#9993;</span>
+                    Skriv e-postutkast
+                </button>
+
+                <button class="sidebar-item" data-action="faq">
+                    <span class="sidebar-item-icon">&#10067;</span>
+                    Faglege sporsmol
+                </button>
+            </nav>
+
+            <nav class="sidebar-section">
+                <div class="sidebar-section-title">Kjelder</div>
+
+                <button class="sidebar-item" data-action="sources-hr">
+                    <span class="sidebar-item-icon">&#128101;</span>
+                    HR-handbok
+                </button>
+
+                <button class="sidebar-item" data-action="sources-compliance">
+                    <span class="sidebar-item-icon">&#9878;</span>
+                    Compliance-rutinar
+                </button>
+
+                <button class="sidebar-item" data-action="sources-credit">
+                    <span class="sidebar-item-icon">&#127974;</span>
+                    Kreditthandbok
+                </button>
+            </nav>
+
+            <div class="sidebar-info">
+                <div class="sidebar-info-box">
+                    <h4>Personvern</h4>
+                    <p>Denne assistenten behandlar ikkje kundedata. Lim aldri inn fodselsnummer, kontonummer eller sensitiv informasjon.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Chat area -->
+        <main class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+
+                <!-- Welcome screen (shown initially) -->
+                <div class="welcome" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/>
+                            <line x1="10" y1="22" x2="14" y2="22"/>
+                            <line x1="9" y1="14" x2="15" y2="14"/>
+                        </svg>
+                    </div>
+                    <h1>Hei, korleis kan eg hjelpe?</h1>
+                    <p>Eg er din interne KI-assistent. Eg kan hjelpe deg med a finne informasjon i handboker, oppsummere dokument, skrive e-postutkast og svare pa faglege sporsmol om bankdrift.</p>
+
+                    <div class="welcome-grid">
+                        <div class="welcome-card" data-prompt="Kva er reglane for ferie og avspasering i handbok for tilsette?">
+                            <div class="welcome-card-icon">&#128218;</div>
+                            <h3>Finn i handbok</h3>
+                            <p>Sok etter rutinar, retningslinjer og interne reglar</p>
+                        </div>
+                        <div class="welcome-card" data-prompt="Kan du oppsummere hovudpunkta i den nye kvitvaskingsrutinen?">
+                            <div class="welcome-card-icon">&#128196;</div>
+                            <h3>Oppsummer dokument</h3>
+                            <p>Fa raske samandrag av lange interne dokument</p>
+                        </div>
+                        <div class="welcome-card" data-prompt="Skriv eit utkast til e-post om den nye kompetansehevingsplanen for Q3.">
+                            <div class="welcome-card-icon">&#9993;</div>
+                            <h3>E-postutkast</h3>
+                            <p>Lag profesjonelle e-postar til intern kommunikasjon</p>
+                        </div>
+                        <div class="welcome-card" data-prompt="Kva er forskjellen mellom annuitetsloan og serieloan?">
+                            <div class="welcome-card-icon">&#10067;</div>
+                            <h3>Bankfaglege sporsmol</h3>
+                            <p>Svar pa sporsmol om bankprodukt og regelverk</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typing indicator -->
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="message-avatar assistant">SN</div>
+                <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <!-- Input area -->
+            <div class="chat-input-area">
+                <div class="chat-input-wrapper">
+                    <textarea
+                        class="chat-input"
+                        id="chatInput"
+                        placeholder="Still eit sporsmol..."
+                        rows="1"
+                    ></textarea>
+                    <button class="send-button" id="sendButton" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="chat-disclaimer">
+                    Sparebanken-Assistenten er eit KI-verktoy. Kontroller alltid viktig informasjon mot originalkjelda.
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+    (function() {
+        'use strict';
+
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const typingIndicator = document.getElementById('typingIndicator');
+
+        const SENSITIVE_PATTERNS = [
+            /\b\d{11}\b/,
+            /\b\d{4}\s?\d{2}\s?\d{5}\b/,
+            /fodselsnummer/i,
+            /personnummer/i,
+            /kontonummer/i,
+            /\bsaldo\b/i,
+            /kredittkort.*nummer/i,
+            /passord/i,
+            /pin-?kode/i,
+            /lanesoknad.*kunde/i,
+            /kundedata/i
+        ];
+
+        const PRIVACY_RESPONSE = 'Som intern KI-assistent kan eg ikkje behandle sensitive personopplysningar eller spesifikke kundedata av omsyn til personvern og bankloyndom.';
+
+        const RESPONSES = {
+            'ferie': {
+                text: '<p><strong>Ferie og avspasering (HR-handbok, kap. 4)</strong></p><p>I folge var interne HR-handbok gjeld folgjande hovudreglar:</p><ul><li><strong>Feriedagar:</strong> Alle tilsette har rett pa 25 virkedagar ferie per kalenderor (5 veker). Tilsette over 60 or har rett pa ei ekstra veke.</li><li><strong>Hovudferie:</strong> Minimum 3 samanhengjande veker skal normalt takast i perioden 1. juni til 30. september. Unntak krev godkjenning fra nermaste leiar.</li><li><strong>Avspasering:</strong> Opparbeida fleksitid kan avspaserast etter avtale med leiar. Maks overforeleg saldo er 40 timar per kvartal.</li><li><strong>Frist for ferieonsker:</strong> Ferieonsker for sommaren skal leverast innan 1. mars kvart or.</li></ul>',
+                source: 'HR-handbok, kapittel 4.2 - Ferie og fraveer'
+            },
+            'kvitvasking': {
+                text: '<p><strong>Oppsummering: Ny kvitvaskingsrutine (2026)</strong></p><p>Dei viktigaste endringane i den oppdaterte rutinen:</p><ol><li><strong>Forsterka kundeidentifikasjon:</strong> Alle kundar i hogrisikogrupper skal gjennomga utvida kundekontroll med oppdatert dokumentasjon minimum kvar 12. monad (ned fra 24).</li><li><strong>Transaksjonsovervaaking:</strong> Ny terskelverdi for automatisk varsling er sett til kr 80 000 for enkelttransaksjonar (ned fra kr 100 000).</li><li><strong>Rapporteringsplikt:</strong> Mistanke om kvitvasking skal rapporterast til Compliance-avdelinga innan same virkedag. Bruk det nye digitale skjemaet i intranett.</li><li><strong>Opplaering:</strong> Alle tilsette i kundevendte stillingar skal gjennomfore oppdatert e-laeringskurs innan Q2 2026.</li></ol>',
+                source: 'Compliance-handbok, rutine 2.3.1 - Antikvitvask (oppdatert jan. 2026)'
+            },
+            'e-post': {
+                text: '<p><strong>Utkast: E-post om kompetansehevingsplan Q3</strong></p><p>Emne: Kompetansehevingsplan Q3 2026 - Informasjon og paamelding</p><p>Kjere kollegaer,</p><p>Vi er glade for a informere om at kompetansehevingsplanen for Q3 2026 no er klar. Planen inkluderer bade faglege kurs og meir generelle utviklingsaktivitetar.</p><p><strong>Hovudpunkt:</strong></p><ul><li>Nytt e-laeringskurs i berekraftig finans (obligatorisk for alle radgivarar)</li><li>Workshop i kundehandtering og relasjonsbygging (valfritt, avgrensa plassar)</li><li>Fagdag om nye regulatoriske krav - 14. august</li></ul><p>Paamelding skjer via Kompetanseportalen innan 15. juli. Ta kontakt med din nermaste leiar eller HR-avdelinga ved sporsmol.</p><p>Med venleg helsing,<br>[Ditt namn]<br>[Avdeling]</p>',
+                source: null
+            },
+            'annuitet': {
+                text: '<p><strong>Annuitetslon vs. serielon</strong></p><p>Dette er to ulike avdragsmodellar for nedbetaling av lon:</p><p><strong>Annuitetslon:</strong></p><ul><li>Terminbelopet (avdrag + renter) er likt kvar termin gjennom heile loneperioden.</li><li>I starten gor ein stor del av terminbelopet til renter, medan avdragsdelen aukar over tid.</li><li>Gir forutsigbare, like moanadlege utgifter.</li><li>Totalt betalar lontokar meir i renter samanlikna med serielon.</li></ul><p><strong>Serielon:</strong></p><ul><li>Avdraga er like store kvar termin, men terminbelopet minkar over tid ettersom rentedelen vert mindre.</li><li>Hogare terminar i starten, lagers mot slutten.</li><li>Totalt betalar lontokar mindre i renter samanlikna med annuitetslon.</li></ul><p>Val av lonetype avheng av lontokar sin okonomi og preferansar. Vi tilrader alltid ei individuell vurdering.</p>',
+                source: 'Kreditthandbok, kap. 3.1 - Loneprodukt og avdragsmodellar'
+            },
+            'default': {
+                text: '<p>Eg finn diverre ikkje spesifikk informasjon om dette i vare interne handboker. Vennlegst sjekk det interne intranettet eller radfar deg med ein kollega pa den aktuelle fagavdelinga.</p><p>Kan eg hjelpe deg med noko anna?</p>',
+                source: null
+            }
+        };
+
+        function containsSensitiveData(text) {
+            return SENSITIVE_PATTERNS.some(pattern => pattern.test(text));
+        }
+
+        function matchResponse(text) {
+            const lower = text.toLowerCase();
+            if (/ferie|avspasering|permisjon|fraveer/.test(lower)) return RESPONSES['ferie'];
+            if (/kvitvasking|antikvitvask|hvitvask/.test(lower)) return RESPONSES['kvitvasking'];
+            if (/e-post|epost|e-brev|utkast.*mail|skriv.*melding/.test(lower)) return RESPONSES['e-post'];
+            if (/annuitet|seriel[ao]n|avdragsmodell|l[ao]netype/.test(lower)) return RESPONSES['annuitet'];
+            return RESPONSES['default'];
+        }
+
+        function formatTime() {
+            const now = new Date();
+            return now.toLocaleTimeString('no-NO', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function createMessage(content, isUser, source) {
+            const msg = document.createElement('div');
+            msg.className = 'message';
+
+            let sourceHtml = '';
+            if (source) {
+                sourceHtml = `<div class="source-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> ${source}</div>`;
+            }
+
+            if (isUser) {
+                msg.innerHTML = `
+                    <div class="message-avatar user">DU</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-name">Du</span>
+                            <span class="message-time">${formatTime()}</span>
+                        </div>
+                        <div class="message-body"><p>${escapeHtml(content)}</p></div>
+                    </div>`;
+            } else {
+                msg.innerHTML = `
+                    <div class="message-avatar assistant">SN</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-name">Sparebanken-Assistenten</span>
+                            <span class="message-time">${formatTime()}</span>
+                        </div>
+                        <div class="message-body">${content}</div>
+                        ${sourceHtml}
+                    </div>`;
+            }
+
+            return msg;
+        }
+
+        function createPrivacyNotice() {
+            const msg = document.createElement('div');
+            msg.className = 'message';
+            msg.innerHTML = `
+                <div class="message-avatar assistant">SN</div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="message-name">Sparebanken-Assistenten</span>
+                        <span class="message-time">${formatTime()}</span>
+                    </div>
+                    <div class="message-body">
+                        <div class="privacy-notice">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <span>${PRIVACY_RESPONSE}</span>
+                        </div>
+                    </div>
+                </div>`;
+            return msg;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTyping() {
+            typingIndicator.classList.add('visible');
+            scrollToBottom();
+        }
+
+        function hideTyping() {
+            typingIndicator.classList.remove('visible');
+        }
+
+        function sendMessage(text) {
+            if (!text.trim()) return;
+
+            if (welcomeScreen) {
+                welcomeScreen.style.display = 'none';
+            }
+
+            chatMessages.appendChild(createMessage(text, true));
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+            sendButton.disabled = true;
+            scrollToBottom();
+
+            showTyping();
+
+            const delay = 800 + Math.random() * 1200;
+
+            setTimeout(function() {
+                hideTyping();
+
+                if (containsSensitiveData(text)) {
+                    chatMessages.appendChild(createPrivacyNotice());
+                } else {
+                    const response = matchResponse(text);
+                    chatMessages.appendChild(createMessage(response.text, false, response.source));
+                }
+
+                scrollToBottom();
+            }, delay);
+        }
+
+        // Event listeners
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+            sendButton.disabled = !this.value.trim();
+        });
+
+        chatInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                if (this.value.trim()) {
+                    sendMessage(this.value);
+                }
+            }
+        });
+
+        sendButton.addEventListener('click', function() {
+            if (chatInput.value.trim()) {
+                sendMessage(chatInput.value);
+            }
+        });
+
+        // Welcome card clicks
+        document.querySelectorAll('.welcome-card').forEach(function(card) {
+            card.addEventListener('click', function() {
+                var prompt = this.getAttribute('data-prompt');
+                if (prompt) {
+                    sendMessage(prompt);
+                }
+            });
+        });
+
+        // Sidebar items (visual toggle)
+        document.querySelectorAll('.sidebar-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-item').forEach(function(i) {
+                    i.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        chatInput.focus();
+    })();
+    </script>
+</body>
+</html>
