@@ -3,224 +3,440 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>AI Daily — arkiv</title>
+<title>AI Nyheter — Abstinensa</title>
+<meta name="description" content="Daglige AI-nyheter og oppdateringer fra Abstinensa. Hold deg oppdatert på det siste innen kunstig intelligens.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    color-scheme: light dark;
-    --bg: #fdfdfb;
-    --fg: #1a1a1a;
-    --muted: #5a5a5a;
-    --accent: #6b3d2e;
-    --rule: #d8d4cc;
-    --card: #f4f1ec;
+    --ink: #1a1a2e;
+    --cream: #f8f6f1;
+    --warm: #e8e4dc;
+    --accent: #c4593e;
+    --accent-light: #e8967f;
+    --muted: #6b6b7b;
+    --slate: #3d3d50;
+    --gold: #b8944f;
+    --gold-light: #d4bb7c;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14130f;
-      --fg: #ece8df;
-      --muted: #9a948a;
-      --accent: #e0a58a;
-      --rule: #2c2a25;
-      --card: #1c1a16;
-    }
-  }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.55;
-    font-size: 17px;
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
   }
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 48px 24px 96px;
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
   }
-  header {
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 16px;
-    margin-bottom: 32px;
+
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(248, 246, 241, 0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(26, 26, 46, 0.06);
   }
-  header h1 {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 0 0 4px;
-    color: var(--muted);
-  }
-  header p {
-    font-size: 28px;
-    font-weight: 700;
-    margin: 0;
-  }
-  ul.entries { list-style: none; padding: 0; margin: 0; }
-  ul.entries li {
-    border-bottom: 1px solid var(--rule);
-    padding: 16px 0;
-  }
-  ul.entries time {
-    display: block;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-  }
-  ul.entries h2 {
-    font-size: 16px;
-    margin: 4px 0 6px;
-    font-weight: 600;
-  }
-  ul.entries h2 a {
-    color: var(--fg);
+  .top-bar a {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px solid var(--rule);
   }
-  ul.entries h2 a:hover { border-bottom-color: var(--accent); }
-  ul.entries p { margin: 0; color: var(--muted); font-size: 15px; }
+  .top-bar .back {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.3s;
+  }
+  .top-bar .back:hover { color: var(--accent); }
+
+  .hero-section {
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+  }
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(196, 89, 62, 0.05) 0%, rgba(184, 148, 79, 0.03) 40%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-section .label {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero-section .label::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+  }
+  .hero-section h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .hero-section p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .hero-section .feed-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.3s;
+  }
+  .hero-section .feed-link:hover { color: var(--accent); }
+
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 40px 96px;
+  }
+
+  .entries {
+    list-style: none;
+    display: grid;
+    gap: 16px;
+  }
+  .entry {
+    display: block;
+    padding: 28px 32px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(26, 26, 46, 0.06);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .entry:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(196, 89, 62, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+  }
+  .entry time {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .entry h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .entry .arrow {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    opacity: 0;
+  }
+  .entry:hover .arrow {
+    opacity: 1;
+    transform: translateY(-50%) translateX(4px);
+    color: var(--accent);
+  }
+
   footer {
-    margin-top: 48px;
-    padding-top: 16px;
-    border-top: 1px solid var(--rule);
-    font-size: 13px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+    text-align: center;
+    font-size: 0.8rem;
     color: var(--muted);
   }
-  footer a { color: var(--muted); }
+  footer a { color: var(--gold); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .top-bar { padding: 14px 20px; }
+    .hero-section { padding: 60px 20px 40px; }
+    main { padding: 0 20px 60px; }
+    .entry { padding: 20px 24px; }
+    footer { padding: 0 20px 40px; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>Abstinensa</h1>
-    <p>AI Daily — arkiv</p>
-  </header>
 
+<div class="top-bar">
+  <a href="/">Stine Egeli Ovrebø</a>
+  <a href="/" class="back">← Tilbake</a>
+</div>
+
+<div class="hero-section">
+  <span class="label">Daglige oppdateringer</span>
+  <h1>AI Nyheter</h1>
+  <p>Hold deg oppdatert på det siste innen kunstig intelligens. Daglige sammendrag av de viktigste AI-nyhetene.</p>
+  <a href="feed.xml" class="feed-link">&#9679; RSS-feed</a>
+</div>
+
+<main>
   <ul class="entries">
     <li>
-      <time datetime="2026-06-28">2026-06-28</time>
-      <h2><a href="2026/06/28.html">AI Daily — 2026-06-28</a></h2>
+      <a href="2026/06/28.html" class="entry">
+        <time datetime="2026-06-28">28. juni 2026</time>
+        <h2>AI Daily — 28. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-27">2026-06-27</time>
-      <h2><a href="2026/06/27.html">AI Daily — 2026-06-27</a></h2>
+      <a href="2026/06/27.html" class="entry">
+        <time datetime="2026-06-27">27. juni 2026</time>
+        <h2>AI Daily — 27. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-26">2026-06-26</time>
-      <h2><a href="2026/06/26.html">AI Daily — 2026-06-26</a></h2>
+      <a href="2026/06/26.html" class="entry">
+        <time datetime="2026-06-26">26. juni 2026</time>
+        <h2>AI Daily — 26. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-25">2026-06-25</time>
-      <h2><a href="2026/06/25.html">AI Daily — 2026-06-25</a></h2>
+      <a href="2026/06/25.html" class="entry">
+        <time datetime="2026-06-25">25. juni 2026</time>
+        <h2>AI Daily — 25. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-24">2026-06-24</time>
-      <h2><a href="2026/06/24.html">AI Daily — 2026-06-24</a></h2>
+      <a href="2026/06/24.html" class="entry">
+        <time datetime="2026-06-24">24. juni 2026</time>
+        <h2>AI Daily — 24. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-23">2026-06-23</time>
-      <h2><a href="2026/06/23.html">AI Daily — 2026-06-23</a></h2>
+      <a href="2026/06/23.html" class="entry">
+        <time datetime="2026-06-23">23. juni 2026</time>
+        <h2>AI Daily — 23. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-22">2026-06-22</time>
-      <h2><a href="2026/06/22.html">AI Daily — 2026-06-22</a></h2>
+      <a href="2026/06/22.html" class="entry">
+        <time datetime="2026-06-22">22. juni 2026</time>
+        <h2>AI Daily — 22. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-21">2026-06-21</time>
-      <h2><a href="2026/06/21.html">AI Daily — 2026-06-21</a></h2>
+      <a href="2026/06/21.html" class="entry">
+        <time datetime="2026-06-21">21. juni 2026</time>
+        <h2>AI Daily — 21. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-20">2026-06-20</time>
-      <h2><a href="2026/06/20.html">AI Daily — 2026-06-20</a></h2>
+      <a href="2026/06/20.html" class="entry">
+        <time datetime="2026-06-20">20. juni 2026</time>
+        <h2>AI Daily — 20. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-19">2026-06-19</time>
-      <h2><a href="2026/06/19.html">AI Daily — 2026-06-19</a></h2>
+      <a href="2026/06/19.html" class="entry">
+        <time datetime="2026-06-19">19. juni 2026</time>
+        <h2>AI Daily — 19. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-18">2026-06-18</time>
-      <h2><a href="2026/06/18.html">AI Daily — 2026-06-18</a></h2>
+      <a href="2026/06/18.html" class="entry">
+        <time datetime="2026-06-18">18. juni 2026</time>
+        <h2>AI Daily — 18. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-17">2026-06-17</time>
-      <h2><a href="2026/06/17.html">AI Daily — 2026-06-17</a></h2>
+      <a href="2026/06/17.html" class="entry">
+        <time datetime="2026-06-17">17. juni 2026</time>
+        <h2>AI Daily — 17. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-16">2026-06-16</time>
-      <h2><a href="2026/06/16.html">AI Daily — 2026-06-16</a></h2>
+      <a href="2026/06/16.html" class="entry">
+        <time datetime="2026-06-16">16. juni 2026</time>
+        <h2>AI Daily — 16. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-15">2026-06-15</time>
-      <h2><a href="2026/06/15.html">AI Daily — 2026-06-15</a></h2>
+      <a href="2026/06/15.html" class="entry">
+        <time datetime="2026-06-15">15. juni 2026</time>
+        <h2>AI Daily — 15. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-14">2026-06-14</time>
-      <h2><a href="2026/06/14.html">AI Daily — 2026-06-14</a></h2>
+      <a href="2026/06/14.html" class="entry">
+        <time datetime="2026-06-14">14. juni 2026</time>
+        <h2>AI Daily — 14. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-13">2026-06-13</time>
-      <h2><a href="2026/06/13.html">AI Daily — 2026-06-13</a></h2>
+      <a href="2026/06/13.html" class="entry">
+        <time datetime="2026-06-13">13. juni 2026</time>
+        <h2>AI Daily — 13. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-12">2026-06-12</time>
-      <h2><a href="2026/06/12.html">AI Daily — 2026-06-12</a></h2>
+      <a href="2026/06/12.html" class="entry">
+        <time datetime="2026-06-12">12. juni 2026</time>
+        <h2>AI Daily — 12. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-11">2026-06-11</time>
-      <h2><a href="2026/06/11.html">AI Daily — 2026-06-11</a></h2>
+      <a href="2026/06/11.html" class="entry">
+        <time datetime="2026-06-11">11. juni 2026</time>
+        <h2>AI Daily — 11. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-10">2026-06-10</time>
-      <h2><a href="2026/06/10.html">AI Daily — 2026-06-10</a></h2>
+      <a href="2026/06/10.html" class="entry">
+        <time datetime="2026-06-10">10. juni 2026</time>
+        <h2>AI Daily — 10. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-09">2026-06-09</time>
-      <h2><a href="2026/06/09.html">AI Daily — 2026-06-09</a></h2>
+      <a href="2026/06/09.html" class="entry">
+        <time datetime="2026-06-09">9. juni 2026</time>
+        <h2>AI Daily — 9. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-08">2026-06-08</time>
-      <h2><a href="2026/06/08.html">AI Daily — 2026-06-08</a></h2>
+      <a href="2026/06/08.html" class="entry">
+        <time datetime="2026-06-08">8. juni 2026</time>
+        <h2>AI Daily — 8. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-07">2026-06-07</time>
-      <h2><a href="2026/06/07.html">AI Daily — 2026-06-07</a></h2>
+      <a href="2026/06/07.html" class="entry">
+        <time datetime="2026-06-07">7. juni 2026</time>
+        <h2>AI Daily — 7. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-06">2026-06-06</time>
-      <h2><a href="2026/06/06.html">AI Daily — 2026-06-06</a></h2>
+      <a href="2026/06/06.html" class="entry">
+        <time datetime="2026-06-06">6. juni 2026</time>
+        <h2>AI Daily — 6. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-05">2026-06-05</time>
-      <h2><a href="2026/06/05.html">AI Daily — 2026-06-05</a></h2>
+      <a href="2026/06/05.html" class="entry">
+        <time datetime="2026-06-05">5. juni 2026</time>
+        <h2>AI Daily — 5. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-04">2026-06-04</time>
-      <h2><a href="2026/06/04.html">AI Daily — 2026-06-04</a></h2>
+      <a href="2026/06/04.html" class="entry">
+        <time datetime="2026-06-04">4. juni 2026</time>
+        <h2>AI Daily — 4. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-03">2026-06-03</time>
-      <h2><a href="2026/06/03.html">AI Daily — 2026-06-03</a></h2>
+      <a href="2026/06/03.html" class="entry">
+        <time datetime="2026-06-03">3. juni 2026</time>
+        <h2>AI Daily — 3. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-02">2026-06-02</time>
-      <h2><a href="2026/06/02.html">AI Daily — 2026-06-02</a></h2>
+      <a href="2026/06/02.html" class="entry">
+        <time datetime="2026-06-02">2. juni 2026</time>
+        <h2>AI Daily — 2. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-06-01">2026-06-01</time>
-      <h2><a href="2026/06/01.html">AI Daily — 2026-06-01</a></h2>
+      <a href="2026/06/01.html" class="entry">
+        <time datetime="2026-06-01">1. juni 2026</time>
+        <h2>AI Daily — 1. juni</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-05-31">2026-05-31</time>
-      <h2><a href="2026/05/31.html">AI Daily — 2026-05-31</a></h2>
+      <a href="2026/05/31.html" class="entry">
+        <time datetime="2026-05-31">31. mai 2026</time>
+        <h2>AI Daily — 31. mai</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
     <li>
-      <time datetime="2026-05-30">2026-05-30</time>
-      <h2><a href="2026/05/30.html">AI Daily — 2026-05-30</a></h2>
+      <a href="2026/05/30.html" class="entry">
+        <time datetime="2026-05-30">30. mai 2026</time>
+        <h2>AI Daily — 30. mai</h2>
+        <span class="arrow">→</span>
+      </a>
     </li>
   </ul>
-
-  <footer>
-    <a href="feed.xml">Atom-feed</a> ·
-    <a href="https://github.com/abstinensa/abstinansa">Repo</a>
-  </footer>
 </main>
+
+<footer>
+  <a href="feed.xml">RSS-feed</a> · <a href="/">Tilbake til hovedsiden</a>
+</footer>
+
 </body>
 </html>
