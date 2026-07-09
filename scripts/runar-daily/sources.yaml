@@ -1,0 +1,46 @@
+regions:
+
+  fotball:
+    label: "Fotball — Man United, Premier League & VM"
+    max_age_hours: 72
+    sources:
+      - { name: "BBC Sport — Man Utd", url: "https://feeds.bbci.co.uk/sport/football/teams/manchester-united/rss.xml", tier: 1 }
+      - { name: "The Guardian — Man Utd", url: "https://www.theguardian.com/football/manchester-united/rss", tier: 1 }
+      - { name: "BBC Sport — Football", url: "https://feeds.bbci.co.uk/sport/football/rss.xml", tier: 2 }
+      - { name: "The Guardian — Football", url: "https://www.theguardian.com/football/rss", tier: 2 }
+      - { name: "BBC Sport — VM/World Cup", url: "https://feeds.bbci.co.uk/sport/football/world-cup/rss.xml", tier: 1 }
+      - { name: "The Guardian — World Cup", url: "https://www.theguardian.com/football/world-cup-2026/rss", tier: 1 }
+      - { name: "Sky Sports — Premier League", url: "https://www.skysports.com/rss/12040", tier: 3 }
+      - { name: "FIFA — Nyheter", url: "https://www.fifa.com/rss-feeds/news", tier: 3 }
+
+  stord:
+    label: "Stord & nærområdet"
+    max_age_hours: 240
+    sources:
+      - { name: "Sunnhordland", url: "https://www.sunnhordland.no/rss", tier: 1 }
+      - { name: "Sunnhordland (alt)", url: "https://www.sunnhordland.no/rss.xml", tier: 1 }
+      - { name: "NRK Vestland", url: "https://www.nrk.no/vestland/toppsaker.rss", tier: 1, filter_keywords: ["Stord", "Sunnhordland", "Leirvik", "Fitjar", "Bømlo", "Tysnes"] }
+      - { name: "Stord kommune", url: "https://www.stord.kommune.no/rss", tier: 2 }
+
+  norge_europa:
+    label: "Norge & Europa"
+    max_age_hours: 48
+    sources:
+      - { name: "NRK — Norge", url: "https://www.nrk.no/norge/toppsaker.rss", tier: 1 }
+      - { name: "NRK — Utenriks", url: "https://www.nrk.no/urix/toppsaker.rss", tier: 1 }
+      - { name: "BBC News — World", url: "https://feeds.bbci.co.uk/news/world/rss.xml", tier: 2 }
+      - { name: "BBC News — Europe", url: "https://feeds.bbci.co.uk/news/world/europe/rss.xml", tier: 2 }
+
+  bank:
+    label: "Bank & finans"
+    max_age_hours: 168
+    sources:
+      - { name: "Norges Bank", url: "https://www.norges-bank.no/rss/", tier: 1 }
+      - { name: "Finanstilsynet", url: "https://www.finanstilsynet.no/rss/nyheter/", tier: 1 }
+      - { name: "E24", url: "https://e24.no/rss", tier: 1 }
+      - { name: "ECB", url: "https://www.ecb.europa.eu/rss/press.html", tier: 2 }
+      - { name: "BIS", url: "https://www.bis.org/list/pressreleases/rss.xml", tier: 2 }
+
+exclude_keywords:
+  - "AI girlfriend"
+  - "celebrity deepfake"
