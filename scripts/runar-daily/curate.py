@@ -14,7 +14,7 @@ SUMMARY_MAX_CHARS = 280
 
 REGION_ORDER = ["fotball", "stord", "norge_europa", "bank"]
 REGION_LABELS = {
-    "fotball": "Fotball — Man United, Premier League & VM",
+    "fotball": "Fotball — Man City, Premier League & VM",
     "stord": "Stord & nærområdet",
     "norge_europa": "Norge & Europa",
     "bank": "Bank & finans",

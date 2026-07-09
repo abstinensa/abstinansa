@@ -10,8 +10,8 @@
     --bg: #f6f4f1;
     --fg: #17130f;
     --muted: #6b6058;
-    --red: #DA291C;
-    --red-dark: #8c1710;
+    --sky: #6CABDD;
+    --sky-dark: #1C2C5B;
     --rule: #ddd5cb;
     --card: #ffffff;
     --pitch: #1c6b3a;
@@ -21,8 +21,8 @@
       --bg: #121110;
       --fg: #f1ece5;
       --muted: #a89e93;
-      --red: #ff4433;
-      --red-dark: #ffb3ab;
+      --sky: #7fc4ff;
+      --sky-dark: #9fb8ff;
       --rule: #322c26;
       --card: #1b1917;
       --pitch: #123d24;
@@ -37,7 +37,7 @@
   main { max-width: 720px; margin: 0 auto; padding: 40px 20px 96px; }
 
   header {
-    background: var(--red);
+    background: var(--sky);
     color: white;
     margin: -40px -20px 32px;
     padding: 32px 20px 40px;
@@ -62,7 +62,7 @@
     font-size: 13px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--sky-dark);
     border-bottom: 2px solid var(--rule);
     padding-bottom: 8px;
     margin: 0 0 18px;
@@ -77,7 +77,7 @@
   }
   article.item h3 { font-size: 17px; margin: 0 0 4px; line-height: 1.35; }
   article.item h3 a { color: var(--fg); text-decoration: none; }
-  article.item h3 a:hover { color: var(--red); }
+  article.item h3 a:hover { color: var(--sky-dark); }
   article.item .meta { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
   article.item p { margin: 4px 0 0; font-size: 15px; }
   .empty { color: var(--muted); font-style: italic; }
@@ -137,7 +137,7 @@
   .zone:disabled, .zone.disabled { cursor: not-allowed; opacity: 0.6; transform: none; }
   .zone.keeper { background: rgba(0,0,0,0.35); }
   .zone.goal-scored { background: rgba(76,175,80,0.55); border-color: #4CAF50; }
-  .zone.saved { background: rgba(239,83,80,0.55); border-color: #EF5350; }
+  .zone.saved { background: rgba(28,44,91,0.55); border-color: var(--sky-dark); }
 
   #game-status {
     min-height: 1.6rem;
@@ -146,7 +146,7 @@
   }
   #game-score { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
   #game-restart {
-    background: var(--red);
+    background: var(--sky-dark);
     color: white;
     border: none;
     border-radius: 50px;
@@ -171,13 +171,13 @@
 <body>
 <main>
   <header>
-    <div class="badge">🔴⚽</div>
+    <div class="badge">💙⚽</div>
     <h1>Runar Daily</h1>
     <time datetime="2026-07-09">2026-07-09</time>
   </header>
 
   <section class="region">
-    <h2>Fotball — Man United, Premier League &amp; VM</h2>
+    <h2>Fotball — Man City, Premier League &amp; VM</h2>
       <p class="empty">Ingenting nytt akkurat nå — sjekk igjen i morgen.</p>
   </section>
   <section class="region">
@@ -205,7 +205,7 @@
   </section>
 
   <footer>
-    Generert 2026-07-09 08:00 UTC ·
+    Generert 2026-07-09 09:13 UTC ·
     <a href="https://github.com/abstinensa/abstinansa/blob/main/scripts/runar-daily/sources.yaml">Kildeliste</a>
   </footer>
 </main>
@@ -290,7 +290,7 @@
   function finishGame() {
     let verdict;
     if (scored === 5) verdict = 'PERFEKT! 5/5 — du er klar for VM, Runar! 🏆';
-    else if (scored >= 3) verdict = `Solid! ${scored}/5 — Man United trenger deg. 🔴`;
+    else if (scored >= 3) verdict = `Solid! ${scored}/5 — Man City trenger deg. 💙`;
     else verdict = `${scored}/5 — litt trening i bakhagen, så tar vi revansje. ⚽`;
     statusEl.textContent = verdict;
     setZonesDisabled(true);

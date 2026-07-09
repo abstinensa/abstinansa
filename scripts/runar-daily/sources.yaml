@@ -1,11 +1,11 @@
 regions:
 
   fotball:
-    label: "Fotball — Man United, Premier League & VM"
+    label: "Fotball — Man City, Premier League & VM"
     max_age_hours: 72
     sources:
-      - { name: "BBC Sport — Man Utd", url: "https://feeds.bbci.co.uk/sport/football/teams/manchester-united/rss.xml", tier: 1 }
-      - { name: "The Guardian — Man Utd", url: "https://www.theguardian.com/football/manchester-united/rss", tier: 1 }
+      - { name: "BBC Sport — Man City", url: "https://feeds.bbci.co.uk/sport/football/teams/manchester-city/rss.xml", tier: 1 }
+      - { name: "The Guardian — Man City", url: "https://www.theguardian.com/football/manchestercity/rss", tier: 1 }
       - { name: "BBC Sport — Football", url: "https://feeds.bbci.co.uk/sport/football/rss.xml", tier: 2 }
       - { name: "The Guardian — Football", url: "https://www.theguardian.com/football/rss", tier: 2 }
       - { name: "BBC Sport — VM/World Cup", url: "https://feeds.bbci.co.uk/sport/football/world-cup/rss.xml", tier: 1 }
