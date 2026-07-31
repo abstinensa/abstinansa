@@ -4,7 +4,13 @@
   <link href="https://abstinensa.no/ai-daily/feed.xml" rel="self"/>
   <link href="https://abstinensa.no/ai-daily/"/>
   <id>https://abstinensa.no/ai-daily/</id>
-  <updated>2026-07-30T06:30:00Z</updated>
+  <updated>2026-07-31T06:30:00Z</updated>
+  <entry>
+    <title>AI Daily — 2026-07-31</title>
+    <link href="https://abstinensa.no/ai-daily/2026/07/31.html"/>
+    <id>https://abstinensa.no/ai-daily/2026/07/31.html</id>
+    <updated>2026-07-31T06:30:00Z</updated>
+  </entry>
   <entry>
     <title>AI Daily — 2026-07-30</title>
     <link href="https://abstinensa.no/ai-daily/2026/07/30.html"/>
@@ -178,11 +184,5 @@
     <link href="https://abstinensa.no/ai-daily/2026/07/02.html"/>
     <id>https://abstinensa.no/ai-daily/2026/07/02.html</id>
     <updated>2026-07-02T06:30:00Z</updated>
-  </entry>
-  <entry>
-    <title>AI Daily — 2026-07-01</title>
-    <link href="https://abstinensa.no/ai-daily/2026/07/01.html"/>
-    <id>https://abstinensa.no/ai-daily/2026/07/01.html</id>
-    <updated>2026-07-01T06:30:00Z</updated>
   </entry>
 </feed>
