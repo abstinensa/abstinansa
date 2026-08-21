@@ -1,0 +1,18 @@
+{
+  // Config for the "ilyas" Cloudflare Workers project (Workers Builds is
+  // connected to this repo via Cloudflare's dashboard Git integration).
+  // This file never existed before, which is why every build for this
+  // project has been failing — Workers Builds had no wrangler config to
+  // find at the repo root.
+  //
+  // Serves ilyas-site/ (a copy of ilyas.html as index.html) as a static
+  // asset Worker — no server-side script needed. ilyas.html at the repo
+  // root is untouched and keeps working as-is on abstinensa.no via
+  // GitHub Pages; this is a separate, independent deployment target.
+  "name": "ilyas",
+  "compatibility_date": "2026-08-21",
+  "assets": {
+    "directory": "./ilyas-site",
+    "not_found_handling": "404-page"
+  }
+}
