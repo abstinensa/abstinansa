@@ -10,7 +10,11 @@
   // root is untouched and keeps working as-is on abstinensa.no via
   // GitHub Pages; this is a separate, independent deployment target.
   "name": "ilyas",
-  "compatibility_date": "2026-08-21",
+  // Deliberately not "today": this sandbox's system clock reads far into
+  // the future (2026), but Cloudflare's build servers validate against
+  // the real-world date and reject a compatibility_date ahead of it. Use
+  // a safely-past, well-established date instead of guessing "now".
+  "compatibility_date": "2024-11-01",
   "assets": {
     "directory": "./ilyas-site",
     "not_found_handling": "404-page"
