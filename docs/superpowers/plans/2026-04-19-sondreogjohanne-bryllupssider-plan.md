@@ -1,5 +1,23 @@
 # Sondre & Johanne Bryllupssider — Implementation Plan
 
+> **⚠️ SUPERSEDED — sikkerheitsmerknad (2026-08-21):** Den faktiske
+> implementeringa endte opp med å bruke ein rein `localStorage`-basert
+> datalagring (`sondreogjohanne/store.js`) i staden for Firebase Firestore
+> som denne planen beskriv. **Ikkje følg Phase 2–3 i denne planen som dei
+> står** — dei set opp Firestore med reglane `allow read, write: if true`,
+> altså ei delt database heilt utan tilgangskontroll. Sidan
+> Firebase-konfigurasjonen (`firebase-config.js`) uansett må liggje
+> offentleg i frontend-koden, betyr opne reglar at kven som helst kan lese
+> og skrive *all* gjestedata (namn, telefon, e-post, allergiar, budsjett)
+> direkte via Firebase sitt SDK — heilt utanom sidepassordet, som uansett
+> berre er ein "soft gate" (sjå merknaden i Task 5). Passordet på sidene er
+> no elles bytta ut med ekte kryptering av innhaldet, sjå
+> `sondreogjohanne/crypto-lock.js` og `sondreogjohanne/README.md`.
+>
+> Viss Firestore skal takast i bruk seinare: bruk ekte reglar (Firebase
+> Auth + `request.auth != null`, eller minst eit hemmeleg
+> dokument-sjekka "passord" i reglane), ikkje `if true`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Byggje ei passordbeskytta bryllupsside `/sondreogjohanne/` med gåveliste og ein planleggar-app `/sondreogjohanne/planlegger/` med åtte modular, alt med delt data via Firebase Firestore, på toppen av det eksisterande `abstinansa/`-repoet som deployer til `abstinensa.no` via GitHub Pages.
