@@ -9,54 +9,25 @@
   <style>main { display: none; }</style>
 </head>
 <body>
-  <main class="container">
-    <section class="section" style="text-align:center;padding-top:60px">
-      <h1>Sondre &amp; Johanne</h1>
-      <p style="font-size:1.1rem;color:var(--muted)">skal gifte seg — <em>TBC</em></p>
-    </section>
-
-    <section class="section">
-      <h2>Når &amp; kor</h2>
-      <div class="card"><strong>Dato:</strong> TBC</div>
-      <div class="card"><strong>Vigsel:</strong> TBC</div>
-      <div class="card"><strong>Festlokale:</strong> TBC</div>
-    </section>
-
-    <section class="section">
-      <h2>Program for dagen</h2>
-      <div id="program-list"><p><em>Kjem snart.</em></p></div>
-    </section>
-
-    <section class="section">
-      <h2>Dresscode</h2>
-      <div class="card"><em>TBC</em></div>
-    </section>
-
-    <section class="section">
-      <h2>Overnatting &amp; reise</h2>
-      <div class="card"><em>TBC — hotell, parkering, kollektiv.</em></div>
-    </section>
-
-    <section class="section">
-      <h2>Gåveliste</h2>
-      <div id="gaveliste-container"><p><em>Kjem snart.</em></p></div>
-    </section>
-
-    <section class="section">
-      <h2>Kontakt</h2>
-      <div class="card"><em>TBC — kontaktinfo til forlovarar.</em></div>
-    </section>
-
-    <section class="section" style="text-align:center;padding:40px 0">
-      <a href="planlegger/" style="font-size:0.85rem;color:var(--muted)">Planleggar</a>
-    </section>
-  </main>
+  <main class="container" id="content"></main>
 
   <script type="module">
-    import { requirePassword } from './auth.js';
-    if (requirePassword({ key: 'bryllup', correct: 'bryllup' })) {
-      document.querySelector('main').style.display = 'block';
-    }
+    import { unlock } from './crypto-lock.js';
+
+    // Generert av `node tools/encrypt.mjs bryllup <fil>` — sjå README.md
+    // for korleis regenerere denne når innhaldet eller passordet endrar seg.
+    const payload = {
+      "salt": "BdOPBsLM7FJdlrccdK+/lw==",
+      "iv": "2lOT2LyLFFT5p6n/",
+      "ciphertext": "9VB0lzHExY8AxIA2FPhqhVSVcudvJB7tc78xqDTSwdqD28In6XrhPk81DpxtXqeaf9T+qsBlyxRGAeeCK86xXLX7woeLNjF11HH3Xu3EK1bFDHe4KvK6StSBooqIbzTgD61/3EK86WkD8Yx5m147g9F8sjxN34LB71EQ7xc/P3pfvR/TwvreGEiIn6FcEtDVQrLkCGKm8bGalYAShpOr6I2PYHb2rhZsqevOc2mzD2GNZ+3aPi9YiEmyzZVT2h3CGVzrI3RPYJ1FRLO7nvlO2B0gPIYZkp3CrVHiZbXwqr/KNbeQP0DTSvIqM1D4oS9sQRhnNSEqukeA6U/JnF7wphjaRtRQLNAN2DUCAOQsy0suqiIh7RmvWFmeMsCoPxPiO4l49lhpTnsvO8AsHAMPTIFOP9tnYFdSmuKYSZrRZtXdSjyXte0ueaOlEYzx1euuKdkopoGRn6T92GTGCwVTtzUGQfDLyCWCfm6hRKibCWZLieUs2ejb9cc6npBdM4HbKFIpogNIiK36INm098Bu+KYJAVEbGriXOZw3Jn4R131c6Ab7LeV3KyaHI6cAsABZB4zajboLTc5uSYXZKT1CwoNEMifg/p0C8xhrWtn0IXeYUKdBerjdFHAbOGsUbvkcV5VLPOGHEQM1pqsnSHKfR/+OBeqiLd7bZJ0mwzqAytJ7WKGzUAh27e9IkRVK3xx1i6xP0mDF4qBaPoR2hxacGGsF3cjhWW9OrywHDaEbxqvIHuNuhkBQzLukT/vXyTvZwk31kWrZb35QmlUpPypziAV8qYPcem1jGO/5ihdVZoKImuao3jHmQZl/22DR/kkuA5Zh+3a2TFex0xH01bqvBu8dremaUOMgq9eJIBJN2inW71epOxJD/sEyGOiwUPGww0OWyplaqA3HBWdgzWBAG2Zsigq5SzajnMnQ310klyoGtJAAgM5mi/ON90M1c4gN5ZeSR2gES4/4c5ydao3Zhiyt3YuEkN2gqT1Z19cx9qi0X9tTGBYcqE9DVxsb7DTZp4PatMw/9IMbczyFGIaUnYEjnjGZVQeCu9OjKhThrpgdWM1M4bItTRyf4RwzAfldpdqq9tc9ap6UEle/zTq9+L3OYpe4cxTv1O2Ibm67T4sGXePgqTMAoQ2ZPb0gg8hiOSxYr7TLJOyrq6apncekCl+qmtPe2hXfnH3nDrG18d/11I9y9wlZmOZXXgUFmruZZriL8iOerUt4UInTz/21eEwFxt4l/J4VAzTuXTWZpXTH7/efNR+gk4VS+mT9BQsA0x9PdC0m3ft+K+GIlsoiWtElTJRodQFrhmLT+MOoRwCbP5qfL6sWWFEvuYQ3HV0j8g573kWbNRY/Evuj1fsMy6dXsmX5L036vFJbMsxSBqvKJHgaOVfRxsBXalghXifVPD1+2FRtlig2bvZSVFbO6DZD11+7IkkY4nYZYh75ZX2cT876k3ycWu3j00tGPzrMr2oM8aIBWBGQdZb44Goqro22XyflXcsCTVLW9+IJxTYWvmb0Cq1BPLbSiu+jy0L6eGZPH6qINi+vo4ae5oEYktLVj+tc3xaLUWHfuCwS9O4emv2ocY0Ut3Cv5/+eEIDE3BjMW/B6wUBgAKszeEbRDdC2zk9mFqwaZxI8jWHI2pFImYCY1wGhhbawO7u/a9cBNu7R+UgS5On0pRQjgrOi58VJx/Ux82k967y5rI9h20v/h+vR0flZoGFnq0QDmSs7n1YOGw9UP1Cg0U6MZ2lOhDHOH5YsIpi1hNrpFzd1vA9j2X0Ww0v0OLb+/vpa0vXdmq1KO1tgdNxSbkUZrIbjQru4"
+    };
+
+    unlock({
+      container: document.getElementById('content'),
+      key: 'bryllup',
+      payload,
+      onUnlocked: (el) => { el.style.display = 'block'; }
+    });
   </script>
 </body>
 </html>
