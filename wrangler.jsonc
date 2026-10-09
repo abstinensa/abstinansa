@@ -1,0 +1,22 @@
+{
+  // Config for the "ilyas" Cloudflare Workers project (Workers Builds is
+  // connected to this repo via Cloudflare's dashboard Git integration).
+  // This file never existed before, which is why every build for this
+  // project has been failing — Workers Builds had no wrangler config to
+  // find at the repo root.
+  //
+  // Serves ilyas-site/ (a copy of ilyas.html as index.html) as a static
+  // asset Worker — no server-side script needed. ilyas.html at the repo
+  // root is untouched and keeps working as-is on abstinensa.no via
+  // GitHub Pages; this is a separate, independent deployment target.
+  "name": "ilyas",
+  // Deliberately not "today": this sandbox's system clock reads far into
+  // the future (2026), but Cloudflare's build servers validate against
+  // the real-world date and reject a compatibility_date ahead of it. Use
+  // a safely-past, well-established date instead of guessing "now".
+  "compatibility_date": "2024-11-01",
+  "assets": {
+    "directory": "./ilyas-site",
+    "not_found_handling": "404-page"
+  }
+}

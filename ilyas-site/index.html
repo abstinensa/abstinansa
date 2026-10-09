@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilyas — Spillet om kjærligheten 🎲</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #4189DD;
+      --blue-dark: #1a3a6b;
+      --sand: #FDF6E3;
+      --gold: #D4A843;
+      --ink: #1a1a1a;
+      --border: #d0c8b8;
+      --ladder-bg: #E8F5E9;
+      --ladder-border: #4CAF50;
+      --snake-bg: #FFEBEE;
+      --snake-border: #EF5350;
+      --finish-bg: #FFF8E1;
+      --active-bg: #E3F0FF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--sand);
+      color: var(--ink);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -24px;
+      left: 0; right: 0;
+      height: 48px;
+      background: var(--sand);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .moon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 5vw, 2.8rem);
+      color: white;
+    }
+
+    main { padding: 3rem 1rem 5rem; }
+
+    #game-area {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: #666;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 1.2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+
+    .legend-dot {
+      width: 14px; height: 14px;
+      border-radius: 3px; border: 2px solid;
+    }
+    .legend-dot.ladder { background: var(--ladder-bg); border-color: var(--ladder-border); }
+    .legend-dot.snake  { background: var(--snake-bg);  border-color: var(--snake-border); }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 5px;
+      width: 100%;
+      max-width: 780px;
+      background: var(--blue-dark);
+      border: 6px solid var(--blue-dark);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 56px rgba(26, 58, 107, 0.4);
+    }
+
+    .cell {
+      background: white;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4px;
+      position: relative;
+      cursor: default;
+      border-radius: 2px;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .cell:hover { transform: scale(1.06); z-index: 2; }
+
+    .cell .cell-num {
+      font-size: 0.6rem;
+      color: #bbb;
+      font-weight: 700;
+      position: absolute;
+      top: 4px; left: 5px;
+      line-height: 1;
+    }
+
+    .cell .cell-icon { font-size: 2.2rem; line-height: 1; }
+
+    .cell.ladder { background: var(--ladder-bg); border: 3px solid var(--ladder-border); }
+    .cell.snake  { background: var(--snake-bg);  border: 3px solid var(--snake-border); }
+    .cell.finish { background: var(--finish-bg); border: 3px solid var(--gold); }
+    .cell.active {
+      background: var(--active-bg) !important;
+      box-shadow: inset 0 0 0 3px var(--blue);
+    }
+
+    .player-piece {
+      font-size: 2.4rem;
+      position: absolute;
+      animation: pop 0.35s ease;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.4) translateY(-8px); opacity: 0; }
+      65%  { transform: scale(1.15) translateY(1px); opacity: 1; }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    #controls {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    #dice-display {
+      font-size: 6rem;
+      min-height: 6.5rem;
+      line-height: 1;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    }
+
+    #roll-btn {
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 1rem 3rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(65,137,221,0.45);
+      transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+    }
+    #roll-btn:hover   { opacity: 0.9; box-shadow: 0 6px 24px rgba(65,137,221,0.55); }
+    #roll-btn:active  { transform: scale(0.97); }
+    #roll-btn:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+
+    #pos-display {
+      font-size: 0.8rem;
+      color: #999;
+      font-weight: 600;
+      min-height: 1.1rem;
+    }
+
+    #status-msg {
+      font-size: 1.1rem;
+      width: 100%;
+      min-height: 4rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.4rem;
+      line-height: 1.65;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    #win-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 58, 107, 0.93);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+      color: white;
+    }
+
+    #win-overlay.show {
+      display: flex;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .win-emoji { font-size: 4rem; margin-bottom: 1rem; }
+
+    #win-overlay h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 10vw, 5rem);
+      color: #FFD700;
+      margin-bottom: 0.5rem;
+    }
+
+    #win-overlay .win-sub {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    #restart-btn {
+      background: white;
+      color: var(--blue-dark);
+      border: none;
+      border-radius: 50px;
+      padding: 0.9rem 2.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      transition: transform 0.1s, opacity 0.2s;
+    }
+    #restart-btn:hover  { opacity: 0.9; }
+    #restart-btn:active { transform: scale(0.97); }
+
+    /* KONFETTI */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 998;
+    }
+
+    /* COACH TOAST */
+    #coach-toast {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 1.5rem;
+      background: white;
+      border: 2px solid var(--gold);
+      border-radius: 14px 14px 4px 14px;
+      padding: 0.7rem 1rem;
+      max-width: 260px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #coach-toast.show { opacity: 1; }
+
+    /* MOBIL */
+    @media (max-width: 520px) {
+      .cell .cell-icon  { font-size: 1.4rem; }
+      .player-piece     { font-size: 1.6rem; }
+      .cell .cell-num   { font-size: 0.45rem; }
+      #dice-display     { font-size: 4rem; min-height: 4.5rem; }
+      #roll-btn         { padding: 0.8rem 2rem; font-size: 1rem; }
+      #coach-toast      { max-width: calc(100vw - 3rem); right: 1rem; }
+    }
+
+    /* CHAT */
+    #coach-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.85rem 1.4rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(212,168,67,0.5);
+      z-index: 100;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    #coach-btn:hover  { opacity: 0.9; }
+    #coach-btn:active { transform: scale(0.97); }
+
+    #chat-modal {
+      position: fixed;
+      bottom: 5rem;
+      right: 1.5rem;
+      width: min(380px, calc(100vw - 2rem));
+      z-index: 200;
+      display: none;
+    }
+    #chat-modal.open { display: block; animation: slideUp 0.25s ease; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    #chat-box {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #chat-header {
+      background: var(--blue);
+      color: white;
+      padding: 0.8rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    #close-chat {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 0.2rem;
+    }
+
+    #chat-messages {
+      min-height: 220px;
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 0.8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .bubble {
+      max-width: 85%;
+      padding: 0.6rem 0.9rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .bubble.user {
+      align-self: flex-end;
+      background: var(--blue);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+    .bubble.coach {
+      align-self: flex-start;
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+    }
+
+    #chat-input-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.7rem;
+      border-top: 1px solid var(--border);
+    }
+
+    #chat-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.8rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      background: var(--sand);
+    }
+    #chat-input:focus { outline: 2px solid var(--gold); }
+
+    #chat-send {
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="moon">🌙</div>
+    <h1>Ilyas — Spillet om kjærligheten</h1>
+  </header>
+
+  <main>
+    <div id="game-area">
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot ladder"></div> Stige opp ⬆️</div>
+        <div class="legend-item"><div class="legend-dot snake"></div> Slange ned 🐍</div>
+        <div class="legend-item">🧔🏿 = Ilyas</div>
+      </div>
+
+      <div id="board"></div>
+
+      <div id="controls">
+        <div id="dice-display"></div>
+        <button id="roll-btn">🎲 Kast terning</button>
+        <div id="pos-display"></div>
+        <div id="status-msg" role="status" aria-live="polite">
+          Bismillah — trykk på terningen og finn kjærligheten!
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <canvas id="confetti-canvas"></canvas>
+  <div id="coach-toast"></div>
+  <button id="coach-btn">🎙️ Spør coachen</button>
+
+  <div id="chat-modal">
+    <div id="chat-box">
+      <div id="chat-header">
+        <span>🧔🏿 Coach Ilyas</span>
+        <button id="close-chat" aria-label="Lukk">✕</button>
+      </div>
+      <div id="chat-messages"></div>
+      <div id="chat-input-row">
+        <input id="chat-input" type="text" placeholder="Spør coachen...">
+        <button id="chat-send">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="win-overlay">
+    <div class="win-emoji">❤️🌙✨</div>
+    <h2>STINE!</h2>
+    <p class="win-sub">
+      Alhamdulillah — kjærligheten vann!<br>
+      Det var jo openbert heile tida, Ilyas.
+    </p>
+    <button id="restart-btn">🔄 Spel igjen</button>
+  </div>
+
+  <script>
+    const LADDERS = { 4:14, 10:18, 17:24, 21:27, 23:29, 26:30 };
+    const SNAKES  = { 9:3, 16:6, 20:12, 25:8 };
+
+    const CELL_TEXT = {
+      1:  "Bismillah! 🤲 Ilyas startar reisa mot kjærligheten!",
+      3:  "Du sov over Fajr og misset Suhoor. Tilbake, walaal!",
+      4:  "Du laga iftar-middag til ho og familien! 🍽️ Stor stige!",
+      5:  "Du smilte til henne etter fredagsbønn ved moskeen. 🕌",
+      6:  "Du gløymde Asr midt i samtalen. Det kosta deg.",
+      7:  "Du gav sadaqah og hjelp til den trengende på vegen. MashaAllah! 🤲",
+      8:  "Du misset Jumu'ah-khutba for ein fotballkamp. Ned att.",
+      9:  "Du gløymde Bismillah før du åt — og maten var ikkje halal. 🐍",
+      10: "Du inviterte ho til Eid ul-Fitr-feiring med heile familien! 🌙",
+      11: "Ramadan er krevjande. Du fastar tappert — Allah ser deg. 🤲",
+      12: "Her er du. Tauba og prøv igjen, InshAllah!",
+      13: "Du leste Surah Al-Fatiha saman med henne. 📖 Vakkert.",
+      14: "MashaAllah! Kjærligheten og trua er på veg opp.",
+      15: "Du sa ikkje InshAllah og planla åleine. Klassisk, Ilyas.",
+      16: "Du kom for seint til Eid-bønn og miste plassen. 🐍 Ned att!",
+      17: "Du overraska ho med dadlar og rosenvatn frå Ramadan! 🌴",
+      18: "Ho såg ditt gode hjerte ved zakat-utdelinga. MashaAllah!",
+      19: "Du sat roleg ved sida av henne etter Isha-bønn. 🌙",
+      20: "Du sende berre 'as-salamu alaykum' og ingenting meir. 🐍",
+      21: "Du lærte deg Surah Ar-Rahman utanåt — for ho! 📖 Stige!",
+      22: "Eid ul-Adha-natten er magisk. 🌟 Bruk sjansen, Ilyas!",
+      23: "Du organiserte Qurbani og gav kjøt til dei som treng det. 🤲",
+      24: "Nesten framme! Tawakkul — stol fullt og heilt på Allah.",
+      25: "Du gløymde å ønskje Eid Mubarak. 🐍 Walaal. Berre nei.",
+      26: "Siste stige! Du fullførte Hajj i hjarta — Allah er stolt! ⬆️",
+      27: "Eitt steg att. Gjer dua no, Ilyas. 🤲",
+      28: "Ho bur forresten på Stord. InshAllah ordnar det seg.",
+      29: "Neste kast er det siste. SubhanAllah — du er nesten der.",
+      30: "🎉 STINE! Alhamdulillah rabbil-alamin! ❤️🌙"
+    };
+
+    const DICE_FACES = ["⚀","⚁","⚂","⚃","⚄","⚅"];
+
+    let playerPos = 0;
+    let isRolling = false;
+
+    function buildBoard() {
+      const board = document.getElementById('board');
+      board.innerHTML = '';
+      const rows = [];
+      for (let r = 0; r < 5; r++) {
+        const start = r * 6 + 1;
+        const row = Array.from({length: 6}, (_, i) => start + i);
+        if (r % 2 === 1) row.reverse();
+        rows.push(row);
+      }
+      rows.reverse();
+      rows.forEach(row => {
+        row.forEach(num => {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.id = `cell-${num}`;
+          if (LADDERS[num]) cell.classList.add('ladder');
+          if (SNAKES[num])  cell.classList.add('snake');
+          if (num === 30)   cell.classList.add('finish');
+          const icon = LADDERS[num] ? '🪜' : SNAKES[num] ? '🐍' : num === 30 ? '❤️' : '';
+          cell.innerHTML = `<span class="cell-num">${num}</span>${icon ? `<span class="cell-icon">${icon}</span>` : ''}`;
+          board.appendChild(cell);
+        });
+      });
+      renderPiece();
+    }
+
+    function renderPiece() {
+      document.querySelectorAll('.player-piece').forEach(p => p.remove());
+      document.querySelectorAll('.cell.active').forEach(c => c.classList.remove('active'));
+      if (playerPos === 0) return;
+      const cell = document.getElementById(`cell-${playerPos}`);
+      if (!cell) return;
+      cell.classList.add('active');
+      const piece = document.createElement('span');
+      piece.className = 'player-piece';
+      piece.textContent = '🧔🏿';
+      cell.appendChild(piece);
+      document.getElementById('pos-display').textContent = `Rute ${playerPos} av 30`;
+    }
+
+    async function rollDice() {
+      if (isRolling) return;
+      isRolling = true;
+      const rollBtn     = document.getElementById('roll-btn');
+      const diceDisplay = document.getElementById('dice-display');
+      const statusMsg   = document.getElementById('status-msg');
+      rollBtn.disabled = true;
+
+      let ticks = 0;
+      const anim = setInterval(() => {
+        diceDisplay.textContent = DICE_FACES[Math.floor(Math.random() * 6)];
+        if (++ticks >= 14) clearInterval(anim);
+      }, 65);
+
+      await delay(950);
+      const roll = Math.floor(Math.random() * 6) + 1;
+      diceDisplay.textContent = DICE_FACES[roll - 1];
+
+      playerPos = Math.min(playerPos + roll, 30);
+      renderPiece();
+      statusMsg.textContent = `Du kasta ${roll}! → Rute ${playerPos}. ${CELL_TEXT[playerPos] || ''}`;
+
+      await delay(900);
+
+      if (LADDERS[playerPos]) {
+        const dest = LADDERS[playerPos];
+        statusMsg.textContent = `🪜 STIGE! Rute ${playerPos} → ${dest}! ${CELL_TEXT[playerPos]}`;
+        await delay(600);
+        autoCoach('ladder', roll);
+        await delay(700);
+        playerPos = dest;
+        renderPiece();
+        statusMsg.textContent += ` ✅ No er du på rute ${dest}!`;
+      } else if (SNAKES[playerPos]) {
+        const dest = SNAKES[playerPos];
+        statusMsg.textContent = `🐍 SLANGE! Rute ${playerPos} → ${dest}! ${CELL_TEXT[playerPos]}`;
+        await delay(600);
+        autoCoach('snake', roll);
+        await delay(700);
+        playerPos = dest;
+        renderPiece();
+        statusMsg.textContent += ` 😬 No er du på rute ${dest}.`;
+      } else if (roll >= 5) {
+        autoCoach('high', roll);
+      } else if (roll <= 2) {
+        autoCoach('low', roll);
+      }
+
+      if (playerPos === 30) {
+        await delay(700);
+        launchConfetti();
+        document.getElementById('win-overlay').classList.add('show');
+        isRolling = false;
+        return;
+      }
+
+      rollBtn.disabled = false;
+      isRolling = false;
+    }
+
+    function restartGame() {
+      playerPos = 0;
+      isRolling = false;
+      document.getElementById('win-overlay').classList.remove('show');
+      document.getElementById('dice-display').textContent = '';
+      document.getElementById('pos-display').textContent = '';
+      document.getElementById('status-msg').textContent =
+        'Bismillah — trykk på terningen og finn kjærligheten!';
+      buildBoard();
+    }
+
+    function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    // ── KONFETTI ──────────────────────────────────────
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const ctx = canvas.getContext('2d');
+      const colors = ['#4189DD','#D4A843','#4CAF50','#EF5350','#9C27B0','#FF9800','#1a3a6b'];
+      const pieces = Array.from({length: 140}, () => ({
+        x:     Math.random() * canvas.width,
+        y:     Math.random() * canvas.height - canvas.height,
+        w:     Math.random() * 12 + 6,
+        h:     Math.random() * 7 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speed: Math.random() * 3.5 + 1.5,
+        angle: Math.random() * 360,
+        spin:  (Math.random() - 0.5) * 5,
+      }));
+      let rafId;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pieces.forEach(p => {
+          ctx.save();
+          ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+          ctx.rotate(p.angle * Math.PI / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+          p.y += p.speed;
+          p.angle += p.spin;
+          if (p.y > canvas.height) { p.y = -p.h; p.x = Math.random() * canvas.width; }
+        });
+        rafId = requestAnimationFrame(draw);
+      }
+      draw();
+      setTimeout(() => { cancelAnimationFrame(rafId); ctx.clearRect(0, 0, canvas.width, canvas.height); }, 5000);
+    }
+
+    // ── COACH TOAST ──────────────────────────────────────
+    let toastTimer;
+    function showCoachToast(msg) {
+      const toast = document.getElementById('coach-toast');
+      toast.textContent = '🧔🏿 ' + msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3800);
+    }
+
+    const COACH_AUTO = {
+      ladder: [
+        'SubhanAllah! Stiga tok deg opp! Allah er på laget ditt i dag 👀',
+        'MashaAllah walaal — akkurat som kjærligheten til Stine, berre oppover! ⬆️',
+        'Alhamdulillah! Stige! Dette er eit teikn — skriv til Stine. No. 📱',
+        'InshAllah held det fram! Allah opnar dører for deg, walaal! 🕌',
+      ],
+      snake: [
+        'Astaghfirullah — slange! Men Stine ventar framleis på deg, walaal 💪',
+        'SubhanAllah, dette er ein prøvelse. Tawakkul — Allah har ein plan! 🤲',
+        'Sabr, walaal. Stine liker uthaldne menn. Prøv igjen! ❤️',
+        'Slange? Berre ein liten test frå Allah. Bestå han og vinn Stine! 🌙',
+      ],
+      high: [
+        'SubhanAllah — høgt kast! Allah heiar på deg i dag 👀',
+        'MashaAllah! Stine kjem nærare for kvart kast! 🌙',
+        'Alhamdulillah for gode kast! Like bra som du er, walaal! ⬆️',
+      ],
+      low: [
+        'Sabr, walaal — Stine er verdt ventetida! 🤲',
+        'Lågt kast, men tålmod er ein dyd. InshAllah neste gong! 🌙',
+        'Sjå på det positivt — du er framleis nærare enn i går! 💙',
+      ],
+    };
+
+    function autoCoach(type, roll) {
+      const pool = COACH_AUTO[type];
+      const msg = pool[Math.floor(Math.random() * pool.length)].replace('${roll}', roll);
+      showCoachToast(msg);
+    }
+
+    // ── COACH CHAT ──────────────────────────────────────
+    const COACH_RULES = [
+      { keys: ['stine'],            reply: 'MashaAllah — du tenker på Stine! Det er eit teikn. SubhanAllah, ho er openbert den rette. 🤲' },
+      { keys: ['kjærleik','kjærlighet','love'], reply: 'InshAllah, kjærligheten er rett rundt hjørnet — og ho heiter Stine. Har du spurt henne om Eid-planer?' },
+      { keys: ['eid'],              reply: 'Eid er den perfekte anledningen! Ønskje Stine "Eid Mubarak" og sjå kva som skjer. Bismillah! 🌙' },
+      { keys: ['ramadan'],          reply: 'Ramadan er månaden for takksemd og nye steg. Invitér Stine på iftar — det er halal og romantisk! 🍽️' },
+      { keys: ['bønn','be ','salah','namaz'], reply: 'Etter kvar bønn, gjer dua for at Allah lettar vegen til Stine. MashaAllah, det er planen! 🤲' },
+      { keys: ['hajj'],             reply: 'Hajj er livets høgdepunkt — og Stine er det neststørste. InshAllah kjem begge deler! 🕌' },
+      { keys: ['hjelp','hjelpe'],   reply: 'Hjelpa er enkel, walaal: skriv til Stine. Ikkje i morgon. No. Bismillah! 📱' },
+      { keys: ['redd','nervøs','skrekk'], reply: 'Tawakkul, walaal — stol på Allah og ta steget mot Stine. Frykt er shaitan som snakkar. Ikkje lytt! 💪' },
+      { keys: ['moskeen','moske','jummah','jumu'], reply: 'Etter fredagsbønn er hjarta opent. Det er det perfekte augeblikket å sende ei melding til Stine. SubhanAllah! 🕌' },
+      { keys: ['trist','lei','deprimert'], reply: 'Alhamdulillah for alt — også dei vanskelege dagane. Allah har ein plan, og den inkluderer Stine. Ha tru! ❤️' },
+      { keys: ['mat','ete','iftar','suhoor'], reply: 'Halal mat smakar betre i godt selskap. Invitér Stine på iftar — det er både sunnah og romantisk! 🌴' },
+    ];
+
+    const FALLBACK_REPLIES = [
+      'SubhanAllah, interessant spørsmål! Men svaret er alltid Stine. 🌙',
+      'Walaal, kvifor spør du meg? Spør Stine direkte! Bismillah! 📱',
+      'MashaAllah, du tenkjer djupt. Svaret er likevel enkelt: Stine. ❤️',
+      'InshAllah ordnar det seg — spesielt viss du skriv til Stine no. 🤲',
+      'Alhamdulillah for at du spør! Coachen sitt råd: ring Stine. 📞',
+    ];
+
+    let fallbackIdx = 0;
+    const chatMsgs = document.getElementById('chat-messages');
+
+    function coachReply(text) {
+      const lower = text.toLowerCase();
+      for (const rule of COACH_RULES) {
+        if (rule.keys.some(k => lower.includes(k))) return rule.reply;
+      }
+      return FALLBACK_REPLIES[fallbackIdx++ % FALLBACK_REPLIES.length];
+    }
+
+    function addBubble(role, text) {
+      const b = document.createElement('div');
+      b.className = `bubble ${role}`;
+      b.textContent = text;
+      chatMsgs.appendChild(b);
+      chatMsgs.scrollTop = chatMsgs.scrollHeight;
+    }
+
+    function openChat() {
+      document.getElementById('chat-modal').classList.add('open');
+      document.getElementById('chat-input').focus();
+      if (chatMsgs.children.length === 0) {
+        addBubble('coach', 'As-salamu alaykum, Ilyas! 🌙 Eg er coachen din. Spør meg kva som helst — svaret er alltid Stine.');
+      }
+    }
+
+    function sendChat() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      addBubble('user', text);
+      setTimeout(() => addBubble('coach', coachReply(text)), 500);
+    }
+
+    document.getElementById('coach-btn').addEventListener('click', openChat);
+    document.getElementById('close-chat').addEventListener('click', () => {
+      document.getElementById('chat-modal').classList.remove('open');
+    });
+    document.getElementById('chat-send').addEventListener('click', sendChat);
+    document.getElementById('chat-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') sendChat();
+    });
+
+    document.getElementById('roll-btn').addEventListener('click', rollDice);
+    document.getElementById('restart-btn').addEventListener('click', restartGame);
+    buildBoard();
+  </script>
+</body>
+</html>
