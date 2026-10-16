@@ -1,0 +1,11 @@
+{
+  "name": "ilyas",
+  "private": true,
+  "description": "Static-assets Cloudflare Worker config for the ilyas.html page — no build step needed.",
+  "scripts": {
+    "build": "echo 'no build step needed — ilyas-site/ is served as static assets'"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
