@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Runar Daily — {{ payload.date }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f6f4f1;
+    --fg: #17130f;
+    --muted: #6b6058;
+    --sky: #6CABDD;
+    --sky-dark: #1C2C5B;
+    --rule: #ddd5cb;
+    --card: #ffffff;
+    --pitch: #1c6b3a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121110;
+      --fg: #f1ece5;
+      --muted: #a89e93;
+      --sky: #7fc4ff;
+      --sky-dark: #9fb8ff;
+      --rule: #322c26;
+      --card: #1b1917;
+      --pitch: #123d24;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+  body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  header h1, article.item h3 {
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 20px 96px; }
+
+  header {
+    background: var(--sky);
+    color: white;
+    margin: -40px -20px 32px;
+    padding: 32px 20px 40px;
+    text-align: center;
+    border-radius: 0 0 24px 24px;
+  }
+  header .badge { font-size: 2rem; margin-bottom: 4px; }
+  header h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin: 0 0 4px;
+    font-weight: 600;
+  }
+  header time {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    font-weight: 600;
+  }
+
+  section.region { margin-bottom: 36px; }
+  section.region > h2 {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sky-dark);
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 8px;
+    margin: 0 0 18px;
+    font-weight: 600;
+  }
+  article.item {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  article.item h3 { font-size: 20px; font-weight: 600; margin: 0 0 4px; line-height: 1.3; }
+  article.item h3 a { color: var(--fg); text-decoration: none; }
+  article.item h3 a:hover { color: var(--sky-dark); }
+  article.item .meta { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+  article.item p { margin: 4px 0 0; font-size: 15px; }
+  .empty { color: var(--muted); font-style: italic; }
+
+  /* GAME */
+  #game-section {
+    margin-top: 48px;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  #game-section h2 {
+    font-size: 1.3rem;
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  #game-section .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 18px; }
+
+  #pitch {
+    position: relative;
+    max-width: 380px;
+    margin: 0 auto 16px;
+    background: var(--pitch);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: inset 0 0 0 4px rgba(255,255,255,0.15);
+  }
+  #goal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 6px;
+    aspect-ratio: 3 / 2;
+    background: repeating-linear-gradient(
+      45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 10px,
+      transparent 10px, transparent 20px
+    );
+    border: 4px solid white;
+    border-radius: 6px;
+    padding: 6px;
+  }
+  .zone {
+    background: rgba(255,255,255,0.12);
+    border: 2px dashed rgba(255,255,255,0.4);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    user-select: none;
+  }
+  .zone:hover { background: rgba(255,255,255,0.28); transform: scale(1.04); }
+  .zone:disabled, .zone.disabled { cursor: not-allowed; opacity: 0.6; transform: none; }
+  .zone.keeper { background: rgba(0,0,0,0.35); }
+  .zone.goal-scored { background: rgba(76,175,80,0.55); border-color: #4CAF50; }
+  .zone.saved { background: rgba(28,44,91,0.55); border-color: var(--sky-dark); }
+
+  #game-status {
+    min-height: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  #game-score { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+  #game-restart {
+    background: var(--sky-dark);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.7rem 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  #game-restart:hover { opacity: 0.9; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-size: 12.5px;
+    color: var(--muted);
+    text-align: center;
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="badge">💙⚽</div>
+    <h1>Runar Daily</h1>
+    <time datetime="{{ payload.date }}">{{ payload.date }}</time>
+  </header>
+
+  {% for section in payload.sections %}
+  <section class="region">
+    <h2>{{ section.label }}</h2>
+    {% if section['items'] %}
+      {% for item in section['items'] %}
+      <article class="item">
+        <h3><a href="{{ item.url }}" rel="noopener">{{ item.title }}</a></h3>
+        <div class="meta">{{ item.source }}{% if item.date %} · {{ item.date }}{% endif %}</div>
+        <p>{{ item.summary }}</p>
+      </article>
+      {% endfor %}
+    {% else %}
+      <p class="empty">Ingenting nytt akkurat nå — sjekk igjen i morgen.</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+
+  <section id="game-section">
+    <h2>⚽ Straffespark-utfordringen</h2>
+    <div class="sub">5 straffer. Velg hjørne. Slå keeperen.</div>
+    <div id="pitch">
+      <div id="goal"></div>
+    </div>
+    <div id="game-status">Klar til å skyte, Runar?</div>
+    <div id="game-score"></div>
+    <button id="game-restart" style="display:none;">🔄 Spill igjen</button>
+  </section>
+
+  <footer>
+    Generert {{ generated_at }} ·
+    <a href="https://github.com/abstinensa/abstinansa/blob/main/scripts/runar-daily/sources.yaml">Kildeliste</a>
+  </footer>
+</main>
+
+<script>
+  const ZONES = ['top-left','top-mid','top-right','bot-left','bot-mid','bot-right'];
+  const ZONE_ICON = '⚪';
+  let attempts = 0;
+  let scored = 0;
+  const MAX_ATTEMPTS = 5;
+  let locked = false;
+
+  const goalEl = document.getElementById('goal');
+  const statusEl = document.getElementById('game-status');
+  const scoreEl = document.getElementById('game-score');
+  const restartBtn = document.getElementById('game-restart');
+
+  function buildGoal() {
+    goalEl.innerHTML = '';
+    ZONES.forEach(z => {
+      const btn = document.createElement('button');
+      btn.className = 'zone';
+      btn.dataset.zone = z;
+      btn.textContent = ZONE_ICON;
+      btn.addEventListener('click', () => shoot(z, btn));
+      goalEl.appendChild(btn);
+    });
+  }
+
+  function setZonesDisabled(disabled) {
+    document.querySelectorAll('.zone').forEach(b => {
+      b.disabled = disabled;
+      b.classList.toggle('disabled', disabled);
+    });
+  }
+
+  function shoot(zone, btn) {
+    if (locked || attempts >= MAX_ATTEMPTS) return;
+    locked = true;
+    setZonesDisabled(true);
+
+    const keeperZone = ZONES[Math.floor(Math.random() * ZONES.length)];
+    const saved = zone === keeperZone;
+
+    attempts++;
+
+    const keeperBtn = document.querySelector(`.zone[data-zone="${keeperZone}"]`);
+    keeperBtn.classList.add('keeper');
+    keeperBtn.textContent = '🧤';
+
+    if (saved) {
+      btn.classList.add('saved');
+      btn.textContent = '🙅';
+      statusEl.textContent = `Redda! Keeperen leste deg, Runar.`;
+    } else {
+      btn.classList.add('goal-scored');
+      btn.textContent = '⚽';
+      scored++;
+      statusEl.textContent = `MÅÅÅL! ${scored}/${attempts} scoret.`;
+    }
+
+    scoreEl.textContent = `Straffe ${attempts} av ${MAX_ATTEMPTS} — ${scored} scoret`;
+
+    setTimeout(() => {
+      if (attempts >= MAX_ATTEMPTS) {
+        finishGame();
+      } else {
+        resetZoneVisuals();
+        locked = false;
+        setZonesDisabled(false);
+      }
+    }, 1100);
+  }
+
+  function resetZoneVisuals() {
+    document.querySelectorAll('.zone').forEach(b => {
+      b.classList.remove('keeper', 'goal-scored', 'saved');
+      b.textContent = ZONE_ICON;
+    });
+  }
+
+  function finishGame() {
+    let verdict;
+    if (scored === 5) verdict = 'PERFEKT! 5/5 — du er klar for VM, Runar! 🏆';
+    else if (scored >= 3) verdict = `Solid! ${scored}/5 — Man City trenger deg. 💙`;
+    else verdict = `${scored}/5 — litt trening i bakhagen, så tar vi revansje. ⚽`;
+    statusEl.textContent = verdict;
+    setZonesDisabled(true);
+    restartBtn.style.display = 'inline-block';
+  }
+
+  function restartGame() {
+    attempts = 0;
+    scored = 0;
+    locked = false;
+    statusEl.textContent = 'Klar til å skyte, Runar?';
+    scoreEl.textContent = '';
+    restartBtn.style.display = 'none';
+    buildGoal();
+  }
+
+  restartBtn.addEventListener('click', restartGame);
+  buildGoal();
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+name: Runar Daily
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 07:00 CET vinter / 08:00 CEST sommer
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (no commit)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: runar-daily
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: scripts/runar-daily/requirements.txt
+
+      - name: Install dependencies
+        working-directory: scripts/runar-daily
+        run: pip install -r requirements.txt
+
+      - name: Run Runar Daily
+        working-directory: scripts/runar-daily
+        env:
+          TZ: "Europe/Oslo"
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python main.py --dry-run
+          else
+            python main.py
+          fi
+
+      - name: Commit edition
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "runar-daily-bot"
+          git config user.email "runar-daily@abstinensa.no"
+          git add runar/
+          if git diff --staged --quiet; then
+            echo "Ingen endringer å committe."
+          else
+            git commit -m "Runar Daily $(date -u +%Y-%m-%d)"
+            git push
+          fi
