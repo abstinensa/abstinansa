@@ -1,4 +1,5 @@
-const CACHE = "boligjeger-v2";
+const CACHE = "boligjeger-v3";
+const SCOPE_PREFIX = "/b-600fd99e7f68/";
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
@@ -8,7 +9,11 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))
+      Promise.all(
+        keys
+          .filter((key) => key.startsWith("boligjeger-") && key !== CACHE)
+          .map((key) => caches.delete(key))
+      )
     ).then(() => self.clients.claim())
   );
 });
@@ -18,7 +23,7 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
-  if (!url.pathname.startsWith("/boligjeger/")) return;
+  if (!url.pathname.startsWith(SCOPE_PREFIX)) return;
 
   event.respondWith(
     fetch(request)
