@@ -1,0 +1,14 @@
+name = "taktstokk"
+main = "src/index.js"
+compatibility_date = "2026-01-15"
+
+# This worker is not deployed from the site repository.
+# Do not put an API key in this file.
+
+[vars]
+AI_BASE_URL = "https://api.openai.com/v1"
+AI_MODEL = "gpt-4.1-mini"
+# ALLOWED_ORIGIN = "https://abstinensa.no"
+
+# Secret, set locally or in the Cloudflare dashboard. Never commit the value:
+#   wrangler secret put AI_API_KEY

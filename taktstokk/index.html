@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taktstokk — orkestrer arbeidet</title>
+  <meta name="description" content="Kartlegg hvordan en avdeling faktisk jobber. Finn tidstyver, omveier og automatisering, og se et ROI-estimat. Alt blir i nettleseren.">
+  <meta name="theme-color" content="#F4F1EA">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,520;0,9..144,640;1,9..144,520&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Hopp til innhold</a>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="#oversikt" data-nav="home">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M8 24.5 22.5 8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <circle cx="23.2" cy="7.4" r="2.1" fill="currentColor"/>
+          <path d="M7.2 25.6 11.2 21.6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <span>Taktstokk</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-i18n="menu">Meny</button>
+      <nav id="site-nav" aria-label="Taktstokk">
+        <a href="#oversikt" data-nav="home" data-i18n="navHome">Oversikt</a>
+        <a href="#kartlegging" data-nav="studio" data-i18n="navStudio">Kartlegging</a>
+        <a href="#analyse" data-nav="analysis" data-i18n="navAnalysis">Analyse</a>
+        <a href="#avdeling" data-nav="org" data-i18n="navOrg">Avdeling</a>
+        <a href="#rapport" data-nav="report" data-i18n="navReport">Rapport</a>
+      </nav>
+      <div class="top-tools">
+        <div class="seg" role="group" data-i18n-aria="langGroup" aria-label="Språk">
+          <button type="button" data-lang="nb" aria-pressed="true">NO</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" data-i18n-aria="themeDark" aria-label="Bytt til mørkt tema"></button>
+      </div>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div id="view-home">
+      <div class="wrap hero">
+        <div>
+          <p class="kicker" data-i18n="kicker">Kart · tempo · estimat</p>
+          <h1 data-i18n-html="heroTitle">Orkestrer<br><em>arbeidet.</em></h1>
+          <p class="hero-lead" data-i18n="heroLead">Taktstokk følger en samtale gjennom hvordan en avdeling faktisk jobber. Maestro spør ett spørsmål om gangen. Kartet tegnes mens dere snakker, og estimatet viser hvor timene, omveiene og ventingen sitter.</p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary" data-action="start">
+              <span id="start-label" data-i18n="ctaStart">Start kartlegging</span>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <a class="btn btn-ghost" href="#metode" data-i18n="howLink">Slik er løpet</a>
+          </div>
+          <p class="hero-note" data-i18n="heroNote">Du styrer tempoet. Ett steg om gangen.</p>
+        </div>
+        <svg class="hero-art" viewBox="0 0 560 420" aria-hidden="true">
+          <g fill="none" stroke="var(--line-strong)" stroke-width="1.2">
+            <path d="M40 90h480M40 140h480M40 190h480M40 240h480M40 290h480"/>
+          </g>
+          <path class="trace" d="M70 250 C 150 250, 170 130, 250 150 S 360 250, 470 120" stroke="var(--accent-text)" stroke-width="1.6" stroke-linecap="round" pathLength="1"/>
+          <g fill="var(--bg-elev)" stroke="var(--line-strong)">
+            <rect x="78" y="214" width="118" height="64" rx="16"/>
+            <rect x="214" y="118" width="118" height="64" rx="16"/>
+            <rect x="360" y="168" width="128" height="64" rx="16"/>
+          </g>
+          <g fill="var(--accent-text)" font-family="Schibsted Grotesk, sans-serif" font-size="13" font-weight="650">
+            <text x="94" y="252">01</text>
+            <text x="230" y="156">02</text>
+            <text x="376" y="206">03</text>
+          </g>
+          <path d="M96 360 250 78" stroke="var(--copper)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="250" cy="78" r="5" fill="var(--copper)"/>
+          <path d="M86 370 118 338" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="wrap facts">
+        <article><strong data-i18n="factDays">230 forekomster</strong><span data-i18n="factDaysBody">Slik regnes «daglig» om til et år. Ukentlig er 46.</span></article>
+        <article><strong data-i18n="factRate">900 kr i timen</strong><span data-i18n="factRateBody">Standard timepris. Du kan endre den i analysen.</span></article>
+        <article><strong data-i18n="factKind">Estimat</strong><span data-i18n="factKindBody">Ikke et tilbud. Tallene er til å justere.</span></article>
+      </div>
+      <section class="wrap section" aria-labelledby="find-title">
+        <p class="kicker" data-i18n="findKicker">Mønstre</p>
+        <h2 id="find-title" data-i18n="findTitle">Det samtalen leter etter</h2>
+        <p class="lead" data-i18n="findLead">Tre mønstre går igjen når arbeid beskrives slik det gjøres, ikke slik det står i en rutine.</p>
+        <div class="findings">
+          <article class="card finding"><span>01</span><h3 data-i18n="find1">Tidstyv</h3><p data-i18n="find1Body">Minutter som kommer tilbake hver uke. Lav friksjon, høy frekvens, og sjelden den oppgaven noen skrev en stillingsbeskrivelse for.</p></article>
+          <article class="card finding"><span>02</span><h3 data-i18n="find2">Omvei</h3><p data-i18n="find2Body">Regneark, e-post og kopiering som holder sammen det systemene ikke snakker om. Omveien blir etter hvert den egentlige prosessen.</p></article>
+          <article class="card finding"><span>03</span><h3 data-i18n="find3">Flaskehals</h3><p data-i18n="find3Body">Godkjenning, kø og venting. Arbeidet er ferdig fra din side, men står stille hos noen andre.</p></article>
+        </div>
+      </section>
+      <section class="wrap section" id="metode" aria-labelledby="method-title">
+        <p class="kicker" data-i18n="methodKicker">Løpet</p>
+        <h2 id="method-title" data-i18n="methodTitle">Tre takter</h2>
+        <div class="method">
+          <article class="card beat"><span>01</span><h3 data-i18n="method1">Samtale</h3><p data-i18n="method1Body">Stemme eller tekst. Ett spørsmål. Oppfølging når svaret nevner regneark, e-post, kopiering, venting eller feil.</p></article>
+          <article class="card beat"><span>02</span><h3 data-i18n="method2">Kart</h3><p data-i18n="method2Body">Hvert steg blir en node med verktøy og overlevering. Det bygges mens samtalen pågår.</p></article>
+          <article class="card beat"><span>03</span><h3 data-i18n="method3">Estimat</h3><p data-i18n="method3Body">Timer i året, kostnad, innsats mot effekt, og hvor mange måneder et tiltak trenger for å gå i null.</p></article>
+        </div>
+      </section>
+      <section class="wrap">
+        <div class="card privacy">
+          <h2 data-i18n="privacyTitle">Kartleggingen blir her</h2>
+          <p id="privacy-body" data-i18n="privacyBody">Svar, kart og tall lagres kun i localStorage på denne enheten. Taktstokk sender dem ikke til en server. Skriver du, forlater ikke teksten nettleseren. Bruker du mikrofon, er det nettleserens egen talegjenkjenning som tar lyden — den kan gå til nettleserens leverandør, ikke til dette nettstedet.</p>
+          <p id="ai-note" data-i18n="aiSummary">AI-modus er av. Neste spørsmål velges med regler i nettleseren. Et endepunkt kan kobles på senere. Nøkkelen skal ligge som hemmelighet på serveren, aldri i siden.</p>
+        </div>
+      </section>
+    </div>
+    <div id="stage" hidden></div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span data-i18n="footerNote">Taktstokk · abstinensa.no</span>
+      <a href="/" data-i18n="homeLink">Til forsiden</a>
+      <button type="button" class="text-btn danger" data-wipe data-i18n="wipe">Slett alle data</button>
+    </div>
+  </footer>
+  <div id="live" class="visually-hidden" aria-live="polite"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
