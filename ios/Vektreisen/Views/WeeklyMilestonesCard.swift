@@ -9,7 +9,9 @@ struct WeeklyMilestonesCard: View {
         Card {
             Text("Ukesmål")
                 .font(.system(size: 24, weight: .regular, design: .serif))
-            Text("\(store.weeks) etapper til toppen. Klarer du delmålet får uka et grønt segl ✅.")
+            Text(store.hasGoals
+                 ? "\(store.weeks) etapper til toppen. Klarer du delmålet får uka et grønt segl ✅."
+                 : "Fyll inn startvekt, målvekt og antall uker under innstillinger.")
                 .font(.caption).foregroundColor(Theme.muted)
 
             LazyVGrid(columns: columns, spacing: 10) {

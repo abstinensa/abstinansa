@@ -54,7 +54,7 @@
 
   <script type="module">
     import { requirePassword } from './auth.js';
-    if (requirePassword({ key: 'bryllup', correct: 'bryllup' })) {
+    if (await requirePassword({ key: 'hovedside', hash: 'e9b3180bc97817133283e04b1fd19973b57afba24d2208eba49d38afb39f9ca0' })) {
       document.querySelector('main').style.display = 'block';
     }
   </script>

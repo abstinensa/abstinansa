@@ -52,10 +52,6 @@ struct HeaderView: View {
         VStack(spacing: 6) {
             Text("Vektreisen 🏔️")
                 .font(.system(size: 34, weight: .bold, design: .serif))
-            Text("65 → 51 kg")
-                .font(.system(size: 30, weight: .regular, design: .serif))
-                .italic()
-                .foregroundColor(Theme.accent)
             Text("Gjør reisen til et spill. Klatre fjellet, én uke om gangen.")
                 .font(.subheadline)
                 .foregroundColor(Theme.muted)
@@ -72,10 +68,10 @@ struct HeroStatsView: View {
     @EnvironmentObject var store: GameStore
     var body: some View {
         HStack(spacing: 12) {
-            stat(store.format(store.current), "Vekt nå")
-            stat(store.format(store.lost), "Tapt (kg)")
-            stat(store.format(store.toGo), "Igjen (kg)")
-            stat("\(store.daysLeft)", "Dager igjen")
+            stat(store.entries.isEmpty && !store.hasGoals ? "–" : store.format(store.current), "Vekt nå")
+            stat(store.hasGoals ? store.format(store.lost) : "–", "Tapt (kg)")
+            stat(store.hasGoals ? store.format(store.toGo) : "–", "Igjen (kg)")
+            stat(store.hasGoals ? "\(store.daysLeft)" : "–", "Dager igjen")
         }
     }
 

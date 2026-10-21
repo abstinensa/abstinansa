@@ -1,7 +1,7 @@
 import SwiftUI
 import Charts
 
-/// Plan line (1.4 kg/week) vs. actual weigh-ins, using Swift Charts (iOS 16+).
+/// Plan line vs. actual weigh-ins, using Swift Charts (iOS 16+).
 struct ProgressChartCard: View {
     @EnvironmentObject var store: GameStore
 
@@ -31,9 +31,10 @@ struct ProgressChartCard: View {
         Card {
             Text("Kurven din")
                 .font(.system(size: 24, weight: .regular, design: .serif))
-            Text("Grønn linje = planen (1,4 kg/uke). Oransje = dine veiinger.")
+            Text("Grønn linje = planen. Oransje = dine veiinger.")
                 .font(.caption).foregroundColor(Theme.muted)
 
+            if store.hasGoals {
             Chart {
                 ForEach(planPoints) { p in
                     LineMark(x: .value("Dag", p.day), y: .value("Kg", p.weight))
@@ -57,6 +58,12 @@ struct ProgressChartCard: View {
             .chartXAxisLabel("Dag")
             .chartYScale(domain: (store.goal - 1)...(store.start + 1))
             .frame(height: 200)
+            } else {
+                Text("Fyll inn startvekt og målvekt under innstillinger.")
+                    .font(.caption).foregroundColor(Theme.muted)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(height: 200)
+            }
         }
     }
 }

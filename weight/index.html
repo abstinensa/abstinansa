@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vektreisen — 65 til 51 på 10 uker</title>
+<title>Vektreisen</title>
 <meta name="description" content="Et lite spill som gjør vektreisen din til en morsom, motiverende reise opp fjellet. Logg vekt, fullfør daglige oppdrag, samle poeng og hold streaken i live.">
 
 <!-- PWA / install på iPhone (Del → Legg til på Hjem-skjerm) -->
@@ -183,7 +183,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
 <body>
 
 <header>
-  <h1>Vektreisen 🏔️<br><em>65 → 51 kg</em></h1>
+  <h1>Vektreisen 🏔️</h1>
   <p>Gjør reisen til et spill. Klatre fjellet, én uke om gangen.</p>
 </header>
 
@@ -199,16 +199,16 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
 
   <!-- HERO STATS -->
   <div class="hero-stats">
-    <div class="stat"><div class="num" id="s-current">65</div><div class="lbl">Vekt nå (kg)</div></div>
-    <div class="stat"><div class="num" id="s-lost">0</div><div class="lbl">Tapt (kg)</div></div>
-    <div class="stat"><div class="num" id="s-togo">14</div><div class="lbl">Igjen (kg)</div></div>
-    <div class="stat"><div class="num" id="s-days">70</div><div class="lbl">Dager igjen</div></div>
+    <div class="stat"><div class="num" id="s-current">–</div><div class="lbl">Vekt nå (kg)</div></div>
+    <div class="stat"><div class="num" id="s-lost">–</div><div class="lbl">Tapt (kg)</div></div>
+    <div class="stat"><div class="num" id="s-togo">–</div><div class="lbl">Igjen (kg)</div></div>
+    <div class="stat"><div class="num" id="s-days">–</div><div class="lbl">Dager igjen</div></div>
   </div>
 
   <!-- MOUNTAIN PROGRESS -->
   <div class="card">
     <h2>Toppturen</h2>
-    <p class="sub">Du går fra dalen (65 kg) til toppen (51 kg). Plasseringen din viser hvor langt du er kommet.</p>
+    <p class="sub">Plasseringen din viser hvor langt du er kommet, fra startvekta i dalen til målvekta på toppen.</p>
     <div class="mountain" id="mountain">
       <svg viewBox="0 0 400 200" preserveAspectRatio="none">
         <polygon points="0,200 90,120 150,150 230,60 300,110 400,40 400,200" fill="#b9c9b0"/>
@@ -245,7 +245,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     <div class="row">
       <div>
         <label for="in-weight">Vekt i dag (kg)</label>
-        <input type="number" id="in-weight" step="0.1" placeholder="f.eks. 64.3">
+        <input type="number" id="in-weight" step="0.1" placeholder="kg">
       </div>
       <div>
         <label for="in-date">Dato</label>
@@ -280,7 +280,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
   <!-- WEEKLY MILESTONES -->
   <div class="card">
     <h2>Ukesmål</h2>
-    <p class="sub">10 etapper til toppen. Klarer du delmålet får uka et grønt segl ✅.</p>
+    <p class="sub">Etapper til toppen. Klarer du delmålet får uka et grønt segl ✅.</p>
     <div class="weeks" id="weeks"></div>
   </div>
 
@@ -325,9 +325,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     <h2>Innstillinger</h2>
     <p class="sub">Endre målene dine her hvis du vil justere reisen.</p>
     <div class="row">
-      <div><label for="set-start">Startvekt (kg)</label><input type="number" id="set-start" step="0.1" value="65"></div>
-      <div><label for="set-goal">Målvekt (kg)</label><input type="number" id="set-goal" step="0.1" value="51"></div>
-      <div><label for="set-weeks">Antall uker</label><input type="number" id="set-weeks" value="10"></div>
+      <div><label for="set-start">Startvekt (kg)</label><input type="number" id="set-start" step="0.1" placeholder="fyll inn"></div>
+      <div><label for="set-goal">Målvekt (kg)</label><input type="number" id="set-goal" step="0.1" placeholder="fyll inn"></div>
+      <div><label for="set-weeks">Antall uker</label><input type="number" id="set-weeks" placeholder="fyll inn"></div>
     </div>
     <div class="row" style="margin-top:14px">
       <button class="btn-ghost" style="flex:1" id="btn-save">Lagre innstillinger</button>
@@ -348,8 +348,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     </div>
 
     <div class="note">
-      💛 <strong>Vær snill med deg selv.</strong> 14 kg på 10 uker er et raskt tempo
-      (ca. 1,4 kg per uke). De fleste helsefaglige råd anbefaler 0,5–1 kg per uke for et
+      💛 <strong>Vær snill med deg selv.</strong> De fleste helsefaglige råd anbefaler 0,5–1 kg per uke for et
       varig resultat. Spillet fungerer like fint om du gir deg selv litt lengre tid —
       juster gjerne ukene over. Snakk med fastlege/ernæringsfysiolog ved store endringer.
     </div>
@@ -370,7 +369,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
   const todayISO = () => new Date().toISOString().slice(0,10);
 
   // ---- State ----
-  const DEFAULTS = { start:65, goal:51, weeks:10, startDate:todayISO(),
+  const DEFAULTS = { start:null, goal:null, weeks:null, startDate:todayISO(),
     entries:[], xp:0, streak:0, lastQuestDay:null, quests:{}, badges:[] };
   let S = load();
 
@@ -401,20 +400,31 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     {id:'kg1',   em:'⭐', nm:'1 kg ned', test:s=>lost(s)>=1},
     {id:'kg3',   em:'🔥', nm:'3 kg ned', test:s=>lost(s)>=3},
     {id:'kg5',   em:'💪', nm:'5 kg ned', test:s=>lost(s)>=5},
-    {id:'kg7',   em:'🏅', nm:'Halvveis', test:s=>lost(s)>=(s.start-s.goal)/2},
+    {id:'kg7',   em:'🏅', nm:'Halvveis', test:s=>configured(s)&&lost(s)>=(s.start-s.goal)/2},
     {id:'kg10',  em:'🚀', nm:'10 kg ned', test:s=>lost(s)>=10},
     {id:'streak3',em:'📅', nm:'3-dagers streak', test:s=>s.streak>=3},
     {id:'streak7',em:'🗓️', nm:'7-dagers streak', test:s=>s.streak>=7},
     {id:'lvl5',  em:'🎖️', nm:'Nivå 5', test:s=>level(s.xp).lvl>=5},
-    {id:'goal',  em:'👑', nm:'I mål!', test:s=>current(s)<=s.goal},
+    {id:'goal',  em:'👑', nm:'I mål!', test:s=>configured(s)&&current(s)<=s.goal},
   ];
 
   const LEVEL_TITLES = ['Nybegynner','På vei','Vandrer','Klatrer','Utfordrer',
     'Fjellgeit','Ekspert','Mester','Legende','Toppveteran'];
 
   // ---- Helpers ----
-  function current(s){ return s.entries.length ? s.entries[s.entries.length-1].w : s.start; }
-  function lost(s){ return Math.max(0, s.start - current(s)); }
+  function num(v){ return typeof v==='number' && isFinite(v); }
+  function configured(s){
+    return num(s.start) && num(s.goal) && num(s.weeks) && s.weeks>=1 && s.goal<s.start;
+  }
+  function current(s){
+    if(s.entries.length) return s.entries[s.entries.length-1].w;
+    return num(s.start) ? s.start : null;
+  }
+  function lost(s){
+    const c=current(s);
+    if(!num(s.start) || c==null) return 0;
+    return Math.max(0, s.start - c);
+  }
   function level(xp){ // 100 xp per level, scaling slightly
     let lvl=1, need=100, rem=xp;
     while(rem>=need){ rem-=need; lvl++; need=Math.round(need*1.15); }
@@ -472,8 +482,20 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
 
   // ---- Render stats + mountain ----
   function renderStats(){
-    const cur=current(S), lo=lost(S), togo=Math.max(0,cur-S.goal);
-    $('s-current').textContent=fmt(cur);
+    const cur=current(S), ok=configured(S);
+    const cl=$('climber');
+    $('s-current').textContent=cur==null?'–':fmt(cur);
+    if(!ok){
+      $('s-lost').textContent='–';
+      $('s-togo').textContent='–';
+      $('s-days').textContent='–';
+      $('prog-fill').style.width='0%';
+      $('prog-pct').textContent='0% fullført';
+      $('prog-msg').textContent='Fyll inn start og mål under innstillinger';
+      cl.style.left='6%'; cl.style.bottom='8%'; cl.textContent='🧗‍♀️';
+      return;
+    }
+    const lo=lost(S), togo=Math.max(0,cur-S.goal);
     $('s-lost').textContent=fmt(lo);
     $('s-togo').textContent=fmt(togo);
     // days left
@@ -486,7 +508,6 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     $('prog-fill').style.width=pct+'%';
     $('prog-pct').textContent=Math.round(pct)+'% fullført';
     // climber position along mountain (left 6%->94%, bottom 8%->84%)
-    const cl=$('climber');
     cl.style.left=(6+pct/100*88)+'%';
     cl.style.bottom=(8+pct/100*76)+'%';
     if(cur<=S.goal){ cl.textContent='🏆'; }
@@ -509,6 +530,10 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
   }
   function renderWeeks(){
     const box=$('weeks'); box.innerHTML='';
+    if(!configured(S)){
+      box.innerHTML='<p class="sub">Fyll inn startvekt, målvekt og uker under innstillinger.</p>';
+      return;
+    }
     const targets=weekTargets();
     const now=new Date(), start=new Date(S.startDate);
     const weekIdx=Math.floor((now-start)/(7*86400000)); // 0-based current week
@@ -567,6 +592,15 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     if(S.entries.length<1){ card.classList.add('hidden'); return; }
     card.classList.remove('hidden');
     const box=$('insights'); box.innerHTML='';
+    if(!configured(S)){
+      const best=Math.min(...S.entries.map(e=>e.w));
+      const el=document.createElement('div');
+      el.className='ins good';
+      el.innerHTML=`<div class="iv">${fmt(best)}</div><div class="il">beste veiing (kg)</div><div class="ih">din rekord</div>`;
+      box.appendChild(el);
+      $('insight-summary').textContent='Fyll inn startvekt, målvekt og uker under innstillinger for å se planen.';
+      return;
+    }
     const cur=current(S), best=Math.min(...S.entries.map(e=>e.w));
     const rate=actualRate();
 
@@ -640,6 +674,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     const c=$('chart'), ctx=c.getContext('2d');
     const W=c.width, H=c.height, pad=38;
     ctx.clearRect(0,0,W,H);
+    if(!configured(S)){
+      ctx.fillStyle='#6b6b7b'; ctx.font='14px Outfit';
+      ctx.fillText('Fyll inn start og mål for å se kurven', 24, H/2);
+      return;
+    }
     const minW=S.goal-1, maxW=S.start+1;
     const totalDays=S.weeks*7;
     const x=d=>pad+(d/totalDays)*(W-pad*1.4);
@@ -737,8 +776,10 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
 
     let msg=`Logget ${fmt(w)} kg · +${gained} XP`;
     if(prevCur && w<prevCur) msg=`Ned ${fmt(prevCur-w)} kg! 🎉 +${gained} XP`;
-    $('log-feedback').innerHTML=`Sist logget: <strong>${fmt(w)} kg</strong> (${new Date(d).toLocaleDateString('no-NO')}). `+
-      (w<=S.goal?'Du har nådd målet ditt! 👑':`Bare <strong>${fmt(Math.max(0,w-S.goal))} kg</strong> igjen til ${fmt(S.goal)} kg.`);
+    const left=configured(S)
+      ?(w<=S.goal?' Du har nådd målet ditt! 👑':` Bare <strong>${fmt(Math.max(0,w-S.goal))} kg</strong> igjen til ${fmt(S.goal)} kg.`)
+      :'';
+    $('log-feedback').innerHTML=`Sist logget: <strong>${fmt(w)} kg</strong> (${new Date(d).toLocaleDateString('no-NO')}).`+left;
     toast(msg);
   }
 
@@ -766,7 +807,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
     save(); fillSettings(); renderAll(); toast('Nullstilt – ny start! 🌱');
   }
   function fillSettings(){
-    $('set-start').value=S.start; $('set-goal').value=S.goal; $('set-weeks').value=S.weeks;
+    $('set-start').value=num(S.start)?S.start:'';
+    $('set-goal').value=num(S.goal)?S.goal:'';
+    $('set-weeks').value=num(S.weeks)?S.weeks:'';
   }
 
   // ---- Render all ----

@@ -51,11 +51,11 @@ enum Catalogue {
         Badge(id: "kg1",     emoji: "⭐", name: "1 kg ned")       { $0.lost >= 1 },
         Badge(id: "kg3",     emoji: "🔥", name: "3 kg ned")       { $0.lost >= 3 },
         Badge(id: "kg5",     emoji: "💪", name: "5 kg ned")       { $0.lost >= 5 },
-        Badge(id: "half",    emoji: "🏅", name: "Halvveis")       { $0.lost >= ($0.start - $0.goal) / 2 },
+        Badge(id: "half",    emoji: "🏅", name: "Halvveis")       { $0.hasGoals && $0.lost >= ($0.start - $0.goal) / 2 },
         Badge(id: "kg10",    emoji: "🚀", name: "10 kg ned")      { $0.lost >= 10 },
         Badge(id: "streak3", emoji: "📅", name: "3-dagers streak"){ $0.streak >= 3 },
         Badge(id: "streak7", emoji: "🗓️", name: "7-dagers streak"){ $0.streak >= 7 },
         Badge(id: "lvl5",    emoji: "🎖️", name: "Nivå 5")         { $0.levelInfo.level >= 5 },
-        Badge(id: "goal",    emoji: "👑", name: "I mål!")          { $0.current <= $0.goal },
+        Badge(id: "goal",    emoji: "👑", name: "I mål!")          { $0.hasGoals && $0.current <= $0.goal },
     ]
 }
