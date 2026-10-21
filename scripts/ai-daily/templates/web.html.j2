@@ -139,7 +139,7 @@
     {% if section['items'] %}
       {% for item in section['items'] %}
       <article class="item">
-        <h3><a href="{{ item.url }}" rel="noopener">{{ item.title }}</a></h3>
+        <h3><a href="{{ item.url | safe_url }}" rel="noopener">{{ item.title }}</a></h3>
         <div class="meta">{{ item.source }}{% if item.date %} · {{ item.date }}{% endif %}</div>
         <p>{{ item.summary }}</p>
         {% if item.verdict %}<p class="verdict">{{ item.verdict }}</p>{% endif %}

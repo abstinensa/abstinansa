@@ -24,11 +24,11 @@ Rein statisk HTML/CSS/JS, ingen byggprosess. Filer blir lagt i eksisterande `abs
 ```
 abstinansa/
 ├── sondreogjohanne/
-│   ├── index.html              # hovudsida (passord: bryllup)
+│   ├── index.html              # hovudsida (passord: sjå private notat)
 │   ├── styles.css               # felles stil for begge sider
 │   ├── firebase-config.js       # Firebase-konfig (lim inn etter Firebase-oppsett)
 │   └── planlegger/
-│       └── index.html          # planleggar-app (passord: iloveyou)
+│       └── index.html          # planleggar-app (passord: sjå private notat)
 ```
 
 URL-ar:

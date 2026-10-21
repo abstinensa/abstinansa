@@ -1,3 +1,4 @@
+// MERK: passordporten er ikkje ekte tryggleik (passordet er synleg i kjeldekoden). Sjå ../../README.md.
 import { requirePassword } from '../../auth.js';
 
 if (!requirePassword({ key: 'planlegger', correct: 'iloveyou', redirectOnCancel: '../' })) {

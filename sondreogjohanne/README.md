@@ -4,10 +4,16 @@ Passordbeskytta bryllupsside og bryllupsplanleggar på `abstinensa.no/sondreogjo
 
 ## Passord
 
-- Hovudsida: `bryllup`
-- Planleggaren: `iloveyou`
+Passorda står ikkje her lenger — sjå private notat.
 
-(Endre ved å søkje/erstatte i `index.html` og `planlegger/index.html` — leit etter `correct:`.)
+(Endre ved å søkje/erstatte i `index.html` og `planlegger/js/main.js` — leit etter `correct:`.)
+
+> ⚠️ **Passordporten er ikkje ekte tryggleik.** Passordet ligg i klartekst i
+> nettsidekoden (som er offentleg på GitHub og synleg via «Vis kjelde»), og
+> sjekken skjer i nettlesaren, så porten kan hoppast over. Han stoppar berre
+> tilfeldige besøkande. Legg aldri inn private opplysningar (adresser,
+> gjestelister, telefonnummer o.l.) her. For ekte tilgangskontroll: bruk t.d.
+> Cloudflare Access eller ekte innlogging.
 
 ## Datalagring
 

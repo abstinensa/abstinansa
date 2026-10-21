@@ -1,5 +1,6 @@
 // Vektreisen service worker — offline-first cache
-const CACHE = 'vektreisen-v3';
+// v4: index.html pins supabase-js. Bump so installed PWAs drop the cached page.
+const CACHE = 'vektreisen-v4';
 const ASSETS = [
   './',
   './index.html',

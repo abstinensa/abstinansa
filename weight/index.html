@@ -853,10 +853,26 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}
 
   async function cloudLogout(){ if(sb){ try{ await sb.auth.signOut(); toast('Logget ut'); }catch(e){} } }
 
+  // supabase-js er låst til ein eksakt versjon med SRI-hash, så nettlesaren
+  // nektar å køyre fila om CDN-et nokon gong serverer noko anna.
+  // Ved oppgradering: bytt versjon OG integrity-hash (sha384 av dist/umd/supabase.js).
+  const SUPABASE_JS_SRC='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js';
+  const SUPABASE_JS_SRI='sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK';
+  function loadSupabase(){
+    if(window.supabase&&window.supabase.createClient) return Promise.resolve(window.supabase);
+    return new Promise((resolve,reject)=>{
+      const s=document.createElement('script');
+      s.src=SUPABASE_JS_SRC; s.integrity=SUPABASE_JS_SRI; s.crossOrigin='anonymous'; s.referrerPolicy='no-referrer';
+      s.onload=()=>window.supabase&&window.supabase.createClient?resolve(window.supabase):reject(new Error('supabase-js manglar'));
+      s.onerror=()=>reject(new Error('supabase-js kunne ikkje lastast'));
+      document.head.appendChild(s);
+    });
+  }
+
   async function initCloud(){
     if(!CLOUD_ENABLED){ $('cloud-disabled').classList.remove('hidden'); return; }
     try{
-      const m=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+      const m=await loadSupabase();
       sb=m.createClient(SB_CFG.url,SB_CFG.anonKey);
       const {data:{session}}=await sb.auth.getSession();
       onAuthChange(session);

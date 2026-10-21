@@ -14,7 +14,7 @@
 
 ```
 abstinansa/sondreogjohanne/
-├── index.html              # hovudsida (passord: bryllup)
+├── index.html              # hovudsida (passord: sjå private notat)
 ├── styles.css              # felles stilar for begge sider
 ├── auth.js                 # passord-prompt og sessionStorage-flag
 ├── firebase-config.js      # Firebase-konfig (lim inn etter oppsett)
@@ -163,7 +163,7 @@ git commit -m "feat(sondreogjohanne): password protection module"
 **Files:**
 - Create: `sondreogjohanne/index.html`
 
-- [ ] **Step 1:** Skriv `sondreogjohanne/index.html` med alle seksjonar (velkomst, dato/stad, program, dresscode, overnatting, gåveliste, kontakt) som TBC-plassholdarar. Bruk passord `bryllup`.
+- [ ] **Step 1:** Skriv `sondreogjohanne/index.html` med alle seksjonar (velkomst, dato/stad, program, dresscode, overnatting, gåveliste, kontakt) som TBC-plassholdarar. Bruk passord (sjå private notat).
 
 ```html
 <!DOCTYPE html>
@@ -218,7 +218,7 @@ git commit -m "feat(sondreogjohanne): password protection module"
 
   <script type="module">
     import { requirePassword } from './auth.js';
-    if (requirePassword({ key: 'bryllup', correct: 'bryllup' })) {
+    if (requirePassword({ key: 'bryllup', correct: '<sjå private notat>' })) {
       document.querySelector('main').style.display = 'block';
     }
   </script>
@@ -226,7 +226,7 @@ git commit -m "feat(sondreogjohanne): password protection module"
 </html>
 ```
 
-- [ ] **Step 2: Manuell test** — opne `file:///C:/Users/stine/OneDrive/abstinansa/sondreogjohanne/index.html`. Verifiser: prompt → skriv `bryllup` → sida viser. Reload same tab → ikkje ny prompt (sessionStorage). Ny inkognito-tab → ny prompt.
+- [ ] **Step 2: Manuell test** — opne `file:///C:/Users/stine/OneDrive/abstinansa/sondreogjohanne/index.html`. Verifiser: prompt → skriv passordet (sjå private notat) → sida viser. Reload same tab → ikkje ny prompt (sessionStorage). Ny inkognito-tab → ny prompt.
 
 - [ ] **Step 3: Commit**
 
@@ -291,7 +291,7 @@ git commit -m "feat(sondreogjohanne): main page scaffold with password"
 ```javascript
 import { requirePassword } from '../../auth.js';
 
-if (!requirePassword({ key: 'planlegger', correct: 'iloveyou', redirectOnCancel: '../' })) {
+if (!requirePassword({ key: 'planlegger', correct: '<sjå private notat>', redirectOnCancel: '../' })) {
   throw new Error('auth failed');
 }
 document.querySelector('main').style.display = 'block';
@@ -308,7 +308,7 @@ document.querySelectorAll('.tab').forEach(tab => {
 });
 ```
 
-- [ ] **Step 3: Manuell test** — opne `planlegger/index.html`, passord `iloveyou`. Klikk på alle 8 faner, verifiser at rett panel vises.
+- [ ] **Step 3: Manuell test** — opne `planlegger/index.html`, passord (sjå private notat). Klikk på alle 8 faner, verifiser at rett panel vises.
 
 - [ ] **Step 4: Commit**
 
@@ -580,7 +580,7 @@ Kvar modul følgjer same mønster: lag ein `init(panelEl)`-funksjon, kall den fr
 
 ```javascript
 import { requirePassword } from '../../auth.js';
-if (!requirePassword({ key: 'planlegger', correct: 'iloveyou', redirectOnCancel: '../' })) {
+if (!requirePassword({ key: 'planlegger', correct: '<sjå private notat>', redirectOnCancel: '../' })) {
   throw new Error('auth failed');
 }
 document.querySelector('main').style.display = 'block';
@@ -1171,14 +1171,14 @@ function escape(s) {
 <script type="module">
   import { requirePassword } from './auth.js';
   import { mount as mountGaveliste } from './gaveliste-gjest.js';
-  if (requirePassword({ key: 'bryllup', correct: 'bryllup' })) {
+  if (requirePassword({ key: 'bryllup', correct: '<sjå private notat>' })) {
     document.querySelector('main').style.display = 'block';
     mountGaveliste(document.getElementById('gaveliste-container'));
   }
 </script>
 ```
 
-- [ ] **Step 3: Manuell test** — legg til 2-3 gåver via planleggaren (Gåveliste-fane). Opne hovudsida i ny tab, passord `bryllup`. Sjå gåvene. Klikk "Eg tar denne" → skriv namn → gåva blir "Reservert". Angre med rett namn → ledig igjen. Angre med feil namn → feilmelding. Opne 2 tabs samtidig og reserver same gåve → andre får "Allereie reservert"-feil.
+- [ ] **Step 3: Manuell test** — legg til 2-3 gåver via planleggaren (Gåveliste-fane). Opne hovudsida i ny tab, passord (sjå private notat). Sjå gåvene. Klikk "Eg tar denne" → skriv namn → gåva blir "Reservert". Angre med rett namn → ledig igjen. Angre med feil namn → feilmelding. Opne 2 tabs samtidig og reserver same gåve → andre får "Allereie reservert"-feil.
 
 - [ ] **Step 4: Commit**
 
@@ -1199,7 +1199,7 @@ git commit -m "feat(sondreogjohanne): gift list with reservation flow"
   import { requirePassword } from './auth.js';
   import { mount as mountGaveliste } from './gaveliste-gjest.js';
   import { subscribe } from './firestore.js';
-  if (requirePassword({ key: 'bryllup', correct: 'bryllup' })) {
+  if (requirePassword({ key: 'bryllup', correct: '<sjå private notat>' })) {
     document.querySelector('main').style.display = 'block';
     mountGaveliste(document.getElementById('gaveliste-container'));
     subscribe('program', items => {
@@ -1271,9 +1271,9 @@ git push origin main
 ### Task 21: End-to-end acceptance test
 
 - [ ] **Step 1:** Vent ~1 minutt på GitHub Pages deploy. Gå til `https://abstinensa.no/sondreogjohanne/` i inkognito.
-- [ ] **Step 2:** Verifiser passord-prompt kjem (`bryllup`).
+- [ ] **Step 2:** Verifiser passord-prompt kjem (passord: sjå private notat).
 - [ ] **Step 3:** Verifiser alle seksjonar renderast.
-- [ ] **Step 4:** Gå til `https://abstinensa.no/sondreogjohanne/planlegger/`, passord `iloveyou`.
+- [ ] **Step 4:** Gå til `https://abstinensa.no/sondreogjohanne/planlegger/`, passord (sjå private notat).
 - [ ] **Step 5:** Klikk gjennom alle 8 faner, verifiser at kvar modul lastar og fungerer.
 - [ ] **Step 6:** Bordkart: dra ein gjest, verifiser at det lagrast (reload → gjesten står).
 - [ ] **Step 7:** Gåveliste-flyt: reserver gåve i hovudside frå mobil, verifiser at den er markert i planleggaren frå PC innan få sekund.

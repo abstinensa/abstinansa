@@ -7,6 +7,7 @@ from datetime import datetime, timedelta, timezone
 from html import unescape
 from pathlib import Path
 from typing import Iterable
+from urllib.parse import urlparse
 
 import feedparser
 import yaml
@@ -14,6 +15,23 @@ import yaml
 MAX_AGE_HOURS = 24
 SUMMARY_MAX_CHARS = 1200
 USER_AGENT = "abstinensa-ai-daily/1.0 (+https://abstinensa.no)"
+ALLOWED_URL_SCHEMES = {"http", "https"}
+
+
+def is_safe_url(url: str) -> bool:
+    """Berre http(s)-lenker med vertsnamn. Stoppar javascript:, data: o.l. (XSS)."""
+    if not isinstance(url, str):
+        return False
+    text = url.strip()
+    # Kontrollteikn, mellomrom, backslash og HTML-avgrensarar: nettlesarar og
+    # HTML-parserar er ueinige om desse, så dei høyrer ikkje heime i ein href.
+    if not text or any(ord(ch) < 33 or ch in '\\"<>' for ch in text):
+        return False
+    try:
+        parsed = urlparse(text)
+    except ValueError:
+        return False
+    return parsed.scheme.lower() in ALLOWED_URL_SCHEMES and bool(parsed.netloc)
 
 
 @dataclass
@@ -87,6 +105,9 @@ def _fetch_one(source: dict, region: str, exclude_keywords: list[str], cutoff: d
         title = _strip_html(entry.get("title", "")).strip()
         link = entry.get("link", "").strip()
         if not title or not link:
+            continue
+        if not is_safe_url(link):
+            print(f"  [{name}] hoppar over lenke med ugyldig skjema: {link[:80]!r}")
             continue
 
         summary = _strip_html(entry.get("summary", entry.get("description", "")))

@@ -52,6 +52,9 @@
     </section>
   </main>
 
+  <!-- Passordporten under er IKKJE ekte tryggleik: passordet er synleg i kjeldekoden
+       og kan omgåast. Han stoppar berre tilfeldige besøkande. Ikkje legg private
+       opplysningar på denne sida. Sjå sondreogjohanne/README.md. -->
   <script type="module">
     import { requirePassword } from './auth.js';
     if (requirePassword({ key: 'bryllup', correct: 'bryllup' })) {

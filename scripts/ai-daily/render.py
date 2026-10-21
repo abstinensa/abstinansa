@@ -8,6 +8,8 @@ from xml.sax.saxutils import escape as xml_escape
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from fetch import is_safe_url
+
 TEMPLATES_DIR = Path(__file__).parent / "templates"
 BASE_URL = "https://abstinensa.no"
 ARCHIVE_LIMIT = 30
@@ -19,6 +21,15 @@ _env = Environment(
     trim_blocks=True,
     lstrip_blocks=True,
 )
+
+
+def _safe_url(url: object) -> str:
+    """Jinja-filter: slepp berre gjennom http(s)-lenker, elles '#'."""
+    text = str(url or "").strip()
+    return text if is_safe_url(text) else "#"
+
+
+_env.filters["safe_url"] = _safe_url
 
 
 def _generated_at() -> str:

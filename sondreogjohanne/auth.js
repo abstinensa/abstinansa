@@ -1,4 +1,7 @@
 // auth.js — enkel passordbeskytting med sessionStorage
+// MERK: Dette er IKKJE ekte tryggleik. Passordet ligg i klartekst i den offentlege
+// kjeldekoden og sjekken skjer i nettlesaren. Porten stoppar berre tilfeldige
+// besøkande — legg aldri private opplysningar bak han.
 export function requirePassword({ key, correct, redirectOnCancel = '/' }) {
   const flag = `auth_${key}`;
   if (sessionStorage.getItem(flag) === '1') return true;
