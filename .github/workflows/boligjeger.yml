@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "boligjeger-bot"
           git config user.email "boligjeger@abstinensa.no"
-          git add boligjeger/listings.json boligjeger/state.json boligjeger/geocode-cache.json
+          git add b-600fd99e7f68/listings.json b-600fd99e7f68/state.json b-600fd99e7f68/geocode-cache.json
           if git diff --staged --quiet; then
             echo "Ingen endringer å committe."
           else

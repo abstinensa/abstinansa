@@ -31,7 +31,7 @@ def search_url(location: str, page: int) -> str:
     return f"{SEARCH}?location={location}&property_type={REKKEHUS}&page={page}"
 
 
-def image_url(url: str | None, size: str = "480w") -> str | None:
+def image_url(url: str | None, size: str = "960w") -> str | None:
     if not url or not isinstance(url, str):
         return None
     return re.sub(r"/dynamic/[^/]+/", f"/dynamic/{size}/", url, count=1)

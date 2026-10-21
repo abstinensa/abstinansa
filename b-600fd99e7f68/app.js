@@ -234,6 +234,7 @@ function factLine(item) {
 
 function renderCards(items) {
   const root = $("cards");
+  root.removeAttribute("aria-busy");
   root.replaceChildren();
   if (!items.length) {
     const empty = el("div", "empty");
@@ -353,7 +354,7 @@ function pinIcon(item) {
   const classes = ["pin", item.status === "solgt" ? "solgt" : "", item.prisfall ? "fall" : "", item.id === state.selectedId ? "on" : ""].filter(Boolean).join(" ");
   return L.divIcon({
     className: "pin-anchor",
-    html: `<div class="${classes}">${pinLabel(item).replace(/[&<>]/g, "")}</div>`,
+    html: `<div class="${classes}"><span class="pin-mark" aria-hidden="true"></span>${pinLabel(item).replace(/[&<>]/g, "")}</div>`,
     iconSize: [20, 20],
     iconAnchor: [10, 20],
   });
@@ -587,19 +588,38 @@ function bind() {
   });
 }
 
+function showSkeletons() {
+  const root = $("cards");
+  root.setAttribute("aria-busy", "true");
+  root.replaceChildren();
+  for (let i = 0; i < 6; i += 1) {
+    const card = el("div", "card skeleton");
+    card.setAttribute("aria-hidden", "true");
+    const body = el("div", "card-body");
+    body.append(el("div", "sk sk-line sk-price"), el("div", "sk sk-line"), el("div", "sk sk-line sk-short"));
+    card.append(el("div", "card-media sk"), body);
+    root.append(card);
+  }
+}
+
 async function load() {
   readParams();
   applyView(state.view);
   bind();
+  showSkeletons();
   try {
-    const response = await fetch("listings.json", { cache: "no-cache" });
+    const response = await fetch("/b-600fd99e7f68/listings.json", { cache: "no-cache" });
     if (!response.ok) throw new Error(String(response.status));
     const data = await response.json();
     state.all = Array.isArray(data.listings) ? data.listings : [];
     state.updated = data.updated_at || null;
   } catch (error) {
     $("count").textContent = "Kunne ikke laste boliger";
-    $("cards").append(el("div", "empty", "Sjekk tilkoblingen og last siden på nytt. Forrige liste blir liggende når neste oppdatering feiler."));
+    $("updated").textContent = "";
+    const empty = el("div", "empty");
+    empty.append(el("p", null, "Sjekk tilkoblingen og last siden på nytt. Forrige liste blir liggende når neste oppdatering feiler."));
+    $("cards").replaceChildren(empty);
+    $("cards").removeAttribute("aria-busy");
     console.error(error);
     return;
   }
@@ -609,7 +629,7 @@ async function load() {
   render(true);
   if (state.selectedId) selectListing(state.selectedId, "map");
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
+    navigator.serviceWorker.register("/b-600fd99e7f68/sw.js").catch(() => {});
   }
 }
 

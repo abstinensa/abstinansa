@@ -38,7 +38,7 @@ class DecodeTests(unittest.TestCase):
         url = "https://images.finncdn.no/dynamic/default/item/1/photo.jpg"
         self.assertEqual(
             finn.image_url(url),
-            "https://images.finncdn.no/dynamic/480w/item/1/photo.jpg",
+            "https://images.finncdn.no/dynamic/960w/item/1/photo.jpg",
         )
 
     def test_normalize_used_home_and_project(self):
@@ -237,6 +237,64 @@ class LiveHtmlTests(unittest.TestCase):
         self.assertTrue(all(row["bilde"] for row in normalized))
         self.assertTrue(all(row["lat"] for row in normalized))
         self.assertGreaterEqual(len(finn.oslo_districts(results)), 20)
+
+
+class PublishPathTests(unittest.TestCase):
+    def setUp(self):
+        self.root = Path(__file__).resolve().parents[2]
+        self.page = self.root / "b-600fd99e7f68"
+
+    def test_output_dir_and_agent_have_no_public_path(self):
+        self.assertEqual(pipeline.listings_path(self.root), self.page / "listings.json")
+        self.assertEqual(pipeline.state_path(self.root), self.page / "state.json")
+        self.assertEqual(pipeline.cache_path(self.root), self.page / "geocode-cache.json")
+        self.assertEqual(pipeline.GEO_AGENT, "abstinensa-bot/1.0 (+https://abstinensa.no)")
+        self.assertNotIn("boligjeger", pipeline.GEO_AGENT.lower())
+        self.assertFalse((self.root / "boligjeger").exists())
+
+    def test_page_is_hidden_and_unlinked(self):
+        html = (self.page / "index.html").read_text(encoding="utf-8")
+        self.assertIn('name="robots" content="noindex, nofollow, noarchive"', html)
+        self.assertIn('href="/b-600fd99e7f68/"', html)
+        self.assertNotIn("/boligjeger/", html)
+        app = (self.page / "app.js").read_text(encoding="utf-8")
+        self.assertIn('"/b-600fd99e7f68/listings.json"', app)
+        self.assertIn('"/b-600fd99e7f68/sw.js"', app)
+        self.assertNotIn("/boligjeger/", app)
+        sw = (self.page / "sw.js").read_text(encoding="utf-8")
+        self.assertIn('"/b-600fd99e7f68/"', sw)
+        self.assertNotIn("/boligjeger/", sw)
+        manifest = json.loads((self.page / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["start_url"], "/b-600fd99e7f68/")
+        self.assertEqual(manifest["scope"], "/b-600fd99e7f68/")
+        self.assertTrue(all(icon["src"].startswith("/b-600fd99e7f68/") for icon in manifest["icons"]))
+        yml = (self.root / ".github/workflows/boligjeger.yml").read_text(encoding="utf-8")
+        self.assertIn("b-600fd99e7f68/listings.json", yml)
+        self.assertIn("b-600fd99e7f68/state.json", yml)
+        self.assertIn("b-600fd99e7f68/geocode-cache.json", yml)
+        self.assertNotIn("boligjeger/listings.json", yml)
+        robots = self.root / "robots.txt"
+        if robots.exists():
+            text = robots.read_text(encoding="utf-8")
+            self.assertNotIn("b-600fd99e7f68", text)
+            self.assertNotIn("boligjeger", text.lower())
+        for path in self.root.rglob("*.html"):
+            if self.page in path.parents or path.parent == self.page:
+                continue
+            text = path.read_text(encoding="utf-8", errors="ignore")
+            self.assertNotIn("/boligjeger/", text, str(path))
+            self.assertNotIn("/b-600fd99e7f68/", text, str(path))
+            self.assertNotIn(">Boligjeger<", text, str(path))
+        readme = (self.root / "README.md").read_text(encoding="utf-8").lower()
+        self.assertNotIn("boligjeger", readme)
+
+    def test_filters_start_empty(self):
+        html = (self.page / "index.html").read_text(encoding="utf-8")
+        for select_id in ("maxPrice", "minBeds", "minBra", "maxFee"):
+            block = html.split(f'id="{select_id}"', 1)[1].split("</select>", 1)[0]
+            self.assertNotIn("selected", block)
+            self.assertIn('value=""', block)
+        self.assertIn('id="hideSold" checked', html)
 
 
 if __name__ == "__main__":
