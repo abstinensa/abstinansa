@@ -6,9 +6,9 @@ import SwiftUI
 final class GameStore: ObservableObject {
 
     // Persisted settings / progress
-    @Published var start: Double = 65
-    @Published var goal: Double = 51
-    @Published var weeks: Int = 10
+    @Published var start: Double = 0
+    @Published var goal: Double = 0
+    @Published var weeks: Int = 0
     @Published var startDate: Date = Calendar.current.startOfDay(for: Date())
     @Published var entries: [WeightEntry] = []
     @Published var xp: Int = 0
@@ -39,14 +39,18 @@ final class GameStore: ObservableObject {
 
     // MARK: - Derived values
 
+    /// False until the user has entered a start weight, a lower goal, and a duration.
+    var hasGoals: Bool { weeks >= 1 && goal < start }
+
     var current: Double { entries.last?.weight ?? start }
-    var lost: Double { max(0, start - current) }
-    var toGo: Double { max(0, current - goal) }
+    var lost: Double { hasGoals ? max(0, start - current) : 0 }
+    var toGo: Double { hasGoals ? max(0, current - goal) : 0 }
 
     var totalToLose: Double { max(0.001, start - goal) }
-    var progress: Double { min(1, max(0, lost / totalToLose)) }   // 0...1
+    var progress: Double { hasGoals ? min(1, max(0, lost / totalToLose)) : 0 }   // 0...1
 
     var daysLeft: Int {
+        guard hasGoals else { return 0 }
         let end = Calendar.current.date(byAdding: .day, value: weeks * 7, to: startDate) ?? Date()
         return max(0, Calendar.current.dateComponents([.day], from: Date(), to: end).day ?? 0)
     }
@@ -68,8 +72,9 @@ final class GameStore: ObservableObject {
 
     /// Target weights for each of the `weeks` milestones.
     var weekTargets: [Double] {
+        guard hasGoals else { return [] }
         let step = (start - goal) / Double(weeks)
-        return (1...max(1, weeks)).map { start - step * Double($0) }
+        return (1...weeks).map { start - step * Double($0) }
     }
 
     /// Index (0-based) of the current week relative to startDate.
@@ -117,7 +122,7 @@ final class GameStore: ObservableObject {
 
     func logWeight(_ weight: Double, on date: Date) {
         let day = Calendar.current.startOfDay(for: date)
-        let previous = current
+        let previous = entries.last?.weight ?? (hasGoals ? start : weight)
 
         entries.removeAll { Calendar.current.isDate($0.date, inSameDayAs: day) }
         entries.append(WeightEntry(date: day, weight: weight))
@@ -179,7 +184,7 @@ final class GameStore: ObservableObject {
     }
 
     func resetAll() {
-        start = 65; goal = 51; weeks = 10
+        start = 0; goal = 0; weeks = 0
         startDate = Calendar.current.startOfDay(for: Date())
         entries = []; xp = 0; streak = 0
         completedQuests = []; earnedBadges = []

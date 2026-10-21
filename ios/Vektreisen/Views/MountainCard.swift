@@ -7,6 +7,7 @@ struct MountainCard: View {
 
     private var progressMessage: String {
         let p = store.progress
+        if !store.hasGoals { return "Fyll inn start og mål under innstillinger" }
         if store.current <= store.goal { return "Du er på toppen! 👑" }
         if p >= 0.75 { return "Nesten der! 🚀" }
         if p >= 0.50 { return "Halvveis – sterkt! 🔥" }
@@ -19,7 +20,9 @@ struct MountainCard: View {
         Card {
             Text("Toppturen")
                 .font(.system(size: 24, weight: .regular, design: .serif))
-            Text("Du går fra dalen (\(store.format(store.start)) kg) til toppen (\(store.format(store.goal)) kg).")
+            Text(store.hasGoals
+                 ? "Du går fra dalen (\(store.format(store.start)) kg) til toppen (\(store.format(store.goal)) kg)."
+                 : "Plasseringen din viser hvor langt du er kommet, fra startvekta i dalen til målvekta på toppen.")
                 .font(.caption).foregroundColor(Theme.muted)
 
             GeometryReader { geo in
@@ -36,7 +39,7 @@ struct MountainCard: View {
                         .font(.system(size: 26))
                         .position(x: w * 0.9, y: h * 0.16)
 
-                    Text(store.current <= store.goal ? "🏆" : "🧗‍♀️")
+                    Text(store.hasGoals && store.current <= store.goal ? "🏆" : "🧗‍♀️")
                         .font(.system(size: 30))
                         .position(
                             x: w * (0.08 + store.progress * 0.82),

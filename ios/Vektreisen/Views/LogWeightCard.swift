@@ -57,6 +57,9 @@ struct LogWeightCard: View {
         guard let last = store.entries.last else {
             return "Logg din første veiing for å sette i gang reisen."
         }
+        if !store.hasGoals {
+            return "Sist logget: \(store.format(last.weight)) kg."
+        }
         if last.weight <= store.goal { return "Du har nådd målet ditt! 👑" }
         return "Sist logget: \(store.format(last.weight)) kg. Bare \(store.format(store.toGo)) kg igjen til \(store.format(store.goal)) kg."
     }

@@ -1,8 +1,8 @@
 # Vektreisen — native iOS app (SwiftUI)
 
 A native SwiftUI version of the Vektreisen weight-loss game (the same game that
-lives as a web app at `abstinensa.no/weight`). Goal preset: **65 → 51 kg over 10
-weeks** (editable in-app).
+lives as a web app at `abstinensa.no/weight`). Start weight, goal weight, and
+duration are filled in by the user.
 
 ## ⚠️ Read this first: you need a Mac
 
@@ -36,7 +36,7 @@ ios/
         ├── LevelAndQuestsCard.swift    # XP/level + daily quests
         ├── LogWeightCard.swift         # weigh-in entry
         ├── ProgressChartCard.swift     # Swift Charts plan-vs-actual
-        ├── WeeklyMilestonesCard.swift  # 10 weekly targets
+        ├── WeeklyMilestonesCard.swift  # weekly targets
         ├── BadgesCard.swift            # trophies + history log
         └── SettingsCard.swift          # edit goals / reset
 ```

@@ -30,26 +30,34 @@ struct SettingsCard: View {
                 ghostButton("Nullstill alt") { showResetAlert = true }
             }
 
-            Text("💛 Vær snill med deg selv. 14 kg på 10 uker er et raskt tempo (ca. 1,4 kg/uke). De fleste helsefaglige råd anbefaler 0,5–1 kg per uke for et varig resultat. Gi deg gjerne litt lengre tid – juster ukene over. Snakk med fastlege/ernæringsfysiolog ved store endringer.")
+            Text("💛 Vær snill med deg selv. De fleste helsefaglige råd anbefaler 0,5–1 kg per uke for et varig resultat. Gi deg gjerne litt lengre tid – juster ukene over. Snakk med fastlege/ernæringsfysiolog ved store endringer.")
                 .font(.caption).foregroundColor(Theme.muted)
                 .padding(14)
                 .background(Theme.cream)
                 .overlay(Rectangle().fill(Theme.goldLight).frame(width: 3), alignment: .leading)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
-        .onAppear {
-            startText = String(format: "%g", store.start)
-            goalText = String(format: "%g", store.goal)
-            weeksText = "\(store.weeks)"
-        }
+        .onAppear { fillFields() }
         .alert("Nullstille all fremgang?", isPresented: $showResetAlert) {
             Button("Avbryt", role: .cancel) {}
             Button("Nullstill", role: .destructive) {
                 store.resetAll()
-                startText = "65"; goalText = "51"; weeksText = "10"
+                fillFields()
             }
         } message: {
             Text("Dette kan ikke angres.")
+        }
+    }
+
+    private func fillFields() {
+        if store.hasGoals {
+            startText = String(format: "%g", store.start)
+            goalText = String(format: "%g", store.goal)
+            weeksText = "\(store.weeks)"
+        } else {
+            startText = ""
+            goalText = ""
+            weeksText = ""
         }
     }
 

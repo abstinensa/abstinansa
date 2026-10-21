@@ -1,6 +1,6 @@
 import { requirePassword } from '../../auth.js';
 
-if (!requirePassword({ key: 'planlegger', correct: 'iloveyou', redirectOnCancel: '../' })) {
+if (!await requirePassword({ key: 'planlegger', hash: 'cbf5a8a3bc535135da3e21cd25ef99fc65b8798a36f819182ce2f5ce5813c782', redirectOnCancel: '../' })) {
   throw new Error('auth failed');
 }
 document.querySelector('main').style.display = 'block';

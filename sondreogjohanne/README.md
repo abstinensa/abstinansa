@@ -2,12 +2,9 @@
 
 Passordbeskytta bryllupsside og bryllupsplanleggar på `abstinensa.no/sondreogjohanne/`.
 
-## Passord
+## Tilgang
 
-- Hovudsida: `bryllup`
-- Planleggaren: `iloveyou`
-
-(Endre ved å søkje/erstatte i `index.html` og `planlegger/index.html` — leit etter `correct:`.)
+Sidene har ei enkel vakt i nettlesaren. Det er berre tilsløring, ikkje ekte sikkerheit, og verdiane står ikkje i denne fila. For å byte vakt-hash, oppdater `hash` der `requirePassword` vert kalla (sjå kommentaren i `auth.js`).
 
 ## Datalagring
 
