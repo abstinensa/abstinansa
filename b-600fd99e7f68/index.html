@@ -5,38 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Boligjeger — rekkehus i Oslo</title>
   <meta name="description" content="Daglig oversikt over rekkehus til salgs i Oslo. Liste, kart, totalpris, soverom og felleskost.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#160908" media="(prefers-color-scheme: dark)">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Boligjeger">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icon-192.png" type="image/png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="/b-600fd99e7f68/manifest.json">
+  <link rel="icon" href="/b-600fd99e7f68/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="/b-600fd99e7f68/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-view="liste">
+  <script>
+    (function () {
+      var wide = window.matchMedia("(min-width: 980px)").matches;
+      var requested = new URLSearchParams(location.search).get("vis");
+      var view = requested === "liste" || requested === "kart" || requested === "delt"
+        ? requested
+        : (wide ? "delt" : "liste");
+      document.body.dataset.view = view;
+    }());
+  </script>
   <a class="skip" href="#cards">Hopp til boliger</a>
   <div class="sticky">
     <header class="top">
-      <a class="brand" href="/boligjeger/">
+      <a class="brand" href="/b-600fd99e7f68/">
         <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="#0063fb"/>
-          <path fill="#fff" d="M6.5 15.2 16 7.2l9.5 8v9.3a1 1 0 0 1-1 1h-5.2v-6.1h-6.6V25.5H7.5a1 1 0 0 1-1-1v-9.3z"/>
+          <rect width="32" height="32" rx="10" fill="#eb0c00"/>
+          <path fill="#fff" d="M16 6.2 5.2 15h3.2v9.4c0 .7.5 1.2 1.2 1.2h4.6V19h3.6v6.6h4.6c.7 0 1.2-.5 1.2-1.2V15h3.2L16 6.2z"/>
+          <path fill="#eb0c00" d="M14.3 20.2h3.4v5.4h-3.4z"/>
         </svg>
-        <span class="brand-text">
-          <span class="brand-name">Boligjeger</span>
-          <span class="brand-sub">Rekkehus i Oslo</span>
-        </span>
+        <span class="brand-name">Boligjeger</span>
       </a>
       <div class="top-right">
         <div class="seg" role="group" aria-label="Visning">
+          <span class="seg-thumb" aria-hidden="true"></span>
           <button type="button" data-view-btn="liste" aria-label="Listevisning">Liste</button>
           <button type="button" data-view-btn="delt">Delt</button>
           <button type="button" data-view-btn="kart" aria-label="Kartvisning">Kart</button>
@@ -44,12 +56,13 @@
         <a class="quiet" href="/">Hjem</a>
       </div>
     </header>
+    <div class="hero">
+      <p class="kicker">Rekkehus i Oslo</p>
+      <h1 id="count" aria-live="polite">Henter boliger…</h1>
+      <p id="updated">Henter siste liste</p>
+    </div>
     <div class="toolbar">
-      <div class="meta">
-        <p id="count" aria-live="polite">Henter boliger…</p>
-        <p id="updated"></p>
-      </div>
-      <div class="filters" id="filters">
+      <div class="filters" id="filters" role="group" aria-label="Filter">
         <label class="field">
           <span class="sr">Maks totalpris</span>
           <select id="maxPrice">
@@ -113,7 +126,7 @@
             <option value="storrelse">Størst</option>
           </select>
         </label>
-        <label class="check">
+        <label class="check is-on">
           <input type="checkbox" id="hideSold" checked>
           <span>Skjul solgte</span>
         </label>
@@ -127,9 +140,13 @@
     <button type="button" class="text-btn" id="areaClear">Nullstill område</button>
   </div>
 
-  <div class="layout">
+  <main class="layout">
     <section id="list" aria-label="Listevisning">
-      <div id="cards"></div>
+      <div id="cards" aria-busy="true">
+        <div class="card skeleton" aria-hidden="true"><div class="card-media sk"></div><div class="card-body"><div class="sk sk-line sk-price"></div><div class="sk sk-line"></div><div class="sk sk-line sk-short"></div></div></div>
+        <div class="card skeleton" aria-hidden="true"><div class="card-media sk"></div><div class="card-body"><div class="sk sk-line sk-price"></div><div class="sk sk-line"></div><div class="sk sk-line sk-short"></div></div></div>
+        <div class="card skeleton" aria-hidden="true"><div class="card-media sk"></div><div class="card-body"><div class="sk sk-line sk-price"></div><div class="sk sk-line"></div><div class="sk sk-line sk-short"></div></div></div>
+      </div>
       <footer class="colophon">
         <p>Prisene er offentlige annonsepriser fra Finn. Boligjeger lagrer ingen personlige opplysninger.</p>
         <p><a href="https://www.finn.no/realestate/homes/search.html?location=0.20061&amp;property_type=4">Søket på Finn</a> · <a href="/">abstinensa.no</a></p>
@@ -139,9 +156,10 @@
       <div id="map"></div>
       <div id="mapCard" class="map-card" hidden></div>
     </section>
-  </div>
+  </main>
 
   <nav class="tabbar" aria-label="Visning">
+    <span class="tab-thumb" aria-hidden="true"></span>
     <button type="button" data-view-btn="liste" aria-label="Listevisning">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       Liste
@@ -151,6 +169,7 @@
       Kart
     </button>
   </nav>
+  <noscript><p class="noscript">Slå på JavaScript for å laste boligene.</p></noscript>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js" crossorigin="anonymous"></script>

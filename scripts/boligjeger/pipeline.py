@@ -32,21 +32,22 @@ OSLO_TZ = ZoneInfo("Europe/Oslo")
 NY_DAYS = 7
 KEEP_DAYS = 120
 GEOCODE_URL = "https://ws.geonorge.no/adresser/v1/sok"
-GEO_AGENT = "Boligjeger/1.0 (+https://abstinensa.no/boligjeger)"
+PAGE_DIR = "b-600fd99e7f68"
+GEO_AGENT = "abstinensa-bot/1.0 (+https://abstinensa.no)"
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
 
 
 def listings_path(root: Path) -> Path:
-    return root / "boligjeger" / "listings.json"
+    return root / PAGE_DIR / "listings.json"
 
 
 def state_path(root: Path) -> Path:
-    return root / "boligjeger" / "state.json"
+    return root / PAGE_DIR / "state.json"
 
 
 def cache_path(root: Path) -> Path:
-    return root / "boligjeger" / "geocode-cache.json"
+    return root / PAGE_DIR / "geocode-cache.json"
 
 
 def today_iso(now: datetime | None = None) -> str:

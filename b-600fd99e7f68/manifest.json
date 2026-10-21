@@ -2,28 +2,28 @@
   "name": "Boligjeger — rekkehus i Oslo",
   "short_name": "Boligjeger",
   "description": "Daglig oversikt over rekkehus til salgs i Oslo.",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/b-600fd99e7f68/",
+  "scope": "/b-600fd99e7f68/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f6f7f9",
+  "background_color": "#f6efef",
   "theme_color": "#ffffff",
   "lang": "nb",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/b-600fd99e7f68/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "/b-600fd99e7f68/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "/b-600fd99e7f68/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
