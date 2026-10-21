@@ -1,0 +1,57 @@
+name: Boligjeger
+
+on:
+  schedule:
+    # 04:00 UTC er 06:00 Europe/Oslo i sommertid (CEST) og 05:00 i vintertid (CET).
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (hent, men ikke skriv filer)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: boligjeger
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Tester
+        working-directory: scripts/boligjeger
+        run: python -m unittest test_boligjeger.py
+
+      - name: Oppdater annonser
+        env:
+          TZ: Europe/Oslo
+          PYTHONUNBUFFERED: "1"
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python scripts/boligjeger/pipeline.py --dry-run
+          else
+            python scripts/boligjeger/pipeline.py
+          fi
+
+      - name: Commit data
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "boligjeger-bot"
+          git config user.email "boligjeger@abstinensa.no"
+          git add boligjeger/listings.json boligjeger/state.json boligjeger/geocode-cache.json
+          if git diff --staged --quiet; then
+            echo "Ingen endringer å committe."
+          else
+            git commit -m "Boligjeger $(date +%F)"
+            git push
+          fi

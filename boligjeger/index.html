@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Boligjeger — rekkehus i Oslo</title>
+  <meta name="description" content="Daglig oversikt over rekkehus til salgs i Oslo. Liste, kart, totalpris, soverom og felleskost.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Boligjeger">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-view="liste">
+  <a class="skip" href="#cards">Hopp til boliger</a>
+  <div class="sticky">
+    <header class="top">
+      <a class="brand" href="/boligjeger/">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#0063fb"/>
+          <path fill="#fff" d="M6.5 15.2 16 7.2l9.5 8v9.3a1 1 0 0 1-1 1h-5.2v-6.1h-6.6V25.5H7.5a1 1 0 0 1-1-1v-9.3z"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">Boligjeger</span>
+          <span class="brand-sub">Rekkehus i Oslo</span>
+        </span>
+      </a>
+      <div class="top-right">
+        <div class="seg" role="group" aria-label="Visning">
+          <button type="button" data-view-btn="liste" aria-label="Listevisning">Liste</button>
+          <button type="button" data-view-btn="delt">Delt</button>
+          <button type="button" data-view-btn="kart" aria-label="Kartvisning">Kart</button>
+        </div>
+        <a class="quiet" href="/">Hjem</a>
+      </div>
+    </header>
+    <div class="toolbar">
+      <div class="meta">
+        <p id="count" aria-live="polite">Henter boliger…</p>
+        <p id="updated"></p>
+      </div>
+      <div class="filters" id="filters">
+        <label class="field">
+          <span class="sr">Maks totalpris</span>
+          <select id="maxPrice">
+            <option value="">Maks totalpris</option>
+            <option value="4000000">Til 4 mill</option>
+            <option value="5000000">Til 5 mill</option>
+            <option value="6000000">Til 6 mill</option>
+            <option value="7000000">Til 7 mill</option>
+            <option value="8000000">Til 8 mill</option>
+            <option value="10000000">Til 10 mill</option>
+            <option value="12000000">Til 12 mill</option>
+            <option value="15000000">Til 15 mill</option>
+            <option value="20000000">Til 20 mill</option>
+            <option value="30000000">Til 30 mill</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="sr">Minste antall soverom</span>
+          <select id="minBeds">
+            <option value="">Soverom</option>
+            <option value="1">Minst 1 soverom</option>
+            <option value="2">Minst 2 soverom</option>
+            <option value="3">Minst 3 soverom</option>
+            <option value="4">Minst 4 soverom</option>
+            <option value="5">Minst 5 soverom</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="sr">Minste BRA</span>
+          <select id="minBra">
+            <option value="">Min. BRA</option>
+            <option value="60">Min. 60 m²</option>
+            <option value="80">Min. 80 m²</option>
+            <option value="100">Min. 100 m²</option>
+            <option value="120">Min. 120 m²</option>
+            <option value="140">Min. 140 m²</option>
+            <option value="160">Min. 160 m²</option>
+            <option value="200">Min. 200 m²</option>
+          </select>
+        </label>
+        <button type="button" class="chip" id="areaBtn" aria-expanded="false" aria-controls="areaPanel">Område</button>
+        <label class="field">
+          <span class="sr">Maks felleskost</span>
+          <select id="maxFee">
+            <option value="">Felleskost</option>
+            <option value="3000">Maks 3 000 kr</option>
+            <option value="5000">Maks 5 000 kr</option>
+            <option value="7000">Maks 7 000 kr</option>
+            <option value="9000">Maks 9 000 kr</option>
+            <option value="12000">Maks 12 000 kr</option>
+            <option value="15000">Maks 15 000 kr</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="sr">Sortering</span>
+          <select id="sort">
+            <option value="nyeste">Nyeste</option>
+            <option value="pris-asc">Laveste pris</option>
+            <option value="pris-desc">Høyeste pris</option>
+            <option value="kvm">Laveste m²-pris</option>
+            <option value="storrelse">Størst</option>
+          </select>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="hideSold" checked>
+          <span>Skjul solgte</span>
+        </label>
+        <button type="button" class="text-btn" id="reset" hidden>Nullstill</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="areaPanel" class="pop-panel" role="dialog" aria-label="Velg område" hidden>
+    <div id="areaList" class="area-list"></div>
+    <button type="button" class="text-btn" id="areaClear">Nullstill område</button>
+  </div>
+
+  <div class="layout">
+    <section id="list" aria-label="Listevisning">
+      <div id="cards"></div>
+      <footer class="colophon">
+        <p>Prisene er offentlige annonsepriser fra Finn. Boligjeger lagrer ingen personlige opplysninger.</p>
+        <p><a href="https://www.finn.no/realestate/homes/search.html?location=0.20061&amp;property_type=4">Søket på Finn</a> · <a href="/">abstinensa.no</a></p>
+      </footer>
+    </section>
+    <section id="mapWrap" aria-label="Kartvisning">
+      <div id="map"></div>
+      <div id="mapCard" class="map-card" hidden></div>
+    </section>
+  </div>
+
+  <nav class="tabbar" aria-label="Visning">
+    <button type="button" data-view-btn="liste" aria-label="Listevisning">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Liste
+    </button>
+    <button type="button" data-view-btn="kart" aria-label="Kartvisning">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.2" fill="currentColor"/></svg>
+      Kart
+    </button>
+  </nav>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>
