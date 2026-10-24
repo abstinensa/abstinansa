@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>AI use case-hub</title>
+  <meta name="description" content="Fra hype til hverdag. Konkrete bruksområder for generativ KI, med verdi, innsats, risiko og rekkverk.">
+  <meta name="theme-color" content="#151515">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23151515'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2373ff9d'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#innhold">Hopp til innhold</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top">AI use case-hub</a>
+    <nav class="site-nav" aria-label="På denne siden">
+      <a href="#utforsk">Utforsk</a>
+      <a href="#hurtig">Hurtigvinnere</a>
+      <a href="#adopsjon">Adopsjon</a>
+      <a href="#rekkverk">Rekkverk</a>
+      <a href="#kilder">Kilder</a>
+    </nav>
+  </header>
+
+  <main id="innhold">
+    <section class="hero" id="top" aria-labelledby="hero-tittel">
+      <div class="blob blob-mint" aria-hidden="true"></div>
+      <div class="blob blob-lavender" aria-hidden="true"></div>
+      <div class="blob blob-peach" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow eyebrow-on-hero">AI use case-hub · oppdatert 24.10.2026</p>
+        <h1 id="hero-tittel">AI use case-hub</h1>
+        <p class="lede">Fra hype til hverdag. <span id="stat-cases">86</span> konkrete bruksområder for generativ KI i <span id="stat-fn">15</span> funksjoner, med verdi, innsats, risiko og rekkverk. Målet er at folk faktisk tar det i bruk.</p>
+        <dl class="stats">
+          <div>
+            <dt>use cases</dt>
+            <dd id="stat-n-cases">86</dd>
+          </div>
+          <div>
+            <dt>funksjoner</dt>
+            <dd id="stat-n-fn">15</dd>
+          </div>
+          <div>
+            <dt>hurtigvinnere, lav innsats og lav risiko</dt>
+            <dd id="stat-n-quick">22</dd>
+          </div>
+          <div>
+            <dt>med kildebelagt verdi</dt>
+            <dd id="stat-n-src">29</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="utforsk" aria-labelledby="utforsk-tittel">
+      <div class="wrap">
+        <p class="eyebrow">Utforsk</p>
+        <h2 id="utforsk-tittel">Finn riktig startpunkt</h2>
+
+        <div class="filter-block">
+          <div class="chip-row" id="fn-row" role="group" aria-label="Funksjon"></div>
+
+          <div class="chip-row">
+            <span class="row-label" id="lbl-inn">Innsats</span>
+            <div class="chip-set" role="group" aria-labelledby="lbl-inn" id="inn-row"></div>
+          </div>
+          <div class="chip-row">
+            <span class="row-label" id="lbl-ris">Risiko</span>
+            <div class="chip-set" role="group" aria-labelledby="lbl-ris" id="ris-row"></div>
+          </div>
+          <div class="chip-row">
+            <span class="row-label" id="lbl-st">Status</span>
+            <div class="chip-set" role="group" aria-labelledby="lbl-st" id="st-row"></div>
+          </div>
+
+          <div class="save-row">
+            <p id="save-note" aria-live="polite">Status på kortene lagres i denne nettleseren.</p>
+            <button type="button" class="chip chip-action" id="reset-status">Nullstill</button>
+          </div>
+
+          <div class="tool-row">
+            <label class="sr-only" for="sok">Søk i bruksområder</label>
+            <input id="sok" class="search" type="search" placeholder="Søk, for eksempel møte, kontrakt, agent" autocomplete="off" enterkeyhint="search">
+            <label class="sr-only" for="sorter">Sortering</label>
+            <select id="sorter" class="sort">
+              <option value="hurtig">Sorter: hurtigvinnere først</option>
+              <option value="innsats">Sorter: lavest innsats</option>
+              <option value="risiko">Sorter: lavest risiko</option>
+              <option value="status">Sorter: status</option>
+              <option value="funksjon">Sorter: funksjon</option>
+              <option value="navn">Sorter: navn A til Å</option>
+            </select>
+            <button type="button" class="chip chip-action" id="reset-filter" aria-label="Nullstill filter">Nullstill</button>
+            <p class="result-count" id="treff" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden>Ingen treff. Juster filtrene eller søket.</p>
+      </div>
+    </section>
+
+    <section class="section" id="hurtig" aria-labelledby="hurtig-tittel">
+      <div class="wrap">
+        <p class="eyebrow">Start her</p>
+        <h2 id="hurtig-tittel">Hurtigvinnere per funksjon</h2>
+        <p class="intro">Lav innsats og lav risiko. Gode første oppgaver for å bygge vane og tillit før de tyngre tiltakene.</p>
+        <div class="quick-grid" id="quick"></div>
+      </div>
+    </section>
+
+    <section class="section" id="adopsjon" aria-labelledby="adopsjon-tittel">
+      <div class="wrap">
+        <p class="eyebrow">Adopsjon</p>
+        <h2 id="adopsjon-tittel">Slik får vi folk til å bruke det</h2>
+        <ol class="steps" id="steps"></ol>
+      </div>
+    </section>
+
+    <section class="section" id="rekkverk" aria-labelledby="rekkverk-tittel">
+      <div class="wrap">
+        <p class="eyebrow">Rekkverk</p>
+        <h2 id="rekkverk-tittel">Regelverket som styrer valgene</h2>
+        <div class="grid" id="rules"></div>
+        <p class="note">I tillegg gjelder taushetsplikt for finansforetak, hvitvaskingsloven, markedsføringsloven, finansavtaleloven og DORA for IKT-risiko og tredjeparter. Dette er en oversikt, ikke juridisk vurdering.</p>
+      </div>
+    </section>
+
+    <section class="section" id="kilder" aria-labelledby="kilder-tittel">
+      <div class="wrap">
+        <p class="eyebrow">Kilder</p>
+        <h2 id="kilder-tittel">Hvor tallene kommer fra</h2>
+        <ul class="sources" id="sources"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Verdi uten kilde er merket kvalitativt. Alle tall er fra eksterne studier og virksomheter, ikke egne målinger. Status er Ide for alle per 24.10.2026.</p>
+      <p class="credit">Visuell stil inspirert av volumkonferansen.no, ikke tilknyttet VOLUM.</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
