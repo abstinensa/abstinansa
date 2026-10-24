@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="nn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nysgjerrigheit — Stine Egeli Øvrebø</title>
+    <meta name="description" content="Ein interaktiv studie av nysgjerrigheit. Idear som finn kvarandre.">
+    <link rel="canonical" href="https://abstinensa.no/nysgjerrigheit/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            font-family:'Space Grotesk',system-ui,sans-serif;
+            background:#fbfaf7;
+            color:#111;
+            overflow:hidden;
+            overscroll-behavior:none;
+        }
+
+        .topnav{
+            position:fixed;top:0;left:0;right:0;z-index:100;
+            display:flex;justify-content:space-between;align-items:center;
+            padding:24px 48px;
+            background:rgba(251,250,247,.95);
+            backdrop-filter:blur(8px);
+        }
+        .topnav-name{
+            font-family:'EB Garamond',serif;
+            font-size:1.15rem;font-weight:500;font-style:italic;
+            color:#111;text-decoration:none;
+        }
+        .topnav-links{display:flex;gap:32px;list-style:none}
+        .topnav-links a{
+            font-size:.72rem;font-weight:500;
+            letter-spacing:.08em;text-transform:uppercase;
+            color:#888;text-decoration:none;transition:color .2s;
+        }
+        .topnav-links a:hover,
+        .topnav-links a[aria-current="page"]{color:#111}
+        .topnav-sep{width:1px;height:12px;background:#ddd;align-self:center}
+        .mobmenu{display:none;background:none;border:none;cursor:pointer;padding:8px}
+        .mobmenu svg{width:20px;height:20px;stroke:#111;stroke-width:1.5;fill:none}
+
+        #view{
+            position:fixed;inset:0;z-index:0;
+            width:100%;height:100%;
+            display:block;
+            touch-action:none;
+            cursor:grab;
+            opacity:0;
+            transition:opacity .8s ease;
+        }
+        html.is-ready #view{opacity:1}
+        html.no-webgl #view{display:none}
+        #view.is-dragging{cursor:grabbing}
+        #view.is-hot{cursor:pointer}
+
+        .veil{
+            position:fixed;inset:0;z-index:2;pointer-events:none;
+            background:
+                linear-gradient(to bottom, rgba(251,250,247,.94) 0%, rgba(251,250,247,.55) 68px, rgba(251,250,247,0) 132px),
+                linear-gradient(to top, rgba(251,250,247,.96) 0%, rgba(251,250,247,.78) 88px, rgba(251,250,247,0) 250px);
+        }
+
+        .fallback{
+            display:none;
+            position:fixed;inset:0;z-index:1;
+            pointer-events:none;
+        }
+        html.no-webgl .fallback{display:block}
+        .fallback svg{
+            position:absolute;
+            width:min(78vw, 640px);
+            height:auto;
+            left:54%;
+            top:46%;
+            transform:translate(-42%, -56%);
+        }
+        .still-spin{transform-origin:200px 188px;transform-box:view-box}
+        @media (prefers-reduced-motion: no-preference){
+            .still-spin{animation:turn 72s linear infinite}
+        }
+        @keyframes turn{to{transform:rotate(360deg)}}
+
+        .caption-block{
+            position:fixed;left:48px;bottom:36px;z-index:10;
+            max-width:min(26rem, calc(100vw - 96px));
+            pointer-events:none;
+        }
+        .kicker{
+            font-size:.65rem;font-weight:600;
+            letter-spacing:.16em;text-transform:uppercase;
+            color:#8b4513;margin-bottom:12px;
+        }
+        h1{
+            font-family:'EB Garamond',serif;
+            font-weight:400;
+            font-size:clamp(2.7rem, 5vw, 4.4rem);
+            letter-spacing:-.03em;
+            line-height:.92;
+            margin-bottom:14px;
+        }
+        .focus-word{
+            font-size:.72rem;font-weight:600;
+            letter-spacing:.14em;text-transform:uppercase;
+            color:#8b4513;
+            margin-bottom:6px;
+            opacity:1;
+            transition:opacity .18s ease;
+        }
+        .focus-word:empty{display:none}
+        .caption{
+            font-family:'EB Garamond',serif;
+            font-style:italic;
+            font-size:clamp(1.15rem, 2vw, 1.35rem);
+            color:#5c564e;
+            line-height:1.4;
+            transition:opacity .18s ease;
+        }
+        .hint{
+            margin-top:16px;
+            font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+            color:#999;
+        }
+        .fallback-hint{display:none}
+        html.no-webgl .hint-live{display:none}
+        html.no-webgl .fallback-hint{display:block}
+        .back{
+            display:inline-block;margin-top:20px;
+            font-size:.75rem;font-weight:600;
+            letter-spacing:.06em;text-transform:uppercase;
+            color:#111;text-decoration:none;
+            padding-bottom:4px;border-bottom:1.5px solid #111;
+            pointer-events:auto;
+            transition:color .2s, border-color .2s;
+        }
+        .back:hover{color:#8b4513;border-bottom-color:#8b4513}
+
+        .sr-only{
+            position:absolute;width:1px;height:1px;
+            padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+
+        @media (max-width:900px){
+            .topnav{padding:18px 24px}
+            .topnav-links{display:none}
+            .mobmenu{display:block}
+            .topnav-links.open{
+                display:flex;flex-direction:column;
+                position:absolute;top:100%;left:0;right:0;
+                background:rgba(251,250,247,.98);
+                padding:24px;gap:16px;
+                border-bottom:1px solid #e0ddd6;
+                max-height:calc(100dvh - 64px);
+                overflow-y:auto;
+            }
+            .topnav-links.open .topnav-sep{display:none}
+            .caption-block{left:24px;right:24px;bottom:28px;max-width:none}
+            .fallback svg{
+                width:min(94vw, 460px);
+                left:50%;
+                top:42%;
+                transform:translate(-50%, -58%);
+            }
+            .veil{
+                background:
+                    linear-gradient(to bottom, rgba(251,250,247,.94) 0%, rgba(251,250,247,.5) 60px, rgba(251,250,247,0) 118px),
+                    linear-gradient(to top, rgba(251,250,247,.97) 0%, rgba(251,250,247,.86) 120px, rgba(251,250,247,0) 46%);
+            }
+        }
+        @media (max-width:500px){
+            h1{font-size:2.5rem}
+        }
+        @media (prefers-reduced-motion: reduce){
+            #view{transition:none}
+            .caption,.focus-word{transition:none}
+        }
+    </style>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+        }
+    }
+    </script>
+</head>
+<body>
+
+<nav class="topnav" id="navbar">
+    <a href="/" class="topnav-name">Stine Egeli Øvrebø</a>
+    <ul class="topnav-links" id="navMenu">
+        <li><a href="/#tjenester">Tenester</a></li>
+        <li><a href="/#resultater">Resultat</a></li>
+        <li><a href="/#prosess">Prosess</a></li>
+        <li><a href="/#kompetanse">Kompetanse</a></li>
+        <li><a href="/#karriere">Karriere</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+        <li class="topnav-sep"></li>
+        <li><a href="/spill.html">Spill</a></li>
+        <li><a href="/pokemon.html">Pokemon</a></li>
+        <li><a href="/bergen-events.html">Bergen Nå</a></li>
+        <li><a href="/modenhet/">AI-modenheit</a></li>
+        <li><a href="/takk/">Takk til alle</a></li>
+        <li><a href="/ai-daily/">AI Nyheter</a></li>
+        <li><a href="/taktstokk/">Taktstokk</a></li>
+        <li><a href="/nysgjerrigheit/" aria-current="page">Nysgjerrigheit</a></li>
+    </ul>
+    <button class="mobmenu" id="burger" aria-label="Meny" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+</nav>
+
+<canvas id="view" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<div class="fallback" aria-hidden="true">
+    <svg class="still" viewBox="0 0 400 400">
+        <defs>
+            <radialGradient id="shade" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#2a211c" stop-opacity="0.14"/>
+                <stop offset="72%" stop-color="#2a211c" stop-opacity="0"/>
+            </radialGradient>
+        </defs>
+        <ellipse cx="200" cy="292" rx="118" ry="16" fill="url(#shade)"/>
+        <g class="still-spin" fill="none" stroke-linecap="round">
+            <ellipse cx="200" cy="188" rx="132" ry="48" stroke="#cbbbaa" stroke-width="1.4" transform="rotate(-16 200 188)"/>
+            <ellipse cx="200" cy="188" rx="108" ry="108" stroke="#8b4513" stroke-width="1.5" opacity="0.9"/>
+            <ellipse cx="200" cy="188" rx="62" ry="132" stroke="#1c1612" stroke-width="1.35" transform="rotate(18 200 188)"/>
+            <circle cx="200" cy="188" r="28" fill="#f4ece3" stroke="#e4d5c6" stroke-width="1"/>
+            <circle cx="318" cy="168" r="7" fill="#8b4513"/>
+            <circle cx="104" cy="214" r="5.5" fill="#1c1612"/>
+            <circle cx="236" cy="78" r="4.5" fill="#c4a484"/>
+            <circle cx="156" cy="300" r="6" fill="#6b3f28"/>
+            <circle cx="268" cy="262" r="3.5" fill="#111"/>
+            <circle cx="148" cy="132" r="4" fill="#d9c6b2"/>
+        </g>
+    </svg>
+</div>
+
+<div class="caption-block">
+    <p class="kicker">Studie</p>
+    <h1>Nysgjerrigheit</h1>
+    <p class="focus-word" id="focusWord"></p>
+    <p class="caption" id="caption" aria-live="polite">Idear som finn kvarandre.</p>
+    <p class="hint hint-live" id="hint">Dra for å snu · trykk på ein tanke</p>
+    <p class="hint fallback-hint">Nettlesaren din kan ikkje vise 3D. Her er ein stille versjon.</p>
+    <a class="back" href="/">Heim</a>
+    <p class="sr-only">Ein interaktiv modell. Dra for å snu han, og trykk på ein kule for å lese ein kort tanke. Namnet øvst til venstre fører attende til forsida.</p>
+</div>
+
+<noscript>
+    <style>.fallback{display:block}#view{display:none}.hint-live{display:none}.fallback-hint{display:block}</style>
+</noscript>
+
+<script>
+document.getElementById('burger').addEventListener('click', () => {
+    const menu = document.getElementById('navMenu');
+    const open = menu.classList.toggle('open');
+    document.getElementById('burger').setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+document.querySelectorAll('.topnav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('open');
+        document.getElementById('burger').setAttribute('aria-expanded', 'false');
+    });
+});
+</script>
+<script type="module">
+    try {
+        await import('./scene.js');
+    } catch (err) {
+        document.documentElement.classList.add('no-webgl');
+        document.documentElement.dataset.scene = 'fallback';
+    }
+</script>
+</body>
+</html>
