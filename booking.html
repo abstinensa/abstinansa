@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book et møte (demo) – Stine Egeli Øvrebø</title>
+    <meta name="description" content="Demo av møtebooking. Ingen ekte møter blir booket. Tidene er oppdiktet og lagres bare i nettleseren.">
+    <link rel="canonical" href="https://abstinensa.no/booking.html">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfaf7'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia' font-size='20' fill='%238b4513'%3ES%3C/text%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;color-scheme:light}
+        body{
+            font-family:'Space Grotesk',system-ui,sans-serif;
+            background:#fbfaf7;
+            color:#111;
+            font-size:16px;
+            line-height:1.6;
+        }
+        .site-head{position:sticky;top:0;z-index:100}
+        [hidden]{display:none !important}
+        :focus:not(:focus-visible){outline:none}
+        :focus-visible{outline:2px solid #8b4513;outline-offset:3px}
+        .sr-only{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+            overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+        .skip{
+            position:absolute;left:16px;top:-48px;z-index:200;
+            background:#111;color:#fbfaf7;padding:10px 14px;
+            font-size:.8rem;letter-spacing:.04em;
+        }
+        .skip:focus{top:12px}
+
+        .topnav{
+            display:flex;justify-content:space-between;align-items:center;
+            padding:24px 48px;
+            background:rgba(251,250,247,.96);
+            backdrop-filter:blur(8px);
+        }
+        .topnav-name{
+            font-family:'EB Garamond',Georgia,serif;
+            font-size:1.15rem;font-weight:500;font-style:italic;
+            color:#111;text-decoration:none;
+        }
+        .topnav-links{display:flex;gap:32px;list-style:none;align-items:center}
+        .topnav-links a{
+            font-size:.72rem;font-weight:500;
+            letter-spacing:.08em;text-transform:uppercase;
+            color:#888;text-decoration:none;
+        }
+        .topnav-links a:hover{color:#111}
+        .topnav-links a[aria-current="page"]{color:#111}
+
+        .demo-banner{
+            display:flex;justify-content:space-between;align-items:center;gap:16px 24px;
+            flex-wrap:wrap;
+            padding:14px 48px;
+            background:#f4efe6;
+            border-bottom:1px solid #e0ddd6;
+        }
+        .demo-banner p{font-size:.88rem;color:#3d2a1f;max-width:46rem}
+        .demo-count{color:#555;font-size:.78rem;flex-basis:100%}
+        .text-btn{
+            background:none;border:none;
+            border-bottom:1.5px solid #111;
+            padding:0 0 2px;
+            font-size:.75rem;font-weight:600;
+            letter-spacing:.06em;text-transform:uppercase;
+            color:#111;cursor:pointer;
+        }
+        .text-btn:hover{color:#8b4513;border-bottom-color:#8b4513}
+        .text-btn:disabled{color:#b0aaa2;border-bottom-color:#e0ddd6;cursor:default}
+
+        main{padding:36px 48px 96px}
+        .kicker{
+            font-size:.65rem;font-weight:600;
+            letter-spacing:.16em;text-transform:uppercase;
+            color:#8b4513;margin-bottom:12px;
+        }
+        h1{
+            font-family:'EB Garamond',Georgia,serif;
+            font-weight:400;
+            font-size:clamp(2.6rem,6vw,4.6rem);
+            line-height:.95;letter-spacing:-.03em;
+            max-width:11em;margin-bottom:18px;
+        }
+        .lede{max-width:38rem;color:#444;font-size:1rem;margin-bottom:8px}
+        .lede strong{font-weight:600;color:#111}
+
+        .steps{margin:36px 0 8px;max-width:980px}
+        .steps ol{
+            list-style:none;display:grid;grid-template-columns:repeat(3,1fr);
+            border-top:1px solid #e8e5de;border-bottom:1px solid #e8e5de;
+        }
+        .steps li{min-width:0}
+        .steps li+li{border-left:1px solid #e8e5de}
+        .steps button{
+            width:100%;text-align:left;background:none;border:none;
+            padding:18px 20px;cursor:pointer;color:#111;
+        }
+        .steps button:disabled{cursor:default}
+        .steps .num{
+            display:block;
+            font-family:'EB Garamond',Georgia,serif;
+            font-size:2rem;line-height:1;color:#e0ddd6;margin-bottom:6px;
+        }
+        .steps .label{
+            font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#aaa;
+        }
+        .steps button:not(:disabled) .num{color:#8b4513}
+        .steps button[aria-current="step"] .num,
+        .steps button[aria-current="step"] .label{color:#111}
+        .steps button.is-done .num,
+        .steps button.is-done .label{color:#8b4513}
+
+        h2{
+            font-family:'EB Garamond',Georgia,serif;
+            font-weight:400;font-size:clamp(1.7rem,3vw,2.3rem);
+            letter-spacing:-.02em;line-height:1.15;margin-bottom:10px;
+            scroll-margin-top:180px;
+        }
+        .hint{color:#555;font-size:.85rem;line-height:1.55}
+        .panel{max-width:980px;padding-top:36px}
+
+        .picker{
+            display:grid;grid-template-columns:minmax(260px,360px) 1fr;
+            gap:64px;align-items:start;
+        }
+        .cal-toolbar{
+            display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+            margin-top:28px;border-top:1px solid #111;padding-top:14px;
+        }
+        .cal-toolbar p{
+            font-family:'EB Garamond',Georgia,serif;
+            font-size:1.55rem;letter-spacing:-.02em;
+        }
+        .cal-nav{display:flex;gap:16px}
+        .calendar{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:12px}
+        .calendar th{
+            font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+            color:#555;padding:0 0 8px;
+        }
+        .calendar td{padding:2px;vertical-align:top}
+        .calendar button{
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            width:100%;min-height:44px;padding:4px 0 5px;
+            border:1px solid transparent;background:transparent;cursor:pointer;
+            font-family:'EB Garamond',Georgia,serif;font-size:1.2rem;color:#111;line-height:1;
+        }
+        .calendar button:not([aria-disabled="true"]):hover{border-color:#111}
+        .calendar button[aria-pressed="true"]{background:#111;color:#fbfaf7;border-color:#111}
+        .calendar button[aria-pressed="true"]:hover{background:#8b4513;border-color:#8b4513;color:#fbfaf7}
+        .calendar button[aria-disabled="true"]{color:#c4bfb6;cursor:default}
+        .calendar button[data-today="true"]:not([aria-pressed="true"]){box-shadow:inset 0 -2px 0 #8b4513}
+        .calendar button[data-booked="true"]::after{
+            content:"";display:block;width:4px;height:4px;margin-top:4px;border-radius:50%;background:#8b4513;
+        }
+        .calendar button[aria-pressed="true"][data-booked="true"]::after{background:#fbfaf7}
+
+        .legend{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;margin:8px 0 18px}
+        .legend li{display:flex;align-items:center;gap:8px;font-size:.75rem;letter-spacing:.04em;color:#555}
+        .swatch{width:14px;height:14px;border:1px solid #111;background:#fbfaf7;flex:none}
+        .swatch-busy{border-style:dashed;border-color:#8a8178;background:repeating-linear-gradient(-45deg,#fbfaf7,#fbfaf7 2px,#e7e2d9 2px,#e7e2d9 3px)}
+        .swatch-booked{border-color:#8b4513;background:#f4efe6}
+
+        #time-intro{margin:14px 0}
+        .slot-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px}
+        .slot{
+            position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+            gap:4px;min-height:64px;padding:12px 14px;
+            border:1px solid #e0ddd6;background:#fbfaf7;cursor:pointer;
+        }
+        .slot input{
+            position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+            clip:rect(0,0,0,0);white-space:nowrap;border:0;
+        }
+        .slot-time{font-family:'EB Garamond',Georgia,serif;font-size:1.4rem;letter-spacing:-.02em;line-height:1}
+        .slot-meta{font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#555}
+        .slot:not(.is-disabled):hover{border-color:#111}
+        .slot.is-selected{background:#111;border-color:#111;color:#fbfaf7}
+        .slot.is-selected .slot-meta{color:#f4efe6}
+        .slot.is-disabled{cursor:not-allowed;color:#8a8178;background:#f7f5f1}
+        .slot.is-disabled .slot-time{text-decoration:line-through;text-decoration-thickness:1px}
+        .slot.is-disabled .slot-meta{color:#666}
+        .slot-booked{border-style:solid;border-color:#e0d3c4}
+        .slot:focus-within{outline:2px solid #8b4513;outline-offset:3px}
+
+        .actions{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+        .actions .hint{flex:1;min-width:12rem;margin:0}
+        .btn-primary{
+            background:#111;color:#fbfaf7;border:none;cursor:pointer;
+            font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+            padding:14px 22px;min-height:48px;
+        }
+        .btn-primary:hover{background:#8b4513}
+        .btn-primary:disabled{background:#e0ddd6;color:#666;cursor:not-allowed}
+
+        .form{max-width:560px;margin-top:8px}
+        .field{margin-top:22px}
+        .field label{display:block;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+        .req{font-weight:500;letter-spacing:.04em;text-transform:none;color:#555}
+        .field input,.field textarea{
+            width:100%;background:transparent;border:none;border-bottom:1px solid #111;
+            padding:12px 0;border-radius:0;font-size:1rem;line-height:1.5;
+        }
+        .field textarea{border:1px solid #e0ddd6;padding:12px;min-height:140px;resize:vertical}
+        .field.has-error input,.field.has-error textarea{border-color:#8a2b1b}
+        .error{color:#8a2b1b;font-size:.85rem;margin-top:6px}
+
+        .summary{border-top:1px solid #e8e5de;margin:22px 0 8px}
+        .summary div{
+            display:grid;grid-template-columns:160px 1fr;gap:16px 24px;
+            padding:16px 0;border-bottom:1px solid #e8e5de;
+        }
+        .summary dt{
+            font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8b4513;padding-top:4px;
+        }
+        .summary dd{font-family:'EB Garamond',Georgia,serif;font-size:1.35rem;letter-spacing:-.02em;overflow-wrap:anywhere}
+        .summary dd.plain{font-family:'Space Grotesk',system-ui,sans-serif;font-size:.95rem;letter-spacing:0;white-space:pre-wrap}
+
+        .note{margin-top:16px;color:#444;max-width:38rem}
+        footer{
+            border-top:1px solid #e8e5de;
+            padding:32px 48px;
+            display:flex;justify-content:space-between;align-items:center;
+            font-size:.72rem;color:#999;gap:12px;flex-wrap:wrap;
+        }
+        footer a{color:#999;text-decoration:none}
+        footer a:hover{color:#8b4513}
+        .footer-right{display:flex;gap:20px}
+
+        dialog{
+            border:1px solid #e0ddd6;background:#fbfaf7;color:#111;
+            padding:28px;max-width:440px;width:calc(100% - 32px);
+        }
+        dialog::backdrop{background:rgba(17,17,17,.4)}
+        dialog p{margin:10px 0 0;color:#444}
+        dialog .actions{margin-top:22px}
+
+        @media (max-width:800px){
+            .topnav{padding:18px 24px}
+            .topnav-links{gap:18px}
+            .demo-banner,main,footer{padding-left:24px;padding-right:24px}
+            .demo-banner{align-items:flex-start}
+            .picker{grid-template-columns:1fr;gap:40px}
+            .summary div{grid-template-columns:1fr;gap:4px}
+            .steps button{padding:16px 12px}
+            h1{max-width:none}
+        }
+        @media (max-width:420px){
+            .steps ol{grid-template-columns:1fr}
+            .steps li+li{border-left:none;border-top:1px solid #e8e5de}
+            .cal-toolbar{flex-wrap:wrap}
+            .actions{align-items:stretch}
+            .btn-primary,.text-btn{align-self:flex-start}
+        }
+        @media (prefers-reduced-motion:reduce){
+            html{scroll-behavior:auto}
+        }
+    </style>
+</head>
+<body>
+    <a class="skip" href="#innhold">Hopp til innhold</a>
+    <div class="site-head">
+        <nav class="topnav" aria-label="Hoved">
+            <a class="topnav-name" href="/">Stine Egeli Øvrebø</a>
+            <ul class="topnav-links">
+                <li><a href="/">Forside</a></li>
+                <li><a href="/booking.html" aria-current="page">Book møte</a></li>
+            </ul>
+        </nav>
+        <div class="demo-banner">
+            <p role="status">Dette er en demo. Ingen ekte møter blir booket.</p>
+            <button type="button" class="text-btn" id="reset-demo">Nullstill demo</button>
+            <p class="demo-count" id="saved-count" hidden></p>
+        </div>
+    </div>
+
+    <main id="innhold" tabindex="-1">
+        <p class="kicker">Demo</p>
+        <h1>Book et møte</h1>
+        <p class="lede">Velg en ledig tid til en kort prat. Tidene er oppdiktet og laget i nettleseren. <strong>Ingenting sendes noe sted.</strong></p>
+        <noscript>
+            <p class="note">Demobookingen trenger JavaScript i nettleseren. Skriptet sender ingen data videre.</p>
+        </noscript>
+
+        <nav class="steps" aria-label="Fremgang">
+            <ol>
+                <li>
+                    <button type="button" id="step-date" aria-current="step">
+                        <span class="num">01</span>
+                        <span class="label">Dato</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" id="step-details" disabled>
+                        <span class="num">02</span>
+                        <span class="label">Detaljer</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" id="step-review" disabled>
+                        <span class="num">03</span>
+                        <span class="label">Bekreft</span>
+                    </button>
+                </li>
+            </ol>
+        </nav>
+
+        <section class="panel" id="panel-date" aria-labelledby="date-heading">
+            <div class="picker">
+                <div>
+                    <h2 id="date-heading" tabindex="-1">Velg dato</h2>
+                    <p class="hint">De neste 14 virkedagene. Helger kan ikke velges.</p>
+                    <div class="cal-toolbar">
+                        <p id="cal-month"></p>
+                        <div class="cal-nav">
+                            <button type="button" class="text-btn" id="cal-prev">Forrige<span class="sr-only"> måned</span></button>
+                            <button type="button" class="text-btn" id="cal-next">Neste<span class="sr-only"> måned</span></button>
+                        </div>
+                    </div>
+                    <table class="calendar" id="cal-grid">
+                        <caption class="sr-only" id="cal-caption"></caption>
+                        <thead>
+                            <tr>
+                                <th scope="col"><abbr title="Mandag">Ma</abbr></th>
+                                <th scope="col"><abbr title="Tirsdag">Ti</abbr></th>
+                                <th scope="col"><abbr title="Onsdag">On</abbr></th>
+                                <th scope="col"><abbr title="Torsdag">To</abbr></th>
+                                <th scope="col"><abbr title="Fredag">Fr</abbr></th>
+                                <th scope="col"><abbr title="Lørdag">Lø</abbr></th>
+                                <th scope="col"><abbr title="Søndag">Sø</abbr></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cal-body"></tbody>
+                    </table>
+                    <p class="hint" id="cal-help">Piltaster flytter markeringen. Enter velger en dato.</p>
+                </div>
+                <div>
+                    <h2 id="time-heading" tabindex="-1">Velg tidspunkt</h2>
+                    <p class="hint">30-minutters møter mellom 09:00 og 16:00. Opptatte tider er fastlagt i demoen.</p>
+                    <p id="time-intro">Velg en dato i kalenderen først.</p>
+                    <ul class="legend">
+                        <li><span class="swatch swatch-free" aria-hidden="true"></span> Ledig</li>
+                        <li><span class="swatch swatch-busy" aria-hidden="true"></span> Opptatt</li>
+                        <li><span class="swatch swatch-booked" aria-hidden="true"></span> Booket i demo</li>
+                    </ul>
+                    <div id="slot-list" class="slot-list" role="radiogroup" aria-labelledby="time-heading"></div>
+                    <div class="actions">
+                        <p class="hint" id="next-hint">Velg et ledig tidspunkt for å gå videre.</p>
+                        <button type="button" class="btn-primary" id="to-details" disabled>Neste</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel" id="panel-details" hidden aria-labelledby="details-heading">
+            <h2 id="details-heading" tabindex="-1">Dine opplysninger</h2>
+            <p class="hint">Feltene brukes bare til kvitteringen og kalenderfilen i denne nettleseren.</p>
+            <form class="form" id="details-form" novalidate>
+                <div class="field">
+                    <label for="name">Navn <span class="req">(påkrevd)</span></label>
+                    <input id="name" name="name" type="text" autocomplete="name" required maxlength="80" spellcheck="false">
+                    <p class="error" id="name-error" hidden></p>
+                </div>
+                <div class="field">
+                    <label for="email">E-post <span class="req">(påkrevd)</span></label>
+                    <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="120" spellcheck="false">
+                    <p class="error" id="email-error" hidden></p>
+                </div>
+                <div class="field">
+                    <label for="description">Kort beskrivelse <span class="req">(påkrevd)</span></label>
+                    <textarea id="description" name="description" required maxlength="500" spellcheck="true" aria-describedby="desc-hint"></textarea>
+                    <p class="hint" id="desc-hint">Et par setninger om hva du ønsker å ta opp. Maks 500 tegn.</p>
+                    <p class="error" id="desc-error" hidden></p>
+                </div>
+                <div class="actions">
+                    <button type="button" class="text-btn" id="back-to-date">Tilbake</button>
+                    <button type="submit" class="btn-primary" id="details-next" disabled>Neste</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel" id="panel-review" hidden aria-labelledby="review-heading">
+            <h2 id="review-heading" tabindex="-1">Bekreft demobookingen</h2>
+            <p class="hint">Se over opplysningene. Når du bekrefter, lagres bookingen bare i denne nettleseren.</p>
+            <dl class="summary">
+                <div><dt>Dato</dt><dd id="review-date"></dd></div>
+                <div><dt>Tid</dt><dd id="review-time"></dd></div>
+                <div><dt>Navn</dt><dd id="review-name"></dd></div>
+                <div><dt>E-post</dt><dd id="review-email"></dd></div>
+                <div><dt>Kort beskrivelse</dt><dd id="review-desc" class="plain"></dd></div>
+            </dl>
+            <div class="actions">
+                <button type="button" class="text-btn" id="back-to-details">Tilbake</button>
+                <button type="button" class="btn-primary" id="confirm-booking">Bekreft booking</button>
+            </div>
+        </section>
+
+        <section class="panel" id="panel-done" hidden aria-labelledby="done-heading">
+            <h2 id="done-heading" tabindex="-1">Demobookingen er registrert</h2>
+            <p class="note">Ingen invitasjon er sendt. Dette er en demo, og opplysningene ligger bare i denne nettleseren. Tidspunktet er ledig igjen hvis du nullstiller demoen.</p>
+            <dl class="summary">
+                <div><dt>Referanse</dt><dd id="done-ref"></dd></div>
+                <div><dt>Dato</dt><dd id="done-date"></dd></div>
+                <div><dt>Tid</dt><dd id="done-time"></dd></div>
+                <div><dt>Navn</dt><dd id="done-name"></dd></div>
+                <div><dt>E-post</dt><dd id="done-email"></dd></div>
+                <div><dt>Kort beskrivelse</dt><dd id="done-desc" class="plain"></dd></div>
+            </dl>
+            <div class="actions">
+                <button type="button" class="text-btn" id="book-another">Book et nytt demomøte</button>
+                <button type="button" class="btn-primary" id="download-ics">Last ned kalenderfil (.ics)</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>2026 Stine Egeli Øvrebø</span>
+        <div class="footer-right">
+            <a href="/">Forside</a>
+            <a href="https://www.linkedin.com/in/stine-egeli-%C3%B8vreb%C3%B8-1617ab68" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+    </footer>
+
+    <dialog id="reset-dialog" aria-labelledby="reset-title">
+        <h2 id="reset-title">Nullstill demoen?</h2>
+        <p>Demobookinger lagret i denne nettleseren blir slettet. Ingen data er sendt noe sted.</p>
+        <div class="actions">
+            <button type="button" class="text-btn" id="reset-cancel">Avbryt</button>
+            <button type="button" class="btn-primary" id="reset-confirm">Nullstill</button>
+        </div>
+    </dialog>
+
+    <div id="live" class="sr-only" aria-live="polite"></div>
+
+    <script>
+    (function () {
+        'use strict';
+
+        var STORAGE_KEY = 'abstinensa.booking.demo.v1';
+        var WEEKDAYS = ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'];
+        var MONTHS = ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember'];
+        var SLOT_TIMES = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30'];
+        var SLOT_TEXT = { free: 'Ledig', busy: 'Opptatt', booked: 'Booket', past: 'Passert' };
+
+        var state = {
+            step: 'date',
+            viewYear: 0,
+            viewMonth: 0,
+            cursor: '',
+            selectedDate: '',
+            selectedTime: '',
+            name: '',
+            email: '',
+            description: '',
+            confirmed: null,
+            bookable: [],
+            bookableSet: new Set()
+        };
+        var bookings = [];
+        var announceTimer = 0;
+
+        var tbody = document.getElementById('cal-body');
+        var monthEl = document.getElementById('cal-month');
+        var captionEl = document.getElementById('cal-caption');
+        var prevBtn = document.getElementById('cal-prev');
+        var nextBtn = document.getElementById('cal-next');
+        var slotList = document.getElementById('slot-list');
+        var timeIntro = document.getElementById('time-intro');
+        var toDetails = document.getElementById('to-details');
+        var form = document.getElementById('details-form');
+        var nameInput = document.getElementById('name');
+        var emailInput = document.getElementById('email');
+        var descInput = document.getElementById('description');
+        var dialog = document.getElementById('reset-dialog');
+
+        function announce(message) {
+            var live = document.getElementById('live');
+            window.clearTimeout(announceTimer);
+            live.textContent = '';
+            announceTimer = window.setTimeout(function () {
+                live.textContent = message;
+            }, 40);
+        }
+
+        function isoDate(date) {
+            var y = date.getFullYear();
+            var m = String(date.getMonth() + 1).padStart(2, '0');
+            var d = String(date.getDate()).padStart(2, '0');
+            return y + '-' + m + '-' + d;
+        }
+
+        function parseISO(iso) {
+            var parts = iso.split('-');
+            return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+        }
+
+        function formatLong(date) {
+            return WEEKDAYS[date.getDay()] + ' ' + date.getDate() + '. ' + MONTHS[date.getMonth()] + ' ' + date.getFullYear();
+        }
+
+        function monthTitle(year, month) {
+            var name = MONTHS[month];
+            return name.charAt(0).toUpperCase() + name.slice(1) + ' ' + year;
+        }
+
+        function addMinutes(time, mins) {
+            var bits = time.split(':');
+            var total = Number(bits[0]) * 60 + Number(bits[1]) + mins;
+            return String(Math.floor(total / 60)).padStart(2, '0') + ':' + String(total % 60).padStart(2, '0');
+        }
+
+        function upcomingWeekdays(now, count) {
+            var dates = [];
+            var cursor = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            while (dates.length < count) {
+                var day = cursor.getDay();
+                if (day !== 0 && day !== 6) dates.push(new Date(cursor.getTime()));
+                cursor.setDate(cursor.getDate() + 1);
+            }
+            return dates;
+        }
+
+        function fnv1a(str) {
+            var h = 0x811c9dc5;
+            for (var i = 0; i < str.length; i++) {
+                h ^= str.charCodeAt(i);
+                h = Math.imul(h, 0x01000193);
+            }
+            return h >>> 0;
+        }
+
+        function hashBusy(dateISO, time) {
+            return fnv1a(dateISO + 'T' + time + '|abstinensa-demo-v1') % 10 < 3;
+        }
+
+        function isPastSlot(dateISO, time, now) {
+            var parts = dateISO.split('-').map(Number);
+            var clock = time.split(':').map(Number);
+            var slot = new Date(parts[0], parts[1] - 1, parts[2], clock[0], clock[1], 0, 0);
+            return slot.getTime() <= now.getTime();
+        }
+
+        function isUserBooked(dateISO, time) {
+            return bookings.some(function (b) { return b.date === dateISO && b.time === time; });
+        }
+
+        function hasBookingOn(dateISO) {
+            return bookings.some(function (b) { return b.date === dateISO; });
+        }
+
+        function forcedFree(dateISO, now) {
+            var set = new Set();
+            var candidates = SLOT_TIMES.filter(function (time) {
+                return !isPastSlot(dateISO, time, now) && !isUserBooked(dateISO, time);
+            });
+            var freeCount = candidates.filter(function (time) { return !hashBusy(dateISO, time); }).length;
+            if (freeCount >= 3) return set;
+            for (var i = 0; i < candidates.length && freeCount < 3; i++) {
+                if (hashBusy(dateISO, candidates[i])) {
+                    set.add(candidates[i]);
+                    freeCount += 1;
+                }
+            }
+            return set;
+        }
+
+        function slotKind(dateISO, time, now) {
+            var clock = now || new Date();
+            if (isUserBooked(dateISO, time)) return 'booked';
+            if (isPastSlot(dateISO, time, clock)) return 'past';
+            if (hashBusy(dateISO, time) && !forcedFree(dateISO, clock).has(time)) return 'busy';
+            return 'free';
+        }
+
+        function countFree(dateISO) {
+            var now = new Date();
+            return SLOT_TIMES.filter(function (time) { return slotKind(dateISO, time, now) === 'free'; }).length;
+        }
+
+        function ledigText(n) {
+            if (n === 0) return 'Ingen ledige tidspunkt.';
+            if (n === 1) return '1 ledig tidspunkt.';
+            return n + ' ledige tidspunkt.';
+        }
+
+        function clear(node) {
+            while (node.firstChild) node.removeChild(node.firstChild);
+        }
+
+        function isStoredBooking(item) {
+            if (!item || typeof item !== 'object') return false;
+            if (typeof item.id !== 'string' || !/^[A-Za-z0-9-]{8,80}$/.test(item.id)) return false;
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(item.date || '')) return false;
+            if (!/^(?:09|1[0-5]):(?:00|30)$/.test(item.time || '')) return false;
+            if (typeof item.name !== 'string' || item.name.length < 1 || item.name.length > 80) return false;
+            if (typeof item.email !== 'string' || item.email.length > 120) return false;
+            if (typeof item.description !== 'string' || item.description.length > 500) return false;
+            return true;
+        }
+
+        function loadBookings() {
+            try {
+                var raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return [];
+                var data = JSON.parse(raw);
+                if (!Array.isArray(data)) return [];
+                return data.filter(isStoredBooking);
+            } catch (err) {
+                return [];
+            }
+        }
+
+        function saveBookings(list) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+                return true;
+            } catch (err) {
+                return false;
+            }
+        }
+
+        function updateBanner() {
+            var count = document.getElementById('saved-count');
+            var n = bookings.length;
+            if (n === 0) {
+                count.textContent = '';
+                count.hidden = true;
+                return;
+            }
+            count.hidden = false;
+            count.textContent = n === 1
+                ? '1 demobooking er lagret i denne nettleseren.'
+                : n + ' demobookinger er lagret i denne nettleseren.';
+        }
+
+        function rangeBounds() {
+            var first = parseISO(state.bookable[0]);
+            var last = parseISO(state.bookable[state.bookable.length - 1]);
+            return {
+                min: new Date(first.getFullYear(), first.getMonth(), 1),
+                max: new Date(last.getFullYear(), last.getMonth() + 1, 0),
+                minMonth: first.getFullYear() * 12 + first.getMonth(),
+                maxMonth: last.getFullYear() * 12 + last.getMonth()
+            };
+        }
+
+        function updateMonthButtons() {
+            var bounds = rangeBounds();
+            var current = state.viewYear * 12 + state.viewMonth;
+            prevBtn.disabled = current <= bounds.minMonth;
+            nextBtn.disabled = current >= bounds.maxMonth;
+        }
+
+        function inView(iso) {
+            if (!iso) return false;
+            var date = parseISO(iso);
+            return date.getFullYear() === state.viewYear && date.getMonth() === state.viewMonth;
+        }
+
+        function preferredCursor() {
+            if (inView(state.cursor)) return state.cursor;
+            if (inView(state.selectedDate)) return state.selectedDate;
+            var found = state.bookable.filter(inView)[0];
+            if (found) return found;
+            return isoDate(new Date(state.viewYear, state.viewMonth, 1));
+        }
+
+        function dayLabel(date, flags) {
+            var label = formatLong(date);
+            if (flags.pressed) label += ', valgt';
+            if (!flags.bookable) label += ', ikke tilgjengelig';
+            else if (flags.booked) label += ', har demobooking';
+            return label;
+        }
+
+        function renderCalendar() {
+            clear(tbody);
+            var year = state.viewYear;
+            var month = state.viewMonth;
+            var title = monthTitle(year, month);
+            monthEl.textContent = title;
+            captionEl.textContent = title;
+            var first = new Date(year, month, 1);
+            var pad = (first.getDay() + 6) % 7;
+            var days = new Date(year, month + 1, 0).getDate();
+            var focusIso = preferredCursor();
+            var today = isoDate(new Date());
+            var cells = [];
+            var i;
+            for (i = 0; i < pad; i++) cells.push(null);
+            for (i = 1; i <= days; i++) cells.push(new Date(year, month, i));
+            while (cells.length % 7 !== 0) cells.push(null);
+            for (i = 0; i < cells.length; i += 7) {
+                var tr = document.createElement('tr');
+                for (var c = 0; c < 7; c++) {
+                    var td = document.createElement('td');
+                    var date = cells[i + c];
+                    if (!date) {
+                        td.setAttribute('aria-hidden', 'true');
+                    } else {
+                        var iso = isoDate(date);
+                        var bookable = state.bookableSet.has(iso);
+                        var pressed = iso === state.selectedDate;
+                        var booked = hasBookingOn(iso);
+                        var btn = document.createElement('button');
+                        btn.type = 'button';
+                        btn.dataset.date = iso;
+                        btn.textContent = String(date.getDate());
+                        btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+                        btn.tabIndex = iso === focusIso ? 0 : -1;
+                        btn.setAttribute('aria-label', dayLabel(date, { bookable: bookable, pressed: pressed, booked: booked }));
+                        if (!bookable) btn.setAttribute('aria-disabled', 'true');
+                        if (iso === today) btn.dataset.today = 'true';
+                        if (booked) btn.dataset.booked = 'true';
+                        td.appendChild(btn);
+                    }
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            }
+            updateMonthButtons();
+        }
+
+        function renderSlots() {
+            clear(slotList);
+            if (!state.selectedDate) {
+                timeIntro.textContent = 'Velg en dato i kalenderen først.';
+                slotList.hidden = true;
+                return;
+            }
+            slotList.hidden = false;
+            var now = new Date();
+            var freeCount = 0;
+            SLOT_TIMES.forEach(function (time) {
+                var kind = slotKind(state.selectedDate, time, now);
+                if (kind === 'free') freeCount += 1;
+                var label = document.createElement('label');
+                label.className = 'slot slot-' + kind + (kind === 'free' ? '' : ' is-disabled');
+                var input = document.createElement('input');
+                input.type = 'radio';
+                input.name = 'slot';
+                input.value = time;
+                if (kind !== 'free') input.disabled = true;
+                if (kind === 'free' && time === state.selectedTime) {
+                    input.checked = true;
+                    label.classList.add('is-selected');
+                }
+                var timeEl = document.createElement('span');
+                timeEl.className = 'slot-time';
+                timeEl.textContent = time;
+                var meta = document.createElement('span');
+                meta.className = 'slot-meta';
+                meta.textContent = SLOT_TEXT[kind];
+                label.appendChild(input);
+                label.appendChild(timeEl);
+                label.appendChild(meta);
+                slotList.appendChild(label);
+            });
+            timeIntro.textContent = formatLong(parseISO(state.selectedDate)) + '. ' + ledigText(freeCount);
+        }
+
+        function updateNextButton() {
+            var ok = Boolean(state.selectedDate && state.selectedTime && slotKind(state.selectedDate, state.selectedTime) === 'free');
+            toDetails.disabled = !ok;
+            document.getElementById('next-hint').hidden = ok;
+            if (ok) toDetails.removeAttribute('aria-describedby');
+            else toDetails.setAttribute('aria-describedby', 'next-hint');
+        }
+
+        function selectDate(iso) {
+            if (!state.bookableSet.has(iso)) return;
+            var changed = state.selectedDate !== iso;
+            state.selectedDate = iso;
+            state.cursor = iso;
+            if (changed) state.selectedTime = null;
+            tbody.querySelectorAll('button[data-date]').forEach(function (btn) {
+                var on = btn.dataset.date === iso;
+                var date = parseISO(btn.dataset.date);
+                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+                btn.tabIndex = on ? 0 : -1;
+                btn.setAttribute('aria-label', dayLabel(date, {
+                    bookable: state.bookableSet.has(btn.dataset.date),
+                    pressed: on,
+                    booked: hasBookingOn(btn.dataset.date)
+                }));
+            });
+            renderSlots();
+            updateNextButton();
+            announce(formatLong(parseISO(iso)) + '. ' + ledigText(countFree(iso)));
+        }
+
+        function focusCursor(date) {
+            var bounds = rangeBounds();
+            if (date < bounds.min || date > bounds.max) return;
+            var iso = isoDate(date);
+            state.cursor = iso;
+            var monthChanged = date.getFullYear() !== state.viewYear || date.getMonth() !== state.viewMonth;
+            if (monthChanged) {
+                state.viewYear = date.getFullYear();
+                state.viewMonth = date.getMonth();
+                renderCalendar();
+            } else {
+                tbody.querySelectorAll('button[data-date]').forEach(function (btn) {
+                    btn.tabIndex = btn.dataset.date === iso ? 0 : -1;
+                });
+            }
+            var target = tbody.querySelector('button[data-date="' + iso + '"]');
+            if (target) target.focus();
+        }
+
+        function moveCursor(fromIso, deltaDays) {
+            var date = parseISO(fromIso);
+            date.setDate(date.getDate() + deltaDays);
+            focusCursor(date);
+        }
+
+        function moveCursorMonths(fromIso, delta) {
+            var current = parseISO(fromIso);
+            var day = current.getDate();
+            var target = new Date(current.getFullYear(), current.getMonth() + delta, 1);
+            var days = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
+            target.setDate(Math.min(day, days));
+            var bounds = rangeBounds();
+            if (target < bounds.min) target = bounds.min;
+            if (target > bounds.max) target = bounds.max;
+            focusCursor(target);
+        }
+
+        function changeMonth(delta) {
+            var bounds = rangeBounds();
+            var next = state.viewYear * 12 + state.viewMonth + delta;
+            if (next < bounds.minMonth || next > bounds.maxMonth) return;
+            state.viewYear = Math.floor(next / 12);
+            state.viewMonth = next % 12;
+            renderCalendar();
+        }
+
+        function showStep(step, options) {
+            state.step = step;
+            var names = ['date', 'details', 'review'];
+            var idx = step === 'done' ? 3 : names.indexOf(step);
+            names.forEach(function (name, i) {
+                document.getElementById('panel-' + name).hidden = name !== step;
+                var btn = document.getElementById('step-' + name);
+                if (step === 'done') {
+                    btn.disabled = true;
+                    btn.classList.add('is-done');
+                    btn.removeAttribute('aria-current');
+                } else {
+                    btn.classList.remove('is-done');
+                    btn.disabled = i > idx;
+                    if (i === idx) btn.setAttribute('aria-current', 'step');
+                    else btn.removeAttribute('aria-current');
+                }
+            });
+            document.getElementById('panel-done').hidden = step !== 'done';
+            if (!options || options.focus !== false) {
+                var panelId = step === 'done' ? 'panel-done' : 'panel-' + step;
+                var heading = document.getElementById(panelId).querySelector('h2');
+                if (heading) heading.focus();
+            }
+        }
+
+        function clearFieldError(input, errorEl) {
+            errorEl.hidden = true;
+            errorEl.textContent = '';
+            input.removeAttribute('aria-invalid');
+            input.closest('.field').classList.remove('has-error');
+            if (input.id === 'description') input.setAttribute('aria-describedby', 'desc-hint');
+            else input.removeAttribute('aria-describedby');
+        }
+
+        function showFieldError(input, errorEl, message) {
+            var described = errorEl.id;
+            if (input.id === 'description') described = 'desc-hint ' + errorEl.id;
+            errorEl.hidden = false;
+            errorEl.textContent = message;
+            input.setAttribute('aria-invalid', 'true');
+            input.setAttribute('aria-describedby', described);
+            input.closest('.field').classList.add('has-error');
+        }
+
+        function normalizeName(value) {
+            return String(value).replace(/[\u0000-\u001F\u007F]/g, '').replace(/\s+/g, ' ').trim();
+        }
+
+        function cleanDescription(value) {
+            return String(value)
+                .replace(/\r\n/g, '\n')
+                .replace(/\r/g, '\n')
+                .replace(/[^\S\n]+/g, ' ')
+                .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+                .trim();
+        }
+
+        function validateDetails(values) {
+            var errors = {};
+            if (values.name.length < 2 || values.name.length > 80 || !/\p{L}/u.test(values.name)) {
+                errors.name = 'Skriv inn navnet ditt (minst 2 bokstaver).';
+            }
+            if (values.email.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email)) {
+                errors.email = 'Skriv inn en gyldig e-postadresse.';
+            }
+            if (values.description.length < 3) {
+                errors.description = 'Skriv en kort beskrivelse (minst 3 tegn).';
+            } else if (values.description.length > 500) {
+                errors.description = 'Beskrivelsen kan være maks 500 tegn.';
+            }
+            return errors;
+        }
+
+        function fillSummary(prefix) {
+            document.getElementById(prefix + '-date').textContent = formatLong(parseISO(state.selectedDate));
+            document.getElementById(prefix + '-time').textContent = state.selectedTime + '–' + addMinutes(state.selectedTime, 30);
+            document.getElementById(prefix + '-name').textContent = state.name;
+            document.getElementById(prefix + '-email').textContent = state.email;
+            document.getElementById(prefix + '-desc').textContent = state.description;
+        }
+
+        function resetFlow() {
+            state.selectedDate = '';
+            state.selectedTime = '';
+            state.name = '';
+            state.email = '';
+            state.description = '';
+            state.confirmed = null;
+            form.reset();
+            clearFieldError(nameInput, document.getElementById('name-error'));
+            clearFieldError(emailInput, document.getElementById('email-error'));
+            clearFieldError(descInput, document.getElementById('desc-error'));
+            showStep('date', { focus: false });
+            renderCalendar();
+            renderSlots();
+            updateNextButton();
+        }
+
+        function createId() {
+            if (window.crypto && typeof crypto.randomUUID === 'function') return crypto.randomUUID();
+            var bytes = new Uint8Array(16);
+            crypto.getRandomValues(bytes);
+            bytes[6] = (bytes[6] & 0x0f) | 0x40;
+            bytes[8] = (bytes[8] & 0x3f) | 0x80;
+            var hex = Array.from(bytes, function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+            return hex.slice(0, 8) + '-' + hex.slice(8, 12) + '-' + hex.slice(12, 16) + '-' + hex.slice(16, 20) + '-' + hex.slice(20);
+        }
+
+        function icsText(value) {
+            return String(value)
+                .replace(/\\/g, '\\\\')
+                .replace(/\r\n|\n|\r/g, '\\n')
+                .replace(/;/g, '\\;')
+                .replace(/,/g, '\\,');
+        }
+
+        function foldLine(line) {
+            var encoder = new TextEncoder();
+            var limit = 75;
+            var current = '';
+            var parts = [];
+            Array.from(line).forEach(function (ch) {
+                var next = current + ch;
+                if (encoder.encode(next).length > limit && current !== '') {
+                    parts.push(current);
+                    current = ch;
+                    limit = 74;
+                } else {
+                    current = next;
+                }
+            });
+            if (current) parts.push(current);
+            return parts.map(function (part, i) { return i === 0 ? part : ' ' + part; }).join('\r\n');
+        }
+
+        function buildIcs(booking) {
+            var start = booking.date.replace(/-/g, '') + 'T' + booking.time.replace(':', '') + '00';
+            var end = booking.date.replace(/-/g, '') + 'T' + addMinutes(booking.time, 30).replace(':', '') + '00';
+            var stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+            var description = [
+                'Dette er en demo. Ingen ekte møte er booket.',
+                'Tidspunktet er lokal tid.',
+                '',
+                'Navn: ' + booking.name,
+                'E-post: ' + booking.email,
+                'Beskrivelse: ' + booking.description
+            ].join('\n');
+            var lines = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//abstinensa.no//Demobooking//NO',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
+                'BEGIN:VEVENT',
+                'UID:' + booking.id + '@abstinensa.no',
+                'DTSTAMP:' + stamp,
+                'DTSTART:' + start,
+                'DTEND:' + end,
+                'SUMMARY:' + icsText('DEMO: Møte med Stine Egeli Øvrebø'),
+                'DESCRIPTION:' + icsText(description),
+                'LOCATION:' + icsText('Digitalt (demo)'),
+                'STATUS:CONFIRMED',
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ];
+            return lines.map(foldLine).join('\r\n') + '\r\n';
+        }
+
+        function downloadIcs(booking) {
+            var ics = buildIcs(booking);
+            var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'demo-mote-' + booking.date + '-' + booking.time.replace(':', '') + '.ics';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+        }
+
+        function confirmBooking() {
+            if (state.confirmed) return;
+            if (slotKind(state.selectedDate, state.selectedTime) !== 'free') {
+                state.selectedTime = '';
+                showStep('date');
+                renderSlots();
+                updateNextButton();
+                announce('Tidspunktet er ikke lenger ledig. Velg et annet.');
+                return;
+            }
+            var booking = {
+                id: createId(),
+                date: state.selectedDate,
+                time: state.selectedTime,
+                name: state.name,
+                email: state.email,
+                description: state.description,
+                created: new Date().toISOString()
+            };
+            bookings.push(booking);
+            var saved = saveBookings(bookings);
+            state.confirmed = booking;
+            fillSummary('done');
+            document.getElementById('done-ref').textContent = 'DEMO-' + booking.id.replace(/-/g, '').slice(0, 8).toUpperCase();
+            updateBanner();
+            renderCalendar();
+            showStep('done');
+            if (!saved) announce('Bookingen vises i denne økten, men kunne ikke lagres til neste besøk.');
+        }
+
+        tbody.addEventListener('click', function (event) {
+            var btn = event.target.closest('button[data-date]');
+            if (!btn) return;
+            if (btn.getAttribute('aria-disabled') === 'true') return;
+            selectDate(btn.dataset.date);
+        });
+
+        tbody.addEventListener('keydown', function (event) {
+            var btn = event.target.closest('button[data-date]');
+            if (!btn) return;
+            var key = event.key;
+            if (key === 'ArrowLeft' || key === 'ArrowRight' || key === 'ArrowUp' || key === 'ArrowDown' || key === 'Home' || key === 'End' || key === 'PageUp' || key === 'PageDown') {
+                event.preventDefault();
+            }
+            if (key === 'ArrowLeft') moveCursor(btn.dataset.date, -1);
+            else if (key === 'ArrowRight') moveCursor(btn.dataset.date, 1);
+            else if (key === 'ArrowUp') moveCursor(btn.dataset.date, -7);
+            else if (key === 'ArrowDown') moveCursor(btn.dataset.date, 7);
+            else if (key === 'Home') {
+                var date = parseISO(btn.dataset.date);
+                moveCursor(btn.dataset.date, -((date.getDay() + 6) % 7));
+            } else if (key === 'End') {
+                var endDate = parseISO(btn.dataset.date);
+                moveCursor(btn.dataset.date, 6 - ((endDate.getDay() + 6) % 7));
+            } else if (key === 'PageUp') moveCursorMonths(btn.dataset.date, -1);
+            else if (key === 'PageDown') moveCursorMonths(btn.dataset.date, 1);
+        });
+
+        slotList.addEventListener('change', function (event) {
+            var input = event.target;
+            if (!input || input.name !== 'slot' || !input.checked) return;
+            state.selectedTime = input.value;
+            slotList.querySelectorAll('.slot').forEach(function (label) {
+                var radio = label.querySelector('input');
+                label.classList.toggle('is-selected', Boolean(radio && radio.checked));
+            });
+            updateNextButton();
+        });
+
+        prevBtn.addEventListener('click', function () { changeMonth(-1); });
+        nextBtn.addEventListener('click', function () { changeMonth(1); });
+        toDetails.addEventListener('click', function () {
+            if (toDetails.disabled) return;
+            if (slotKind(state.selectedDate, state.selectedTime) !== 'free') {
+                announce('Velg et ledig tidspunkt.');
+                return;
+            }
+            showStep('details');
+        });
+
+        document.getElementById('step-date').addEventListener('click', function () {
+            if (state.step !== 'date' && state.step !== 'done') showStep('date');
+        });
+        document.getElementById('step-details').addEventListener('click', function () {
+            if (state.step === 'review') showStep('details');
+        });
+        document.getElementById('back-to-date').addEventListener('click', function () { showStep('date'); });
+        document.getElementById('back-to-details').addEventListener('click', function () { showStep('details'); });
+
+        nameInput.addEventListener('input', function () {
+            clearFieldError(nameInput, document.getElementById('name-error'));
+        });
+        emailInput.addEventListener('input', function () {
+            clearFieldError(emailInput, document.getElementById('email-error'));
+        });
+        descInput.addEventListener('input', function () {
+            clearFieldError(descInput, document.getElementById('desc-error'));
+        });
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            var values = {
+                name: normalizeName(nameInput.value),
+                email: emailInput.value.trim(),
+                description: cleanDescription(descInput.value)
+            };
+            nameInput.value = values.name;
+            emailInput.value = values.email;
+            descInput.value = values.description;
+            var errors = validateDetails(values);
+            var first = null;
+            if (errors.name) {
+                showFieldError(nameInput, document.getElementById('name-error'), errors.name);
+                first = first || nameInput;
+            } else clearFieldError(nameInput, document.getElementById('name-error'));
+            if (errors.email) {
+                showFieldError(emailInput, document.getElementById('email-error'), errors.email);
+                first = first || emailInput;
+            } else clearFieldError(emailInput, document.getElementById('email-error'));
+            if (errors.description) {
+                showFieldError(descInput, document.getElementById('desc-error'), errors.description);
+                first = first || descInput;
+            } else clearFieldError(descInput, document.getElementById('desc-error'));
+            if (first) {
+                first.focus();
+                return;
+            }
+            state.name = values.name;
+            state.email = values.email;
+            state.description = values.description;
+            fillSummary('review');
+            showStep('review');
+        });
+
+        document.getElementById('confirm-booking').addEventListener('click', confirmBooking);
+        document.getElementById('download-ics').addEventListener('click', function () {
+            if (state.confirmed) downloadIcs(state.confirmed);
+        });
+        document.getElementById('book-another').addEventListener('click', function () {
+            resetFlow();
+            document.getElementById('date-heading').focus();
+            announce('Velg en ny dato. Tidligere demobookinger er fortsatt markert som booket.');
+        });
+
+        document.getElementById('reset-demo').addEventListener('click', function () {
+            if (bookings.length === 0) {
+                announce('Ingen demobookinger å nullstille.');
+                return;
+            }
+            dialog.showModal();
+        });
+        document.getElementById('reset-cancel').addEventListener('click', function () { dialog.close(); });
+        document.getElementById('reset-confirm').addEventListener('click', function () {
+            bookings = [];
+            saveBookings(bookings);
+            dialog.close();
+            var wasDone = state.step === 'done';
+            if (wasDone) resetFlow();
+            else {
+                if (state.selectedDate && state.selectedTime && slotKind(state.selectedDate, state.selectedTime) !== 'free') {
+                    state.selectedTime = '';
+                }
+                renderCalendar();
+                renderSlots();
+                updateNextButton();
+            }
+            updateBanner();
+            announce('Demoen er nullstilt. Lagrede demobookinger er slettet fra denne nettleseren.');
+            if (wasDone) document.getElementById('date-heading').focus();
+        });
+
+        window.addEventListener('storage', function (event) {
+            if (event.key !== STORAGE_KEY) return;
+            bookings = loadBookings();
+            updateBanner();
+            renderCalendar();
+            renderSlots();
+            updateNextButton();
+        });
+
+        document.getElementById('details-next').disabled = false;
+        bookings = loadBookings();
+        state.bookable = upcomingWeekdays(new Date(), 14).map(isoDate);
+        state.bookableSet = new Set(state.bookable);
+        var first = parseISO(state.bookable[0]);
+        state.viewYear = first.getFullYear();
+        state.viewMonth = first.getMonth();
+        state.cursor = state.bookable[0];
+        updateBanner();
+        renderCalendar();
+        renderSlots();
+        updateNextButton();
+        showStep('date', { focus: false });
+    })();
+    </script>
+</body>
+</html>
