@@ -1,6 +1,6 @@
 {
-  "count": 121,
-  "date": "2026-10-26",
+  "count": 120,
+  "date": "2026-10-27",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -673,7 +673,7 @@
     {
       "address": "Erling Michelsens vei 19B, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/19/1/462/008/431_e22c7ba3-3803-45d7-b18b-180e6d512c2d.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/26/1/462/008/431_3914e353-94cf-4504-9fb4-ef98f7da047c.jpg",
       "bra": 111,
       "bra_til": null,
       "bydeler": [
@@ -682,39 +682,44 @@
       "eierform": "Andel",
       "felleskost": 8615,
       "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 5270000,
+      "forrige_totalpris": 5989666,
       "id": "462008431",
-      "kvm_pris": 47477,
+      "kvm_pris": 44955,
       "lat": 59.9372,
       "lng": 10.90309,
       "lokalomrade": "Ellingsrud Vest",
       "megler": "OBOS Eiendomsmeglere - Ensjø",
       "ny": true,
       "omrade": "Ellingsrud Vest · Furuset",
-      "overskrift": "Rekkehus m/ utsikt | Solrik terrasse | Kjøk. 2025 WC 2024 | Peis & varmepumpe | Barnevennlig, ved marka | Garasje med el",
+      "overskrift": "Idyllisk rekkehus | Svært familievennlig | Sol, utsikt | Kjøk. 2025 WC 2024 | Peis, varmepumpe | Naturnær | Garasje m/el",
       "price_history": [
         {
           "date": "2026-10-21",
           "prisantydning": 5270000,
           "totalpris": 5989666
+        },
+        {
+          "date": "2026-10-27",
+          "prisantydning": 4990000,
+          "totalpris": 5700766
         }
       ],
-      "prisantydning": 5270000,
+      "prisantydning": 4990000,
       "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
+      "prisendring": -280000,
+      "prisendring_felt": "prisantydning",
+      "prisfall": true,
       "privat": false,
       "publisert": "2026-10-19T08:02:48+00:00",
       "soverom": 3,
       "soverom_til": null,
       "status": "til_salgs",
-      "totalpris": 5989666,
+      "totalpris": 5700766,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=462008431",
-      "visning": null,
+      "visning": "2026-10-29T16:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -949,8 +954,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=464124059",
-      "visning": "2026-10-26T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Vennersborgveien 8G, Oslo",
@@ -1508,7 +1513,7 @@
       "publisert": "2026-10-19T18:17:01+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 6206319,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -1654,8 +1659,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=467291459",
-      "visning": "2026-10-26T15:30:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Rådyrveien 15 B, Oslo",
@@ -1894,6 +1899,58 @@
       "visning_i_dag": false
     },
     {
+      "address": "Stenbråtveien 139, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/06/1/472/151/371_892b0580-6172-476d-ba36-9770e8f9fc01.jpg",
+      "bra": 134,
+      "bra_til": null,
+      "bydeler": [
+        "Søndre Nordstrand"
+      ],
+      "eierform": "Selveier",
+      "felleskost": 6345,
+      "first_seen": "2026-10-21",
+      "forrige_prisantydning": 7450000,
+      "forrige_totalpris": 7637340,
+      "id": "472151371",
+      "kvm_pris": 52985,
+      "lat": 59.8593,
+      "lng": 10.8228,
+      "lokalomrade": "Stenbråten",
+      "megler": "Krogsveen Nordstrand",
+      "ny": true,
+      "omrade": "Stenbråten · Søndre Nordstrand",
+      "overskrift": "Innholdsrikt familiehjem fra 2020 | 4 soverom, takterrasse og markterrasse | Garasje |Bilfritt og barnevennlig tun",
+      "price_history": [
+        {
+          "date": "2026-10-21",
+          "prisantydning": 7450000,
+          "totalpris": 7637340
+        },
+        {
+          "date": "2026-10-27",
+          "prisantydning": 7100000,
+          "totalpris": 7278590
+        }
+      ],
+      "prisantydning": 7100000,
+      "prisantydning_til": null,
+      "prisendring": -350000,
+      "prisendring_felt": "prisantydning",
+      "prisfall": true,
+      "privat": false,
+      "publisert": "2026-10-26T10:08:26+00:00",
+      "soverom": 4,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 7278590,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=472151371",
+      "visning": "2026-11-01T14:00:00.000Z",
+      "visning_i_dag": false
+    },
+    {
       "address": "Øverliveien 4B, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/8/vertical-2/14/5/473/287/445_f95458b4-e5f2-42f4-bfa2-3058d3399f54.jpg",
@@ -2031,8 +2088,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=473624410",
-      "visning": "2026-10-26T17:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Bekkenstenveien 30B, Oslo",
@@ -2788,7 +2845,7 @@
       "publisert": "2026-09-21T13:26:47+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 5423340,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -2887,8 +2944,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=475542064",
-      "visning": "2026-10-26T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Veitvetsvingen 3 S, Oslo",
@@ -3070,7 +3127,7 @@
       "publisert": "2026-10-16T10:31:45+00:00",
       "soverom": 1,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 6509302,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -3316,7 +3373,7 @@
     {
       "address": "Øysteins plass 5, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/9/vertical-2/18/4/476/709/984_fe7fa1ec-e59f-4b1d-99fc-8c265196f33b.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/26/4/476/709/984_449c12df-e60f-46bd-ae6b-071fa87c1795.png",
       "bra": 131,
       "bra_til": null,
       "bydeler": [
@@ -3335,7 +3392,7 @@
       "megler": "Aktiv Carl Berner",
       "ny": true,
       "omrade": "Lille Tøyen Hageby · Helsfyr - Sinsen",
-      "overskrift": "Sjelden mulighet i Lille Tøyen Hageby! Townhouse over fire plan med hageparsell - oppussingsobjekt med stort potensial",
+      "overskrift": "Velkommen til Halloween visning i Lille Tøyen Hageby! Townhouse med hageparsell - oppussingsobjekt med stort potensial",
       "price_history": [
         {
           "date": "2026-10-21",
@@ -3354,7 +3411,7 @@
       "prisendring_felt": "prisantydning",
       "prisfall": true,
       "privat": false,
-      "publisert": "2026-09-18T16:03:29+00:00",
+      "publisert": "2026-10-26T12:55:19+00:00",
       "soverom": 2,
       "soverom_til": null,
       "status": "til_salgs",
@@ -3362,7 +3419,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=476709984",
-      "visning": null,
+      "visning": "2026-10-31T13:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -3424,10 +3481,10 @@
       "eierform": "Andel",
       "felleskost": 4969,
       "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 5800000,
+      "forrige_totalpris": 6192367,
       "id": "476998469",
-      "kvm_pris": 68235,
+      "kvm_pris": 67059,
       "lat": 59.9452,
       "lng": 10.8521,
       "lokalomrade": "Veitvedt Hageby",
@@ -3440,23 +3497,28 @@
           "date": "2026-10-21",
           "prisantydning": 5800000,
           "totalpris": 6192367
+        },
+        {
+          "date": "2026-10-27",
+          "prisantydning": 5700000,
+          "totalpris": 6092367
         }
       ],
-      "prisantydning": 5800000,
+      "prisantydning": 5700000,
       "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
+      "prisendring": -100000,
+      "prisendring_felt": "prisantydning",
+      "prisfall": true,
       "privat": false,
-      "publisert": "2026-09-28T15:10:54+00:00",
+      "publisert": "2026-10-26T11:47:26+00:00",
       "soverom": 2,
       "soverom_til": null,
       "status": "til_salgs",
-      "totalpris": 6192367,
+      "totalpris": 6092367,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=476998469",
-      "visning": null,
+      "visning": "2026-11-01T11:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -3565,10 +3627,10 @@
       "eierform": "Andel",
       "felleskost": 6782,
       "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 7190000,
+      "forrige_totalpris": 7406496,
       "id": "477276744",
-      "kvm_pris": 64196,
+      "kvm_pris": 60714,
       "lat": 59.8397,
       "lng": 10.7884,
       "lokalomrade": "Hallagerbakken",
@@ -3581,23 +3643,28 @@
           "date": "2026-10-21",
           "prisantydning": 7190000,
           "totalpris": 7406496
+        },
+        {
+          "date": "2026-10-27",
+          "prisantydning": 6800000,
+          "totalpris": 7016496
         }
       ],
-      "prisantydning": 7190000,
+      "prisantydning": 6800000,
       "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
+      "prisendring": -390000,
+      "prisendring_felt": "prisantydning",
+      "prisfall": true,
       "privat": false,
       "publisert": "2026-09-26T12:27:21+00:00",
       "soverom": 2,
       "soverom_til": null,
       "status": "til_salgs",
-      "totalpris": 7406496,
+      "totalpris": 7016496,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477276744",
-      "visning": null,
+      "visning": "2026-11-01T13:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -3696,53 +3763,6 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477288998",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
-      "address": "Fallanveien 27E, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/9/vertical-2/29/3/477/587/443_dc19f392-2dcc-4598-95e5-a3a9df68b5ad.jpg",
-      "bra": 146,
-      "bra_til": null,
-      "bydeler": [
-        "Grefsen - Kjelsås"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 0,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "477587443",
-      "kvm_pris": 78767,
-      "lat": 59.9628,
-      "lng": 10.7926,
-      "lokalomrade": "Barnevennlig på Kjelsås",
-      "megler": "Krogsveen Grefsen",
-      "ny": true,
-      "omrade": "Barnevennlig på Kjelsås · Grefsen - Kjelsås",
-      "overskrift": "Innholdsrikt og romslig rekkehus over 3 plan m. familievennlig planløsning | 4 soverom | Flere uteplasser | Markanært",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 11500000,
-          "totalpris": 11788590
-        }
-      ],
-      "prisantydning": 11500000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-10-03T10:03:54+00:00",
-      "soverom": 4,
-      "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 11788590,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477587443",
       "visning": null,
       "visning_i_dag": false
     },
@@ -3978,7 +3998,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477763748",
-      "visning": null,
+      "visning": "2026-11-01T11:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4307,8 +4327,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478019029",
-      "visning": "2026-10-26T15:45:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Ullveien 38, Oslo",
@@ -4354,53 +4374,6 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478020033",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
-      "address": "Tiriltunga 54, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/06/5/478/086/685_5f579d74-3cee-4125-a1c9-dad4808ef802.jpg",
-      "bra": 142,
-      "bra_til": null,
-      "bydeler": [
-        "Søndre Nordstrand"
-      ],
-      "eierform": "Andel",
-      "felleskost": 5004,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "478086685",
-      "kvm_pris": 45000,
-      "lat": 59.83146,
-      "lng": 10.79838,
-      "lokalomrade": "Toppåsen/Tiriltunga",
-      "megler": "PrivatMegleren Première",
-      "ny": true,
-      "omrade": "Toppåsen/Tiriltunga · Søndre Nordstrand",
-      "overskrift": "Familievennlig og pent rekkehus med tre soverom, loftstue, balkong og parkeringsplass | Barnevennlig beliggenhet",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 6390000,
-          "totalpris": 6486779
-        }
-      ],
-      "prisantydning": 6390000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-10-11T09:02:45+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 6486779,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478086685",
       "visning": null,
       "visning_i_dag": false
     },
@@ -4454,7 +4427,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478165022",
       "visning": "2026-10-27T15:30:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Langviksveien 19B, Oslo",
@@ -4688,8 +4661,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478316305",
-      "visning": "2026-10-26T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Treskeveien 31A, Oslo",
@@ -4928,8 +4901,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478716774",
-      "visning": "2026-10-26T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Åssiden Terrasse 34A, Oslo",
@@ -4970,7 +4943,7 @@
       "publisert": "2026-10-16T15:04:31+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 11080941,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5023,7 +4996,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478798095",
       "visning": "2026-10-27T17:00:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Lillebergveien 26, Oslo",
@@ -5070,7 +5043,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478817574",
       "visning": "2026-10-27T16:00:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Johan Castbergs vei 15L, Oslo",
@@ -5116,8 +5089,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478822603",
-      "visning": "2026-10-26T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Skullerudveien 32, Oslo",
@@ -5163,13 +5136,13 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478837678",
-      "visning": "2026-10-26T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Bjørn Bondes vei 21, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/22/7/478/838/847_8004af83-2849-4e3d-8d9a-f07d3a3a64f2.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/26/7/478/838/847_95dee3a2-3d16-4152-b71f-410ed2136bc5.jpg",
       "bra": 83,
       "bra_til": null,
       "bydeler": [
@@ -5210,8 +5183,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478838847",
-      "visning": "2026-10-26T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Nico Hambros vei 127, Oslo",
@@ -5257,8 +5230,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478851473",
-      "visning": "2026-10-26T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Protonveien 22C, Oslo",
@@ -5346,7 +5319,7 @@
       "publisert": "2026-10-17T18:31:26+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 5400210,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5398,7 +5371,7 @@
       "publisert": "2026-10-18T14:35:38+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 4972340,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5475,7 +5448,7 @@
       "megler": "PrivatMegleren Infinita",
       "ny": true,
       "omrade": "Haugerud · Hellerud",
-      "overskrift": "Arkitekttegnet 3-roms rekkehus - Pusset opp i 2021 - Garasje - Balkong og terrasse - Opprinnelig 3 soverom - Nær marka!",
+      "overskrift": "Arkitekttegnet rekkehus - Pusset opp i 2021 - Garasje - Balkong og terrasse - Opprinnelig 3 soverom - Nær marka!",
       "price_history": [
         {
           "date": "2026-10-26",
@@ -5738,5 +5711,5 @@
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-10-26T10:34:44.732580+01:00"
+  "updated_at": "2026-10-27T10:31:14.054990+01:00"
 }
