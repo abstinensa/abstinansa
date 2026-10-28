@@ -1,6 +1,6 @@
 {
   "count": 120,
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -90,7 +90,7 @@
       "prisendring_felt": null,
       "prisfall": false,
       "privat": false,
-      "publisert": "2024-12-06T21:22:49.097000+00:00",
+      "publisert": "2026-10-27T22:20:20+00:00",
       "soverom": 3,
       "soverom_til": null,
       "status": "til_salgs",
@@ -828,10 +828,10 @@
       "eierform": "Selveier",
       "felleskost": 2402,
       "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 6190000,
+      "forrige_totalpris": 6345840,
       "id": "462595507",
-      "kvm_pris": 52458,
+      "kvm_pris": 50763,
       "lat": 59.84764,
       "lng": 10.82003,
       "lokalomrade": "Barnevennlig Og Solrikt På Mortensrud",
@@ -844,19 +844,24 @@
           "date": "2026-10-21",
           "prisantydning": 6190000,
           "totalpris": 6345840
+        },
+        {
+          "date": "2026-10-28",
+          "prisantydning": 5990000,
+          "totalpris": 6140840
         }
       ],
-      "prisantydning": 6190000,
+      "prisantydning": 5990000,
       "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
+      "prisendring": -200000,
+      "prisendring_felt": "prisantydning",
+      "prisfall": true,
       "privat": false,
       "publisert": "2026-08-19T17:23:44+00:00",
       "soverom": 3,
       "soverom_til": null,
       "status": "til_salgs",
-      "totalpris": 6345840,
+      "totalpris": 6140840,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=462595507",
@@ -1184,7 +1189,7 @@
       "publisert": "2026-08-28T12:35:06+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 7010696,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -1466,7 +1471,7 @@
       "publisert": "2026-08-19T10:49:47+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 6091235,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -1654,7 +1659,7 @@
       "publisert": "2026-09-08T19:05:46+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 4390377,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -2047,7 +2052,7 @@
     {
       "address": "Husebyveien 1I, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/19/0/473/624/410_ddf4e35f-ed1d-4e05-bbe9-d509a2202fc8.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/27/0/473/624/410_1ac8f5a5-bccc-43c1-9cbc-635fc3056b82.jpg",
       "bra": 180,
       "bra_til": null,
       "bydeler": [
@@ -3080,7 +3085,7 @@
       "publisert": "2026-10-19T08:44:43+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 7883600,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -3656,15 +3661,15 @@
       "prisendring_felt": "prisantydning",
       "prisfall": true,
       "privat": false,
-      "publisert": "2026-09-26T12:27:21+00:00",
+      "publisert": "2026-10-27T09:37:01+00:00",
       "soverom": 2,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 7016496,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477276744",
-      "visning": "2026-11-01T13:00:00.000Z",
+      "visning": null,
       "visning_i_dag": false
     },
     {
@@ -4186,7 +4191,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477806004",
-      "visning": null,
+      "visning": "2026-11-01T11:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4426,8 +4431,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478165022",
-      "visning": "2026-10-27T15:30:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Langviksveien 19B, Oslo",
@@ -4719,7 +4724,7 @@
     {
       "address": "Hellerudfaret 24B, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/23/2/478/553/782_a3f6de71-88e8-44cf-b83c-3a5c7a52f470.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/27/2/478/553/782_6cec8aea-2fa7-4032-8f39-063e6ad849c0.jpg",
       "bra": 124,
       "bra_til": null,
       "bydeler": [
@@ -4896,7 +4901,7 @@
       "publisert": "2026-10-16T16:31:20+00:00",
       "soverom": 4,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 5883728,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -4963,8 +4968,8 @@
       "eierform": "Selveier",
       "felleskost": 6197,
       "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 8490000,
+      "forrige_totalpris": 8713290,
       "id": "478798095",
       "kvm_pris": 61079,
       "lat": 59.97686,
@@ -4979,24 +4984,29 @@
           "date": "2026-10-21",
           "prisantydning": 8490000,
           "totalpris": 8713290
+        },
+        {
+          "date": "2026-10-28",
+          "prisantydning": 8490000,
+          "totalpris": 8703340
         }
       ],
       "prisantydning": 8490000,
       "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
+      "prisendring": -9950,
+      "prisendring_felt": "totalpris",
+      "prisfall": true,
       "privat": false,
       "publisert": "2026-10-17T10:56:46+00:00",
       "soverom": 4,
       "soverom_til": null,
       "status": "til_salgs",
-      "totalpris": 8713290,
+      "totalpris": 8703340,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478798095",
-      "visning": "2026-10-27T17:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Lillebergveien 26, Oslo",
@@ -5042,8 +5052,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478817574",
-      "visning": "2026-10-27T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Johan Castbergs vei 15L, Oslo",
@@ -5084,7 +5094,7 @@
       "publisert": "2026-10-18T09:47:32+00:00",
       "soverom": 4,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 7915883,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5272,7 +5282,7 @@
       "publisert": "2026-10-18T10:37:38+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 10873472,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5589,7 +5599,7 @@
       "megler": "DNB Eiendom AS",
       "ny": true,
       "omrade": "Barnevennlig og idyllisk på Bjørndal · Søndre Nordstrand",
-      "overskrift": "Pent og moderne rekkehus fra 2016 med flotte uteplasser - Carport - Meget barnevennlig - Gangavstand til buss og skole",
+      "overskrift": "SOLGT! Visning avlyst | Pent og moderne rekkehus fra 2016 med flotte uteplasser - Carport - Meget barnevennlig",
       "price_history": [
         {
           "date": "2026-10-25",
@@ -5606,7 +5616,7 @@
       "publisert": "2026-10-24T12:19:10+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 4921090,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5711,5 +5721,5 @@
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-10-27T10:31:14.054990+01:00"
+  "updated_at": "2026-10-28T11:16:01.919935+01:00"
 }
