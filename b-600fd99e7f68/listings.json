@@ -1,6 +1,6 @@
 {
-  "count": 120,
-  "date": "2026-10-28",
+  "count": 118,
+  "date": "2026-10-29",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -22,7 +22,7 @@
       "lng": 10.79769,
       "lokalomrade": null,
       "megler": "PrivatMegleren Renommé",
-      "ny": true,
+      "ny": false,
       "omrade": "Nordstrand",
       "overskrift": "(1 SOLGT - BYGGING IGANGSATT) Nordstrand: 3 prosjekterte boliger m/ hagedel, 3-4 sov, 3 bad/wc, stor stue-/kjk.løsning",
       "price_history": [
@@ -69,7 +69,7 @@
       "lng": 10.6449,
       "lokalomrade": null,
       "megler": "PrivatMegleren Nyeboliger Oslo",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Familievennlige boliger på solrik, rolig og unik stor tomt på toppen av Ullern",
       "price_history": [
@@ -121,7 +121,7 @@
       "lng": 10.64014,
       "lokalomrade": "Mellom Lysaker og Lilleaker",
       "megler": "Sem & Johnsen",
-      "ny": true,
+      "ny": false,
       "omrade": "Mellom Lysaker og Lilleaker · Ullern",
       "overskrift": "Townhouse/leiligheter og rekkehus kommer for salg",
       "price_history": [
@@ -168,7 +168,7 @@
       "lng": 10.6856,
       "lokalomrade": "Bygdøy",
       "megler": "Sem & Johnsen",
-      "ny": true,
+      "ny": false,
       "omrade": "Bygdøy",
       "overskrift": "Lekker familiebolig v/sjøen 4 sov, 2 bad, hybel m/egen inngang. Felles strandlinje, båtplass og garasjeplass",
       "price_history": [
@@ -215,7 +215,7 @@
       "lng": 10.78738,
       "lokalomrade": null,
       "megler": "TINHOLT Eiendomsmegling",
-      "ny": true,
+      "ny": false,
       "omrade": "Nordstrand",
       "overskrift": "Nye arkitekttegnede rekkehus med vakre uteplasser|Eldorado for barnefamilier|3-5 sov|2 bad| Bygging igangsatt! - 5 SOLGT",
       "price_history": [
@@ -262,7 +262,7 @@
       "lng": 10.6958,
       "lokalomrade": "Frogner, Heia.",
       "megler": "Nordvik Frogner",
-      "ny": true,
+      "ny": false,
       "omrade": "Frogner, Heia. · Bygdøy - Frogner",
       "overskrift": "Funkisperle/townhouse på Frogner, Heia. Fantastisk takterrasse med utsikt mot Bygdøy og Oscars Hall. Sol fra morgen til",
       "price_history": [
@@ -309,7 +309,7 @@
       "lng": 10.69116,
       "lokalomrade": null,
       "megler": "EIE eiendomsmegling Majorstuen & St. Hanshaugen",
-      "ny": true,
+      "ny": false,
       "omrade": "Vinderen",
       "overskrift": "Nybygg! Flytt rett inn|Fjordutsikt, eksklusiv enebolig i rekke|2P-plasser|3(4) sov, flere uteplasser og ungdomsavdeling",
       "price_history": [
@@ -356,7 +356,7 @@
       "lng": 10.92779,
       "lokalomrade": "Høybråten",
       "megler": "EIE eiendomsmegling Stovner",
-      "ny": true,
+      "ny": false,
       "omrade": "Høybråten · Furuset",
       "overskrift": "Townhouse fra 2026 med dobbelgarasje | BRA 224 | Hybel | 5 sover, 4 bad & 3 stuer",
       "price_history": [
@@ -403,7 +403,7 @@
       "lng": 10.6912,
       "lokalomrade": null,
       "megler": "EIE eiendomsmegling Majorstuen & St. Hanshaugen",
-      "ny": true,
+      "ny": false,
       "omrade": "Vinderen",
       "overskrift": "Nybygg! Flytt rett inn|Fjordutsikt, eksklusiv enebolig i rekke|2P-plasser|3(4) sov, flere uteplasser og ungdomsavdeling",
       "price_history": [
@@ -450,7 +450,7 @@
       "lng": 10.78738,
       "lokalomrade": null,
       "megler": "TINHOLT Eiendomsmegling",
-      "ny": true,
+      "ny": false,
       "omrade": "Nordstrand",
       "overskrift": "Hus 5 - Kruttverkveien 14",
       "price_history": [
@@ -478,53 +478,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Hellerudveien 46B, Oslo",
-      "arealtype": "P-rom",
-      "bilde": "https://images.finncdn.no/dynamic/960w/item/454762251/9e60c663-bddc-40fd-9414-87159aa7cf6d",
-      "bra": 164,
-      "bra_til": null,
-      "bydeler": [
-        "Hellerud"
-      ],
-      "eierform": "Selveier",
-      "felleskost": null,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "454762251",
-      "kvm_pris": 81707,
-      "lat": 59.9103,
-      "lng": 10.85433,
-      "lokalomrade": null,
-      "megler": "&Partners Carl Berner",
-      "ny": true,
-      "omrade": "Hellerud",
-      "overskrift": "3 av 5 solgt! Hellerud - 5 familieboliger med hagedel, stor stue-/kjøkken løsning, takterrasse og garasje.*Hybelmulighet",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 13400000,
-          "totalpris": 13497177
-        }
-      ],
-      "prisantydning": 13400000,
-      "prisantydning_til": 13600000,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-09-28T14:10:26+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 13497177,
-      "totalpris_til": 13697177,
-      "type": "prosjekt",
-      "url": "https://www.finn.no/realestate/project/ad.html?finnkode=454762251",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
       "address": "Nordengveien 73, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/item/461027042/50990234-c084-4315-9e9f-bc4a085c71cb",
@@ -544,7 +497,7 @@
       "lng": 10.63988,
       "lokalomrade": "Røa",
       "megler": "PrivatMegleren Horisont",
-      "ny": true,
+      "ny": false,
       "omrade": "Røa",
       "overskrift": "Fire arkitekttegnede, barnevennlige familiehjem fra RRA",
       "price_history": [
@@ -591,7 +544,7 @@
       "lng": 10.64519,
       "lokalomrade": null,
       "megler": null,
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Lekkert enderekkehus på Ullern. Gulvareal 154kvm. Barnevennlig. Vestvendt og solrikt. Stort loft! Overtakelse des/jan",
       "price_history": [
@@ -643,7 +596,7 @@
       "lng": 10.8155,
       "lokalomrade": "Abildsø/Manglerud",
       "megler": "Aktiv Østensjø/Lambertseter",
-      "ny": true,
+      "ny": false,
       "omrade": "Abildsø/Manglerud · Manglerud",
       "overskrift": "Selveiet rekkehus med nydelig utsikt mot Abildsø Gård | Parkering på egen tomt | 42 m² terrasse | Svært god beliggenhet",
       "price_history": [
@@ -690,7 +643,7 @@
       "lng": 10.90309,
       "lokalomrade": "Ellingsrud Vest",
       "megler": "OBOS Eiendomsmeglere - Ensjø",
-      "ny": true,
+      "ny": false,
       "omrade": "Ellingsrud Vest · Furuset",
       "overskrift": "Idyllisk rekkehus | Svært familievennlig | Sol, utsikt | Kjøk. 2025 WC 2024 | Peis, varmepumpe | Naturnær | Garasje m/el",
       "price_history": [
@@ -720,7 +673,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=462008431",
       "visning": "2026-10-29T16:00:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Halvdan Svartes gate 46F, Oslo",
@@ -742,7 +695,7 @@
       "lng": 10.69743,
       "lokalomrade": "Rett ved Frognerparken",
       "megler": "PrivatMegleren Dyve & Partnere",
-      "ny": true,
+      "ny": false,
       "omrade": "Rett ved Frognerparken · Bygdøy - Frogner",
       "overskrift": "Eksklusivt townhouse renovert i 2023. Idyllisk beliggenhet på enden. 3 parkeringsplasser, to balkonger og frodig hage.",
       "price_history": [
@@ -789,7 +742,7 @@
       "lng": 10.6467,
       "lokalomrade": null,
       "megler": "Nordvik Bygdøy Allé",
-      "ny": true,
+      "ny": false,
       "omrade": "Røa",
       "overskrift": "Moderne familiebolig under oppføring - Balkong og hage - 2 garasjeplasser - Rolig og barnevennlig område",
       "price_history": [
@@ -836,7 +789,7 @@
       "lng": 10.82003,
       "lokalomrade": "Barnevennlig Og Solrikt På Mortensrud",
       "megler": "PrivatMegleren Lillestrøm",
-      "ny": true,
+      "ny": false,
       "omrade": "Barnevennlig Og Solrikt På Mortensrud · Søndre Nordstrand",
       "overskrift": "Innbydende familievennlig rekkehus fra 2007 | Parkering og garasjeplass | Solrik terrasse | Lave felleskost.",
       "price_history": [
@@ -888,7 +841,7 @@
       "lng": 10.6469,
       "lokalomrade": null,
       "megler": "Nordvik Bygdøy Allé",
-      "ny": true,
+      "ny": false,
       "omrade": "Røa",
       "overskrift": "5 SOLGT - 8 lekre familieboliger. Ferdigstillelse oktober/november 2026. Underjordisk garasjeanlegg. Barnevennlig",
       "price_history": [
@@ -935,7 +888,7 @@
       "lng": 10.6408,
       "lokalomrade": "Ullern",
       "megler": "Nordvik Røa",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Moderne familiebolig | 4 sov, 2 stuer og 2 bad | Solrik terrasse | Hage | Bilfri sti skole/bhg | Tørrskodd til garasje",
       "price_history": [
@@ -982,7 +935,7 @@
       "lng": 10.659,
       "lokalomrade": "Bestum/Ullern",
       "megler": "Nordvik Bygdøy Allé",
-      "ny": true,
+      "ny": false,
       "omrade": "Bestum/Ullern · Ullern",
       "overskrift": "Gjennomført, påkostet og sjønært rekkehus over tre plan. 4 soverom, 2 bad, herlig uteplass og garasje.",
       "price_history": [
@@ -1029,7 +982,7 @@
       "lng": 10.6581,
       "lokalomrade": null,
       "megler": "Nordvik Bygdøy Allé",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Nyoppført lekkert rekkehus på Ullern | Solrikt | Sentral beliggenhet | Garasje | Lav dok.avgift",
       "price_history": [
@@ -1059,7 +1012,7 @@
     {
       "address": "Bertramjordet 27, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/08/3/464/799/543_68682d4d-331c-45c2-b180-82f572204075.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/item/464799543/c13f24db-5fa0-4c8c-8e45-53788f219203",
       "bra": 106,
       "bra_til": null,
       "bydeler": [
@@ -1076,7 +1029,7 @@
       "lng": 10.78618,
       "lokalomrade": "Åsbråten",
       "megler": null,
-      "ny": true,
+      "ny": false,
       "omrade": "Åsbråten · Søndre Nordstrand",
       "overskrift": "Lekkert rekkehus over 2 plan | To solrike terrasser | 3 gode soverom | Garasje | Familievennlig",
       "price_history": [
@@ -1100,7 +1053,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=464799543",
-      "visning": null,
+      "visning": "2026-11-01T11:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -1123,7 +1076,7 @@
       "lng": 10.80163,
       "lokalomrade": "Hauketo",
       "megler": "EIE eiendomsmegling Vinderen",
-      "ny": true,
+      "ny": false,
       "omrade": "Hauketo · Søndre Nordstrand",
       "overskrift": "Innholdsrikt, stort rekkehus | Utleiedel | Solrik terrasse & hage | Garasje | Utsikt | Rolig beliggenhet.",
       "price_history": [
@@ -1162,15 +1115,15 @@
       "eierform": "Andel",
       "felleskost": 7185,
       "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 6900000,
+      "forrige_totalpris": 7010696,
       "id": "465115941",
       "kvm_pris": 71875,
       "lat": 59.95063,
       "lng": 10.92439,
       "lokalomrade": "Gamle Stovner",
       "megler": "OBOS Eiendomsmeglere - Kalbakken",
-      "ny": true,
+      "ny": false,
       "omrade": "Gamle Stovner · Stovner",
       "overskrift": "Moderne rekkehus fra 2022 | Solrike terrasser | 3 soverom | Garasje med elbillader | Hage | Nybyggaranti",
       "price_history": [
@@ -1178,6 +1131,11 @@
           "date": "2026-10-21",
           "prisantydning": 6900000,
           "totalpris": 7010696
+        },
+        {
+          "date": "2026-10-29",
+          "prisantydning": 6900000,
+          "totalpris": 7020646
         }
       ],
       "prisantydning": 6900000,
@@ -1190,7 +1148,7 @@
       "soverom": 3,
       "soverom_til": null,
       "status": "solgt",
-      "totalpris": 7010696,
+      "totalpris": 7020646,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=465115941",
@@ -1217,7 +1175,7 @@
       "lng": 10.91171,
       "lokalomrade": "Ellingsrudåsen",
       "megler": "Houeland &Partners",
-      "ny": true,
+      "ny": false,
       "omrade": "Ellingsrudåsen · Furuset",
       "overskrift": "Oppussingsobjekt - Romslig rekkehusleilighet med 3 soverom, peisovn og stor balkong - Klargjort utviklingsloft - Garasje",
       "price_history": [
@@ -1264,7 +1222,7 @@
       "lng": 10.7309,
       "lokalomrade": "Bislett",
       "megler": "Sem & Johnsen",
-      "ny": true,
+      "ny": false,
       "omrade": "Bislett · Uranienborg - Majorstuen",
       "overskrift": "Hva med et eget byhus, helt inntil Stensparken? Unik bolig med suveren beliggenhet - 2 sov - 2 stuer - 2 uteplasser",
       "price_history": [
@@ -1311,7 +1269,7 @@
       "lng": 10.8237,
       "lokalomrade": null,
       "megler": "Aktiv Grünerløkka",
-      "ny": true,
+      "ny": false,
       "omrade": "Søndre Nordstrand",
       "overskrift": "Flott og romslig rekkehus over to plan i barnevennlig område | Solrike uteområder på begge sider | Garasjeplass",
       "price_history": [
@@ -1358,7 +1316,7 @@
       "lng": 10.9027,
       "lokalomrade": "Ellingsrud vest",
       "megler": "EiendomsMegler 1 Stovner",
-      "ny": true,
+      "ny": false,
       "omrade": "Ellingsrud vest · Furuset",
       "overskrift": "Familievennlig rekkehus | Nytt bad og toalettrom fra 2025 | 3 soverom | Flere uteplasser | Garasje m/elbillader",
       "price_history": [
@@ -1405,7 +1363,7 @@
       "lng": 10.6659,
       "lokalomrade": "Holmenkollen",
       "megler": "EiendomsMegler 1 Sør-Norge avd Røa",
-      "ny": true,
+      "ny": false,
       "omrade": "Holmenkollen · Vinderen",
       "overskrift": "Stor og oppgradert bolig ved marka - barnevennlig tun",
       "price_history": [
@@ -1433,53 +1391,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Stigenga 140, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/8/vertical-2/19/9/465/808/519_3c83e6e1-c0ac-4e56-b072-f505ea656af3.png",
-      "bra": 139,
-      "bra_til": null,
-      "bydeler": [
-        "Stovner"
-      ],
-      "eierform": "Andel",
-      "felleskost": 7070,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "465808519",
-      "kvm_pris": 43094,
-      "lat": 59.9509,
-      "lng": 10.9224,
-      "lokalomrade": "Gamle Stovner",
-      "megler": "DNB Eiendom AS",
-      "ny": true,
-      "omrade": "Gamle Stovner · Stovner",
-      "overskrift": "Familievennlig og utbygget rekkehus over 2 plan | Barnevennlig | Flere solfylte uteplasser og hage | Garasje m/ el-lader",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 5990000,
-          "totalpris": 6091235
-        }
-      ],
-      "prisantydning": 5990000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-08-19T10:49:47+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 6091235,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=465808519",
-      "visning": "2026-10-29T16:30:00.000Z",
-      "visning_i_dag": false
-    },
-    {
       "address": "Hagaveien 2i, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/6/vertical-2/05/2/465/946/752_4aaa67ee-2a66-40a1-9971-8a97f0132c7f.jpg",
@@ -1499,7 +1410,7 @@
       "lng": 10.9342,
       "lokalomrade": "Høybråten",
       "megler": "Nordvik St.Hanshaugen",
-      "ny": true,
+      "ny": false,
       "omrade": "Høybråten · Stovner",
       "overskrift": "Pent og familievennlig rekkehus med solrike uteplasser - Garasjeplass m/lader - Ingen dok. avgift - Høybråten skolekrets",
       "price_history": [
@@ -1546,7 +1457,7 @@
       "lng": 10.82421,
       "lokalomrade": "Ny Pris!",
       "megler": "Eiendomsmeglerne AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Ny Pris! · Søndre Nordstrand",
       "overskrift": "Enderekkehus fra 2020! | 5 soverom & 2 bad | Varmtvann og oppvarming ink. | Takterrasse | Garasje m/lader",
       "price_history": [
@@ -1570,7 +1481,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=467061669",
-      "visning": null,
+      "visning": "2026-11-01T14:30:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -1593,7 +1504,7 @@
       "lng": 10.8151,
       "lokalomrade": null,
       "megler": "EiendomsMegler 1 Østlandet - avd. Nybygg",
-      "ny": true,
+      "ny": false,
       "omrade": "Nordstrand",
       "overskrift": "Allerede 13 solgt! Moderne & barnevennlig rekkehusprosjekt | 3-5 sov | Takterrasse",
       "price_history": [
@@ -1640,7 +1551,7 @@
       "lng": 10.79826,
       "lokalomrade": "Holmlia / Asperud",
       "megler": "PrivatMegleren Bærum",
-      "ny": true,
+      "ny": false,
       "omrade": "Holmlia / Asperud · Søndre Nordstrand",
       "overskrift": "Familievennlig rekkehus | 3 soverom & 2 bad | Solrike uteplasser | Barnevennlig beliggenhet | Kort vei til tog & marka",
       "price_history": [
@@ -1687,7 +1598,7 @@
       "lng": 10.85369,
       "lokalomrade": "Veitvet Hageby",
       "megler": "PrivatMegleren Primera",
-      "ny": true,
+      "ny": false,
       "omrade": "Veitvet Hageby · Bjerke",
       "overskrift": "Moderne, innholdsrikt rekkehus o/ 3 plan m/ solrik terrasse på 22 kvm - Nydelig kjøkken og to bad - Barnevennlig!",
       "price_history": [
@@ -1782,7 +1693,7 @@
       "lng": 10.6798,
       "lokalomrade": "Holmendammen",
       "megler": "Nordvik Frogner",
-      "ny": true,
+      "ny": false,
       "omrade": "Holmendammen · Ullern / Vinderen",
       "overskrift": "Attraktiv familiebolig fra 2022 med barnevennlig beliggenhet innerst i blindvei. Solrik uteplass. 5 sov/3 bad. Garasje.",
       "price_history": [
@@ -1829,7 +1740,7 @@
       "lng": 10.6475,
       "lokalomrade": "Røa sentrum / Røahagan",
       "megler": "Belèven Eiendomsmegling",
-      "ny": true,
+      "ny": false,
       "omrade": "Røa sentrum / Røahagan · Røa",
       "overskrift": "Innholdsrikt rekkehus med gjennomgående god standard, herlige uteplasser i hver etasje, hage og 2 p-plasser!",
       "price_history": [
@@ -1876,7 +1787,7 @@
       "lng": 10.80604,
       "lokalomrade": "Toppåsen",
       "megler": "&Partners Sagene",
-      "ny": true,
+      "ny": false,
       "omrade": "Toppåsen · Søndre Nordstrand",
       "overskrift": "Moderne enderekkehus fra 2017 med 2 stuer, 3 sov & 2 bad I Solrike uteplasser & hage I Garasje, p-plass & 2 elbil-ladere",
       "price_history": [
@@ -1923,7 +1834,7 @@
       "lng": 10.8228,
       "lokalomrade": "Stenbråten",
       "megler": "Krogsveen Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Stenbråten · Søndre Nordstrand",
       "overskrift": "Innholdsrikt familiehjem fra 2020 | 4 soverom, takterrasse og markterrasse | Garasje |Bilfritt og barnevennlig tun",
       "price_history": [
@@ -1975,7 +1886,7 @@
       "lng": 10.8533,
       "lokalomrade": "Klemetsrud",
       "megler": "EiendomsMegler 1 Sør-Norge avd Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Klemetsrud · Søndre Nordstrand",
       "overskrift": "Moderne rekkehus (2021) i landlige omgivelser m/garasje, lader, balkong, flott utsikt. 5 sov, 2 stuer, 2 bad og vaskerom",
       "price_history": [
@@ -2022,7 +1933,7 @@
       "lng": 10.7838,
       "lokalomrade": "Byidyll på Vålerenga",
       "megler": "Aktiv Frogner",
-      "ny": true,
+      "ny": false,
       "omrade": "Byidyll på Vålerenga · Gamle Oslo",
       "overskrift": "Moderne rekkehus over tre plan med vinterhage og solrike uteplasser - Garasje m/lader - Sentral og rolig beliggenhet",
       "price_history": [
@@ -2069,7 +1980,7 @@
       "lng": 10.6733,
       "lokalomrade": "Hoff",
       "megler": "Krogsveen Røa",
-      "ny": true,
+      "ny": false,
       "omrade": "Hoff · Ullern",
       "overskrift": "Rekkehus over 3 plan med hage og garasje | 4 soverom | Behov for modernisering | Sentralt på Smestad",
       "price_history": [
@@ -2116,7 +2027,7 @@
       "lng": 10.8909,
       "lokalomrade": "Nedre Grorud",
       "megler": "EiendomsMegler 1 Grorud",
-      "ny": true,
+      "ny": false,
       "omrade": "Nedre Grorud · Grorud",
       "overskrift": "Attraktivt og familievennlig rekkehus på to plan | Terrasse med hage | 3 soverom | Parkeringsplass | Nær Lillomarka",
       "price_history": [
@@ -2163,7 +2074,7 @@
       "lng": 10.6635,
       "lokalomrade": "Voksenkollen",
       "megler": "Nordvik Bislett",
-      "ny": true,
+      "ny": false,
       "omrade": "Voksenkollen · Vinderen",
       "overskrift": "Innholdsrikt og familievennlig enderekkehus med idyllisk beliggenhet ved marka - Hybel - Carport - 4 min til T-bane",
       "price_history": [
@@ -2210,7 +2121,7 @@
       "lng": 10.7722,
       "lokalomrade": "Rodeløkka",
       "megler": "Aktiv Carl Berner",
-      "ny": true,
+      "ny": false,
       "omrade": "Rodeløkka · Grünerløkka - Sofienberg",
       "overskrift": "Sjarmerende rekkehus over to plan på idylliske Rodeløkka | Markterrasse med frodige omgivelser | Stort potensial!",
       "price_history": [
@@ -2257,7 +2168,7 @@
       "lng": 10.8139,
       "lokalomrade": "Manglerud/Abildsø",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Manglerud/Abildsø · Manglerud",
       "overskrift": "Innholdsrikt rekkehus over fire plan m/ solrik hage - Biloppstillingsplass - Egen inngang til kjellerstue - Barnevennlig",
       "price_history": [
@@ -2304,7 +2215,7 @@
       "lng": 10.8539,
       "lokalomrade": "Veitvedt Hageby",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Veitvedt Hageby · Bjerke",
       "overskrift": "Oppgradert rekkehus med stor terrasse og garasjeplass | To delikate baderom | Sentral beliggenhet med nærhet til \"ALT\"",
       "price_history": [
@@ -2351,7 +2262,7 @@
       "lng": 10.9044,
       "lokalomrade": "Ellingsrud vest",
       "megler": "Emera eiendomsmegling",
-      "ny": true,
+      "ny": false,
       "omrade": "Ellingsrud vest · Furuset",
       "overskrift": "Innholdsrikt rekkehus over to plan | 4 sov, 2 bad og peis | Garasjeplass og skjermet terrasse | Nært marka og T-bane",
       "price_history": [
@@ -2381,7 +2292,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=474485702",
       "visning": "2026-10-29T16:30:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Kruttverkveien 22, Oslo",
@@ -2403,7 +2314,7 @@
       "lng": 10.78738,
       "lokalomrade": null,
       "megler": "TINHOLT Eiendomsmegling",
-      "ny": true,
+      "ny": false,
       "omrade": "Nordstrand",
       "overskrift": "Hus 1 - Kruttverkveien 22",
       "price_history": [
@@ -2450,7 +2361,7 @@
       "lng": 10.65687,
       "lokalomrade": "Ullern",
       "megler": "ASK Oslo Vest",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Attraktivt enderekkehus | 68 kvm solrike uteplasser | 2 bad | Vedovn | Garasje og p-plass | Noe oppussing",
       "price_history": [
@@ -2497,7 +2408,7 @@
       "lng": 10.6307,
       "lokalomrade": "Ullern",
       "megler": "Sem & Johnsen",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Flott enderekkehus i meget barnevennlig område - egen inngang i u.etg. - flotte uteplasser og hage - moderne standard",
       "price_history": [
@@ -2544,7 +2455,7 @@
       "lng": 10.64518,
       "lokalomrade": null,
       "megler": null,
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Eik Ullertoppen A2 | Påkostet med omfattende tilvalg | Skjermet og åpen beliggenhet | Forventet klar før jul!",
       "price_history": [
@@ -2591,7 +2502,7 @@
       "lng": 10.9233,
       "lokalomrade": "Vestli",
       "megler": "Aktiv Gamle Oslo/Bjørvika",
-      "ny": true,
+      "ny": false,
       "omrade": "Vestli · Stovner",
       "overskrift": "Innholdsrikt og flott rekkehus o/tre plan. Høy standard fra 2026. Solrike uteplasser og hage. Peis. Parkeringsplass.",
       "price_history": [
@@ -2638,7 +2549,7 @@
       "lng": 10.92264,
       "lokalomrade": "Høybråten",
       "megler": "PrivatMegleren Lillestrøm",
-      "ny": true,
+      "ny": false,
       "omrade": "Høybråten · Furuset",
       "overskrift": "Familievennlig rekkehus over to plan | Solrik terrasse og hage | 3 soverom | Garasje og mulighet for elbillader",
       "price_history": [
@@ -2690,7 +2601,7 @@
       "lng": 10.6403,
       "lokalomrade": "Ullern/Nært Lysejordet/Røa",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern/Nært Lysejordet/Røa · Ullern",
       "overskrift": "Pen familievennlig rekkehus 2017. Solrik hage og takterrasse /m stor loftsstue. WC hver etg. Meget barnevennlig. Garasje",
       "price_history": [
@@ -2737,7 +2648,7 @@
       "lng": 10.8584,
       "lokalomrade": "Familiebolig Haugerud",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Familiebolig Haugerud · Hellerud",
       "overskrift": "Innholdsrikt & familievennlig endrerekkehus over to plan | Solrike uteplasser| Garasjeplass m/lader| Rett ved marka",
       "price_history": [
@@ -2784,7 +2695,7 @@
       "lng": 10.9027,
       "lokalomrade": "Ellingsrud Vest",
       "megler": "PrivatMegleren Infinita",
-      "ny": true,
+      "ny": false,
       "omrade": "Ellingsrud Vest · Furuset",
       "overskrift": "Moderne enderekkehus - Flotte solforhold på 3 uteplasser - Rett ved marka - Garasje - Peis - Familievennlig!",
       "price_history": [
@@ -2831,7 +2742,7 @@
       "lng": 10.9307,
       "lokalomrade": "Øvre Stovner",
       "megler": "Krogsveen Lørenskog",
-      "ny": true,
+      "ny": false,
       "omrade": "Øvre Stovner · Stovner",
       "overskrift": "Selveiet enderekkehus med flott uteområde. | Solrik terrasse og hage | Carport m/lader | Nær marka | Stort potensiale.",
       "price_history": [
@@ -2878,7 +2789,7 @@
       "lng": 10.9331,
       "lokalomrade": "Høybråten",
       "megler": "EiendomsMegler 1 Sør-Norge avd Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Høybråten · Furuset",
       "overskrift": "Nybygd rekkehus m/ 4 sov. og garasje | Moderne standard, markterrasse og balkong | Familievennlig på Høybråten",
       "price_history": [
@@ -2925,7 +2836,7 @@
       "lng": 10.85454,
       "lokalomrade": "Veitvet Hageby",
       "megler": "PrivatMegleren Primera",
-      "ny": true,
+      "ny": false,
       "omrade": "Veitvet Hageby · Bjerke",
       "overskrift": "Familievennlig rekkehus over tre plan med solrike uteplasser | Moderne kjøkken og bad | Svært barnevennlige omgivelser",
       "price_history": [
@@ -2972,7 +2883,7 @@
       "lng": 10.8513,
       "lokalomrade": "Veitvet Hageby",
       "megler": "PrivatMegleren Primera",
-      "ny": true,
+      "ny": false,
       "omrade": "Veitvet Hageby · Bjerke",
       "overskrift": "Innholdsrikt rekkehus over 3 plan m/ uteplasser på hver sin side - To bad - Egen inngang kjeller-Familievennlig nabolag",
       "price_history": [
@@ -3019,7 +2930,7 @@
       "lng": 10.7952,
       "lokalomrade": "Nordstrand",
       "megler": "Krogsveen Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Nordstrand",
       "overskrift": "Solrikt og oppusset rekkehus | Bad fra 2018 | Fine uteplasser | Garasje | God intern beliggenhet",
       "price_history": [
@@ -3066,7 +2977,7 @@
       "lng": 10.65598,
       "lokalomrade": "Bestum / Ullern",
       "megler": "EIE eiendomsmegling Røa, Skøyen og Ullern",
-      "ny": true,
+      "ny": false,
       "omrade": "Bestum / Ullern · Ullern",
       "overskrift": "Innholdsrikt rekkehus over 3 plan | 3 soverom, 2 stuer | Solrike uteplasser | Garasje m/lader | Barnevennlig beliggenhet",
       "price_history": [
@@ -3113,7 +3024,7 @@
       "lng": 10.7739,
       "lokalomrade": "Ulvøya",
       "megler": "Krogsveen Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Ulvøya · Ekeberg - Bekkelaget",
       "overskrift": "Lettstelt seniorbolig (55+) over ett plan | To markterrasser mot øst og vest | Peisovn i stue | Ingen fellesgjeld",
       "price_history": [
@@ -3160,7 +3071,7 @@
       "lng": 10.82315,
       "lokalomrade": "Bjerke",
       "megler": "EIE eiendomsmegling Stovner",
-      "ny": true,
+      "ny": false,
       "omrade": "Bjerke",
       "overskrift": "Stort rekkehus med hybel | Garasje og p-plasser | BRA 197 kvm | Tomt 286 kvm | Peis | Attraktiv beliggenhet på Brobekk",
       "price_history": [
@@ -3207,7 +3118,7 @@
       "lng": 10.64479,
       "lokalomrade": "Ullern",
       "megler": null,
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Videresalg kontrakt | Rekkehus E2 EIK Ullerntoppen | 127,5 m² BRA-i | 3 sov + loftstue | Innflytting vinter 2026/27",
       "price_history": [
@@ -3254,7 +3165,7 @@
       "lng": 10.6733,
       "lokalomrade": null,
       "megler": "Nordvik Bygdøy Allé",
-      "ny": true,
+      "ny": false,
       "omrade": "Bygdøy - Frogner",
       "overskrift": "BYGDØY - Eksklusive prosjekterte familieboliger | Blindvei | Solrike hager | Dobbelgarasje | Etterspurt villastrøk",
       "price_history": [
@@ -3301,7 +3212,7 @@
       "lng": 10.8074,
       "lokalomrade": "Nordstrand",
       "megler": "Krogsveen Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Nordstrand",
       "overskrift": "Innholdsrikt familiebolig over 3 plan | Hybel | Terrasser og to balkonger | Utsikt | 2 garasjeplasser m/elbillader",
       "price_history": [
@@ -3348,7 +3259,7 @@
       "lng": 10.81111,
       "lokalomrade": "Abildsø",
       "megler": "&Partners Grünerløkka",
-      "ny": true,
+      "ny": false,
       "omrade": "Abildsø · Manglerud",
       "overskrift": "Attraktivt rekkehus over tre plan | Garasje | Solrike uteplasser | Kjøkken fra 2016 | Fire soverom | Barnevennlig",
       "price_history": [
@@ -3395,7 +3306,7 @@
       "lng": 10.7872,
       "lokalomrade": "Lille Tøyen Hageby",
       "megler": "Aktiv Carl Berner",
-      "ny": true,
+      "ny": false,
       "omrade": "Lille Tøyen Hageby · Helsfyr - Sinsen",
       "overskrift": "Velkommen til Halloween visning i Lille Tøyen Hageby! Townhouse med hageparsell - oppussingsobjekt med stort potensial",
       "price_history": [
@@ -3447,7 +3358,7 @@
       "lng": 10.8186,
       "lokalomrade": null,
       "megler": "Krogsveen Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Manglerud",
       "overskrift": "2 spennende, prosjekterte familieboliger | Hybel- mulighet | Solrike hager | Sentralt | Garasje",
       "price_history": [
@@ -3494,7 +3405,7 @@
       "lng": 10.8521,
       "lokalomrade": "Veitvedt Hageby",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Veitvedt Hageby · Bjerke",
       "overskrift": "Lyst enderekkehus over to plan med terrasseplatting på 11 m² | Kjøkken & bad fra 2017 | Peisovn | Ingen forkjøpsrett",
       "price_history": [
@@ -3546,7 +3457,7 @@
       "lng": 10.665,
       "lokalomrade": "Voksenkollen",
       "megler": "EiendomsMegler 1 Sør-Norge avd Røa",
-      "ny": true,
+      "ny": false,
       "omrade": "Voksenkollen · Vinderen",
       "overskrift": "Nytt, lekkert rekkehus med solrik takterrasse | Marka som nærmeste nabo | Carport m/lader | Kun 300 m til T-bane.",
       "price_history": [
@@ -3593,7 +3504,7 @@
       "lng": 10.81124,
       "lokalomrade": null,
       "megler": "Byggforvaltning AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Søndre Nordstrand",
       "overskrift": "Rekkehus i barnevennlige omgivelser - Solrikt - garasjeplass - Hauketo",
       "price_history": [
@@ -3640,7 +3551,7 @@
       "lng": 10.7884,
       "lokalomrade": "Hallagerbakken",
       "megler": "Nordvik Østensjø",
-      "ny": true,
+      "ny": false,
       "omrade": "Hallagerbakken · Søndre Nordstrand",
       "overskrift": "FANTASTISK FJORDUTSIKT | Lekkert rekkehus o/2 plan | Betydelig oppgradert i 2019 | Tilbaketrukket og barnevennlig",
       "price_history": [
@@ -3692,7 +3603,7 @@
       "lng": 10.6714,
       "lokalomrade": "Voksenkollen",
       "megler": "Sem & Johnsen",
-      "ny": true,
+      "ny": false,
       "omrade": "Voksenkollen · Vinderen",
       "overskrift": "Innholdsrikt og pent rekkehus med 4 sov og 3 bad. Hyggelig uteplasser m/2 terrasser og hage - 2 garasjeplasser m/lader",
       "price_history": [
@@ -3744,7 +3655,7 @@
       "lng": 10.8167,
       "lokalomrade": null,
       "megler": "Aktiv Grünerløkka",
-      "ny": true,
+      "ny": false,
       "omrade": "Søndre Nordstrand",
       "overskrift": "Sjelden mulighet! Rekkehus fra 2017 over 3 plan med 4 soverom, innglasset balkong, markterrasse og 2 garasjeplasser",
       "price_history": [
@@ -3768,7 +3679,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477288998",
-      "visning": null,
+      "visning": "2026-11-03T16:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -3791,7 +3702,7 @@
       "lng": 10.8408,
       "lokalomrade": "Bjørndal",
       "megler": "EiendomsMegler 1 Lambertseter",
-      "ny": true,
+      "ny": false,
       "omrade": "Bjørndal · Søndre Nordstrand",
       "overskrift": "Innholdsrikt enderekkehus over 3 plan m/5 sov | Stor veranda langs tre sider | Flislagt bad fra 2024 | Garasjeplass",
       "price_history": [
@@ -3838,7 +3749,7 @@
       "lng": 10.6447,
       "lokalomrade": null,
       "megler": "PrivatMegleren Nyeboliger Oslo",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Innholdsrikt rekkehus over 4 plan | Ekstra god plass for familien | 3 sov, 2 bad, vaskerom, loftstue og kjeller| Garasje",
       "price_history": [
@@ -3885,7 +3796,7 @@
       "lng": 10.6452,
       "lokalomrade": null,
       "megler": "PrivatMegleren Nyeboliger Oslo",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "Endebeliggenhet med utsikt over Oslo | Del av tomannsbolig | Vestvendt terrasse | 3 sov, 2 bad og loftstue | Garasje",
       "price_history": [
@@ -3932,7 +3843,7 @@
       "lng": 10.8333,
       "lokalomrade": "Bjørndal",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Bjørndal · Søndre Nordstrand",
       "overskrift": "Flott rekkehus 3 etg. | Utleiedel 13.000,- | 3 bad og 2 kjøkken | Solrik, vestvendt balkong | Nær skole, butikk og marka",
       "price_history": [
@@ -3979,7 +3890,7 @@
       "lng": 10.7822,
       "lokalomrade": "Åsbråten/Holmlia",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Åsbråten/Holmlia · Søndre Nordstrand",
       "overskrift": "Barnevennlig enderekkehus over 2 plan - Uteplasser og liten hage - Varmtvann/fyring inkl. - Nær skole, bhg og marka!",
       "price_history": [
@@ -4026,7 +3937,7 @@
       "lng": 10.80058,
       "lokalomrade": null,
       "megler": "EIE eiendomsmegling Vinderen",
-      "ny": true,
+      "ny": false,
       "omrade": "Søndre Nordstrand",
       "overskrift": "Koselig rekkehus med kort vei til barnehager, skoler, butikker og offentlig kommunikasjon | Forkjøpsrett avklart!",
       "price_history": [
@@ -4050,7 +3961,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477788756",
-      "visning": null,
+      "visning": "2026-11-01T13:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4073,7 +3984,7 @@
       "lng": 10.92476,
       "lokalomrade": "Gamle Stovner",
       "megler": "EIE eiendomsmegling Stovner",
-      "ny": true,
+      "ny": false,
       "omrade": "Gamle Stovner · Stovner",
       "overskrift": "Sjeldent og utbygget enderekkehus med garasje | 4 soverom | Peis | Sørvestvendt uteplass | Attraktiv beliggenhet!",
       "price_history": [
@@ -4120,7 +4031,7 @@
       "lng": 10.64082,
       "lokalomrade": null,
       "megler": "PrivatMegleren Allé",
-      "ny": true,
+      "ny": false,
       "omrade": "Røa",
       "overskrift": "Røa - 8 moderne familieboliger | Garasjeplass inkl. | 4 sov | 2 bad | Forventet ferdigstillelse des/jan | 1 solgt",
       "price_history": [
@@ -4167,7 +4078,7 @@
       "lng": 10.8167,
       "lokalomrade": "Mortensrud",
       "megler": "Aktiv Østensjø/Lambertseter",
-      "ny": true,
+      "ny": false,
       "omrade": "Mortensrud · Søndre Nordstrand",
       "overskrift": "Ny Pris! Lekkert rekkehus over 3 plan | Flott sjøutsikt| Herlige uteplasser | 3 sov & 2 bad| Garasjeplass| Må oppleves!",
       "price_history": [
@@ -4214,7 +4125,7 @@
       "lng": 10.85289,
       "lokalomrade": "Veitvet Hageby",
       "megler": "PrivatMegleren Primera",
-      "ny": true,
+      "ny": false,
       "omrade": "Veitvet Hageby · Bjerke",
       "overskrift": "Flott, arealeffektivt og barnevennlig rekkehus med sol hele dagen - P-plass - To nyere bad og kjøkken - Bør sees!",
       "price_history": [
@@ -4261,7 +4172,7 @@
       "lng": 10.78318,
       "lokalomrade": "Holmlia",
       "megler": "EIE eiendomsmegling Ensjø",
-      "ny": true,
+      "ny": false,
       "omrade": "Holmlia · Søndre Nordstrand",
       "overskrift": "Flott enderekkehus over 2 plan med solrike uteplasser på hele 56 kvm - Hage med epletre - Garasje - Barnevennlig",
       "price_history": [
@@ -4308,7 +4219,7 @@
       "lng": 10.8944,
       "lokalomrade": "Gamle Furuset",
       "megler": "Krogsveen Hasle",
-      "ny": true,
+      "ny": false,
       "omrade": "Gamle Furuset · Furuset",
       "overskrift": "Familievennlig og oppgradert rekkehus over to plan m/3 sov | Skjermet markterrasse og terrasse | Peisovn | Garasjeplass",
       "price_history": [
@@ -4355,7 +4266,7 @@
       "lng": 10.6644,
       "lokalomrade": "Voksenkollen",
       "megler": "Nordvik Røa",
-      "ny": true,
+      "ny": false,
       "omrade": "Voksenkollen · Vinderen",
       "overskrift": "Lekkert enderekkehus fra 2023 | Carport med elbil-lader | God standard | Meget barnevennlig | Marka som nærmeste nabo",
       "price_history": [
@@ -4402,7 +4313,7 @@
       "lng": 10.6731,
       "lokalomrade": "Gressbanen/Vestre Holmen",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Gressbanen/Vestre Holmen · Røa",
       "overskrift": "Tiltalende rekkehus over fire plan m/peisovn, vestvendt markterrasse og garasjeplass. Kort gangavstand til Holmen skole",
       "price_history": [
@@ -4454,7 +4365,7 @@
       "lng": 10.6857,
       "lokalomrade": "Bygdøy",
       "megler": "Sem & Johnsen",
-      "ny": true,
+      "ny": false,
       "omrade": "Bygdøy",
       "overskrift": "Lekkert rekkehus over ett plan med 3 soverom, peis, solrik, skjermet hage, parkering, og meget barnevennlig beliggenhet.",
       "price_history": [
@@ -4501,7 +4412,7 @@
       "lng": 10.90712,
       "lokalomrade": "Høybråten",
       "megler": "Privatmegleren Ullevål",
-      "ny": true,
+      "ny": false,
       "omrade": "Høybråten · Furuset",
       "overskrift": "Familievennlig rekkehus over 3 plan med terrasse og hagedel | Garasje | Mulighet for 4 soverom | Sentralt på Høybråten",
       "price_history": [
@@ -4548,7 +4459,7 @@
       "lng": 10.82057,
       "lokalomrade": "Munkerud | Nordstrand",
       "megler": "PrivatMegleren Stensrud, Norheim & Partnere",
-      "ny": true,
+      "ny": false,
       "omrade": "Munkerud | Nordstrand · Nordstrand",
       "overskrift": "Familievennlig rekkehus fra 2012 | Oppgradert standard | 4-5 soverom | Stor terrasse og veranda | Dobbelgarasje m/lading",
       "price_history": [
@@ -4595,7 +4506,7 @@
       "lng": 10.9223,
       "lokalomrade": "Stovner",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Stovner",
       "overskrift": "Attraktiv Beliggende Rekkehus Over 2 Plan + Kjeller | Lave Felleskostnader | Garasje | Fine Uteplasser Og Beliggenhet!",
       "price_history": [
@@ -4642,7 +4553,7 @@
       "lng": 10.8182,
       "lokalomrade": "Mortensrudhøyden",
       "megler": "PrivatMegleren Première",
-      "ny": true,
+      "ny": false,
       "omrade": "Mortensrudhøyden · Søndre Nordstrand",
       "overskrift": "Selveier rekkehus fra 2010 over tre plan (150m²) med 4 sov, 2 kjøkken, 2 bad, 2 stuer og 3 uteplasser. Garasje med lader",
       "price_history": [
@@ -4689,7 +4600,7 @@
       "lng": 10.8159,
       "lokalomrade": "Manglerud",
       "megler": "EiendomsMegler 1 Sør-Norge avd Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Manglerud",
       "overskrift": "Moderne enderekkehus fra 2012 | 2 garasjeplasser m/lader | Hage | Terrasse | Takterrasse | 3 sov | Peis | Barnevennlig",
       "price_history": [
@@ -4741,7 +4652,7 @@
       "lng": 10.8527,
       "lokalomrade": "Oppsal/Trasop",
       "megler": "Notar Oslo",
-      "ny": true,
+      "ny": false,
       "omrade": "Oppsal/Trasop · Hellerud",
       "overskrift": "Spennende oppussingsobjekt med attraktiv og barnevennlig beliggenhet. Umiddelbar nærhet til marka. Utbyggingsmuligheter!",
       "price_history": [
@@ -4766,7 +4677,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478553782",
       "visning": "2026-10-29T16:30:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Lusetjernveien 32A, Oslo",
@@ -4788,7 +4699,7 @@
       "lng": 10.7845,
       "lokalomrade": "Lusetjern",
       "megler": "Nordvik St.Hanshaugen",
-      "ny": true,
+      "ny": false,
       "omrade": "Lusetjern · Søndre Nordstrand",
       "overskrift": "Hyggelig enderekkehus o/to plan - to bad - varmvannt og fyr. inkl. - garasje - gode solforhold - barnev. - pop.bel. m.m.",
       "price_history": [
@@ -4827,22 +4738,27 @@
       "eierform": "Andel",
       "felleskost": 6560,
       "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 3690000,
+      "forrige_totalpris": 4009794,
       "id": "478693434",
       "kvm_pris": 44458,
       "lat": 59.93342,
       "lng": 10.88453,
       "lokalomrade": "Lindeberg",
       "megler": "OBOS Eiendomsmeglere - Tveita",
-      "ny": true,
+      "ny": false,
       "omrade": "Lindeberg · Furuset",
-      "overskrift": "Enderekkehus sentralt på Lindeberg| Varmepumpe| Garasjeplass| Moderniseringsbehov",
+      "overskrift": "Enderekkehus sentralt på Lindeberg| Solgt etter direkte bud-VISNING AVLYST",
       "price_history": [
         {
           "date": "2026-10-21",
           "prisantydning": 3690000,
           "totalpris": 4009794
+        },
+        {
+          "date": "2026-10-29",
+          "prisantydning": 3690000,
+          "totalpris": 4020784
         }
       ],
       "prisantydning": 3690000,
@@ -4854,12 +4770,12 @@
       "publisert": "2026-10-14T07:00:12+00:00",
       "soverom": 1,
       "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 4009794,
+      "status": "solgt",
+      "totalpris": 4020784,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478693434",
-      "visning": "2026-11-01T12:00:00.000Z",
+      "visning": null,
       "visning_i_dag": false
     },
     {
@@ -4882,7 +4798,7 @@
       "lng": 10.8419,
       "lokalomrade": "Bjørndal",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Bjørndal · Søndre Nordstrand",
       "overskrift": "Innholdsrikt enderekkehus o/3 plan - 4 soverom - Vestvendt terrasse og hage - Garasjeplass m/lader - Meget barnevennlig",
       "price_history": [
@@ -4929,7 +4845,7 @@
       "lng": 10.796,
       "lokalomrade": "Nordstrand",
       "megler": "Nordvik Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Nordstrand",
       "overskrift": "Gjennomført enderekkehus med solrike uteplasser | Garasjeplass | Peis | Bilfritt og barnevennlig tun | Kastellet skole",
       "price_history": [
@@ -4976,7 +4892,7 @@
       "lng": 10.64539,
       "lokalomrade": "Holmenkollens solside!",
       "megler": "EIE eiendomsmegling Røa, Skøyen og Ullern",
-      "ny": true,
+      "ny": false,
       "omrade": "Holmenkollens solside! · Røa",
       "overskrift": "Romslig rekkehus over tre plan på Holmenkollens solside | 3 soverom, 3 bad og 2 stuer | Vestvendt veranda | Garasje m/el",
       "price_history": [
@@ -5000,7 +4916,7 @@
       "publisert": "2026-10-17T10:56:46+00:00",
       "soverom": 4,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 8703340,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5028,7 +4944,7 @@
       "lng": 10.7954,
       "lokalomrade": "Hovin / Lilleberg",
       "megler": "Nordvik Torshov",
-      "ny": true,
+      "ny": false,
       "omrade": "Hovin / Lilleberg · Helsfyr - Sinsen",
       "overskrift": "Sjelden anledning - Innholdsrikt rekkehus over 3 plan - Svært attraktiv beliggenhet - 3 terrasser - *Parkeringsleie",
       "price_history": [
@@ -5047,7 +4963,7 @@
       "publisert": "2026-10-16T16:26:17+00:00",
       "soverom": 4,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 13586199,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5075,7 +4991,7 @@
       "lng": 10.86546,
       "lokalomrade": "Lutvann",
       "megler": "PrivatMegleren Infinita",
-      "ny": true,
+      "ny": false,
       "omrade": "Lutvann · Hellerud",
       "overskrift": "Innbydende enderekkehus - 4 uteplasser - Hage - Gode solforhold - Garasjeplass med lader - Rett ved marka!",
       "price_history": [
@@ -5122,7 +5038,7 @@
       "lng": 10.8334,
       "lokalomrade": "Langerud/Rustad",
       "megler": "Krogsveen Oppsal",
-      "ny": true,
+      "ny": false,
       "omrade": "Langerud/Rustad · Bøler",
       "overskrift": "Rekkehus m/85 m² solrik terrasse | Garasje m/hems | Vedovn | Nær Østmarka, Rustad skole & T-bane | Oppussingsbehov",
       "price_history": [
@@ -5169,7 +5085,7 @@
       "lng": 10.7888,
       "lokalomrade": "Søndre Åsgården / Holmlia",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Søndre Åsgården / Holmlia · Søndre Nordstrand",
       "overskrift": "Attraktivt rekkehus over to plan | Tre solrike uteplasser og hage | A-konto v.v. og fyring inkl. | Meget barnevennlig",
       "price_history": [
@@ -5216,7 +5132,7 @@
       "lng": 10.93,
       "lokalomrade": "Vestli",
       "megler": "EiendomsMegler 1 Stovner",
-      "ny": true,
+      "ny": false,
       "omrade": "Vestli · Stovner",
       "overskrift": "Romslig enderekkehus o/ 3 plan | Stor sydvestv. veranda | Garasjeplass | Ingen gjenboere | Barnevennlig | Like v/ marka",
       "price_history": [
@@ -5235,7 +5151,7 @@
       "publisert": "2026-10-17T12:27:16+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 5741090,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -5263,7 +5179,7 @@
       "lng": 10.8402,
       "lokalomrade": "Ulsrud/Bøler",
       "megler": "EiendomsMegler 1 Sør-Norge avd Nordstrand",
-      "ny": true,
+      "ny": false,
       "omrade": "Ulsrud/Bøler · Bøler",
       "overskrift": "Pent rekkehus over tre plan | To solrike terrasser | Peisovn | God intern beliggenhet | Svært barnevennlig område",
       "price_history": [
@@ -5310,7 +5226,7 @@
       "lng": 10.9252,
       "lokalomrade": "Gamle Stovner",
       "megler": "EiendomsMegler 1 Stovner",
-      "ny": true,
+      "ny": false,
       "omrade": "Gamle Stovner · Stovner",
       "overskrift": "Pent og innholdsrikt rekkehus over to plan | Herlige uteplasser | Peis | Garasje | Familievennlig | Kort vei til marka",
       "price_history": [
@@ -5357,7 +5273,7 @@
       "lng": 10.8406,
       "lokalomrade": "Bjørndal",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Bjørndal · Søndre Nordstrand",
       "overskrift": "Sjarmerende rekkehus over to plan | Flotte uteplasser med sol hele dagen | Fjernvarme | Garasje med el-lader | Markanært",
       "price_history": [
@@ -5409,7 +5325,7 @@
       "lng": 10.6423,
       "lokalomrade": null,
       "megler": "PrivatMegleren Solli & Partnere",
-      "ny": true,
+      "ny": false,
       "omrade": "Ullern",
       "overskrift": "3 prosjekterte rekkehus med høy std - 4 (5) sov - 2 bad - P.plass - Hage og terrasser",
       "price_history": [
@@ -5575,7 +5491,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479312905",
       "visning": "2026-10-29T15:30:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Bjørndalsjordet 68, Oslo",
@@ -5721,5 +5637,5 @@
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-10-28T11:16:01.919935+01:00"
+  "updated_at": "2026-10-29T11:40:18.898061+01:00"
 }
