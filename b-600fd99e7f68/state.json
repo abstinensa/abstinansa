@@ -6,7 +6,7 @@
         "Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.85816,
       "lng": 10.79769,
       "price_history": [
@@ -22,7 +22,7 @@
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9353,
       "lng": 10.6449,
       "price_history": [
@@ -35,6 +35,11 @@
           "date": "2026-10-24",
           "prisantydning": 14750000,
           "totalpris": 14926932
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 13490000,
+          "totalpris": 13627309
         }
       ]
     },
@@ -43,7 +48,7 @@
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.91503,
       "lng": 10.64014,
       "price_history": [
@@ -75,7 +80,7 @@
         "Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.84598,
       "lng": 10.78738,
       "price_history": [
@@ -107,7 +112,7 @@
         "Bygdøy - Frogner"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9198,
       "lng": 10.6958,
       "price_history": [
@@ -139,7 +144,7 @@
         "Vinderen"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.95531,
       "lng": 10.69116,
       "price_history": [
@@ -155,7 +160,7 @@
         "Furuset"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.94159,
       "lng": 10.92779,
       "price_history": [
@@ -176,7 +181,7 @@
         "Vinderen"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.95524,
       "lng": 10.6912,
       "price_history": [
@@ -192,7 +197,7 @@
         "Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.84598,
       "lng": 10.78738,
       "price_history": [
@@ -224,7 +229,7 @@
         "Røa"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.95873,
       "lng": 10.63988,
       "price_history": [
@@ -261,7 +266,7 @@
         "Manglerud"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8855,
       "lng": 10.8155,
       "price_history": [
@@ -346,7 +351,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.84764,
       "lng": 10.82003,
       "price_history": [
@@ -399,7 +404,7 @@
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9187,
       "lng": 10.659,
       "price_history": [
@@ -407,6 +412,11 @@
           "date": "2026-10-21",
           "prisantydning": 11500000,
           "totalpris": 11788590
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 11200000,
+          "totalpris": 11481090
         }
       ]
     },
@@ -431,7 +441,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.82464,
       "lng": 10.78618,
       "price_history": [
@@ -484,7 +494,7 @@
         "Furuset"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.93352,
       "lng": 10.91171,
       "price_history": [
@@ -492,6 +502,11 @@
           "date": "2026-10-21",
           "prisantydning": 5200000,
           "totalpris": 5498838
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 4900000,
+          "totalpris": 5181387
         }
       ]
     },
@@ -500,7 +515,7 @@
         "Uranienborg - Majorstuen"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.928,
       "lng": 10.7309,
       "price_history": [
@@ -516,7 +531,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8482,
       "lng": 10.8237,
       "price_history": [
@@ -532,7 +547,7 @@
         "Furuset"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9368,
       "lng": 10.9027,
       "price_history": [
@@ -548,7 +563,7 @@
         "Vinderen"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9705,
       "lng": 10.6659,
       "price_history": [
@@ -596,7 +611,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.85907,
       "lng": 10.82421,
       "price_history": [
@@ -612,7 +627,7 @@
         "Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8606,
       "lng": 10.8151,
       "price_history": [
@@ -644,7 +659,7 @@
         "Bjerke"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.94608,
       "lng": 10.85369,
       "price_history": [
@@ -677,7 +692,7 @@
         "Vinderen"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9438,
       "lng": 10.6798,
       "price_history": [
@@ -698,7 +713,7 @@
         "Røa"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9473,
       "lng": 10.6475,
       "price_history": [
@@ -714,7 +729,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.82514,
       "lng": 10.80604,
       "price_history": [
@@ -767,7 +782,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8329,
       "lng": 10.8533,
       "price_history": [
@@ -783,7 +798,7 @@
         "Gamle Oslo"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9078,
       "lng": 10.7838,
       "price_history": [
@@ -799,7 +814,7 @@
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9335,
       "lng": 10.6733,
       "price_history": [
@@ -815,7 +830,7 @@
         "Grorud"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9547,
       "lng": 10.8909,
       "price_history": [
@@ -826,12 +841,28 @@
         }
       ]
     },
+    "473783488": {
+      "bydeler": [
+        "Bygdøy - Frogner"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9172,
+      "lng": 10.6814,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 14950000,
+          "totalpris": 15148458
+        }
+      ]
+    },
     "473898574": {
       "bydeler": [
         "Vinderen"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9796,
       "lng": 10.6635,
       "price_history": [
@@ -847,7 +878,7 @@
         "Grünerløkka - Sofienberg"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9246,
       "lng": 10.7722,
       "price_history": [
@@ -855,6 +886,11 @@
           "date": "2026-10-21",
           "prisantydning": 14400000,
           "totalpris": 14761390
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 13400000,
+          "totalpris": 13736390
         }
       ]
     },
@@ -879,7 +915,7 @@
         "Manglerud"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8847,
       "lng": 10.8139,
       "price_history": [
@@ -887,6 +923,11 @@
           "date": "2026-10-21",
           "prisantydning": 6690000,
           "totalpris": 6858340
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 6300000,
+          "totalpris": 6458590
         }
       ]
     },
@@ -895,7 +936,7 @@
         "Bjerke"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9465,
       "lng": 10.8539,
       "price_history": [
@@ -937,7 +978,7 @@
         "Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.84598,
       "lng": 10.78738,
       "price_history": [
@@ -953,7 +994,7 @@
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9279,
       "lng": 10.65687,
       "price_history": [
@@ -969,7 +1010,7 @@
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9281,
       "lng": 10.6307,
       "price_history": [
@@ -1001,7 +1042,7 @@
         "Stovner"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9664,
       "lng": 10.9233,
       "price_history": [
@@ -1017,7 +1058,7 @@
         "Furuset"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.94271,
       "lng": 10.92264,
       "price_history": [
@@ -1102,7 +1143,7 @@
         "Furuset"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9416,
       "lng": 10.9331,
       "price_history": [
@@ -1118,7 +1159,7 @@
         "Bjerke"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.94799,
       "lng": 10.85454,
       "price_history": [
@@ -1150,7 +1191,7 @@
         "Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8699,
       "lng": 10.7952,
       "price_history": [
@@ -1193,6 +1234,22 @@
         }
       ]
     },
+    "476060258": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9193,
+      "lng": 10.6513,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 15950000,
+          "totalpris": 16349840
+        }
+      ]
+    },
     "476117981": {
       "bydeler": [
         "Ekeberg - Bekkelaget"
@@ -1214,7 +1271,7 @@
         "Bjerke"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.94078,
       "lng": 10.82315,
       "price_history": [
@@ -1262,7 +1319,7 @@
         "Bygdøy - Frogner"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9037,
       "lng": 10.6733,
       "price_history": [
@@ -1278,7 +1335,7 @@
         "Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8725,
       "lng": 10.8074,
       "price_history": [
@@ -1294,7 +1351,7 @@
         "Manglerud"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.88845,
       "lng": 10.81111,
       "price_history": [
@@ -1302,6 +1359,11 @@
           "date": "2026-10-21",
           "prisantydning": 9300000,
           "totalpris": 9456830
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 9300000,
+          "totalpris": 9456831
         }
       ]
     },
@@ -1347,7 +1409,7 @@
         "Bjerke"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9452,
       "lng": 10.8521,
       "price_history": [
@@ -1360,6 +1422,11 @@
           "date": "2026-10-27",
           "prisantydning": 5700000,
           "totalpris": 6092367
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 5500000,
+          "totalpris": 5892367
         }
       ]
     },
@@ -1368,7 +1435,7 @@
         "Vinderen"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9786,
       "lng": 10.665,
       "price_history": [
@@ -1384,7 +1451,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.84138,
       "lng": 10.81124,
       "price_history": [
@@ -1392,6 +1459,11 @@
           "date": "2026-10-21",
           "prisantydning": 5700000,
           "totalpris": 5794913
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 5490000,
+          "totalpris": 5584913
         }
       ]
     },
@@ -1458,7 +1530,7 @@
         "Grefsen - Kjelsås"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9628,
       "lng": 10.7926,
       "price_history": [
@@ -1479,7 +1551,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8233,
       "lng": 10.8408,
       "price_history": [
@@ -1511,7 +1583,7 @@
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9354,
       "lng": 10.6447,
       "price_history": [
@@ -1527,7 +1599,7 @@
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9353,
       "lng": 10.6452,
       "price_history": [
@@ -1575,7 +1647,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8286,
       "lng": 10.7822,
       "price_history": [
@@ -1591,7 +1663,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.83629,
       "lng": 10.80058,
       "price_history": [
@@ -1607,7 +1679,7 @@
         "Stovner"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.95582,
       "lng": 10.92476,
       "price_history": [
@@ -1623,7 +1695,7 @@
         "Røa"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.94847,
       "lng": 10.64082,
       "price_history": [
@@ -1639,7 +1711,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8479,
       "lng": 10.8167,
       "price_history": [
@@ -1655,7 +1727,7 @@
         "Bjerke"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.94517,
       "lng": 10.85289,
       "price_history": [
@@ -1671,7 +1743,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8316,
       "lng": 10.78318,
       "price_history": [
@@ -1687,7 +1759,7 @@
         "Furuset"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9469,
       "lng": 10.8944,
       "price_history": [
@@ -1703,7 +1775,7 @@
         "Vinderen"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9786,
       "lng": 10.6644,
       "price_history": [
@@ -1711,6 +1783,22 @@
           "date": "2026-10-21",
           "prisantydning": 11450000,
           "totalpris": 11737340
+        }
+      ]
+    },
+    "478078654": {
+      "bydeler": [
+        "Bøler"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.8779,
+      "lng": 10.8486,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 9700000,
+          "totalpris": 9943590
         }
       ]
     },
@@ -1735,7 +1823,7 @@
         "Røa"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9506,
       "lng": 10.6731,
       "price_history": [
@@ -1788,7 +1876,7 @@
         "Bygdøy - Frogner"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9021,
       "lng": 10.6857,
       "price_history": [
@@ -1820,7 +1908,7 @@
         "Furuset"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.94898,
       "lng": 10.90712,
       "price_history": [
@@ -1836,7 +1924,7 @@
         "Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.85745,
       "lng": 10.82057,
       "price_history": [
@@ -1852,7 +1940,7 @@
         "Stovner"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9659,
       "lng": 10.9223,
       "price_history": [
@@ -1892,6 +1980,22 @@
           "date": "2026-10-21",
           "prisantydning": 5300000,
           "totalpris": 5515819
+        }
+      ]
+    },
+    "478322346": {
+      "bydeler": [
+        "Bjerke"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9451,
+      "lng": 10.852,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 7500000,
+          "totalpris": 7906914
         }
       ]
     },
@@ -1969,7 +2073,7 @@
         "Hellerud"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9042,
       "lng": 10.8527,
       "price_history": [
@@ -1985,7 +2089,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8325,
       "lng": 10.7845,
       "price_history": [
@@ -1998,6 +2102,11 @@
           "date": "2026-10-30",
           "prisantydning": 5590000,
           "totalpris": 5923779
+        },
+        {
+          "date": "2026-11-17",
+          "prisantydning": 5490000,
+          "totalpris": 5823779
         }
       ]
     },
@@ -2224,12 +2333,28 @@
         }
       ]
     },
+    "479079986": {
+      "bydeler": [
+        "Søndre Nordstrand"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.83294,
+      "lng": 10.85214,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": null,
+          "totalpris": null
+        }
+      ]
+    },
     "479146400": {
       "bydeler": [
         "Ullern"
       ],
       "first_seen": "2026-10-21",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9258,
       "lng": 10.6423,
       "price_history": [
@@ -2325,7 +2450,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-10-24",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8305,
       "lng": 10.8402,
       "price_history": [
@@ -2341,7 +2466,7 @@
         "Vinderen"
       ],
       "first_seen": "2026-10-31",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.9549,
       "lng": 10.6932,
       "price_history": [
@@ -2349,6 +2474,38 @@
           "date": "2026-10-31",
           "prisantydning": 15750000,
           "totalpris": 16144840
+        }
+      ]
+    },
+    "479760358": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.93542,
+      "lng": 10.64526,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 13860629,
+          "totalpris": null
+        }
+      ]
+    },
+    "479769988": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.93279,
+      "lng": 10.66922,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 9250000,
+          "totalpris": 9561312
         }
       ]
     },
@@ -2373,7 +2530,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-11-01",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8308,
       "lng": 10.8381,
       "price_history": [
@@ -2381,6 +2538,22 @@
           "date": "2026-11-01",
           "prisantydning": 5000000,
           "totalpris": 5066428
+        }
+      ]
+    },
+    "479834804": {
+      "bydeler": [
+        "Bøler"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.8641,
+      "lng": 10.8358,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 7200000,
+          "totalpris": 7394686
         }
       ]
     },
@@ -2421,7 +2594,7 @@
         "Søndre Nordstrand"
       ],
       "first_seen": "2026-11-01",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.8429,
       "lng": 10.8102,
       "price_history": [
@@ -2432,12 +2605,28 @@
         }
       ]
     },
+    "479891316": {
+      "bydeler": [
+        "Bjerke"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.938,
+      "lng": 10.8313,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 8800000,
+          "totalpris": 9021090
+        }
+      ]
+    },
     "479903059": {
       "bydeler": [
         "Nordstrand"
       ],
       "first_seen": "2026-11-01",
-      "last_seen": "2026-11-01",
+      "last_seen": "2026-11-17",
       "lat": 59.86173,
       "lng": 10.82468,
       "price_history": [
@@ -2493,6 +2682,438 @@
           "date": "2026-10-31",
           "prisantydning": 14000000,
           "totalpris": 14351090
+        }
+      ]
+    },
+    "480100485": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9193,
+      "lng": 10.65905,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 9300000,
+          "totalpris": 9533590
+        }
+      ]
+    },
+    "480172644": {
+      "bydeler": [
+        "Søndre Nordstrand"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.8364,
+      "lng": 10.8024,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 4800000,
+          "totalpris": 5220854
+        }
+      ]
+    },
+    "480307677": {
+      "bydeler": [
+        "Vinderen"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.956,
+      "lng": 10.6788,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 11290000,
+          "totalpris": 11573340
+        }
+      ]
+    },
+    "480320382": {
+      "bydeler": [
+        "Stovner"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9492,
+      "lng": 10.9291,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 5100000,
+          "totalpris": 5509586
+        }
+      ]
+    },
+    "480326612": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9257,
+      "lng": 10.6366,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 13160000,
+          "totalpris": 13490090
+        }
+      ]
+    },
+    "480378105": {
+      "bydeler": [
+        "Sogn"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9519,
+      "lng": 10.7478,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 17000000,
+          "totalpris": 17426390
+        }
+      ]
+    },
+    "480378118": {
+      "bydeler": [
+        "Stovner"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9644,
+      "lng": 10.9203,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 5490000,
+          "totalpris": 5699030
+        }
+      ]
+    },
+    "480379736": {
+      "bydeler": [
+        "Røa"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.97716,
+      "lng": 10.64687,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 8900000,
+          "totalpris": 9180120
+        }
+      ]
+    },
+    "480386078": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9193,
+      "lng": 10.6599,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 7900000,
+          "totalpris": 8098590
+        }
+      ]
+    },
+    "480388372": {
+      "bydeler": [
+        "Vinderen"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.95699,
+      "lng": 10.68364,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": null,
+          "totalpris": null
+        }
+      ]
+    },
+    "480411087": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9355,
+      "lng": 10.6452,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 14390000,
+          "totalpris": 14535774
+        }
+      ]
+    },
+    "480417092": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.92968,
+      "lng": 10.65771,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 8950000,
+          "totalpris": 9148674
+        }
+      ]
+    },
+    "480473699": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.935,
+      "lng": 10.6448,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 14490000,
+          "totalpris": 14621148
+        }
+      ]
+    },
+    "480495460": {
+      "bydeler": [
+        "Bøler"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.8871,
+      "lng": 10.84245,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 10200000,
+          "totalpris": 10456090
+        }
+      ]
+    },
+    "480610940": {
+      "bydeler": [
+        "Bygdøy - Frogner"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.92287,
+      "lng": 10.69743,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 19900000,
+          "totalpris": 20398590
+        }
+      ]
+    },
+    "480613152": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9349,
+      "lng": 10.6449,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 14890000,
+          "totalpris": 15101148
+        }
+      ]
+    },
+    "480614922": {
+      "bydeler": [
+        "Søndre Nordstrand"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.8355,
+      "lng": 10.7888,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 5490000,
+          "totalpris": 5677994
+        }
+      ]
+    },
+    "480699692": {
+      "bydeler": [
+        "Bjerke"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9463,
+      "lng": 10.8515,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 5350000,
+          "totalpris": 5783913
+        }
+      ]
+    },
+    "480744477": {
+      "bydeler": [
+        "Røa"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9617,
+      "lng": 10.6469,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 16850000,
+          "totalpris": 16988740
+        }
+      ]
+    },
+    "480833520": {
+      "bydeler": [
+        "Stovner"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9533,
+      "lng": 10.9246,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 5250000,
+          "totalpris": 5454296
+        }
+      ]
+    },
+    "480886917": {
+      "bydeler": [
+        "Nordstrand"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.8546,
+      "lng": 10.8155,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 9900000,
+          "totalpris": 9993132
+        }
+      ]
+    },
+    "480888086": {
+      "bydeler": [
+        "Manglerud"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.88206,
+      "lng": 10.81825,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 10750000,
+          "totalpris": 10801390
+        }
+      ]
+    },
+    "480904990": {
+      "bydeler": [
+        "Stovner"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.96751,
+      "lng": 10.93295,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 6190000,
+          "totalpris": 6427844
+        }
+      ]
+    },
+    "480917144": {
+      "bydeler": [
+        "Manglerud"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.88201,
+      "lng": 10.81831,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 10500000,
+          "totalpris": 10551390
+        }
+      ]
+    },
+    "481107022": {
+      "bydeler": [
+        "Grorud"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.95539,
+      "lng": 10.87165,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 6400000,
+          "totalpris": 6594127
+        }
+      ]
+    },
+    "481136945": {
+      "bydeler": [
+        "Sagene - Torshov"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.95478,
+      "lng": 10.76752,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 13990000,
+          "totalpris": 14341100
+        }
+      ]
+    },
+    "481139080": {
+      "bydeler": [
+        "Ullern"
+      ],
+      "first_seen": "2026-11-17",
+      "last_seen": "2026-11-17",
+      "lat": 59.9354,
+      "lng": 10.6446,
+      "price_history": [
+        {
+          "date": "2026-11-17",
+          "prisantydning": 13490000,
+          "totalpris": 13626219
         }
       ]
     }
