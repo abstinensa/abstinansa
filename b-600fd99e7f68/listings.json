@@ -1,6 +1,6 @@
 {
-  "count": 110,
-  "date": "2026-11-18",
+  "count": 107,
+  "date": "2026-11-19",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -189,7 +189,7 @@
       "prisendring_felt": null,
       "prisfall": false,
       "privat": false,
-      "publisert": "2026-10-19T13:24:14+00:00",
+      "publisert": "2026-11-18T13:28:18+00:00",
       "soverom": 3,
       "soverom_til": 4,
       "status": "til_salgs",
@@ -485,7 +485,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=461546147",
       "visning": "2026-11-19T17:00:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Jordstjerneveien 58, Oslo",
@@ -1266,53 +1266,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Husebyveien 1I, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/27/0/473/624/410_1ac8f5a5-bccc-43c1-9cbc-635fc3056b82.jpg",
-      "bra": 180,
-      "bra_til": null,
-      "bydeler": [
-        "Ullern"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 0,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "473624410",
-      "kvm_pris": 50000,
-      "lat": 59.9335,
-      "lng": 10.6733,
-      "lokalomrade": "Hoff",
-      "megler": "Krogsveen Røa",
-      "ny": false,
-      "omrade": "Hoff · Ullern",
-      "overskrift": "Rekkehus over 3 plan med hage og garasje | 4 soverom | Behov for modernisering | Sentralt på Smestad",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 9000000,
-          "totalpris": 9226090
-        }
-      ],
-      "prisantydning": 9000000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-10-19T15:16:35+00:00",
-      "soverom": 4,
-      "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 9226090,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=473624410",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
       "address": "Bekkenstenveien 30B, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/02/6/473/749/786_857fc8a5-ebdb-4ea1-b60b-d4203e4f13a5.jpg",
@@ -1407,56 +1360,9 @@
       "visning_i_dag": false
     },
     {
-      "address": "Voksenkollveien 57D, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/11/4/473/898/574_ae3e45cc-3fc1-4ff8-aed7-8c2cd87fdfa9.jpg",
-      "bra": 169,
-      "bra_til": null,
-      "bydeler": [
-        "Vinderen"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 1500,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "473898574",
-      "kvm_pris": 78402,
-      "lat": 59.9796,
-      "lng": 10.6635,
-      "lokalomrade": "Voksenkollen",
-      "megler": "Nordvik Bislett",
-      "ny": false,
-      "omrade": "Voksenkollen · Vinderen",
-      "overskrift": "Innholdsrikt og familievennlig enderekkehus med idyllisk beliggenhet ved marka - Hybel - Carport - 4 min til T-bane",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 13250000,
-          "totalpris": 13582340
-        }
-      ],
-      "prisantydning": 13250000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-11-11T13:36:43+00:00",
-      "soverom": 4,
-      "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 13582340,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=473898574",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
       "address": "Tromsøgata 15B, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/17/9/474/087/379_8653aebb-065d-4c1f-b9af-c1c3a911ccb1.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/18/9/474/087/379_6dee316d-86aa-48af-8ea3-635b25d076ac.jpg",
       "bra": 92,
       "bra_til": null,
       "bydeler": [
@@ -2674,53 +2580,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Griniveien 18-20, Oslo",
-      "arealtype": "P-rom",
-      "bilde": "https://images.finncdn.no/dynamic/960w/item/477800659/245ae663-c72b-4af2-8b18-cf558aa242fa",
-      "bra": 131,
-      "bra_til": null,
-      "bydeler": [
-        "Røa"
-      ],
-      "eierform": "Selveier",
-      "felleskost": null,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "477800659",
-      "kvm_pris": 90840,
-      "lat": 59.94847,
-      "lng": 10.64082,
-      "lokalomrade": null,
-      "megler": "PrivatMegleren Allé",
-      "ny": false,
-      "omrade": "Røa",
-      "overskrift": "Røa - 8 moderne familieboliger | Garasjeplass inkl. | 4 sov | 2 bad | Forventet ferdigstillelse des/jan | 1 solgt",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 11900000,
-          "totalpris": 11994840
-        }
-      ],
-      "prisantydning": 11900000,
-      "prisantydning_til": 12600000,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-11-01T15:20:25+00:00",
-      "soverom": 4,
-      "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 11994840,
-      "totalpris_til": 12694840,
-      "type": "prosjekt",
-      "url": "https://www.finn.no/realestate/project/ad.html?finnkode=477800659",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
       "address": "Bispeluelia 10C, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/20/4/477/806/004_e87a07fc-9896-48c3-aeb4-ee3509e3bfac.jpg",
@@ -2906,7 +2765,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478019029",
       "visning": "2026-11-19T15:45:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Ullveien 38, Oslo",
@@ -3476,7 +3335,7 @@
       "prisendring_felt": null,
       "prisfall": false,
       "privat": false,
-      "publisert": "2026-11-12T17:51:42+00:00",
+      "publisert": "2026-11-19T07:56:53+00:00",
       "soverom": 4,
       "soverom_til": null,
       "status": "til_salgs",
@@ -3818,7 +3677,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479873150",
-      "visning": null,
+      "visning": "2026-11-22T13:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -3865,7 +3724,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479891316",
-      "visning": null,
+      "visning": "2026-11-26T16:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4189,7 +4048,7 @@
       "publisert": "2026-11-07T13:46:32+00:00",
       "soverom": 4,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 17426390,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -4209,10 +4068,10 @@
       "eierform": "Selveier",
       "felleskost": 4772,
       "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 5490000,
+      "forrige_totalpris": 5699030,
       "id": "480378118",
-      "kvm_pris": 41908,
+      "kvm_pris": 41145,
       "lat": 59.9644,
       "lng": 10.9203,
       "lokalomrade": "Stovner",
@@ -4225,24 +4084,29 @@
           "date": "2026-11-17",
           "prisantydning": 5490000,
           "totalpris": 5699030
+        },
+        {
+          "date": "2026-11-19",
+          "prisantydning": 5390000,
+          "totalpris": 5596530
         }
       ],
-      "prisantydning": 5490000,
+      "prisantydning": 5390000,
       "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
+      "prisendring": -100000,
+      "prisendring_felt": "prisantydning",
+      "prisfall": true,
       "privat": false,
       "publisert": "2026-11-06T14:06:54+00:00",
       "soverom": 3,
       "soverom_til": null,
       "status": "til_salgs",
-      "totalpris": 5699030,
+      "totalpris": 5596530,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480378118",
-      "visning": "2026-11-18T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": "2026-11-25T16:00:00.000Z",
+      "visning_i_dag": false
     },
     {
       "address": "Arnulf Øverlands vei 267, Oslo",
@@ -5281,5 +5145,5 @@
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-11-18T13:33:39.085344+01:00"
+  "updated_at": "2026-11-19T13:24:24.509134+01:00"
 }
