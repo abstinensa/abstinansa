@@ -1,6 +1,6 @@
 {
   "count": 107,
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -484,8 +484,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=461546147",
-      "visning": "2026-11-19T17:00:00.000Z",
-      "visning_i_dag": true
+      "visning": "2026-11-26T17:00:00.000Z",
+      "visning_i_dag": false
     },
     {
       "address": "Jordstjerneveien 58, Oslo",
@@ -2029,7 +2029,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=476639384",
-      "visning": null,
+      "visning": "2026-11-25T15:30:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -2623,7 +2623,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477806004",
-      "visning": "2026-11-29T11:30:00.000Z",
+      "visning": null,
       "visning_i_dag": false
     },
     {
@@ -2764,8 +2764,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478019029",
-      "visning": "2026-11-19T15:45:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Ullveien 38, Oslo",
@@ -3818,7 +3818,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480100485",
-      "visning": null,
+      "visning": "2026-11-26T16:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -3869,53 +3869,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Løkkaskogen 28B, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/05/7/480/307/677_b2ba55d2-afe8-451d-a2e0-d67d8fe34e26.jpg",
-      "bra": 124,
-      "bra_til": null,
-      "bydeler": [
-        "Vinderen"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 0,
-      "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "480307677",
-      "kvm_pris": 91048,
-      "lat": 59.956,
-      "lng": 10.6788,
-      "lokalomrade": "Slemdal / Gressbanen",
-      "megler": "Nordvik Frogner",
-      "ny": true,
-      "omrade": "Slemdal / Gressbanen · Vinderen",
-      "overskrift": "Lyst og pent rekkehus - Fantastisk fjordutsikt - Solrike terrasser og hage - Garasje m/lader - Peis - Ved Holmen skole",
-      "price_history": [
-        {
-          "date": "2026-11-17",
-          "prisantydning": 11290000,
-          "totalpris": 11573340
-        }
-      ],
-      "prisantydning": 11290000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-11-06T07:46:14+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 11573340,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480307677",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
       "address": "Jorines vei 61, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/05/2/480/320/382_3b63ab6d-6036-448a-b341-cd72f0ac1fc6.jpg",
@@ -3959,7 +3912,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480320382",
-      "visning": null,
+      "visning": "2026-11-24T16:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4487,7 +4440,7 @@
     {
       "address": "Vesteråsveien 60, rekkehus F1, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/16/2/480/613/152_cb7fb620-278b-4e82-9f4c-743ed4fe02ca.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/20/2/480/613/152_9abaec99-0319-4c05-80d0-13568958c772.jpg",
       "bra": 119,
       "bra_til": null,
       "bydeler": [
@@ -4506,7 +4459,7 @@
       "megler": "Nordvik Løren",
       "ny": true,
       "omrade": "EIK Ullerntoppen · Ullern",
-      "overskrift": "Fastpris: Oppgrad. enderekkehus m/3 sov+3 bad/wc. Fin terrasse. Garasjeplass. inkl. Flytt inn 14. des. LAVE OMK.",
+      "overskrift": "Fastpris: Oppgrad. enderekkehus m/3 sov+3 bad/wc. Fin sydvestvendt terrasse. Garasjeplass. Flytt inn 14. des. LAVE OMK.",
       "price_history": [
         {
           "date": "2026-11-17",
@@ -4534,7 +4487,7 @@
     {
       "address": "Ravnkroken 64A, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/10/2/480/614/922_ec403387-b7e3-41f3-bd58-f2070742b610.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/20/2/480/614/922_6530f09d-1662-4039-810b-86286c505ddb.jpg",
       "bra": 105,
       "bra_til": null,
       "bydeler": [
@@ -4553,7 +4506,7 @@
       "megler": "Nordvik St.Hanshaugen",
       "ny": true,
       "omrade": "Ravnkroken · Søndre Nordstrand",
-      "overskrift": "Endrekkehus o/ to plan - garasje m/lader - varmtv. og fyr. inkl. - terrasser - gode solforhold - barnevennlig m.m.",
+      "overskrift": "Enderekkehus o/ to plan - garasje m/lader - varmtv. og fyr. inkl. - terrasser - gode solforhold - barnevennlig m.m.",
       "price_history": [
         {
           "date": "2026-11-17",
@@ -5141,9 +5094,56 @@
       "url": "https://www.finn.no/realestate/projectsingle/ad.html?finnkode=481139080",
       "visning": "2026-11-22T11:00:00.000Z",
       "visning_i_dag": false
+    },
+    {
+      "address": "Nøkleveien 11, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/17/9/481/205/889_02e2c7ba-d5bf-43a1-932b-b52c6f3341dd.jpg",
+      "bra": 130,
+      "bra_til": null,
+      "bydeler": [
+        "Bøler"
+      ],
+      "eierform": "Andel",
+      "felleskost": 6224,
+      "first_seen": "2026-11-20",
+      "forrige_prisantydning": null,
+      "forrige_totalpris": null,
+      "id": "481205889",
+      "kvm_pris": 53077,
+      "lat": 59.87895,
+      "lng": 10.84974,
+      "lokalomrade": "Bøler - Rett v/Marka",
+      "megler": "PrivatMegleren Aksept",
+      "ny": true,
+      "omrade": "Bøler - Rett v/Marka · Bøler",
+      "overskrift": "Unik mulighet: Enderekkehus over 3 plan med full oppussingsbehov. Barnevennlige omgivelser i populært borettslag. Hage",
+      "price_history": [
+        {
+          "date": "2026-11-20",
+          "prisantydning": 6900000,
+          "totalpris": 7073122
+        }
+      ],
+      "prisantydning": 6900000,
+      "prisantydning_til": null,
+      "prisendring": null,
+      "prisendring_felt": null,
+      "prisfall": false,
+      "privat": false,
+      "publisert": "2026-11-19T13:19:10+00:00",
+      "soverom": 3,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 7073122,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481205889",
+      "visning": "2026-11-29T11:00:00.000Z",
+      "visning_i_dag": false
     }
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-11-19T13:24:24.509134+01:00"
+  "updated_at": "2026-11-20T13:25:00.078494+01:00"
 }
