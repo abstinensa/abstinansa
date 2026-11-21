@@ -1,6 +1,6 @@
 {
-  "count": 107,
-  "date": "2026-11-20",
+  "count": 102,
+  "date": "2026-11-21",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -806,7 +806,7 @@
       "megler": "EiendomsMegler 1 Stovner",
       "ny": false,
       "omrade": "Ellingsrud vest · Furuset",
-      "overskrift": "Familievennlig og innholdsrikt rekkehus | Nytt bad og toalettrom fra 2025 | 3 gode soverom | Flere uteplasser | Garasje",
+      "overskrift": "Familievennlig rekkehus | Nytt bad og toalettrom fra 2025 | 3 gode soverom | Flere uteplasser | Garasje m/elbillader",
       "price_history": [
         {
           "date": "2026-10-21",
@@ -966,7 +966,7 @@
       "prisendring_felt": null,
       "prisfall": false,
       "privat": false,
-      "publisert": "2026-10-22T08:04:18+00:00",
+      "publisert": "2026-11-21T08:08:33+00:00",
       "soverom": 3,
       "soverom_til": 5,
       "status": "til_salgs",
@@ -1845,6 +1845,58 @@
       "visning_i_dag": false
     },
     {
+      "address": "Jordbærveien 65, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/21/3/475/878/083_2a47c919-64cc-48c0-b582-fd9f2a4719dd.jpg",
+      "bra": 124,
+      "bra_til": null,
+      "bydeler": [
+        "Nordstrand"
+      ],
+      "eierform": "Andel",
+      "felleskost": 7347,
+      "first_seen": "2026-10-21",
+      "forrige_prisantydning": 10300000,
+      "forrige_totalpris": 10893904,
+      "id": "475878083",
+      "kvm_pris": 79839,
+      "lat": 59.8699,
+      "lng": 10.7952,
+      "lokalomrade": "Nordstrand",
+      "megler": "Krogsveen Nordstrand",
+      "ny": false,
+      "omrade": "Nordstrand",
+      "overskrift": "Solrikt og oppusset rekkehus | Utvidet bad fra 2018 | Garasje | God intern beliggenhet | Nordseter skole",
+      "price_history": [
+        {
+          "date": "2026-10-21",
+          "prisantydning": 10300000,
+          "totalpris": 10893904
+        },
+        {
+          "date": "2026-11-21",
+          "prisantydning": 9900000,
+          "totalpris": 10493904
+        }
+      ],
+      "prisantydning": 9900000,
+      "prisantydning_til": null,
+      "prisendring": -400000,
+      "prisendring_felt": "prisantydning",
+      "prisfall": true,
+      "privat": false,
+      "publisert": "2026-11-21T05:03:38+00:00",
+      "soverom": 3,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 10493904,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=475878083",
+      "visning": "2026-11-25T15:30:00.000Z",
+      "visning_i_dag": false
+    },
+    {
       "address": "Vækerøveien 20A, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/02/8/476/060/258_7583b5c4-271f-4092-9a33-585193b6f91c.jpg",
@@ -2237,58 +2289,6 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477062154",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
-      "address": "Fallanveien 27E, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/9/vertical-2/29/3/477/587/443_dc19f392-2dcc-4598-95e5-a3a9df68b5ad.jpg",
-      "bra": 146,
-      "bra_til": null,
-      "bydeler": [
-        "Grefsen - Kjelsås"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 0,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": 11500000,
-      "forrige_totalpris": 11788590,
-      "id": "477587443",
-      "kvm_pris": 74658,
-      "lat": 59.9628,
-      "lng": 10.7926,
-      "lokalomrade": "Barnevennlig på Kjelsås",
-      "megler": "Krogsveen Grefsen",
-      "ny": false,
-      "omrade": "Barnevennlig på Kjelsås · Grefsen - Kjelsås",
-      "overskrift": "Innholdsrikt og romslig rekkehus over 3 plan m. familievennlig planløsning | 4 soverom | Flere uteplasser | Markanært",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 11500000,
-          "totalpris": 11788590
-        },
-        {
-          "date": "2026-11-01",
-          "prisantydning": 10900000,
-          "totalpris": 11173590
-        }
-      ],
-      "prisantydning": 10900000,
-      "prisantydning_til": null,
-      "prisendring": -600000,
-      "prisendring_felt": "prisantydning",
-      "prisfall": true,
-      "privat": false,
-      "publisert": "2026-10-31T10:51:16+00:00",
-      "soverom": 4,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 11173590,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477587443",
       "visning": null,
       "visning_i_dag": false
     },
@@ -2764,7 +2764,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478019029",
-      "visning": null,
+      "visning": "2026-11-25T17:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -2961,53 +2961,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Hesjeveien 9 A, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/08/3/478/246/323_f2eb51c6-3f2d-49bd-ac3e-349debda1fd3.jpg",
-      "bra": 135,
-      "bra_til": null,
-      "bydeler": [
-        "Furuset"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 0,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "478246323",
-      "kvm_pris": 42963,
-      "lat": 59.94898,
-      "lng": 10.90712,
-      "lokalomrade": "Høybråten",
-      "megler": "Privatmegleren Ullevål",
-      "ny": false,
-      "omrade": "Høybråten · Furuset",
-      "overskrift": "Familievennlig rekkehus over 3 plan med terrasse og hagedel | Garasje | Mulighet for 4 soverom | Sentralt på Høybråten",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 5800000,
-          "totalpris": 5946090
-        }
-      ],
-      "prisantydning": 5800000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-10-09T15:12:59+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 5946090,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478246323",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
       "address": "Frostveien 18 B, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/10/0/478/247/340_7dcf3a3e-7ae0-4dc5-9733-961d8dccccd1.jpg",
@@ -3051,100 +3004,6 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478247340",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
-      "address": "Ellen Gleditsch' vei 99, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/13/3/478/315/223_37c3e8b9-a742-413a-8e05-d9b11de42a23.jpg",
-      "bra": 150,
-      "bra_til": null,
-      "bydeler": [
-        "Stovner"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 3439,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "478315223",
-      "kvm_pris": 36667,
-      "lat": 59.9659,
-      "lng": 10.9223,
-      "lokalomrade": "Stovner",
-      "megler": "DNB Eiendom AS",
-      "ny": false,
-      "omrade": "Stovner",
-      "overskrift": "Attraktiv Beliggende Rekkehus Over 2 Plan + Kjeller | Lave Felleskostnader | Garasje | Fine Uteplasser Og Beliggenhet!",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 5500000,
-          "totalpris": 5655600
-        }
-      ],
-      "prisantydning": 5500000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-10-13T08:34:18+00:00",
-      "soverom": 4,
-      "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 5655600,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478315223",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
-      "address": "Veitvetsvingen 11C, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/09/6/478/322/346_02238a84-fb35-4737-9196-178fef6dadd1.jpg",
-      "bra": 155,
-      "bra_til": null,
-      "bydeler": [
-        "Bjerke"
-      ],
-      "eierform": "Andel",
-      "felleskost": 7696,
-      "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "478322346",
-      "kvm_pris": 48387,
-      "lat": 59.9451,
-      "lng": 10.852,
-      "lokalomrade": "Veitvedt Hageby",
-      "megler": "DNB Eiendom AS",
-      "ny": true,
-      "omrade": "Veitvedt Hageby · Bjerke",
-      "overskrift": "Lyst og innbydende rekkehus over 3 plan med hybel|Attraktiv beliggenhet i barnevennlige omgivelser|Ingen forkjøpsrett!",
-      "price_history": [
-        {
-          "date": "2026-11-17",
-          "prisantydning": 7500000,
-          "totalpris": 7906914
-        }
-      ],
-      "prisantydning": 7500000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-11-08T18:46:41+00:00",
-      "soverom": 5,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 7906914,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478322346",
       "visning": null,
       "visning_i_dag": false
     },
@@ -4062,100 +3921,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Arnulf Øverlands vei 267, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/06/6/480/379/736_2c71ab48-51ed-4411-aab1-5d01db49f7eb.jpg",
-      "bra": 138,
-      "bra_til": null,
-      "bydeler": [
-        "Røa"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 7155,
-      "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "480379736",
-      "kvm_pris": 64493,
-      "lat": 59.97716,
-      "lng": 10.64687,
-      "lokalomrade": "Voksen Skog | Holmenkollens solside",
-      "megler": "PrivatMegleren Park",
-      "ny": true,
-      "omrade": "Voksen Skog | Holmenkollens solside · Røa",
-      "overskrift": "Unik mulighet ved marka | Enderekkehus med flott utsikt | Solrik terrasse | Garasjeplass | Skap ditt drømmehjem!",
-      "price_history": [
-        {
-          "date": "2026-11-17",
-          "prisantydning": 8900000,
-          "totalpris": 9180120
-        }
-      ],
-      "prisantydning": 8900000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-11-10T19:26:17+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 9180120,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480379736",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
-      "address": "Vennersborgveien 12F, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/06/8/480/386/078_5a67e3c8-bb88-4b60-acbb-45d7fdd411ef.jpg",
-      "bra": 126,
-      "bra_til": null,
-      "bydeler": [
-        "Ullern"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 5041,
-      "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "480386078",
-      "kvm_pris": 62698,
-      "lat": 59.9193,
-      "lng": 10.6599,
-      "lokalomrade": "Bestum",
-      "megler": "Sem & Johnsen",
-      "ny": true,
-      "omrade": "Bestum · Ullern",
-      "overskrift": "Attraktivt enderekkehus over tre plan. Oppussingsbehov. Tre soverom og to bad. Peis.",
-      "price_history": [
-        {
-          "date": "2026-11-17",
-          "prisantydning": 7900000,
-          "totalpris": 8098590
-        }
-      ],
-      "prisantydning": 7900000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-11-09T13:04:06+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 8098590,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480386078",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
       "address": "Dagaliveien 28, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/item/480388372/bc522b4c-fe12-4f72-8707-37180ef48e7a",
@@ -4246,7 +4011,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480411087",
-      "visning": null,
+      "visning": "2026-11-24T16:15:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4299,7 +4064,7 @@
     {
       "address": "Vesteråsveien 62, rekkehus F2, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/16/9/480/473/699_91bc7e7a-f04c-44f0-b019-997591fc714f.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/20/9/480/473/699_6fc78211-bf0e-4126-a2fa-bae555dc899e.jpg",
       "bra": 119,
       "bra_til": null,
       "bydeler": [
@@ -4308,39 +4073,44 @@
       "eierform": "Selveier",
       "felleskost": 3263,
       "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
+      "forrige_prisantydning": 14490000,
+      "forrige_totalpris": 14621148,
       "id": "480473699",
-      "kvm_pris": 121765,
+      "kvm_pris": 120084,
       "lat": 59.935,
       "lng": 10.6448,
       "lokalomrade": "EIK Ullerntoppen",
       "megler": "Nordvik Løren",
       "ny": true,
       "omrade": "EIK Ullerntoppen · Ullern",
-      "overskrift": "Fastpris: Oppgrad. rekkehus m/3 sov+3 bad/wc. Fin terrasse. Garasjeplass. inkl. Flytt inn 14. des. LAVE OMK.",
+      "overskrift": "Fastpris: Oppgrad. rekkehus m/3 sov+3 bad/wc. Fin sydvestvendt terrasse. Garasjeplass. Flytt inn 14. des. LAVE OMK.",
       "price_history": [
         {
           "date": "2026-11-17",
           "prisantydning": 14490000,
           "totalpris": 14621148
+        },
+        {
+          "date": "2026-11-21",
+          "prisantydning": 14290000,
+          "totalpris": 14421148
         }
       ],
-      "prisantydning": 14490000,
+      "prisantydning": 14290000,
       "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
+      "prisendring": -200000,
+      "prisendring_felt": "prisantydning",
+      "prisfall": true,
       "privat": false,
-      "publisert": "2026-11-08T07:51:50+00:00",
+      "publisert": "2026-11-20T14:40:05+00:00",
       "soverom": 3,
       "soverom_til": null,
       "status": "til_salgs",
-      "totalpris": 14621148,
+      "totalpris": 14421148,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480473699",
-      "visning": null,
+      "visning": "2026-11-24T16:15:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4440,7 +4210,7 @@
     {
       "address": "Vesteråsveien 60, rekkehus F1, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/20/2/480/613/152_9abaec99-0319-4c05-80d0-13568958c772.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/20/2/480/613/152_f12b887f-91b2-4245-936e-b8e56b928bcc.jpg",
       "bra": 119,
       "bra_til": null,
       "bydeler": [
@@ -4481,7 +4251,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480613152",
-      "visning": null,
+      "visning": "2026-11-24T16:15:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -5145,5 +4915,5 @@
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-11-20T13:25:00.078494+01:00"
+  "updated_at": "2026-11-21T12:58:26.100694+01:00"
 }
