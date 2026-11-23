@@ -1,6 +1,6 @@
 {
-  "count": 107,
-  "date": "2026-11-22",
+  "count": 109,
+  "date": "2026-11-23",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -104,7 +104,7 @@
       "type": "prosjekt",
       "url": "https://www.finn.no/realestate/project/ad.html?finnkode=383913103",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Kirkehaugsveien 2, Oslo",
@@ -343,8 +343,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=448039934",
-      "visning": "2026-11-22T14:30:00.000Z",
-      "visning_i_dag": true
+      "visning": "2026-11-29T15:00:00.000Z",
+      "visning_i_dag": false
     },
     {
       "address": "Kruttverkveien 14, Oslo",
@@ -588,7 +588,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=464367331",
-      "visning": null,
+      "visning": "2026-11-29T11:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -635,8 +635,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=464799543",
-      "visning": "2026-11-22T12:30:00.000Z",
-      "visning_i_dag": true
+      "visning": "2026-11-29T13:00:00.000Z",
+      "visning_i_dag": false
     },
     {
       "address": "Munkebekken 438 B, Oslo",
@@ -687,8 +687,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=465267815",
-      "visning": "2026-11-22T13:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Thereses gate Byhus 1, Oslo",
@@ -734,8 +734,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/projectsingle/ad.html?finnkode=465307720",
-      "visning": "2026-11-22T13:30:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Mortensrudveien 38, Oslo",
@@ -1022,7 +1022,7 @@
       "type": "prosjekt",
       "url": "https://www.finn.no/realestate/project/ad.html?finnkode=467273186",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Rådyrveien 15 B, Oslo",
@@ -1122,7 +1122,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=471401478",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Røahagan 1 P, Oslo",
@@ -1403,8 +1403,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=473749786",
-      "visning": "2026-11-22T13:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Bygdøyveien 21E, Oslo",
@@ -1503,7 +1503,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=474087379",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Høgdaveien 33C, Oslo",
@@ -1842,7 +1842,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=475289954",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Vardeheimveien 18K, Oslo",
@@ -2120,7 +2120,7 @@
       "prisendring_felt": null,
       "prisfall": false,
       "privat": false,
-      "publisert": "2026-10-23T12:52:12+00:00",
+      "publisert": "2026-11-22T12:56:35+00:00",
       "soverom": 3,
       "soverom_til": null,
       "status": "til_salgs",
@@ -2228,7 +2228,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=476709569",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Veitvetsvingen 13A, Oslo",
@@ -2530,7 +2530,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/projectsingle/ad.html?finnkode=477654870",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "EIK Ullerntoppen, F4, Oslo",
@@ -2577,7 +2577,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/projectsingle/ad.html?finnkode=477655509",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Åsbråtstien 32, Oslo",
@@ -2671,7 +2671,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477788756",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Olaus Fjørtofts vei 27, Oslo",
@@ -2769,7 +2769,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477806004",
-      "visning": null,
+      "visning": "2026-11-29T11:30:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -3057,7 +3057,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478165022",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Langviksveien 19B, Oslo",
@@ -3198,7 +3198,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478553782",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Lusetjernveien 32A, Oslo",
@@ -3493,53 +3493,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Husebybakken 1 D, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/28/8/479/769/988_c9d91dce-677c-464e-924a-b48c543f7cd7.jpg",
-      "bra": 177,
-      "bra_til": null,
-      "bydeler": [
-        "Ullern"
-      ],
-      "eierform": "Andel",
-      "felleskost": 10574,
-      "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "479769988",
-      "kvm_pris": 52260,
-      "lat": 59.93279,
-      "lng": 10.66922,
-      "lokalomrade": "Montebello",
-      "megler": "PrivatMegleren Driv",
-      "ny": true,
-      "omrade": "Montebello · Ullern",
-      "overskrift": "Fantastisk og unik familiebolig | Mulig utleiedel i u-etg (del av egen bolig) | Parkering*",
-      "price_history": [
-        {
-          "date": "2026-11-17",
-          "prisantydning": 9250000,
-          "totalpris": 9561312
-        }
-      ],
-      "prisantydning": 9250000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-10-30T13:57:55+00:00",
-      "soverom": 4,
-      "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 9561312,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479769988",
-      "visning": "2026-11-23T16:30:00.000Z",
-      "visning_i_dag": false
-    },
-    {
       "address": "Nyjordeveien 10, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/28/2/479/780/362_9be541bf-fe40-418a-84ce-ae3513f9d97a.jpg",
@@ -3635,8 +3588,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479834804",
-      "visning": "2026-11-22T13:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Rugdeberget 78, Oslo",
@@ -3682,8 +3635,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479873150",
-      "visning": "2026-11-22T13:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Lunden 74, Oslo",
@@ -3780,6 +3733,53 @@
       "visning_i_dag": false
     },
     {
+      "address": "Stordamveien 42L, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/18/3/479/909/673_11cfa512-c191-460d-a3ef-2587e06cd7e2.jpg",
+      "bra": 130,
+      "bra_til": null,
+      "bydeler": [
+        "Hellerud"
+      ],
+      "eierform": "Andel",
+      "felleskost": 6684,
+      "first_seen": "2026-11-23",
+      "forrige_prisantydning": null,
+      "forrige_totalpris": null,
+      "id": "479909673",
+      "kvm_pris": 81154,
+      "lat": 59.9127,
+      "lng": 10.849,
+      "lokalomrade": "Hellerud",
+      "megler": "EiendomsMegler 1 Sør-Norge avd Nordstrand",
+      "ny": true,
+      "omrade": "Hellerud",
+      "overskrift": "Innbydende rekkehus over 3 plan | Nyoppusset kjøkken og 2 bad | Grønne fellesområder | Garasjeplass | Godlia skolekrets",
+      "price_history": [
+        {
+          "date": "2026-11-23",
+          "prisantydning": 10550000,
+          "totalpris": 10983652
+        }
+      ],
+      "prisantydning": 10550000,
+      "prisantydning_til": null,
+      "prisendring": null,
+      "prisendring_felt": null,
+      "prisfall": false,
+      "privat": false,
+      "publisert": "2026-11-23T11:10:42+00:00",
+      "soverom": 4,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 10983652,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479909673",
+      "visning": "2026-11-29T11:30:00.000Z",
+      "visning_i_dag": false
+    },
+    {
       "address": "Nedre Skogvei 4 I, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/02/5/480/100/485_97631d7a-33e7-4e0f-8ed9-ff0bb51427f2.jpg",
@@ -3865,13 +3865,13 @@
       "publisert": "2026-11-03T11:32:44+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 5220854,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480172644",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Jorines vei 61, Oslo",
@@ -3912,7 +3912,7 @@
       "publisert": "2026-11-06T15:12:26+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 5509586,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -4158,7 +4158,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480417092",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Vesteråsveien 62, rekkehus F2, Oslo",
@@ -4397,7 +4397,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480614922",
-      "visning": null,
+      "visning": "2026-11-29T12:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4444,8 +4444,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480699692",
-      "visning": null,
-      "visning_i_dag": true
+      "visning": "2026-11-29T11:00:00.000Z",
+      "visning_i_dag": false
     },
     {
       "address": "Ankerveien 96A, Oslo",
@@ -4538,8 +4538,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480833520",
-      "visning": "2026-11-22T12:30:00.000Z",
-      "visning_i_dag": true
+      "visning": "2026-11-29T14:45:00.000Z",
+      "visning_i_dag": false
     },
     {
       "address": "Brattvollveien 111, Oslo",
@@ -4585,7 +4585,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480886917",
-      "visning": "2026-11-22T12:30:00.000Z",
+      "visning": "2026-11-23T16:30:00.000Z",
       "visning_i_dag": true
     },
     {
@@ -4680,7 +4680,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480904990",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Disenveien 6C, Oslo",
@@ -4727,7 +4727,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480908490",
       "visning": "2026-11-24T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Abildsøveien 39 C, Oslo",
@@ -4815,13 +4815,13 @@
       "publisert": "2026-11-16T18:31:55+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 6594127,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481107022",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Karl Andersens vei 157, Oslo",
@@ -4914,8 +4914,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481136945",
-      "visning": "2026-11-22T14:30:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Vesteråsveien 76 - Eik Ullerntoppen, C2, Oslo",
@@ -4962,7 +4962,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/projectsingle/ad.html?finnkode=481139080",
       "visning": null,
-      "visning_i_dag": true
+      "visning_i_dag": false
     },
     {
       "address": "Nøkleveien 11, Oslo",
@@ -5009,6 +5009,53 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481205889",
       "visning": "2026-11-29T11:00:00.000Z",
+      "visning_i_dag": false
+    },
+    {
+      "address": "Ankerveien 96F, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/20/0/481/262/790_14ec2217-cfbb-4df0-89be-07b6ab7ecf41.jpg",
+      "bra": 177,
+      "bra_til": null,
+      "bydeler": [
+        "Røa"
+      ],
+      "eierform": "Selveier",
+      "felleskost": 0,
+      "first_seen": "2026-11-23",
+      "forrige_prisantydning": null,
+      "forrige_totalpris": null,
+      "id": "481262790",
+      "kvm_pris": 97458,
+      "lat": 59.9615,
+      "lng": 10.6467,
+      "lokalomrade": "Voksen/Holmenkollen",
+      "megler": "Nordvik Bygdøy Allé",
+      "ny": true,
+      "omrade": "Voksen/Holmenkollen · Røa",
+      "overskrift": "Innflytningsklart enderekkehus fra 2026 | Praktikantdel | 2 garasjeplasser med intern adkomst | Hage | Lav dok.",
+      "price_history": [
+        {
+          "date": "2026-11-23",
+          "prisantydning": 17250000,
+          "totalpris": 17386990
+        }
+      ],
+      "prisantydning": 17250000,
+      "prisantydning_til": null,
+      "prisendring": null,
+      "prisendring_felt": null,
+      "prisfall": false,
+      "privat": false,
+      "publisert": "2026-11-22T19:38:50+00:00",
+      "soverom": 4,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 17386990,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481262790",
+      "visning": "2026-11-29T12:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -5151,9 +5198,56 @@
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481388312",
       "visning": "2026-11-29T12:00:00.000Z",
       "visning_i_dag": false
+    },
+    {
+      "address": "Bjørndalsjordet 55, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/20/2/481/396/642_5fb27a84-55cf-458a-b53d-3545f7138605.jpg",
+      "bra": 136,
+      "bra_til": null,
+      "bydeler": [
+        "Søndre Nordstrand"
+      ],
+      "eierform": "Selveier",
+      "felleskost": 4473,
+      "first_seen": "2026-11-23",
+      "forrige_prisantydning": null,
+      "forrige_totalpris": null,
+      "id": "481396642",
+      "kvm_pris": 44044,
+      "lat": 59.8359,
+      "lng": 10.8267,
+      "lokalomrade": "Bjørndal",
+      "megler": "Notar Oslo",
+      "ny": true,
+      "omrade": "Bjørndal · Søndre Nordstrand",
+      "overskrift": "Stilrent enderekkehus fra 2015| u.etg. m/egen inngang | 3 sov, 2 bad & WC| Hage og terrasse | 2 P-plasser |Nær barnehage",
+      "price_history": [
+        {
+          "date": "2026-11-23",
+          "prisantydning": 5990000,
+          "totalpris": 6140840
+        }
+      ],
+      "prisantydning": 5990000,
+      "prisantydning_til": null,
+      "prisendring": null,
+      "prisendring_felt": null,
+      "prisfall": false,
+      "privat": false,
+      "publisert": "2026-11-22T16:33:16+00:00",
+      "soverom": 3,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 6140840,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481396642",
+      "visning": "2026-11-26T18:15:00.000Z",
+      "visning_i_dag": false
     }
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-11-22T13:12:19.210492+01:00"
+  "updated_at": "2026-11-23T14:56:35.877925+01:00"
 }
