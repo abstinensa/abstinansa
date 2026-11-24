@@ -1,6 +1,6 @@
 {
-  "count": 109,
-  "date": "2026-11-23",
+  "count": 107,
+  "date": "2026-11-24",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -429,7 +429,7 @@
       "prisendring_felt": null,
       "prisfall": false,
       "privat": false,
-      "publisert": "2026-10-25T09:06:20+00:00",
+      "publisert": "2026-11-24T09:10:09+00:00",
       "soverom": 5,
       "soverom_til": null,
       "status": "kommer_for_salg",
@@ -580,7 +580,7 @@
       "prisendring_felt": "prisantydning",
       "prisfall": true,
       "privat": false,
-      "publisert": "2026-11-06T08:46:08+00:00",
+      "publisert": "2026-11-24T08:01:28+00:00",
       "soverom": 4,
       "soverom_til": null,
       "status": "til_salgs",
@@ -1403,7 +1403,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=473749786",
-      "visning": null,
+      "visning": "2026-11-29T13:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -1450,58 +1450,6 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=473783488",
-      "visning": "2026-11-23T15:45:00.000Z",
-      "visning_i_dag": true
-    },
-    {
-      "address": "Tromsøgata 15B, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/18/9/474/087/379_6dee316d-86aa-48af-8ea3-635b25d076ac.jpg",
-      "bra": 92,
-      "bra_til": null,
-      "bydeler": [
-        "Grünerløkka - Sofienberg"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 2600,
-      "first_seen": "2026-10-21",
-      "forrige_prisantydning": 14400000,
-      "forrige_totalpris": 14761390,
-      "id": "474087379",
-      "kvm_pris": 145652,
-      "lat": 59.9246,
-      "lng": 10.7722,
-      "lokalomrade": "Rodeløkka",
-      "megler": "Aktiv Carl Berner",
-      "ny": false,
-      "omrade": "Rodeløkka · Grünerløkka - Sofienberg",
-      "overskrift": "Sjarmerende rekkehus over to plan på idylliske Rodeløkka | Markterrasse med frodige omgivelser | Stort potensial!",
-      "price_history": [
-        {
-          "date": "2026-10-21",
-          "prisantydning": 14400000,
-          "totalpris": 14761390
-        },
-        {
-          "date": "2026-11-17",
-          "prisantydning": 13400000,
-          "totalpris": 13736390
-        }
-      ],
-      "prisantydning": 13400000,
-      "prisantydning_til": null,
-      "prisendring": -1000000,
-      "prisendring_felt": "prisantydning",
-      "prisfall": true,
-      "privat": false,
-      "publisert": "2026-11-03T13:12:19+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "til_salgs",
-      "totalpris": 13736390,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=474087379",
       "visning": null,
       "visning_i_dag": false
     },
@@ -1554,8 +1502,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=474127316",
-      "visning": "2026-11-23T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Rådyrveien 19B, Oslo",
@@ -1734,7 +1682,7 @@
       "prisendring_felt": null,
       "prisfall": false,
       "privat": false,
-      "publisert": "2026-11-10T12:15:48+00:00",
+      "publisert": "2026-11-23T16:16:42+00:00",
       "soverom": 3,
       "soverom_til": null,
       "status": "til_salgs",
@@ -1742,7 +1690,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=474826205",
-      "visning": null,
+      "visning": "2026-11-29T12:30:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -2222,7 +2170,7 @@
       "publisert": "2026-11-16T09:25:01+00:00",
       "soverom": 4,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 9456831,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -2482,7 +2430,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477635017",
-      "visning": null,
+      "visning": "2026-11-29T11:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -2670,7 +2618,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477788756",
-      "visning": null,
+      "visning": "2026-11-29T13:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -2769,7 +2717,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477806004",
-      "visning": "2026-11-29T11:30:00.000Z",
+      "visning": null,
       "visning_i_dag": false
     },
     {
@@ -2999,13 +2947,13 @@
       "publisert": "2026-11-11T14:57:20+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 9943590,
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478078654",
-      "visning": "2026-11-23T15:30:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Eddaveien 30E, Oslo",
@@ -3051,7 +2999,7 @@
       "publisert": "2026-10-30T09:36:57+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 12290840,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -3399,53 +3347,6 @@
       "visning_i_dag": false
     },
     {
-      "address": "Skogryggveien 1E, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/10/vertical-2/30/5/479/703/465_90239707-cbdd-4fab-8769-41769b5fbfae.jpg",
-      "bra": 180,
-      "bra_til": null,
-      "bydeler": [
-        "Vinderen"
-      ],
-      "eierform": "Selveier",
-      "felleskost": 4500,
-      "first_seen": "2026-10-31",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "479703465",
-      "kvm_pris": 87500,
-      "lat": 59.9549,
-      "lng": 10.6932,
-      "lokalomrade": "Slemdal/Vettakollen",
-      "megler": "Nordvik Bygdøy Allé",
-      "ny": false,
-      "omrade": "Slemdal/Vettakollen · Vinderen",
-      "overskrift": "Klassisk innholdsrik familiebolig med solrik hage | Etterspurt villastrøk | Garasje | Egen inngang til u.etg | Nær marka",
-      "price_history": [
-        {
-          "date": "2026-10-31",
-          "prisantydning": 15750000,
-          "totalpris": 16144840
-        }
-      ],
-      "prisantydning": 15750000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-10-30T16:57:32+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 16144840,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479703465",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
       "address": "Vesteråsveien 16-18, Oslo",
       "arealtype": "BRA",
       "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/12/8/479/760/358_cffe29fc-e033-40c3-81fe-1c7e92bac8a4.png",
@@ -3583,7 +3484,7 @@
       "publisert": "2026-11-17T18:21:49+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 7169186,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -3630,7 +3531,7 @@
       "publisert": "2026-11-01T08:17:46+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 4698107,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -3959,7 +3860,7 @@
       "publisert": "2026-11-06T15:42:58+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 13490090,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -4111,12 +4012,12 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480411087",
       "visning": "2026-11-24T16:15:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Geologsvingen 23, Oslo",
       "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/06/2/480/417/092_d858452f-6f51-4bdc-8bd7-12dd85d8e3bc.jpg",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/06/2/480/417/092_b63e7253-a91e-47b4-9c9e-30a3652f59d4.jpg",
       "bra": 113,
       "bra_til": null,
       "bydeler": [
@@ -4149,7 +4050,7 @@
       "prisendring_felt": null,
       "prisfall": false,
       "privat": false,
-      "publisert": "2026-11-08T09:17:53+00:00",
+      "publisert": "2026-11-24T07:49:54+00:00",
       "soverom": 3,
       "soverom_til": null,
       "status": "til_salgs",
@@ -4157,7 +4058,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480417092",
-      "visning": null,
+      "visning": "2026-11-29T12:30:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4210,7 +4111,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480473699",
       "visning": "2026-11-24T16:15:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Guristuveien 9 A, Oslo",
@@ -4256,8 +4157,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480495460",
-      "visning": "2026-11-23T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Halvdan Svartes gate 46 F, Oslo",
@@ -4351,7 +4252,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480613152",
       "visning": "2026-11-24T16:15:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Ravnkroken 64A, Oslo",
@@ -4491,8 +4392,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480744477",
-      "visning": "2026-11-23T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Smiuvegen 11, Oslo",
@@ -4585,8 +4486,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480886917",
-      "visning": "2026-11-23T16:30:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Abildsøveien 39 B, Oslo",
@@ -4679,7 +4580,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480904990",
-      "visning": null,
+      "visning": "2026-11-30T16:00:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -4727,7 +4628,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480908490",
       "visning": "2026-11-24T16:00:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Abildsøveien 39 C, Oslo",
@@ -4868,7 +4769,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481125256",
       "visning": "2026-11-24T17:30:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Gjerdrums vei 9 B, Oslo",
@@ -5249,5 +5150,5 @@
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-11-23T14:56:35.877925+01:00"
+  "updated_at": "2026-11-24T15:29:26.029627+01:00"
 }
