@@ -1,6 +1,6 @@
 {
-  "count": 107,
-  "date": "2026-11-25",
+  "count": 108,
+  "date": "2026-11-26",
   "listings": [
     {
       "address": "Rosendalsveien 13 A-C, Oslo",
@@ -150,6 +150,53 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/planned/ad.html?finnkode=388066172",
+      "visning": null,
+      "visning_i_dag": false
+    },
+    {
+      "address": "Bygdøylund 25, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/5/vertical-2/29/5/422/733/315_522dde70-6fa0-49ba-96d8-a49770cafdd0.jpg",
+      "bra": 178,
+      "bra_til": null,
+      "bydeler": [
+        "Bygdøy - Frogner"
+      ],
+      "eierform": "Selveier",
+      "felleskost": 5615,
+      "first_seen": "2026-10-21",
+      "forrige_prisantydning": null,
+      "forrige_totalpris": null,
+      "id": "422733315",
+      "kvm_pris": 117697,
+      "lat": 59.8978,
+      "lng": 10.6856,
+      "lokalomrade": "Bygdøy",
+      "megler": "Sem & Johnsen",
+      "ny": false,
+      "omrade": "Bygdøy",
+      "overskrift": "Lekker familiebolig v/sjøen 4 sov, 2 bad, hybel m/egen inngang. Felles strandlinje, båtplass og garasjeplass",
+      "price_history": [
+        {
+          "date": "2026-10-21",
+          "prisantydning": 20950000,
+          "totalpris": 21474840
+        }
+      ],
+      "prisantydning": 20950000,
+      "prisantydning_til": null,
+      "prisendring": null,
+      "prisendring_felt": null,
+      "prisfall": false,
+      "privat": false,
+      "publisert": "2026-11-25T14:10:11+00:00",
+      "soverom": 4,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 21474840,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=422733315",
       "visning": null,
       "visning_i_dag": false
     },
@@ -485,7 +532,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=461546147",
       "visning": "2026-11-26T17:00:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Jordstjerneveien 58, Oslo",
@@ -1263,7 +1310,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=473072208",
       "visning": "2026-11-26T16:00:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Øverliveien 4B, Oslo",
@@ -1935,8 +1982,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=475878083",
-      "visning": "2026-11-25T15:30:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Vækerøveien 20A, Oslo",
@@ -2123,8 +2170,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=476639384",
-      "visning": "2026-11-25T15:30:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Høgdaveien 5 E, Oslo",
@@ -2764,8 +2811,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=477827393",
-      "visning": "2026-11-25T16:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Nordåssløyfa 50A, Oslo",
@@ -2858,8 +2905,8 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=478019029",
-      "visning": "2026-11-25T17:00:00.000Z",
-      "visning_i_dag": true
+      "visning": null,
+      "visning_i_dag": false
     },
     {
       "address": "Ullveien 38, Oslo",
@@ -3584,7 +3631,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=479891316",
       "visning": "2026-11-26T16:00:00.000Z",
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Nordstrandveien 115G, Oslo",
@@ -3725,101 +3772,7 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480100485",
       "visning": "2026-11-26T16:00:00.000Z",
-      "visning_i_dag": false
-    },
-    {
-      "address": "Lerdalstoppen 28, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/03/4/480/172/644_c0aa503e-0e86-4682-b985-0cb9e4cd9457.jpg",
-      "bra": 109,
-      "bra_til": null,
-      "bydeler": [
-        "Søndre Nordstrand"
-      ],
-      "eierform": "Andel",
-      "felleskost": 6949,
-      "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "480172644",
-      "kvm_pris": 44037,
-      "lat": 59.8364,
-      "lng": 10.8024,
-      "lokalomrade": "Asperud",
-      "megler": "Eiendomsmegler 1 Søndre Nordstrand",
-      "ny": false,
-      "omrade": "Asperud · Søndre Nordstrand",
-      "overskrift": "Enderekkehus over to plan | Nordvestvendt balkong og markterrasse | Garasjeplass m/elbillader | Nær Holmlia stasjon",
-      "price_history": [
-        {
-          "date": "2026-11-17",
-          "prisantydning": 4800000,
-          "totalpris": 5220854
-        }
-      ],
-      "prisantydning": 4800000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-11-03T11:32:44+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 5220854,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480172644",
-      "visning": null,
-      "visning_i_dag": false
-    },
-    {
-      "address": "Jorines vei 61, Oslo",
-      "arealtype": "BRA",
-      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/05/2/480/320/382_3b63ab6d-6036-448a-b341-cd72f0ac1fc6.jpg",
-      "bra": 101,
-      "bra_til": null,
-      "bydeler": [
-        "Stovner"
-      ],
-      "eierform": "Andel",
-      "felleskost": 5537,
-      "first_seen": "2026-11-17",
-      "forrige_prisantydning": null,
-      "forrige_totalpris": null,
-      "id": "480320382",
-      "kvm_pris": 50495,
-      "lat": 59.9492,
-      "lng": 10.9291,
-      "lokalomrade": "Høybråten",
-      "megler": "DNB Eiendom AS",
-      "ny": false,
-      "omrade": "Høybråten · Stovner",
-      "overskrift": "Familievennlig rekkehus med flotte uteplasser | Solrik takterrasse | 3 soverom | Peisovn | Ingen forkjøpsrett| Garasje!",
-      "price_history": [
-        {
-          "date": "2026-11-17",
-          "prisantydning": 5100000,
-          "totalpris": 5509586
-        }
-      ],
-      "prisantydning": 5100000,
-      "prisantydning_til": null,
-      "prisendring": null,
-      "prisendring_felt": null,
-      "prisfall": false,
-      "privat": false,
-      "publisert": "2026-11-06T15:12:26+00:00",
-      "soverom": 3,
-      "soverom_til": null,
-      "status": "solgt",
-      "totalpris": 5509586,
-      "totalpris_til": null,
-      "type": "bruktbolig",
-      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=480320382",
-      "visning": null,
-      "visning_i_dag": false
+      "visning_i_dag": true
     },
     {
       "address": "Hartmanns vei 29E, Oslo",
@@ -4603,7 +4556,7 @@
       "lng": 10.7952,
       "lokalomrade": "Disen",
       "megler": "Nordvik Nydalen",
-      "ny": true,
+      "ny": false,
       "omrade": "Disen · Grefsen - Kjelsås",
       "overskrift": "Familievennlig og svært godt vedlikeholdt rekkehus over 3 plan! Solrike uteplasser | 3 soverom | Peis | Barnevennlig",
       "price_history": [
@@ -4622,7 +4575,7 @@
       "publisert": "2026-11-16T19:08:55+00:00",
       "soverom": 3,
       "soverom_til": null,
-      "status": "til_salgs",
+      "status": "solgt",
       "totalpris": 10763439,
       "totalpris_til": null,
       "type": "bruktbolig",
@@ -4744,7 +4697,7 @@
       "lng": 10.9278,
       "lokalomrade": "Høybråten",
       "megler": "DNB Eiendom AS",
-      "ny": true,
+      "ny": false,
       "omrade": "Høybråten · Furuset",
       "overskrift": "Attraktivt og familievennlig rekkehus | Barnevennlig beliggenhet | Flere uteplasser | Garasje og p-plass m/elbillader",
       "price_history": [
@@ -4768,7 +4721,7 @@
       "totalpris_til": null,
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481125256",
-      "visning": null,
+      "visning": "2026-11-30T16:30:00.000Z",
       "visning_i_dag": false
     },
     {
@@ -5145,10 +5098,104 @@
       "type": "bruktbolig",
       "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481396642",
       "visning": "2026-11-26T18:15:00.000Z",
+      "visning_i_dag": true
+    },
+    {
+      "address": "Griniveien 18A, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/item/481411001/5bd74d77-b5e2-4a7c-a320-6c825d1541d0",
+      "bra": 131,
+      "bra_til": null,
+      "bydeler": [
+        "Røa"
+      ],
+      "eierform": "Selveier",
+      "felleskost": 0,
+      "first_seen": "2026-11-26",
+      "forrige_prisantydning": null,
+      "forrige_totalpris": null,
+      "id": "481411001",
+      "kvm_pris": 82061,
+      "lat": 59.94838,
+      "lng": 10.64092,
+      "lokalomrade": "Røa",
+      "megler": "PrivatMegleren Allé",
+      "ny": true,
+      "omrade": "Røa",
+      "overskrift": "Lave omkostninger",
+      "price_history": [
+        {
+          "date": "2026-11-26",
+          "prisantydning": 10750000,
+          "totalpris": 10844840
+        }
+      ],
+      "prisantydning": 10750000,
+      "prisantydning_til": null,
+      "prisendring": null,
+      "prisendring_felt": null,
+      "prisfall": false,
+      "privat": false,
+      "publisert": "2026-11-26T13:10:24+00:00",
+      "soverom": 4,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 10844840,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/projectsingle/ad.html?finnkode=481411001",
+      "visning": "2026-11-29T11:00:00.000Z",
+      "visning_i_dag": false
+    },
+    {
+      "address": "Ammerudgrenda 229, Oslo",
+      "arealtype": "BRA",
+      "bilde": "https://images.finncdn.no/dynamic/960w/2026/11/vertical-2/26/2/481/800/302_759b9ba6-32e1-44d2-b4a7-0f4e5cf1b919.jpg",
+      "bra": 118,
+      "bra_til": null,
+      "bydeler": [
+        "Grorud"
+      ],
+      "eierform": "Andel",
+      "felleskost": 4982,
+      "first_seen": "2026-11-26",
+      "forrige_prisantydning": null,
+      "forrige_totalpris": null,
+      "id": "481800302",
+      "kvm_pris": 58475,
+      "lat": 59.96717,
+      "lng": 10.87716,
+      "lokalomrade": "Atriumhus på Ammerud",
+      "megler": "OBOS Eiendomsmeglere - Kalbakken",
+      "ny": true,
+      "omrade": "Atriumhus på Ammerud · Grorud",
+      "overskrift": "Arkitekttegnet atriumhus over 2 plan. Skjermet og barnevennlig beliggenhet. Garasje og p-plass. Rett ved Lillomarka.",
+      "price_history": [
+        {
+          "date": "2026-11-26",
+          "prisantydning": 6900000,
+          "totalpris": 6954634
+        }
+      ],
+      "prisantydning": 6900000,
+      "prisantydning_til": null,
+      "prisendring": null,
+      "prisendring_felt": null,
+      "prisfall": false,
+      "privat": false,
+      "publisert": "2026-11-26T11:55:22+00:00",
+      "soverom": 2,
+      "soverom_til": null,
+      "status": "til_salgs",
+      "totalpris": 6954634,
+      "totalpris_til": null,
+      "type": "bruktbolig",
+      "url": "https://www.finn.no/realestate/homes/ad.html?finnkode=481800302",
+      "visning": "2026-11-29T12:30:00.000Z",
       "visning_i_dag": false
     }
   ],
   "query": "Rekkehus til salgs i Oslo",
   "source": "https://www.finn.no/realestate/homes/search.html?location=0.20061&property_type=4",
-  "updated_at": "2026-11-25T14:47:33.662020+01:00"
+  "updated_at": "2026-11-26T14:27:30.875860+01:00"
 }
